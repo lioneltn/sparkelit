@@ -40,7 +40,35 @@ class AdminC
      }
 
      function modifierAdmin($admin)
-     { 
-          
+     {
+          $sql = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+          $db = config::getConnexion();
+          try {
+               $req = $db->prepare($sql);
+
+               $req->bindValue(':nom', $admin->getNom());
+               $req->bindValue(':prenom', $admin->getPrenom());
+               $req->bindValue(':email', $admin->getEmail());
+               $req->bindValue(':datenaissance', $admin->getDateNaissance());
+               $req->bindValue(':sexe', $admin->getSexe());
+
+
+               $req->execute();
+          } catch (Exception $e) {
+               echo 'Erreur: ' . $e->getMessage();
+          }
+
+          $sql = "update admin set login = :login, type = :type";
+          $db = config::getConnexion();
+          try {
+               $req = $db->prepare($sql);
+
+               $req->bindValue(':login', $admin->getEmail());
+               $req->bindValue(':type', $admin->getType());
+
+               $req->execute();
+          } catch (Exception $e) {
+               echo 'Erreur: ' . $e->getMessage();
+          }
      }
 }
