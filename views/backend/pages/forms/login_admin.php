@@ -432,6 +432,9 @@
                             <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" required>
                         </div>
                     </div>
+                    <a href = "forgot-password.php"><label><u>mot de passe oublié ? </u></label></a>
+                    <a href = "new_account_admin.php"><label><u>Créer un nouveau compte </u></label></a>
+                    <br><br>
                     <button type="submit" class="btn btn-primary mr-2" onclick="controle4()">se connecter </button>
                 </form>
             </div>

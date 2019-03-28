@@ -458,7 +458,7 @@
 
                                 <div class="form-footer-right">
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="verification()">Save</button>
+                                <button type="submit" class="btn btn-primary" onclick="verification()">S'inscrire</button>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-lg-9 -->

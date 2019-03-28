@@ -18,12 +18,13 @@
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../images/favicon.png" />
-    
+
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="../../js/my-account.js">
+
     </script>
 
-    <title>Ajouter artiste</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -414,64 +415,20 @@
         <!-- partial -->
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Gestion Artiste</h4>
+                <h4 class="card-title">Aide avec le mot de passe</h4>
                 <p class="card-description">
-                    <strong>Ajouter artiste</strong>
+                    <strong>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</strong>
                 </p>
-                <form method="POST" action="ajoutArtiste.php" class="forms-sample">
+                <br>
+                <form method="POST" action="loginAdmin.php" class="forms-sample">
                     <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adresse E-mail</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="nom" onfocusout="validateFirstName(this)" required>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" required>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Prenom</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="prenom" onfocusout="validateFirstName(this)" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-birthday" class="col-sm-3 col-form-label">Date de naissance</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="sexe" id="sexe">
-                                <option value="homme" selected="selected">Homme </option>
-                                <option value="femme">Femme </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-email" class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout = "validateEmail(this)" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout = "validatePassword(this)" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout = "validateConfirmPassword(this)" required>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Image de l'artiste</h4>
-                            <input type="file" class="dropify" name="image" id="image" required />
-                        </div>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary mr-2">Créer</button>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="controle4()">Réinitialiser</button>
                 </form>
             </div>
         </div>

@@ -19,6 +19,10 @@
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+
+    <!-- Javascript File -->
+    <script type="text/javascript" language="javascript" src="assets/js/my-account.js"></script>
+
 </head>
 <body>
     <div class="page-wrapper">
@@ -331,18 +335,18 @@
 
             <div class="container">
                 <div class="heading mb-4">
-                    <h2 class="title">Reset Password</h2>
-                    <p>Please enter your email address below to receive a password reset link.</p>
+                    <h2 class="title">Aide avec le mot de passe</h2>
+                    <p>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</p>
                 </div><!-- End .heading -->
 
                 <form action="#">
                     <div class="form-group required-field">
-                        <label for="reset-email">Email</label>
-                        <input type="email" class="form-control" id="reset-email" name="reset-email" required>
+                        <label for="reset-email">Adresse Email</label>
+                        <input type="email" class="form-control" id="reset-email" name="reset-email" onfocusout="validateEmail(this)" required>
                     </div><!-- End .form-group -->
 
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-primary">Reset My Password</button>
+                        <button type="submit" class="btn btn-primary">Reinitialiser mon mot de passe </button>
                     </div><!-- End .form-footer -->
                 </form>
             </div><!-- End .container -->

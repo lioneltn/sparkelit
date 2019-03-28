@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+//$_SESSION['email'] = "dqsdqsd";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +32,25 @@
 </head>
 
 <body>
+    <?PHP
+    include "../../../../entities/comptes/admin.php";
+    include "../../../../core/comptes/adminC.php";
+
+    echo $_SESSION['email_artiste'];
+    if (isset($_SESSION['email_artiste'])) {
+        $adminC = new AdminC();
+        $result = $adminC->recupererAdmin($_SESSION['email_artiste']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+        }
+    } else {
+        header('Location: login_admin.php');
+    }
+    ?>
     <div class="container-scroller">
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
@@ -423,46 +446,46 @@
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Nom</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" onfocusout="validateFirstName(this)" required>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Prenom</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prenom" onfocusout="validateFirstName(this)" required>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prenom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="acc-birthday" class="col-sm-3 col-form-label">Date de naissance</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" required>
+                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="sexe" id="sexe">
-                                <option value="homme" selected="selected">Homme </option>
-                                <option value="femme">Femme </option>
+                                <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
+                                <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Modifier Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" required>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" value=<?PHP echo $_SESSION['email_artiste'] ?> required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Modifier mot de passe(7 characters minimum)</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" required>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" value=<?PHP echo $password ?> required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">confirmer mot de passe</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout="validateConfirmPassword(this)" required>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout="validateConfirmPassword(this)" value=<?PHP echo $password ?> required>
                         </div>
                     </div>
                     <div class="card">

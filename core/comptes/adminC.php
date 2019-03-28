@@ -62,7 +62,6 @@ class AdminC
                $req->bindValue(':datenaissance', $admin->getDateNaissance());
                $req->bindValue(':sexe', $admin->getSexe());
 
-
                $req->execute();
           } catch (Exception $e) {
                echo 'Erreur: ' . $e->getMessage();
