@@ -1,8 +1,8 @@
 <?PHP
-include "../../config.php";
+include "../../../../config.php";
 class AdminC
 {
-     function ajouterAdmin($admin)
+     function ajouterAdmin($admin, $type)
      {
           $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe)";
           $db = config::getConnexion();
@@ -39,12 +39,22 @@ class AdminC
           }
      }
 
-     function modifierAdmin($admin)
+     function modifierAdmin($admin, $email)
      {
-          $sql = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+          if ($email = $admin->getEmail()) {
+                    $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+                    $sql_a = "update admin set login = :login, type = :type";
+               } else {
+               /*$sql_ud = "delete utilisateur where email = $email";
+               $sql_ad = "delete admin where login = $email";*/
+
+               $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+               $sql_a = "update admin set login = :login, type = :type";
+          }
+
           $db = config::getConnexion();
           try {
-               $req = $db->prepare($sql);
+               $req = $db->prepare($sql_u);
 
                $req->bindValue(':nom', $admin->getNom());
                $req->bindValue(':prenom', $admin->getPrenom());
@@ -58,10 +68,9 @@ class AdminC
                echo 'Erreur: ' . $e->getMessage();
           }
 
-          $sql = "update admin set login = :login, type = :type";
           $db = config::getConnexion();
           try {
-               $req = $db->prepare($sql);
+               $req = $db->prepare($sql_a);
 
                $req->bindValue(':login', $admin->getEmail());
                $req->bindValue(':type', $admin->getType());
@@ -69,6 +78,20 @@ class AdminC
                $req->execute();
           } catch (Exception $e) {
                echo 'Erreur: ' . $e->getMessage();
+          }
+     }
+
+     function recupererAdmin($email)
+     {
+          $sql = "select * from utilisateur where email = :email";
+          $db = config::getConnexion();
+          try {
+               $liste = $db->prepare($sql);
+               $liste->bindValue(':email', $email);
+               $liste->execute();
+               return $liste;
+          } catch (Exception $e) {
+               die('Erreur: ' . $e->getMessage());
           }
      }
 }

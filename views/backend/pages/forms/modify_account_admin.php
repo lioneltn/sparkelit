@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+//$_SESSION['email'] = "dqsdqsd";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +30,25 @@
 </head>
 
 <body>
+    <?PHP
+    include "../../../../entities/comptes/admin.php";
+    include "../../../../core/comptes/adminC.php";
+
+    echo $_SESSION['email_admin'];
+    if (isset($_SESSION['email_admin'])) {
+        $adminC = new AdminC();
+        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+        }
+    } else {
+        header('Location: login_admin.php');
+    }
+    ?>
     <div class="container-scroller">
         <!-- partial:../../partials/_horizontal-navbar.html -->
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -420,23 +443,24 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Modifier le compte administrateur</h4>
-                                    <form id="example-form" method="POST" action="ajoutAdmin.php">
+
+                                    <form id="example-form" method="POST">
                                         <div>
                                             <h3>Compte</h3>
                                             <section>
                                                 <h6>Compte</h6>
                                                 <div class="form-group">
                                                     <label>Adresse email</label>
-                                                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email" id="email" placeholder="Enter email" onfocusout="validateEmail(this)" required>
+                                                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email" id="email" placeholder="Enter email" onfocusout="validateEmail(this)" value=<?PHP echo $_SESSION['email_admin'] ?> required>
                                                     <small id="emailHelp" class="form-text text-muted">Nous n'allons jamais patarger votre email.</small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Mot de passe</label>
-                                                    <input type="password" class="form-control" placeholder="modifier le mot de passe" id="password" name="password" onfocusout="validatePassword(this)" required>
+                                                    <input type="password" class="form-control" placeholder="modifier le mot de passe" id="password" name="password" onfocusout="validatePassword(this)" value=<?PHP echo $password ?> required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Mot de passe de confirmation</label>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation" name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" required>
+                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation" name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" value=<?PHP echo $password ?> required>
                                                 </div>
                                             </section>
                                             <h3>Profile</h3>
@@ -444,24 +468,24 @@
                                                 <h6>Profile</h6>
                                                 <div class="form-group">
                                                     <label>Nom</label>
-                                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="entrer votre nom" onfocusout="validateFirstName(this)" required>
+                                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="entrer votre nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Prénom</label>
-                                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom" onfocusout="validateFirstName(this)" required>
+                                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="acc-birthday">Date de naissance</label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" required>
+                                                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="acc-sexe">Sexe</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="sexe" id="sexe">
-                                                            <option value="homme" selected="selected">Homme </option>
-                                                            <option value="femme">Femme </option>
+                                                            <option value="homme" selected="<?PHP if ($sexe = "homme") echo "selected" ?>">Homme </option>
+                                                            <option value="femme" selected="<?PHP if ($sexe = "femme") echo "selected" ?>">Femme </option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -471,13 +495,21 @@
                                                 <h6>Confirmation</h6>
                                                 <div class="form-group">
                                                     <br><br>
-                                                    <h6>Terminé</h6>
-                                                    <div class="form-check">
-
-                                                    </div>
+                                                    <label>Cliquer sur terminer pour confirmer les modifications </label>
+                                                    <br><br><br><br><br><br><br>
+                                                    <button type="submit" name="modifier" id = "modifier" class="btn btn-primary mr-2">Terminer</button>
                                                 </div>
                                         </div>
                                     </form>
+                                    <?PHP
+                                    if (isset($_POST['modifier'])) {
+                                        $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_POST['email'], $_POST['sexe'], 1);
+                                        $admin1C = new AdminC();
+                                        $admin1C->modifierAdmin($admin1, $_SESSION['email_admin']);
+                                        //header('Location: modify_account_admin.php');
+                                        echo "modification reussite";
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

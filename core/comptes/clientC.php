@@ -53,10 +53,10 @@ class ClientC
         //$sql = "select u.nom, u.prenom, u.sexe, u.datenaissance, u.motdepasse, u.email, login, telephone, codepostal, adresselivraison, adresselivraison_2 from utilisateur u inner join client c on u.email = c.login where u.email=$emaill";
         $db = config::getConnexion();
         try {
-            $client1 = $db->query($sql);
+            $client1 = $db->prepare($sql);
 
             $client1->bindValue(':email', $login);
-
+            $client1->execute();
             return $client1;
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());

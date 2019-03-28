@@ -24,7 +24,7 @@
 
     </script>
 
-    <title>Modifier artiste</title>
+    <title>Login</title>
 </head>
 
 <body>

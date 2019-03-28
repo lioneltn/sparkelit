@@ -420,14 +420,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Créer un nouveau compte</h4>
-                                    <form id="example-form" method="POST" action="ajoutAdmin.php">
+                                    <form id="example-form" method="POST" action="ajouterAdmin.php">
                                         <div>
                                             <h3>Compte</h3>
                                             <section>
                                                 <h6>Compte</h6>
                                                 <div class="form-group">
                                                     <label>Adresse email</label>
-                                                    <input type="email" class="form-control" aria-describedby="emailHelp" name = "email" id= "email" placeholder="Enter email" onfocusout="validateEmail(this)" required>
+                                                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email" id="email" placeholder="Enter email" onfocusout="validateEmail(this)" required>
                                                     <small id="emailHelp" class="form-text text-muted">Nous n'allons jamais patarger votre email.</small>
                                                 </div>
                                                 <div class="form-group">
@@ -436,7 +436,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Mot de passe de confirmation</label>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation"  name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" required>
+                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation" name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" required>
                                                 </div>
                                             </section>
                                             <h3>Profile</h3>
@@ -477,6 +477,8 @@
                                                             <input class="checkbox" type="checkbox">
                                                             Je suis d'accord avec les termes et conditions.
                                                         </label>
+                                                        <br><br><br><br><br><br><br>
+                                                        <button type="submit" class="btn btn-primary mr-2">Terminer</button>
                                                     </div>
                                                 </div>
                                         </div>
