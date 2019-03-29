@@ -101,6 +101,28 @@ class ProduitC
 		}
 
 	}
+
+
+	function afficherDetailsParRef($ref)
+	{
+		$sql="SElECT * from detailsproduit where ref_produit=:ref";
+		$db = config3::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindValue(':ref',$ref);
+			$req->execute();
+			$ret=$req->fetchAll();
+           	return $ret; 
+
+		} 
+
+		catch (Exception $e)
+		{
+			 echo 'Erreur: '.$e->getMessage();	
+		}
+
+	}
 	/*function afficherFournisseurRef()
 	{
 		$sql="SElECT reference From fournisseur";

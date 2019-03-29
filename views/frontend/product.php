@@ -1,3 +1,34 @@
+<?php
+include "../../core/produitC.php";
+chdir(__DIR__);
+$produitC=new ProduitC();
+$liste=$produitC->afficherProduitParRef("Hp1");
+$i=$liste['thumbnail'];
+$listedetails=$produitC->afficherDetailsParRef("Hp1");
+$Colors = array("#FF0000"=>"Rouge", "#00CED1"=>"Blue", "#FFFF00"=>"Jaune" , "#32CD32"=>"Vert" , 
+"#000000"=>"Noir");
+$avaiblable_colors= array();
+
+// Getting first color
+$e=$listedetails[0];
+
+array_push($avaiblable_colors,$e['couleur']);
+
+echo $avaiblable_colors[0];
+
+// Iterating through list detail to get all colors.
+foreach($listedetails as $row)
+{
+   if (!(in_array($row['couleur'],$avaiblable_colors))){
+        array_push($avaiblable_colors,$row['couleur']);
+
+   }
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -374,7 +405,7 @@
 
                                 <div class="col-lg-5 col-md-6">
                                     <div class="product-single-details">
-                                        <h1 class="product-title">Silver Porto Headset</h1>
+                                        <h1 class="product-title"><?php echo $liste['nom'];?></h1>
 
                                         <div class="ratings-container">
                                             <div class="product-ratings">
@@ -386,7 +417,7 @@
 
                                         <div class="price-box">
                                             <span class="old-price">$81.00</span>
-                                            <span class="product-price">$101.00</span>
+                                            <span class="product-price"><?php echo $liste['prix'] ?> DT</span>
                                         </div><!-- End .price-box -->
 
                                         <div class="product-desc">
@@ -396,19 +427,30 @@
                                         <div class="product-filters-container">
                                             <div class="product-single-filter">
                                                 <label>Colors:</label>
-                                                <ul class="config-swatch-list">
+                                                 <ul class="config-swatch-list">
+                                                    <!-- /Populating product colors  -->
+                                                  <?php  
+                                                    foreach($avaiblable_colors as $C){
+                                                        $colors_code=array_search($C,$Colors);
+                                                        ?> 
+
+
                                                     <li class="active">
-                                                        <a href="#" style="background-color: #6085a5;"></a>
+                                                    
+
+                                                        <a href="#" style="background-color: <?php echo $colors_code ?>" ></a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#" style="background-color: #ab6e6e;"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" style="background-color: #b19970;"></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" style="background-color: #11426b;"></a>
-                                                    </li>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                
+                                               
+
+                                                
+                                                
+                                                
+                                                
+                                                   
                                                 </ul>
                                             </div><!-- End .product-single-filter -->
                                         </div><!-- End .product-filters-container -->
