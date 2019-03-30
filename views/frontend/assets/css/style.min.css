@@ -4011,8 +4011,9 @@ form h2
 {
 	form,.form-footer
 	{
-	margin-bottom:5rem
+	margin-bottom:0rem
 }
+
 
 }
 .btn
@@ -6514,8 +6515,8 @@ background-color:#8798a1
 }
 .product-single-filter
 {
-	display:flex;
-	align-items:center;
+	
+align-items:center;
 padding-bottom:2.7rem;
 border-bottom:1px solid #dae2e6
 }

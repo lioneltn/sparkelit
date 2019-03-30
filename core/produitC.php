@@ -154,6 +154,28 @@ class ProduitC
 	}
 
 
+
+	function afficherSizes($ref,$color)
+	{
+		$sql="SELECT taille FROM detailsproduit WHERE ref_produit=:ref AND couleur=:color";
+		$db = config3::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindValue(':ref',$ref);
+			$req->bindValue(':color',$color);
+			$req->execute();
+			$ret=$req->fetchAll();
+           	return $ret; 
+
+		} 
+
+		catch (Exception $e)
+		{
+			 echo 'Erreur: '.$e->getMessage();	
+		}
+
+	}
 }
 
 

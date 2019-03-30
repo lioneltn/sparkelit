@@ -14,7 +14,6 @@ $e=$listedetails[0];
 
 array_push($avaiblable_colors,$e['couleur']);
 
-echo $avaiblable_colors[0];
 
 // Iterating through list detail to get all colors.
 foreach($listedetails as $row)
@@ -25,6 +24,10 @@ foreach($listedetails as $row)
    }
 
 }
+
+// Getting first size
+$avaiblable_sizes= array();
+
 
 ?>
 
@@ -416,12 +419,12 @@ foreach($listedetails as $row)
                                         </div><!-- End .product-container -->
 
                                         <div class="price-box">
-                                            <span class="old-price">$81.00</span>
+                                            <span class="old-price"><?php echo $liste['prix_ancien'] ?></span>
                                             <span class="product-price"><?php echo $liste['prix'] ?> DT</span>
                                         </div><!-- End .price-box -->
 
                                         <div class="product-desc">
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.</p>
+                                            <p><?php echo $liste['description'] ?></p>
                                         </div><!-- End .product-desc -->
 
                                         <div class="product-filters-container">
@@ -438,20 +441,28 @@ foreach($listedetails as $row)
                                                     <li class="active">
                                                     
 
-                                                        <a href="#" style="background-color: <?php echo $colors_code ?>" ></a>
+                                                       
+                                                        <input hidden type="radio" id="color-<?php echo $C ?>" name="color-<?php echo $C ?>" value="<?php echo $C ?>">
+                                                        <label for="color-<?php echo $C ?>" style="background-color: <?php echo $colors_code ?>;text-decoration-color:<?php echo $colors_code ?>" onclick="getSize('Rouge','Hp1');">
+
+                                                            -
+                                                        </label>
+
+
+                                                        
                                                     </li>
                                                     <?php
                                                     }
                                                     ?>
-                                                
-                                               
-
-                                                
-                                                
-                                                
-                                                
-                                                   
                                                 </ul>
+                                                <br>
+
+                                                <label>Size:</label>
+                                                <div id=size>
+                                                    
+                                                   
+                                                </div>
+
                                             </div><!-- End .product-single-filter -->
                                         </div><!-- End .product-filters-container -->
 
@@ -460,15 +471,13 @@ foreach($listedetails as $row)
                                                 <input class="horizontal-quantity form-control" type="text">
                                             </div><!-- End .product-single-qty -->
 
-                                            <a href="cart.php" class="paction add-cart" title="Add to Cart">
-                                                <span>Add to Cart</span>
-                                            </a>
-                                            <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                                <span>Add to Wishlist</span>
-                                            </a>
-                                            <a href="#" class="paction add-compare" title="Add to Compare">
-                                                <span>Add to Compare</span>
-                                            </a>
+                                            <form class="test" action="cart.php" method="POST">
+                                            <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>">
+                                            <button type="submit" class="paction add-cart" value="Add to Cart"><span>Ajouter au panier</span></button>
+                                            </form>
+                                           
+                                           
+                                            
                                         </div><!-- End .product-action -->
 
                                         <div class="product-single-share">
@@ -496,13 +505,8 @@ foreach($listedetails as $row)
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="product-desc-content" role="tabpanel" aria-labelledby="product-tab-desc">
                                     <div class="product-desc-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-                                        <ul>
-                                            <li><i class="icon-ok"></i>Any Product types that You want - Simple, Configurable</li>
-                                            <li><i class="icon-ok"></i>Downloadable/Digital Products, Virtual Products</li>
-                                            <li><i class="icon-ok"></i>Inventory Management with Backordered items</li>
-                                        </ul>
-                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                        <p><?php echo $liste['description'] ?></p>
+                                        
                                     </div><!-- End .product-desc-content -->
                                 </div><!-- End .tab-pane -->
 
@@ -636,7 +640,7 @@ foreach($listedetails as $row)
                             <div class="widget widget-info">
                                 <ul>
                                     <li>
-                                        <i class="icon-shipping"></i>
+                                        <i class="ping"></i>
                                         <h4>FREE<br>SHIPPING</h4>
                                     </li>
                                     <li>
@@ -1276,6 +1280,8 @@ foreach($listedetails as $row)
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
+    <!-- Ajax JS FILE -->
+    <script type="text/javascript" src="assets/js/ajax.js"></script>
 
     <!-- www.addthis.com share plugin -->
     <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b927288a03dbde6"></script>
