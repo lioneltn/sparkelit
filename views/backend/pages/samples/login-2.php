@@ -18,6 +18,12 @@
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+
+  <!-- Javascript File -->
+  <script type="text/javascript" language="javascript" src="../../js/my-account.js">
+
+</script>
+
 </head>
 
 <body>
@@ -33,9 +39,9 @@
             <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
               <div class="nav-get-started">
                 <p>Don't have an account?</p>
-                <a class="btn get-started-btn" href="register-2.php">GET STARTED</a>
+                <a class="btn get-started-btn" href="../forms/formulaire_ajouter_artiste.php">GET STARTED</a>
               </div>
-              <form action="#">
+              <form action="loginArtiste.php" method ="POST">
                 <h3 class="mr-auto">Hello! let's get started</h3>
                 <p class="mb-5 mr-auto">Enter your details below.</p>
                 <div class="form-group">
@@ -43,7 +49,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,11 +57,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" onfocusout="validatePassword(this)" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary submit-btn">SIGN IN</button>
+                  <button type = "submit" class="btn btn-primary submit-btn">SIGN IN</button>
                 </div>
                 <div class="wrapper mt-5 text-gray">
                   <p class="footer-text">Copyright © 2018 Urbanui. All rights reserved.</p>

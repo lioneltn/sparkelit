@@ -24,16 +24,14 @@ if (isset($_POST['email']) and isset($_POST['password'])) {
             echo "email ou mot de passe incorrect ";
         } else {
             echo "email et mot de passe correct ";
-            if($type == 1) {
+            if($type == 2) {
                 $_SESSION['email_admin'] = $_POST['email'];
             echo $_SESSION['email_admin'];
-            header('Location: modify_account_admin.php');
+            header('Location: dashboard-artiste.php');
             }
             
             else {
-                $_SESSION['email_artiste'] = $_POST['email'];
-                echo $_SESSION['email_artiste'];
-                header('Location: formulaire_modifier_artiste.php');
+                echo "email ou mot de passe incorrect ";
             }
             
         }

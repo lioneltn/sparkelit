@@ -1,3 +1,18 @@
+<?php
+// Ouverture ou récupération de la session
+session_start();
+$fp = fopen("compteur.txt","r+");
+$nbvisites = fgets($fp,11);
+// Incrémentation du compteur si la 
+// variable (de session) 'ouverture' n'existe pas
+if (empty($_SESSION['ouverture'])) $nbvisites++;
+// Sinon création de cette variable
+else $_SESSION['ouverture']='oui';
+fseek($fp,0);
+fputs($fp,$nbvisites);
+fclose($fp);
+// Écriture du nombre de visites
+print("$nbvisites visiteurs");?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,7 +157,7 @@
                                                 <li><a href="checkout-review.php">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Dashboard</a>
+                                        <li><a href="dashboard.php">Dashboard</a>
                                             <ul>
                                                 <li><a href="dashboard.php">Dashboard</a></li>
                                                 <li><a href="my-account.php">My Account</a></li>
@@ -156,7 +171,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="#" class="login-link">Login</a></li>
+                                        <li><a href="login.php">Login</a></li>
                                         <li><a href="forgot-password.php">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -242,7 +257,7 @@
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php">LOG IN</a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -980,7 +995,7 @@
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="#" class="login-link">Login</a></li>
+                                                    <li><a href="login.php" >Login</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -1108,7 +1123,7 @@
                                 </ul>
                             </li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="login.php" >Login</a></li>
                             <li><a href="forgot-password.php">Forgot Password</a></li>
                         </ul>
                     </li>

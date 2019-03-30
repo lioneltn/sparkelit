@@ -31,6 +31,29 @@ session_start();
 </head>
 
 <body>
+    <?PHP
+    include "../../entities/comptes/client.php";
+    include "../../core/comptes/clientC.php";
+
+    echo $_SESSION['email'];
+    if (isset($_SESSION['email'])) {
+        $clientC = new ClientC();
+        $result = $clientC->recupererClient($_SESSION['email']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+            $tel = $row['telephone'];
+            $code = $row['codepostal'];
+            $addlivr = $row['adresselivraison'];
+            $addlivr_2 = $row['adresselivraison_2'];
+        }
+    } else {
+        header('Location: login.php');
+    }
+    ?>
     <div class="page-wrapper">
         <header class="header">
             <div class="header-middle sticky-header">
@@ -38,7 +61,7 @@ session_start();
                     <div class="header-left">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li>
                                     <a href="category.html" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
@@ -166,7 +189,7 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="#" class="login-link">Login</a></li>
+                                        <li><a href="login.php">Login</a></li>
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -181,7 +204,7 @@ session_start();
                     </div><!-- End .header-left -->
 
                     <div class="header-center">
-                        <a href="index.html" class="logo">
+                        <a href="index.php" class="logo">
                             <img src="assets/images/Logoreduit.png" alt="Porto Logo" style="width: 92px;height: 49px">
                         </a>
                     </div><!-- End .header-center -->
@@ -252,7 +275,7 @@ session_start();
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php">LOG IN</a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -333,7 +356,7 @@ session_start();
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </div><!-- End .container-fluid -->
@@ -344,28 +367,21 @@ session_start();
                     <div class="col-lg-9 order-lg-last dashboard-content">
                         <h2>Modifier les informations de son compte</h2>
 
-                        <form method="POST" action="modifierClient.php" name="acc_edit">
+                        <form method="POST" name="acc_edit">
                             <div class="row">
                                 <div class="col-sm-11">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group required-field">
                                                 <label for="acc-name">Nom</label>
-                                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?PHP echo $_SESSION['nom'] ?>" onfocusout="validateFirstName(this)" required>
-                                            </div><!-- End .form-group -->
-                                        </div><!-- End .col-md-4 -->
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="acc-mname">Nom</label>
-                                                <input type="text" class="form-control" id="firstName_2" name="firstName_2" value="<?PHP echo $_SESSION['prenom'] ?>" onfocusout="validateFirstName(this)" />
+                                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?PHP echo $nom ?>" onfocusout="validateFirstName(this)" required>
                                             </div><!-- End .form-group -->
                                         </div><!-- End .col-md-4 -->
 
                                         <div class="col-md-4">
                                             <div class="form-group required-field">
                                                 <label for="acc-lastname">Prénom</label>
-                                                <input type="text" class="form-control" id="lastName" name="lastName" value="<?PHP echo $_SESSION['prenom'] ?>" onfocusout="validateFirstName(this)" required>
+                                                <input type="text" class="form-control" id="lastName" name="lastName" value="<?PHP echo $prenom ?>" onfocusout="validateFirstName(this)" required>
                                             </div><!-- End .form-group -->
                                         </div><!-- End .col-md-4 -->
                                     </div><!-- End .row -->
@@ -374,102 +390,48 @@ session_start();
 
                             <div class="form-group required-field">
                                 <label for="acc-birthday">Date de naissance</label>
-                                <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" value="<?PHP echo $_SESSION['datenaissance'] ?>" onfocusout="validateDateNaissance(this)" required>
+                                <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" value="<?PHP echo $datenaissance ?>" onfocusout="validateDateNaissance(this)" required>
                             </div><!-- End .form-group -->
 
                             <div class="form-group required-field">
                                 <label for="acc-birthday">Sexe</label>
-                                <select name="sexe" class="form-control" >
-                                    <option value="homme" selected="<?PHP if ($_SESSION['sexe'] == " homme") echo "selected" ?>">Homme </option>
-                                    <option value="femme" selected="<?PHP if ($_SESSION['sexe'] == " femme") echo "selected" ?>">Femme </option>
+                                <select name="sexe" class="form-control">
+                                    <option value="homme" selected="<?PHP if ($sexe == " homme") echo "selected" ?>">Homme </option>
+                                    <option value="femme" selected="<?PHP if ($sexe == " femme") echo "selected" ?>">Femme </option>
                                 </select>
                             </div><!-- End .form-group -->
 
                             <div class="form-group required-field">
                                 <label for="acc-email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" onfocusout="validateEmail(this)" required>
+                                <label class="form-control">
+                                    <?PHP echo $_SESSION['email'] ?> </label>
                             </div><!-- End .form-group -->
 
                             <div class="form-group required-field">
                                 <label for="acc-tel">Téléphone</label>
-                                <input type="number" class="form-control" id="numTel" name="numTel" onfocusout="validateNumTel(this)" required>
+                                <input type="number" class="form-control" id="numTel" name="numTel" value="<?PHP echo $tel ?>" onfocusout="validateNumTel(this)" required>
                             </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-region">Région</label>
-                                <select name="region" class="form-control" >
-                                    <option value="tunis">Tunis </option>
-                                    <option value="sfax">Sfax </option>
-                                    <option value="sousse">Sousse </option>
-                                    <option value="ariana">Ariana </option>
-                                    <option value="kiarouan"> Kiarouan</option>
-                                    <option value="bizerte"> Bizerte</option>
-                                    <option value="gabès">Gabès </option>
-                                    <option value="ben arous">Ben Arous </option>
-                                    <option value="gafsa"> Gafsa</option>
-                                    <option value="monastir"> Monastir</option>
-                                    <option value="kasserine">Kasserine </option>
-                                    <option value="la manouba"> La Manouba</option>
-                                    <option value="medenine">Médenine </option>
-                                </select>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-code">Code Postal</label>
-                                <input type="text" class="form-control" id="codePostal" name="codePostal" onfocusout="validateCodePostal(this)" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-add">Adresse de livraison</label>
-                                <input type="text" class="form-control" id="addLivraison" name="addLivraison" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-add">2ème Adresse de livraison</label>
-                                <input type="text" class="form-control" id="addLivraison_2" name="addLivraison_2" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-password">Mot de passe</label>
-                                <input type="password" class="form-control" id="password_a" name="password_a" onfocusout="validatePassword(this)" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="mb-2"></div><!-- margin -->
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
-                                <label class="custom-control-label" for="change-pass-checkbox">Changer de mot de passe</label>
-                            </div><!-- End .custom-checkbox -->
-
-                            <div id="account-chage-pass">
-                                <h3 class="mb-2">Changer de mot de passe</h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group required-field">
-                                            <label for="acc-pass2">mot de passe</label>
-                                            <input type="password" class="form-control" id="password" name="password" onfocusout="validatePassword(this)" required>
-                                        </div><!-- End .form-group -->
-                                    </div><!-- End .col-md-6 -->
-
-                                    <div class="col-md-6">
-                                        <div class="form-group required-field">
-                                            <label for="acc-pass3">mot de passe de confirmation</label>
-                                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" onfocusout="validateConfirmPassword(this)" required>
-                                        </div><!-- End .form-group -->
-                                    </div><!-- End .col-md-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End #account-chage-pass -->
 
                             <div class="required text-right">* Champ requis</div>
                             <div class="form-footer">
-                                <a href="#"><i class="icon-angle-double-left"></i>précédent</a>
+                                <a href="dashboard.php"><i class="icon-angle-double-left"></i>précédent</a>
 
                                 <div class="form-footer-right">
-                                    <button type="submit" class="btn btn-primary" onclick="verification()">Sauvegarder</button>
+                                    <input type="submit" class="btn btn-primary" name="modifier" id="modifier" onclick="verification()" value="modifier">
                                 </div>
                             </div><!-- End .form-footer -->
                         </form>
-
+                        <?PHP
+                        if (isset($_POST['modifier'])) {
+                            $client1 = new Client($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email'], $_POST['sexe'], $_POST['numTel'], "", "", "", "");
+                            $client1C = new ClientC();
+                            $client1C->modifierClient_i($client1);
+                            header('Location: dashboard.php');
+                            echo "modification reussite";
+                        } else {
+                            echo "errorr echec";
+                        }
+                        ?>
                     </div><!-- End .col-lg-9 -->
 
                     <aside class="sidebar col-lg-3">
@@ -477,9 +439,9 @@ session_start();
                             <h3 class="widget-title">My Account</h3>
 
                             <ul class="list">
-                                <li class="active"><a href="http://localhost/projet/testconnexion/views/frontend/new_account.php">New Account</a></li>
-                                <li><a href="http://localhost/projet/testconnexion/views/frontend/my-account.php#">Account Information</a></li>
-                                <li><a href="#">Address Book</a></li>
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li class="active"><a href="my-account.php#">Account Information</a></li>
+                                <li><a href="carnet-adresse.php">Address Book</a></li>
                                 <li><a href="#">My Orders</a></li>
                                 <li><a href="#">Billing Agreements</a></li>
                                 <li><a href="#">Recurring Profiles</a></li>
@@ -601,7 +563,7 @@ session_start();
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php" class="login-link">Login</a></li>
+                                                    <li><a href="login.php">Login</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -660,7 +622,7 @@ session_start();
             <span class="mobile-menu-close"><i class="icon-cancel"></i></span>
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>
                         <a href="category.html">Categories</a>
                         <ul>
@@ -729,7 +691,7 @@ session_start();
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="login.php">Login</a></li>
                             <li><a href="forgot-password.html">Forgot Password</a></li>
                         </ul>
                     </li>

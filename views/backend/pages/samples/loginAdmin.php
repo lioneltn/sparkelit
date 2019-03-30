@@ -27,13 +27,11 @@ if (isset($_POST['email']) and isset($_POST['password'])) {
             if($type == 1) {
                 $_SESSION['email_admin'] = $_POST['email'];
             echo $_SESSION['email_admin'];
-            header('Location: modify_account_admin.php');
+            header('Location: ../../index.php');
             }
             
             else {
-                $_SESSION['email_artiste'] = $_POST['email'];
-                echo $_SESSION['email_artiste'];
-                header('Location: formulaire_modifier_artiste.php');
+                echo "email ou mot de passe incorrect ";
             }
             
         }

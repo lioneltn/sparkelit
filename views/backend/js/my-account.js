@@ -178,7 +178,7 @@ function validateNumTel(field)
 	if(!checkPositiveNumber(field)) {
 		return;
 	}
-	if(field.value.length <= 13 && field.value.length >= 8) {
+	if(field.value.length > 13 || field.value.length < 8) {
 		setInvalid(field, 'nombre de chiffre du numéro de téléphone invalide');
 		return;
 	} else {

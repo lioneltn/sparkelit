@@ -1,6 +1,5 @@
 <?PHP
 session_start();
-//$_SESSION['email'] = "dqsdqsd";
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,8 +55,8 @@ session_start();
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logoreduit.png" alt="logo" /></a>
-                        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
                         <form class="search-field d-none d-md-flex" action="#">
@@ -233,7 +232,7 @@ session_start();
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="../../pages/widgets.html" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Widgets</span></a>
@@ -442,7 +441,7 @@ session_start();
                 <p class="card-description">
                     <strong>Modifier artiste</strong>
                 </p>
-                <form method="POST" action="modifierArtiste.php" class="forms-sample">
+                <form method="POST" class="forms-sample">
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Nom</label>
                         <div class="col-sm-9">
@@ -477,7 +476,7 @@ session_start();
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Modifier mot de passe(7 characters minimum)</label>
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Modifier mot de passe(8 characters minimum)</label>
                         <div class="col-sm-9">
                             <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" value=<?PHP echo $password ?> required>
                         </div>
@@ -494,10 +493,19 @@ session_start();
                             <input type="file" class="dropify" name="image" id="image" required />
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2" onclick="controle4()">Modifier </button>
+                    <button type="submit" class="btn btn-primary mr-2" name = "modifier" id = "modifier" onclick="contr=ole4()">Modifier </button>
                     <button type=" submit" class="btn btn-danger">Supprimer</button>
                     <button class=" btn btn-light">Annuler</button>
                 </form>
+                <?PHP
+                if (isset($_POST['modifier'])) {
+                    $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_SESSION['email_artiste'], $_POST['sexe'], 2);
+                    $admin1C = new AdminC();
+                    $admin1C->modifierAdmin($admin1);
+                    header('Location: ../../index.php');
+                    echo " modification reussite";
+                }
+                ?>
             </div>
         </div>
 

@@ -1,5 +1,9 @@
+<?PHP
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +14,46 @@
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">
-        
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
-    
+
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
+
 <body>
+    <?PHP
+    include "../../entities/comptes/client.php";
+    include "../../core/comptes/clientC.php";
+
+    echo $_SESSION['email'];
+    $nom = "";
+    $prenom = "";
+    if (isset($_SESSION['email'])) {
+        $clientC = new ClientC();
+        $result = $clientC->recupererClient($_SESSION['email']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+            $tel = $row['telephone'];
+            $code = $row['codepostal'];
+            $addlivr = $row['adresselivraison'];
+            $addlivr_2 = $row['adresselivraison_2'];
+        }
+        if ($nom == "") {
+            header('Location: login.php');
+        }
+    } else {
+        header('Location: login.php');
+    }
+    ?>
     <div class="page-wrapper">
         <header class="header">
             <div class="header-middle sticky-header">
@@ -34,39 +67,39 @@
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                        <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
-                                                        <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
-                                                        <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
-                                                        <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
-                                                        <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
-                                                        <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
-                                                        <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 2</a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="#">Product List Item Types</a></li>
-                                                        <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
-                                                        <li><a href="category-3col.php">3 Columns Products</a></li>
-                                                        <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                        <li><a href="category.php">5 Columns Products</a></li>
-                                                        <li><a href="category-6col.php">6 Columns Products</a></li>
-                                                        <li><a href="category-7col.php">7 Columns Products</a></li>
-                                                        <li><a href="category-8col.php">8 Columns Products</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .col-lg-8 -->
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
+                                                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
+                                                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
+                                                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
+                                                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
+                                                            <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
+                                                            <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 2</a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="#">Product List Item Types</a></li>
+                                                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
+                                                            <li><a href="category-3col.php">3 Columns Products</a></li>
+                                                            <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
+                                                            <li><a href="category.php">5 Columns Products</a></li>
+                                                            <li><a href="category-6col.php">6 Columns Products</a></li>
+                                                            <li><a href="category-7col.php">7 Columns Products</a></li>
+                                                            <li><a href="category-8col.php">8 Columns Products</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                </div><!-- End .row -->
+                                            </div><!-- End .col-lg-8 -->
                                             <div class="col-lg-4">
                                                 <div class="banner">
                                                     <a href="#">
@@ -156,7 +189,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="#" class="login-link">Login</a></li>
+                                        <li><a href="login.php" >Login</a></li>
                                         <li><a href="forgot-password.php">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -211,7 +244,7 @@
                         <button class="mobile-menu-toggler" type="button">
                             <i class="icon-menu"></i>
                         </button>
-                        
+
                         <div class="header-dropdowns">
                             <div class="header-dropdown">
                                 <a href="#">USD</a>
@@ -242,7 +275,7 @@
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php">LOG IN</a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -257,7 +290,7 @@
                                 <span class="cart-count">2</span>
                             </a>
 
-                            <div class="dropdown-menu" >
+                            <div class="dropdown-menu">
                                 <div class="dropdownmenu-wrapper">
                                     <div class="dropdown-cart-products">
                                         <div class="product">
@@ -318,7 +351,7 @@
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-        
+
         <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
@@ -335,11 +368,11 @@
                         <h2>My Dashboard</h2>
 
                         <div class="alert alert-success alert-intro" role="alert">
-                            Thank you for registering with Porto - Premium Template.
+                            Thank you for registering with 5icha - Premium Template.
                         </div><!-- End .alert -->
 
                         <div class="alert alert-success" role="alert">
-                            Hello, <strong>Porto customer!</strong> From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.
+                            Hello, <strong>5icha customer!</strong> From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.
                         </div><!-- End .alert -->
 
                         <div class="mb-4"></div><!-- margin -->
@@ -351,14 +384,14 @@
                                 <div class="card">
                                     <div class="card-header">
                                         Contact Information
-                                        <a href="#" class="card-edit">Edit</a>
+                                        <a href="my-account.php" class="card-edit">Edit</a>
                                     </div><!-- End .card-header -->
 
                                     <div class="card-body">
                                         <p>
-                                            John Doe<br>
-                                            porto_shop@gmail.com<br>
-                                            <a href="#">Change Password</a>
+                                            <?PHP echo $nom . "  " . $prenom ?><br>
+                                            <?PHP echo $_SESSION['email'] ?><br>
+                                            <a href="change-password">Change Password</a>
                                         </p>
                                     </div><!-- End .card-body -->
                                 </div><!-- End .card -->
@@ -391,15 +424,15 @@
                                     <div class="col-md-6">
                                         <h4 class="">Default Billing Address</h4>
                                         <address>
-                                            You have not set a default billing address.<br>
-                                            <a href="#">Edit Address</a>
+                                            <?PHP echo $addlivr ?><br>
+                                            <a href="carnet-adresse.php">Edit Address</a>
                                         </address>
                                     </div>
                                     <div class="col-md-6">
                                         <h4 class="">Default Shipping Address</h4>
                                         <address>
-                                            You have not set a default shipping address.<br>
-                                            <a href="#">Edit Address</a>
+                                            <?PHP echo $addlivr_2 ?><br>
+                                            <a href="carnet-adresse.php">Edit Address</a>
                                         </address>
                                     </div>
                                 </div>
@@ -412,9 +445,9 @@
                             <h3 class="widget-title">My Account</h3>
 
                             <ul class="list">
-                                <li class="active"><a href="#">Account Dashboard</a></li>
-                                <li><a href="#">Account Information</a></li>
-                                <li><a href="#">Address Book</a></li>
+                                <li class="active"><a href="dashboard.php">Account Dashboard</a></li>
+                                <li><a href="my-account.php">Account Information</a></li>
+                                <li><a href="carnet-adresse.php">Address Book</a></li>
                                 <li><a href="#">My Orders</a></li>
                                 <li><a href="#">Billing Agreements</a></li>
                                 <li><a href="#">Recurring Profiles</a></li>
@@ -536,7 +569,7 @@
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="#" class="login-link">Login</a></li>
+                                                    <li><a href="login.php">Login</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -546,7 +579,7 @@
                                 <div class="col-lg-5">
                                     <div class="widget">
                                         <h4 class="widget-title">Main Features</h4>
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
@@ -578,7 +611,7 @@
                             </div><!-- End .row -->
 
                             <div class="footer-bottom">
-                                <p class="footer-copyright">Porto eCommerce. &copy;  2018.  All Rights Reserved</p>
+                                <p class="footer-copyright">Porto eCommerce. &copy; 2018. All Rights Reserved</p>
                                 <img src="assets/images/payments.png" alt="payment methods" class="footer-payments">
                             </div><!-- End .footer-bottom -->
                         </div><!-- End .col-lg-9 -->
@@ -664,7 +697,7 @@
                                 </ul>
                             </li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="login.php">Login</a></li>
                             <li><a href="forgot-password.php">Forgot Password</a></li>
                         </ul>
                     </li>
@@ -719,4 +752,5 @@
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
 </body>
-</html>
+
+</html> 

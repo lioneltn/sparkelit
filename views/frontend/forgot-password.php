@@ -339,7 +339,7 @@
                     <p>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</p>
                 </div><!-- End .heading -->
 
-                <form action="#">
+                <form action="forgotPassword.php" method = "POST">
                     <div class="form-group required-field">
                         <label for="reset-email">Adresse Email</label>
                         <input type="email" class="form-control" id="reset-email" name="reset-email" onfocusout="validateEmail(this)" required>

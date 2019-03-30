@@ -24,7 +24,7 @@
 
     </script>
 
-    <title>Login</title>
+    <title>Mot de passe oublié </title>
 </head>
 
 <body>
@@ -420,7 +420,7 @@
                     <strong>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</strong>
                 </p>
                 <br>
-                <form method="POST" action="loginAdmin.php" class="forms-sample">
+                <form method="POST" action = "forgotPassword.php" class="forms-sample">
                     <div class="form-group row">
                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adresse E-mail</label>
                         <div class="col-sm-9">
