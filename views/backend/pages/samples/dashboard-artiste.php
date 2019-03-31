@@ -201,7 +201,7 @@ session_start();
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
-                                    <span class="nav-profile-name">Mittie McLaughlin</span>
+                                    <span class="nav-profile-name"><?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                     <a class="dropdown-item">
@@ -480,7 +480,7 @@ session_start();
                                                 <div class="tab-content tab-body" id="profile-log-switch">
                                                     <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
                                                         
-                                                        <h3>Account Information</h3>
+                                                        
                                                         <div class="card">
                                                             <div class="card-header">
                                                                 Contact Information
@@ -490,7 +490,7 @@ session_start();
                                                             <div class="card-body">
                                                                 <p>
                                                                     <?PHP echo $nom . "  " . $prenom ?><br>
-                                                                    <?PHP echo $_SESSION['email'] ?><br>
+                                                                    <?PHP echo $_SESSION['email_artiste'] ?><br>
                                                                     <a href="../forms/new_password">Change Password</a>
                                                                 </p>
                                                             </div><!-- End .card-body -->

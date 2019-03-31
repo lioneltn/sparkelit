@@ -25,8 +25,8 @@ if (isset($_POST['email']) and isset($_POST['password'])) {
         } else {
             echo "email et mot de passe correct ";
             if($type == 2) {
-                $_SESSION['email_admin'] = $_POST['email'];
-            echo $_SESSION['email_admin'];
+                $_SESSION['email_artiste'] = $_POST['email'];
+            echo $_SESSION['email_artiste'];
             header('Location: dashboard-artiste.php');
             }
             

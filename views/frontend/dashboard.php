@@ -189,7 +189,7 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="login.php" >Login</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.php">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -267,7 +267,7 @@ session_start();
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                                <a href="#">Links</a>
+                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
                                         <li><a href="my-account.php">MY ACCOUNT </a></li>
@@ -275,7 +275,7 @@ session_start();
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="login.php">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -368,11 +368,11 @@ session_start();
                         <h2>My Dashboard</h2>
 
                         <div class="alert alert-success alert-intro" role="alert">
-                            Thank you for registering with 5icha - Premium Template.
+                            <?PHP if($_SESSION['new'] == "new") { $_SESSION['new'] = ""; echo "Thank you for registering with 5icha";}?>
                         </div><!-- End .alert -->
 
                         <div class="alert alert-success" role="alert">
-                            Hello, <strong>5icha customer!</strong> From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.
+                            Bonjour, <strong>5icha client!</strong> À partir de votre tableau de bord Mon compte, vous avez la possibilité de visualiser un instantané de l’activité récente de votre compte et de mettre à jour les informations de votre compte. Sélectionnez un lien ci-dessous pour afficher ou modifier des informations.
                         </div><!-- End .alert -->
 
                         <div class="mb-4"></div><!-- margin -->
@@ -432,7 +432,7 @@ session_start();
                                         <h4 class="">Default Shipping Address</h4>
                                         <address>
                                             <?PHP echo $addlivr_2 ?><br>
-                                            <a href="carnet-adresse.php">Edit Address</a>
+                                            <a href="carnet-adresse.php"><?PHP if($addlivr_2 !== "") echo "modifier l'adresse"; else echo "ajouter une adresse" ; ?></a>
                                         </address>
                                     </div>
                                 </div>
@@ -569,7 +569,8 @@ session_start();
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php">Login</a></li>
+                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                                    <li><a href="desinscrire.php">se désinscrire</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -697,7 +698,7 @@ session_start();
                                 </ul>
                             </li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="login.php">Login</a></li>
+                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.php">Forgot Password</a></li>
                         </ul>
                     </li>

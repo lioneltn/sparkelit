@@ -57,6 +57,7 @@ class ClientC
 
             $client1->bindValue(':email', $login);
             $client1->execute();
+
             return $client1;
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
@@ -177,6 +178,31 @@ class ClientC
             $req->execute();
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();
+        }
+    }
+
+    function supprimerClient($login) {
+        $sql="DELETE FROM client where login= :login";
+		$db = config::getConnexion();
+        $req=$db->prepare($sql);
+		$req->bindValue(':login',$login);
+		try{
+            $req->execute();
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+
+        $sql="DELETE FROM utilisateur where email= :login";
+		$db = config::getConnexion();
+        $req=$db->prepare($sql);
+		$req->bindValue(':login',$login);
+		try{
+            $req->execute();
+            header('Location: index.php');
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
         }
     }
 }

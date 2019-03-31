@@ -24,6 +24,25 @@ session_start();
 </head>
 
 <body>
+<?PHP
+    include "../../entities/comptes/admin.php";
+    include "../../core/comptes/adminC.php";
+
+    echo $_SESSION['email_admin'];
+    if (isset($_SESSION['email_admin'])) {
+      $adminC = new AdminC();
+      $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+      foreach ($result as $row) {
+        $nom = $row['nom'];
+        $prenom = $row['prenom'];
+        $datenaissance = $row['datenaissance'];
+        $sexe = $row['sexe'];
+        $password = $row['motdepasse'];
+      }
+    } else {
+      header('Location: login.php');
+    }
+    ?>
     <div class="container-scroller">
         <!-- partial:partials/_horizontal-navbar.php -->
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -182,7 +201,7 @@ session_start();
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
-                                    <span class="nav-profile-name">Mittie McLaughlin</span>
+                                    <span class="nav-profile-name"><?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                     <a class="dropdown-item">
@@ -479,7 +498,6 @@ session_start();
                                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                                 <div>
                                                     <?PHP
-                                                    include "../../config.php";
                                                     $sql = "select count(email) as nbre from utilisateur";
                                                     $db = config::getConnexion();
                                                     try {

@@ -164,7 +164,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">Login</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -250,7 +250,7 @@
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -342,7 +342,7 @@
                     <div class="col-lg-9 order-lg-last dashboard-content">
                         <h2>Créer un nouveau compte</h2>
                         
-                        <form method = "POST" action="ajouterClient.php" name = "acc_new" >
+                        <form method = "POST" action="ajouterClient.php" name = "acc_new" onsubmit="return verification()">
                             <div class="row">
                                 <div class="col-sm-11">
                                     <div class="row">
@@ -451,7 +451,7 @@
 
                                 <div class="form-footer-right">
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="verification()">S'inscrire</button>
+                                <button type="submit" class="btn btn-primary">S'inscrire</button>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-lg-9 -->
@@ -566,7 +566,7 @@
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php" class="login-link">Login</a></li>
+                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -694,7 +694,7 @@
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">Login</a></li>
+                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.html">Forgot Password</a></li>
                         </ul>
                     </li>

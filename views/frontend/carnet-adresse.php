@@ -190,7 +190,7 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="#" class="login-link">Login</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -268,7 +268,7 @@ session_start();
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                                <a href="#">Links</a>
+                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
                                         <li><a href="my-account.html">MY ACCOUNT </a></li>
@@ -276,7 +276,7 @@ session_start();
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -581,7 +581,7 @@ session_start();
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php" class="login-link">Login</a></li>
+                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -709,7 +709,7 @@ session_start();
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.html">Forgot Password</a></li>
                         </ul>
                     </li>
