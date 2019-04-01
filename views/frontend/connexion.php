@@ -7,7 +7,7 @@ $_SESSION['email'] = $_POST['login'];
 $mdp = "";
 $client1C = new ClientC();
 
-if (isset($_POST['login']) and isset($_POST['motdepasse'])) {
+if (isset($_POST['login']) and isset($_POST['motdepasse']) and preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " , $_POST['email'] ) ) {
     echo $_POST['login'] . "&" . $_POST['motdepasse'];
     $result = $client1C->recupererClient($_POST['login']);
     $nbr = $result->rowCount();

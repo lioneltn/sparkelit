@@ -25,7 +25,6 @@
 
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="assets/js/my-account.js">
-        
     </script>
 </head>
 <body>
@@ -451,7 +450,7 @@
 
                                 <div class="form-footer-right">
                                 </div>
-                                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                                <button type="submit" bouton="1" class="btn btn-primary">S'inscrire</button>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-lg-9 -->

@@ -192,7 +192,7 @@
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" >
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>

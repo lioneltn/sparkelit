@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+$_SESSION['email_artiste'] = NULL;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +43,7 @@
             <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
               <div class="nav-get-started">
                 <p>Don't have an account?</p>
-                <a class="btn get-started-btn" href="../forms/formulaire_ajouter_artiste.php">GET STARTED</a>
+                <a class="btn get-started-btn" href="register-2.php">GET STARTED</a>
               </div>
               <form action="loginArtiste.php" method ="POST">
                 <h3 class="mr-auto">Hello! let's get started</h3>
@@ -62,6 +66,7 @@
                 </div>
                 <div class="form-group">
                   <button type = "submit" class="btn btn-primary submit-btn">SIGN IN</button>
+                  <a href="../forms/forgot-password.php" class="text-small forgot-password text-black"> Mot de passe oublié</a>
                 </div>
                 <div class="wrapper mt-5 text-gray">
                   <p class="footer-text">Copyright © 2018 Urbanui. All rights reserved.</p>

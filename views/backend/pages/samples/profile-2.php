@@ -2,17 +2,17 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-
-    <link rel="stylesheet" type="text/css" href="Formulaire.css">
-
-
-    <!--<link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
-  <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
@@ -20,14 +20,7 @@ session_start();
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
-
-    <!-- Javascript File -->
-    <script type="text/javascript" language="javascript" src="../../js/my-account.js">
-
-    </script>
-
-    <title>Modifier artiste</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 
 <body>
@@ -37,25 +30,26 @@ session_start();
 
     echo $_SESSION['email_artiste'];
     if (isset($_SESSION['email_artiste'])) {
-        $adminC = new AdminC();
-        $result = $adminC->recupererAdmin($_SESSION['email_artiste']);
-        foreach ($result as $row) {
-            $nom = $row['nom'];
-            $prenom = $row['prenom'];
-            $datenaissance = $row['datenaissance'];
-            $sexe = $row['sexe'];
-            $password = $row['motdepasse'];
-        }
+      $adminC = new AdminC();
+      $result = $adminC->recupererAdmin($_SESSION['email_artiste']);
+      foreach ($result as $row) {
+        $nom = $row['nom'];
+        $prenom = $row['prenom'];
+        $datenaissance = $row['datenaissance'];
+        $sexe = $row['sexe'];
+        $password = $row['motdepasse'];
+      }
     } else {
-        header('Location: login_admin.php');
+      header('Location: login.php');
     }
     ?>
     <div class="container-scroller">
+        <!-- partial:../../partials/_horizontal-navbar.php -->
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/logo.svg" alt="logo" /></a>
                         <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
@@ -215,9 +209,14 @@ session_start();
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href = "../samples/login-2.php">
+                                    <a class="dropdown-item"  href = "login-2.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"  href = "desinscrire.php">
+                                        <i class="icon-logout text-primary mr-2"></i>
+                                        se désinscrire
                                     </a>
                                 </div>
                             </li>
@@ -232,10 +231,10 @@ session_start();
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="../samples/profile-2.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../pages/widgets.html" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Widgets</span></a>
+                            <a href="../../pages/widgets.php" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Widgets</span></a>
                         </li>
                         <li class="nav-item mega-menu">
                             <a href="#" class="nav-link"><i class="link-icon icon-film"></i><span class="menu-title">UI Elements</span><i class="menu-arrow"></i></a>
@@ -249,21 +248,21 @@ session_start();
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <ul>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/accordions.html">Accordion</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/badges.html">Badges</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/breadcrumbs.html">Breadcrumbs</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdown</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/modals.html">Modals</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/accordions.php">Accordion</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/buttons.php">Buttons</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/badges.php">Badges</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/breadcrumbs.php">Breadcrumbs</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/dropdowns.php">Dropdown</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/modals.php">Modals</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <ul>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/progress.html">Progress bar</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/pagination.html">Pagination</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/tabs.html">Tabs</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/tooltips.html">Tooltip</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/progress.php">Progress bar</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/pagination.php">Pagination</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/tabs.php">Tabs</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/typography.php">Typography</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/tooltips.php">Tooltip</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -279,18 +278,18 @@ session_start();
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <ul>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/dragula.html">Dragula</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/carousel.html">Carousel</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/clipboard.html">Clipboard</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/context-menu.html">Context Menu</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/loaders.html">Loader</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/slider.html">Slider</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/dragula.php">Dragula</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/carousel.php">Carousel</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/clipboard.php">Clipboard</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/context-menu.php">Context Menu</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/loaders.php">Loader</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/slider.php">Slider</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <ul>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/popups.html">Popup</a></li>
-                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/notifications.html">Notification</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/popups.php">Popup</a></li>
+                                                                <li class="nav-item"><a class="nav-link" href="../../pages/ui-features/notifications.php">Notification</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -301,10 +300,10 @@ session_start();
                                     <div class="col-group col-md-4">
                                         <p class="category-heading">Icons</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/flag-icons.html">Flag Icons</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/font-awesome.html">Font Awesome</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/simple-line-icon.html">Simple Line Icons</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/themify.html">Themify Icons</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/flag-icons.php">Flag Icons</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/font-awesome.php">Font Awesome</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/simple-line-icon.php">Simple Line Icons</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/icons/themify.php">Themify Icons</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -314,12 +313,12 @@ session_start();
                             <a href="#" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Forms</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.html">Basic Elements</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/advanced_elements.html">Advanced Elements</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/validation.html">Validation</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/wizard.html">Wizard</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/text_editor.html">Text Editor</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/code_editor.html">Code Editor</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/basic_elements.php">Basic Elements</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/advanced_elements.php">Advanced Elements</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/validation.php">Validation</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/wizard.php">Wizard</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/text_editor.php">Text Editor</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/code_editor.php">Code Editor</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -333,18 +332,18 @@ session_start();
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <ul>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/chartjs.html">Chart Js</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/morris.html">Morris</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/flot-chart.html">Flot</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/google-charts.html">Google Chart</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/chartjs.php">Chart Js</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/morris.php">Morris</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/flot-chart.php">Flot</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/google-charts.php">Google Chart</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <ul>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/sparkline.html">Sparkline</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/c3.html">C3 Chart</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/chartist.html">Chartist</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/justGage.html">JustGage</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/sparkline.php">Sparkline</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/c3.php">C3 Chart</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/chartist.php">Chartist</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="../../pages/charts/justGage.php">JustGage</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -353,18 +352,18 @@ session_start();
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">Table</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/basic-table.html">Basic Table</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/data-table.html">Data Table</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/js-grid.html">Js-grid</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/sortable-table.html">Sortable Table</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/basic-table.php">Basic Table</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/data-table.php">Data Table</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/js-grid.php">Js-grid</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/tables/sortable-table.php">Sortable Table</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">Maps</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/mapeal.html">Mapeal</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/vector-map.html">Vector Map</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/google-maps.html">Google Map</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/mapeal.php">Mapeal</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/vector-map.php">Vector Map</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/maps/google-maps.php">Google Map</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -377,39 +376,39 @@ session_start();
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">User Pages</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.html">Login</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login-2.html">Login 2</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.html">Register</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register-2.html">Register 2</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/lock-screen.html">Lockscreen</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.php">Login</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login-2.php">Login 2</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.php">Register</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register-2.php">Register 2</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/lock-screen.php">Lockscreen</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">Error Pages</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-400.html">400</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-404.html">404</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-500.html">500</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-505.html">505</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-400.php">400</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-404.php">404</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-500.php">500</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-505.php">505</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">E-commerce</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/invoice.html">Invoice</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/pricing-table.html">Pricing Table</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/orders.html">Orders</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/invoice.php">Invoice</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/pricing-table.php">Pricing Table</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/orders.php">Orders</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">General</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/search-results.html">Search Results</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/profile.html">Profile</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/timeline.html">Timeline</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/news-grid.html">News grid</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/portfolio.html">Portfolio</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/faq.html">FAQ</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/search-results.php">Search Results</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/profile.php">Profile</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/timeline.php">Timeline</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/news-grid.php">News grid</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/portfolio.php">Portfolio</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/faq.php">FAQ</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -419,15 +418,15 @@ session_start();
                             <a href="#" class="nav-link"><i class="link-icon icon-calculator"></i><span class="menu-title">Apps</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/email.html">Email</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/calendar.html">Calendar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/todo.html">Todo List</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/gallery.html">Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/email.php">Email</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/calendar.php">Calendar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/todo.php">Todo List</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/apps/gallery.php">Gallery</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="../../pages/documentation/documentation.html" class="nav-link"><i class="link-icon icon-docs"></i><span class="menu-title">Documentation</span></a>
+                            <a href="../../pages/documentation/documentation.php" class="nav-link"><i class="link-icon icon-docs"></i><span class="menu-title">Documentation</span></a>
                         </li>
                     </ul>
                 </div>
@@ -435,60 +434,123 @@ session_start();
         </nav>
 
         <!-- partial -->
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Gestion Artiste</h4>
-                <p class="card-description">
-                    <strong>Modifier artiste</strong>
-                </p>
-                <form method="POST" class="forms-sample">
-                    <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Nom</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Prenom</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prenom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-birthday" class="col-sm-3 col-form-label">Date de naissance</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="sexe" id="sexe">
-                                <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Modifier Email</label>
-                        <div class="col-sm-9">
-                            <label class="form-control" ><?PHP echo $_SESSION['email_artiste'] ?></label> 
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2" name = "modifier" id = "modifier" onclick="contr=ole4()">Modifier </button>
-                </form>
-                <?PHP
-                if (isset($_POST['modifier']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance'])  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                    $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'],"", $_SESSION['email_artiste'], $_POST['sexe'], 2);
-                    $admin1C = new AdminC();
-                    $admin1C->modifierAdmin($admin1);
-                    echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                }
-                ?>
-            </div>
-        </div>
+        <div class="container-fluid page-body-wrapper">
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row profile-page">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="profile-header text-white">
+                                        <div class="d-md-flex justify-content-around">
+                                            <div class="profile-info d-flex align-items-center">
+                                                <img class="rounded-circle img-lg" src="https://via.placeholder.com/92x92" alt="profile image">
+                                                <div class="wrapper pl-4">
+                                                    <p class="profile-user-name">Richard V.Welsh (UI/UX Designer)</p>
+                                                    <div class="wrapper d-flex align-items-center">
+                                                        <p class="profile-user-designation">User Experience Specialist</p>
+                                                        <select id="example-css" name="rating" autocomplete="off">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="details">
+                                                <div class="detail-col">
+                                                    <p>Projects</p>
+                                                    <p>130</p>
+                                                </div>
+                                                <div class="detail-col">
+                                                    <p>Projects</p>
+                                                    <p>130</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-body">
+                                        <ul class="nav tab-switch" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
+                                            </li>
+                                        </ul>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="tab-content tab-body" id="profile-log-switch">
+                                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                                        
+                                                       
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                Contact Information
+                                                                <a href="../forms/formulaire_modifier_artiste.php" class="card-edit">Edit</a>
+                                                            </div><!-- End .card-header -->
 
+                                                            <div class="card-body">
+                                                                <p>
+                                                                    <?PHP echo $nom . "  " . $prenom ?><br>
+                                                                    <?PHP echo $_SESSION['email_artiste'] ?><br>
+                                                                    <a href="../forms/new_password-2.php">Change Password</a>
+                                                                </p>
+                                                            </div><!-- End .card-body -->
+                                                        </div><!-- End .card -->
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                Autres informations
+                                                                <a href="../forms/formulaire_modifier_artiste.php" class="card-edit">Edit</a>
+                                                            </div><!-- End .card-header -->
+
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <h4 class="">Date de naissance</h4>
+                                                                        <address>
+                                                                            <?PHP echo $datenaissance ?><br>
+                                                                            <a href="../forms/formulaire_modifier_artiste.php">Edit </a>
+                                                                        </address>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div><!-- End .card-body -->
+                                                        </div><!-- End .card -->
+                                                    </div>
+                                                    <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                                        <div class="horizontal-timeline">
+                                                            ///////////////////////////////////////////////////////////////
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.php -->
+                <footer class="footer">
+                    <div class="w-100 clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
     <script src="../../vendors/js/vendor.bundle.base.js"></script>
     <script src="../../vendors/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->
@@ -498,8 +560,8 @@ session_start();
     <script src="../../js/template.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="../../js/dropify.js"></script>
-    <script type="text/javascript" src="formulaire.js"></script>
+    <script src="../../js/form-addons.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
 </html> 

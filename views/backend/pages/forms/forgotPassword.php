@@ -17,7 +17,7 @@ include "../../../../core/comptes/adminC.php";
                 
                 Vous avez oublié votre mot de passe?
                 Vous pouvez le réinitialiser en cliquant sur ce lien: 
-                http://localhost/projetWeb/sparkelit/views/backend/pages/forms/new_password.php
+                http://localhost/projetWeb/sparkelit/views/backend/pages/forms/new_password-3.php
                 
                 N'hésitez pas à visiter nos nombreuses boutiques! 5icha s'est associé avec les plus grandes marques internationales pour vous offrir le plus grand choix, au meilleur prix. 
                 Bon shopping!
@@ -42,4 +42,17 @@ include "../../../../core/comptes/adminC.php";
 
                 //mail($to, $subject, $txt, $headers);
                 mail($to, $subject, $txt);
+                echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
+                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+                <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+                <!-- plugins:css -->
+                <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css\">
+                <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css\">
+                <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.base.css\">
+                <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.addons.css\">
+                <!-- endinject -->
+                <!-- plugin css for this page -->
+                <!-- End plugin css for this page -->
+                <!-- inject:css -->
+                <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Email envoyé</div></body></html>";
                 ?>

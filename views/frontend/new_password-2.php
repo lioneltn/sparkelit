@@ -1,5 +1,6 @@
 <?PHP 
 session_start();
+echo $_SESSION['forgot'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,22 +32,28 @@ session_start();
 </head>
 
 <body>
+    
     <div class="container-scroller">
-        
 
         <!-- partial -->
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Aide avec le mot de passe</h4>
                 <p class="card-description">
-                    <strong>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</strong>
+                    <strong>Saisissez votre nouveau mot de passe.</strong>
                 </p>
                 <br>
-                <form method="POST" action = "forgotPassword.php" class="forms-sample">
+                <form method="POST" action="newPassword.php" class="forms-sample">
                     <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adresse E-mail</label>
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">nouveau mot de passe(8 characters minimum)</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" required>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">confirmer mot de passe</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout="validateConfirmPassword(this)" required>
                         </div>
                     </div>
                     <br><br>

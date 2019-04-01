@@ -27,7 +27,6 @@ session_start();
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="assets/js/my-account.js"></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -178,7 +177,7 @@ session_start();
                                         <li><a href="#">Dashboard</a>
                                             <ul>
                                                 <li><a href="dashboard.html">Dashboard</a></li>
-                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="my-account.php">Mon compte</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.html">About Us</a></li>
@@ -189,8 +188,13 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                                        <li><a href="forgot-password.html">Forgot Password</a></li>
+                                        <li><a href="login.php">
+                                                <?PHP if ($_SESSION['email'] !== null) {
+                                                    echo "se déconnecter";
+                                                } else {
+                                                    echo  "se connecter";
+                                                } ?></a></li>
+                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -267,15 +271,22 @@ session_start();
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
+                                <a href="#">
+                                    <?PHP if (isset($_SESSION['email'])) echo "Salut " . $prenom;
+                                    else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.html">MY ACCOUNT </a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="login.php">
+                                                <?PHP if ($_SESSION['email'] !== null) {
+                                                    echo "se déconnecter";
+                                                } else {
+                                                    echo  "se connecter";
+                                                } ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -396,8 +407,10 @@ session_start();
                             <div class="form-group required-field">
                                 <label for="acc-birthday">Sexe</label>
                                 <select name="sexe" class="form-control">
-                                    <option value="homme" selected="<?PHP if ($sexe == " homme") echo "selected" ?>">Homme </option>
-                                    <option value="femme" selected="<?PHP if ($sexe == " femme") echo "selected" ?>">Femme </option>
+                                    <option value="homme" <?PHP $opt1 = $sexe == "homme" ? "selected" : "";
+                                                            $opt2 = $sexe == "femme" ? "selected" : "";
+                                                            if ($sexe == " homme") echo $opt1 ?>>Homme </option>
+                                    <option value="femme" <?PHP if ($sexe == " femme") echo $opt2 ?>>Femme </option>
                                 </select>
                             </div><!-- End .form-group -->
 
@@ -422,12 +435,11 @@ session_start();
                             </div><!-- End .form-footer -->
                         </form>
                         <?PHP
-                        if (isset($_POST['modifier'])) {
+                        if (isset($_POST['modifier'])  and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01" and $_POST['numTel'] > 10000000) {
                             $client1 = new Client($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email'], $_POST['sexe'], $_POST['numTel'], "", "", "", "");
                             $client1C = new ClientC();
                             $client1C->modifierClient_i($client1);
-                            header('Location: dashboard.php');
-                            echo "modification reussite";
+                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
                         } else {
                             echo "errorr echec";
                         }
@@ -436,12 +448,12 @@ session_start();
 
                     <aside class="sidebar col-lg-3">
                         <div class="widget widget-dashboard">
-                            <h3 class="widget-title">My Account</h3>
+                            <h3 class="widget-title">Mon compte</h3>
 
                             <ul class="list">
                                 <li><a href="dashboard.php">Dashboard</a></li>
-                                <li class="active"><a href="my-account.php#">Account Information</a></li>
-                                <li><a href="carnet-adresse.php">Address Book</a></li>
+                                <li class="active"><a href="my-account.php#">Information sur mon compte</a></li>
+                                <li><a href="carnet-adresse.php">carnet d'adresse</a></li>
                                 <li><a href="#">My Orders</a></li>
                                 <li><a href="#">Billing Agreements</a></li>
                                 <li><a href="#">Recurring Profiles</a></li>
@@ -549,21 +561,26 @@ session_start();
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                                    <li><a href="login.php">
+                                                            <?PHP if ($_SESSION['email'] !== null) {
+                                                                echo "se déconnecter";
+                                                            } else {
+                                                                echo  "se connecter";
+                                                            } ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -691,8 +708,13 @@ session_start();
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                            <li><a href="forgot-password.html">Forgot Password</a></li>
+                            <li><a href="login.php">
+                                    <?PHP if ($_SESSION['email'] !== null) {
+                                        echo "se déconnecter";
+                                    } else {
+                                        echo  "se connecter";
+                                    } ?></a></li>
+                            <li><a href="forgot-password.html">Mot de passe oublié</a></li>
                         </ul>
                     </li>
                     <li><a href="blog.html">Blog</a>

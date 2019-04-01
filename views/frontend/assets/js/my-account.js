@@ -141,8 +141,18 @@ function validateEmail(field) {
 	if (checkIfEmty(field)) return;
 	if (!containsCharacters(field, 5)) return;
 	return true;
-}
-
+}/*
+function verification(field) 
+{
+	if(
+		validateConfirmPassword() &&
+		validateEmail() &&
+		validateFirstName() &&
+		validatePassword()
+	) {
+		
+	}
+}*/
 function validateDateNaissance(field) {
 	ladate = new Date()
 	var dateNaissance = new Date(document.getElementById("dateNaissance").value);
@@ -153,7 +163,6 @@ function validateDateNaissance(field) {
 	} else {
 		setValid(field);
 	}
-	return true;
 }
 function checkPositiveNumber(field) {
 	if (/^[0-9]+$/.test(field.value) && field.value > 0) {
@@ -168,13 +177,12 @@ function validateNumTel(field) {
 	if (!checkPositiveNumber(field)) {
 		return;
 	}
-	if (field.value.length != 8) {
+	if (field.value.length > 13 || field.value.length < 8) {
 		setInvalid(field, 'nombre de chiffre du numéro de téléphone invalide');
 		return;
 	} else {
 		setValid(field);
 	}
-	return true;
 }
 function validatePays(field) {
 	if (!containsCharacters(field, 6)) {
@@ -195,25 +203,13 @@ function validateCodePostal(field) {
 
 	}
 	return true;
-}/*
-form.addEventListener('submit', function(event) {
-	event.preventDefault();
-	if (validateFirstName() && validateCodePostal() && validateConfirmPassword() && validateDateNaissance() && validateEmail() && validateNumTel() && validatePassword() && validatePays()) {
-		<div class="alert alert-success alert-intro" role="alert">
-			Compte créé
-                        </div>
-						return true;
-	} else {
-		return false;
-	}
-});*/
+}
+
 function verification() {
 	if (validateFirstName(firstName) && validateFirstName(lastName) && validateCodePostal(codePostal) && validateConfirmPassword(confirmPassword) && validateDateNaissance(dateNaissance) && validateEmail(email) && validateNumTel(numTel) && validatePassword(password) && validatePays(pays)) {
-		<div class="alert alert-success alert-intro" role="alert">
-			Compte créé
-                        </div>
-						return true;
+		return true;
 	} else {
+		$('[bouton="1"]').removeAttr('disabled');
 		return false;
 		//header ( Location : new_account.php);
 	}

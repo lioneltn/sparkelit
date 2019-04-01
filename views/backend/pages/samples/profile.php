@@ -1,5 +1,4 @@
 <?PHP
-include "../../../../config.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -210,7 +209,7 @@ session_start();
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item"  href = "login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>
@@ -511,12 +510,7 @@ session_start();
                                                                             <a href="../forms/modify_account_admin.php">Edit </a>
                                                                         </address>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <h4 class="">Postes</h4>
-                                                                        <address>
-                                                                            <?PHP echo "postes" ?><br>
-                                                                        </address>
-                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div><!-- End .card-body -->
                                                         </div><!-- End .card -->
@@ -528,84 +522,7 @@ session_start();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <h5 class="my-4">Who to follow</h5>
-                                                <div class="new-accounts">
-                                                    <ul class="chats">
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Marina Michel</p>
-                                                                    <p class="u-designation">Business Development</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Stella Johnson</p>
-                                                                    <p class="u-designation">SEO Expert</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Peter Joo</p>
-                                                                    <p class="u-designation">UI/UX designer</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <h5 class="my-4">Pending</h5>
-                                                <div class="new-accounts">
-                                                    <ul class="chats">
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Marina Michel</p>
-                                                                    <p class="u-designation">Business Development</p>
-                                                                    <span class="d-flex align-items-center mt-2">
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Stella Johnson</p>
-                                                                    <p class="u-designation">SEO Expert</p>
-                                                                    <span class="d-flex align-items-center mt-2">
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="chat-persons">
-                                                            <a href="#">
-                                                                <span class="pro-pic"><img src="https://via.placeholder.com/40x40" alt="profile image"></span>
-                                                                <div class="user">
-                                                                    <p class="u-name">Peter Joo</p>
-                                                                    <p class="u-designation">UI/UX designer</p>
-                                                                    <span class="d-flex align-items-center mt-2">
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
-                                                                        <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

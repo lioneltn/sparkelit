@@ -175,10 +175,10 @@ session_start();
                                                 <li><a href="checkout-review.php">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Dashboard</a>
+                                        <li><a href="#">Tableau de bord</a>
                                             <ul>
-                                                <li><a href="dashboard.php">Dashboard</a></li>
-                                                <li><a href="my-account.php">My Account</a></li>
+                                                <li><a href="dashboard.php">Tableau de bord</a></li>
+                                                <li><a href="my-account.php">Mon compte</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.php">About Us</a></li>
@@ -190,7 +190,7 @@ session_start();
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
                                         <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                                        <li><a href="forgot-password.php">Forgot Password</a></li>
+                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -270,7 +270,7 @@ session_start();
                             <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.php">MY ACCOUNT </a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
@@ -442,12 +442,12 @@ session_start();
 
                     <aside class="sidebar col-lg-3">
                         <div class="widget widget-dashboard">
-                            <h3 class="widget-title">My Account</h3>
+                            <h3 class="widget-title">Mon compte</h3>
 
                             <ul class="list">
-                                <li class="active"><a href="dashboard.php">Account Dashboard</a></li>
-                                <li><a href="my-account.php">Account Information</a></li>
-                                <li><a href="carnet-adresse.php">Address Book</a></li>
+                                <li class="active"><a href="dashboard.php">Tableau de bord</a></li>
+                                <li><a href="my-account.php">Information sur le compte</a></li>
+                                <li><a href="carnet-adresse.php">Carnet d'adresses</a></li>
                                 <li><a href="#">My Orders</a></li>
                                 <li><a href="#">Billing Agreements</a></li>
                                 <li><a href="#">Recurring Profiles</a></li>
@@ -555,14 +555,14 @@ session_start();
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.php">About Us</a></li>
                                                     <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">My Account</a></li>
+                                                    <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">

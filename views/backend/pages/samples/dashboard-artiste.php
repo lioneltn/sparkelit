@@ -209,7 +209,7 @@ session_start();
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" href = "login-2.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>
@@ -226,7 +226,7 @@ session_start();
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="dashboard-artiste.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="../../pages/widgets.php" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Widgets</span></a>
@@ -491,7 +491,7 @@ session_start();
                                                                 <p>
                                                                     <?PHP echo $nom . "  " . $prenom ?><br>
                                                                     <?PHP echo $_SESSION['email_artiste'] ?><br>
-                                                                    <a href="../forms/new_password">Change Password</a>
+                                                                    <a href="../forms/new_password-2">Change Password</a>
                                                                 </p>
                                                             </div><!-- End .card-body -->
                                                         </div><!-- End .card -->

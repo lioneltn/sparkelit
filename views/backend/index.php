@@ -40,7 +40,7 @@ session_start();
         $password = $row['motdepasse'];
       }
     } else {
-      header('Location: login.php');
+      header('Location: pages/samples/login.php');
     }
     ?>
     <div class="container-scroller">
@@ -209,7 +209,7 @@ session_start();
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" href = "pages/samples/login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>
@@ -516,7 +516,7 @@ session_start();
                                                     </h1>
                                                     <p class="text-muted mb-0">New users</p>
                                                 </div>
-                                                <a href= ""><i class="icon-people text-primary icon-lg"></i></a>
+                                                <a href= "pages/samples/utilisateurs.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-3">
@@ -541,7 +541,7 @@ session_start();
                                                     </h1>
                                                     <p class="text-muted mb-0">New clients</p>
                                                 </div>
-                                                <a href= "clients.php"><i class="icon-people text-primary icon-lg"></i></a>
+                                                <a href= "pages/samples/clients.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-3">
@@ -566,7 +566,7 @@ session_start();
                                                     </h1>
                                                     <p class="text-muted mb-0">New admins</p>
                                                 </div>
-                                                <a href= "admins"><i class="icon-people text-primary icon-lg"></i></a>
+                                                <a href= "pages/samples/admins"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-3">
@@ -591,7 +591,7 @@ session_start();
                                                     </h1>
                                                     <p class="text-muted mb-0">New artistes</p>
                                                 </div>
-                                                <a href= "artistes.php"><i class="icon-people text-primary icon-lg"></i></a>
+                                                <a href= "pages/samples/artistes.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-3">

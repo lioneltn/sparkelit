@@ -4,7 +4,7 @@ session_start();
 include "../../../../entities/comptes/admin.php";
 include "../../../../core/comptes/adminC.php";
 
-if (isset($_POST['email']) and isset($_POST['password'])) {
+if (isset($_POST['email']) and isset($_POST['password'])  and preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " , $_POST['email'] )) {
     
     $password = "";
     $admin1C = new AdminC();

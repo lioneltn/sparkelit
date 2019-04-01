@@ -1,5 +1,5 @@
 <?PHP
-//include "../../config.php";
+include "config.php";
 class AdminC
 {
      function ajouterAdmin($admin)
@@ -38,7 +38,7 @@ class AdminC
 
      function modifierAdmin($admin)
      {
-          $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe, motdepasse = :password where email = :email";
+          $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
           $db = config::getConnexion();
           try {
                $req = $db->prepare($sql_u);
@@ -48,7 +48,6 @@ class AdminC
                $req->bindValue(':email', $admin->getEmail());
                $req->bindValue(':datenaissance', $admin->getDateNaissance());
                $req->bindValue(':sexe', $admin->getSexe());
-               $req->bindValue(':password', $admin->getMotdepasse());
 
                $req->execute();
           } catch (Exception $e) {
@@ -130,4 +129,28 @@ class AdminC
                die('Erreur: ' . $e->getMessage());
           }
      }
+
+     function supprimerAdmin($login) {
+          $sql="DELETE FROM admin where login= :login";
+            $db = config::getConnexion();
+          $req=$db->prepare($sql);
+            $req->bindValue(':login',$login);
+            try{
+              $req->execute();
+          }
+          catch (Exception $e){
+              die('Erreur: '.$e->getMessage());
+          }
+  
+          $sql="DELETE FROM utilisateur where email= :login";
+            $db = config::getConnexion();
+          $req=$db->prepare($sql);
+            $req->bindValue(':login',$login);
+            try{
+              $req->execute();
+          }
+          catch (Exception $e){
+              die('Erreur: '.$e->getMessage());
+          }
+      }
 }

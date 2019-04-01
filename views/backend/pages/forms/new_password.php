@@ -1,3 +1,6 @@
+<?PHP 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,13 +31,32 @@
 </head>
 
 <body>
+    <?PHP
+    include "../../../../entities/comptes/admin.php";
+    include "../../../../core/comptes/adminC.php";
+
+    echo $_SESSION['email_admin'];
+    if (isset($_SESSION['email_admin'])) {
+        $adminC = new AdminC();
+        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+        }
+    } else {
+        header('Location: login.php');
+    }
+    ?>
     <div class="container-scroller">
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logoreduit.png" alt="logo" /></a>
-                        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
                         <form class="search-field d-none d-md-flex" action="#">
@@ -185,7 +207,8 @@
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
-                                    <span class="nav-profile-name">Mittie McLaughlin</span>
+                                    <span class="nav-profile-name">
+                                        <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                     <a class="dropdown-item">
@@ -193,7 +216,7 @@
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" href = "../samples/login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>
@@ -210,7 +233,7 @@
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="../../pages/widgets.html" class="nav-link"><i class="link-icon icon-disc"></i><span class="menu-title">Widgets</span></a>
@@ -355,11 +378,11 @@
                                     <div class="col-group col-md-3">
                                         <p class="category-heading">User Pages</p>
                                         <ul class="submenu-item">
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.html">Login</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login-2.html">Login 2</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.html">Register</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register-2.html">Register 2</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/lock-screen.html">Lockscreen</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.php">Login</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login-2.php">Login 2</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.php">Register</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register-2.php">Register 2</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/lock-screen.php">Lockscreen</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-group col-md-3">
@@ -383,7 +406,7 @@
                                         <p class="category-heading">General</p>
                                         <ul class="submenu-item">
                                             <li class="nav-item"><a class="nav-link" href="../../pages/samples/search-results.html">Search Results</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/profile.html">Profile</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/profile.php">Profile</a></li>
                                             <li class="nav-item"><a class="nav-link" href="../../pages/samples/timeline.html">Timeline</a></li>
                                             <li class="nav-item"><a class="nav-link" href="../../pages/samples/news-grid.html">News grid</a></li>
                                             <li class="nav-item"><a class="nav-link" href="../../pages/samples/portfolio.html">Portfolio</a></li>
@@ -420,11 +443,11 @@
                     <strong>Saisissez votre nouveau mot de passe.</strong>
                 </p>
                 <br>
-                <form method="POST" action = "newPassword.php" class="forms-sample">
-                <div class="form-group row">
+                <form method="POST" action="newPassword.php" class="forms-sample">
+                    <div class="form-group row">
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">nouveau mot de passe(8 characters minimum)</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)"required>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" required>
                         </div>
                     </div>
                     <div class="form-group row">

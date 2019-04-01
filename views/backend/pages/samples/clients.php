@@ -1,6 +1,10 @@
 <?PHP
 include "../../../../config.php";
 session_start();
+echo "azeze".$_SESSION['email_admin'];
+if($_SESSION['email_admin'] == "") {
+    header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +46,12 @@ session_start();
     if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
         $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        $nbr=$result->rowCount();
+        echo $nbr. "rows";
+        if($nbr == 0) {
+            echo "   vide ";
+            header('Location: login.php');
+        }
         foreach ($result as $row) {
             $nom = $row['nom'];
             $prenom = $row['prenom'];
@@ -219,7 +229,7 @@ session_start();
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" href = "login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Logout
                                     </a>

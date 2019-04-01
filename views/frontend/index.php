@@ -178,10 +178,10 @@ print("$nbvisites visiteurs");?>
                                                 <li><a href="checkout-review.php">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard.php">Dashboard</a>
+                                        <li><a href="dashboard.php">Tableau de bord</a>
                                             <ul>
-                                                <li><a href="dashboard.php">Dashboard</a></li>
-                                                <li><a href="my-account.php">My Account</a></li>
+                                                <li><a href="dashboard.php">Tableau de bord</a></li>
+                                                <li><a href="my-account.php">Mon compte</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.php">About Us</a></li>
@@ -193,7 +193,7 @@ print("$nbvisites visiteurs");?>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
                                         <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                                        <li><a href="forgot-password.php">Forgot Password</a></li>
+                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -272,7 +272,7 @@ print("$nbvisites visiteurs");?>
                                 <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.php">MY ACCOUNT </a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
@@ -1001,14 +1001,14 @@ print("$nbvisites visiteurs");?>
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.php">About Us</a></li>
                                                     <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">My Account</a></li>
+                                                    <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
@@ -1144,7 +1144,7 @@ print("$nbvisites visiteurs");?>
                             </li>
                             <li><a href="about.php">About</a></li>
                             <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                            <li><a href="forgot-password.php">Forgot Password</a></li>
+                            <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                         </ul>
                     </li>
                     <li><a href="blog.php">Blog</a>

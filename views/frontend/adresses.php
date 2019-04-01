@@ -61,7 +61,7 @@ session_start();
                     <div class="header-left">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li>
                                     <a href="category.html" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
@@ -177,8 +177,8 @@ session_start();
                                         </li>
                                         <li><a href="#">Dashboard</a>
                                             <ul>
-                                                <li><a href="dashboard.html">Dashboard</a></li>
-                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="dashboard.html">Tableau de bord</a></li>
+                                                <li><a href="my-account.html">Mon compte</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.html">About Us</a></li>
@@ -190,7 +190,7 @@ session_start();
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
                                         <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                                        <li><a href="forgot-password.html">Forgot Password</a></li>
+                                        <li><a href="forgot-password.html">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -270,7 +270,7 @@ session_start();
                             <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.html">MY ACCOUNT </a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
@@ -356,7 +356,7 @@ session_start();
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Adresses</li>
                     </ol>
                 </div><!-- End .container-fluid -->
@@ -439,12 +439,12 @@ session_start();
 
                     <aside class="sidebar col-lg-3">
                         <div class="widget widget-dashboard">
-                            <h3 class="widget-title">My Account</h3>
+                            <h3 class="widget-title">Mon compte</h3>
 
                             <ul class="list">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li><a href="my-account.php#">Account Information</a></li>
-                                <li class="active"><a href="#">Address Book</a></li>
+                                <li><a href="dashboard.php">Tableau de bord</a></li>
+                                <li><a href="my-account.php#">information sur le compte</a></li>
+                                <li class="active"><a href="#">carnet d'adresse</a></li>
                                 <li><a href="#">My Orders</a></li>
                                 <li><a href="#">Billing Agreements</a></li>
                                 <li><a href="#">Recurring Profiles</a></li>
@@ -552,14 +552,14 @@ session_start();
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="my-account.html">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
@@ -625,7 +625,7 @@ session_start();
             <span class="mobile-menu-close"><i class="icon-cancel"></i></span>
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li>
                         <a href="category.html">Categories</a>
                         <ul>
@@ -695,7 +695,7 @@ session_start();
                             </li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                            <li><a href="forgot-password.html">Forgot Password</a></li>
+                            <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                         </ul>
                     </li>
                     <li><a href="blog.html">Blog</a>
