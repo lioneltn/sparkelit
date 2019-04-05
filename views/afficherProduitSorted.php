@@ -1,17 +1,29 @@
-<?php 
+<?php
+
+if (isset($_GET['option'])){
+    $option=$_GET['option'];
+
+
 chdir(__DIR__);
 include "../entities/produit.php";
 include "../core/produitC.php";
     $produit1C=new ProduitC();
-    $liste=$produit1C->afficherProduits();
-        
+    if ($option =='price-asc'){
+    $liste=$produit1C->sortByPriceASC();
+     }
+     else if($option =='price-desc'){
+        $liste=$produit1C->sortByPriceDESC();
+     }   
+     else {
+        $liste=$produit1C->afficherProduits();
+     }
 ?>
 <?PHP
 foreach($liste as $row)
 {
 ?>
-    <div class="col-6 col-md-4 ">
-        <div  class="product">
+    <div class="col-6 col-md-4">
+        <div class="product">
             <figure style=" max-width: 222px;max-height:246px; transform: translate(-50%,0px);position: relative;left:50%;" class="product-image-container">
                 <div  class="product-image">
                     <img  style="width: 222px;height: 246px;" src="../<?php echo $row['thumbnail'];?>" alt="product">
@@ -53,5 +65,6 @@ foreach($liste as $row)
     </div><!-- End .col-md-4 -->
 
 <?php 
+}
 }
 ?>

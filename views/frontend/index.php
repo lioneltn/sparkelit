@@ -30,7 +30,7 @@
                             <ul class="menu sf-arrows">
                                 <li class="active"><a href="index.php">Home</a></li>
                                 <li>
-                                    <a href="category.php" class="sf-with-ul">Categories</a>
+                                    <a href="category2.php" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                             <div class="col-lg-8">

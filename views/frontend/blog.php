@@ -1,9 +1,12 @@
+<?php
+chdir(__DIR__);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
 
     <title>Porto - Bootstrap eCommerce Template</title>
 
@@ -17,8 +20,51 @@
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <style type="text/css">
+        .rating{
+            direction: rtl;
+        }
+      .rating  i{
+        font-size: 40px;
+        color: #303030;
+        transition: 0.3s all;
+        cursor: pointer;
+      }  
+       .rating i:hover 
+       {
+        color:#f1c40f;
+
+       
+       }
+        .b1:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b2:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b3:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b4:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b5:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+    </style>
 </head>
 <body>
     <div class="page-wrapper">
@@ -330,254 +376,29 @@
             </nav>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.php">
-                                    <img src="assets/images/blog/post-1.jpg" alt="Post">
-                                </a>
-                            </div><!-- End .entry-media -->
+                <select class="form-control" onchange="triepost(this.value)">
+                    <option value="" selected="selected"></option>
+                    <option value="Popularite">Popularite Decroissante</option>
+                    <option value="Date">Date Decroissante</option>
+                    <option value="PopulariteC">Popularite Croissante</option>
+                    <option value="DateC">Date Croissante</option>
+                </select>
+                <input  class="form-control" placeholder="titre" type="text" name="recherchetitre" id="recherchetitre" onkeyup="recherchetitre(this.value)">
 
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">29</span>
-                                    <span class="month">Jun</span>
-                                </div><!-- End .entry-date -->
+                <div class="row" id="contenu">
+                    <!--<div class="col-lg-9">-->
+                        <?php 
+                        include "../afficherpostfront.php";
+                        chdir(__DIR__);
+                        ?>
 
-                                <h2 class="entry-title">
-                                    <a href="single.php">Post Format - Image</a>
-                                </h2>
+                        
+                     
 
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula.</p>
+                       
+                    <!--</div>--><!-- End .col-lg-9 -->
 
-                                    <a href="single.php" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div><!-- End .entry-content -->
-
-                                <div class="entry-meta">
-                                    <span><i class="icon-calendar"></i>June 29, 2018</span>
-                                    <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    <span><i class="icon-folder-open"></i>
-                                        <a href="#">Haircuts & hairstyles</a>,
-                                        <a href="#">Fashion trends</a>,
-                                        <a href="#">Accessories</a>
-                                    </span>
-                                </div><!-- End .entry-meta -->
-                            </div><!-- End .entry-body -->
-                        </article><!-- End .entry -->
-
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.php">
-                                    <div class="entry-slider owl-carousel owl-theme owl-theme-light">
-                                        <img src="assets/images/blog/post-1.jpg" alt="Post">
-                                        <img src="assets/images/blog/post-2.jpg" alt="Post">
-                                        <img src="assets/images/blog/post-3.jpg" alt="Post">
-                                    </div><!-- End .entry-slider -->
-                                </a>
-                            </div><!-- End .entry-media -->
-
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">22</span>
-                                    <span class="month">Jun</span>
-                                </div><!-- End .entry-date -->
-
-                                <h2 class="entry-title">
-                                    <a href="single.php">Post Format - Image Gallery</a>
-                                </h2>
-
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula.</p>
-
-                                    <a href="single.php" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div><!-- End .entry-content -->
-
-                                <div class="entry-meta">
-                                    <span><i class="icon-calendar"></i>June 22, 2018</span>
-                                    <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    <span><i class="icon-folder-open"></i>
-                                        <a href="#">Haircuts & hairstyles</a>,
-                                        <a href="#">Fashion trends</a>,
-                                        <a href="#">Accessories</a>
-                                    </span>
-                                </div><!-- End .entry-meta -->
-                            </div><!-- End .entry-body -->
-                        </article><!-- End .entry -->
-
-                        <article class="entry">
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">07</span>
-                                    <span class="month">Jun</span>
-                                </div><!-- End .entry-date -->
-
-                                <h2 class="entry-title">
-                                    <a href="single.php">Hello World!</a>
-                                </h2>
-
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula.</p>
-
-                                    <a href="single.php" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div><!-- End .entry-content -->
-
-                                <div class="entry-meta">
-                                    <span><i class="icon-calendar"></i>June 07, 2018</span>
-                                    <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    <span><i class="icon-folder-open"></i>
-                                        <a href="#">Haircuts & hairstyles</a>,
-                                        <a href="#">Fashion trends</a>,
-                                        <a href="#">Accessories</a>
-                                    </span>
-                                </div><!-- End .entry-meta -->
-                            </div><!-- End .entry-body -->
-                        </article><!-- End .entry -->
-
-                        <article class="entry">
-                            <div class="entry-media">
-                                <a href="single.php">
-                                    <img src="assets/images/blog/post-3.jpg" alt="Post">
-                                </a>
-                            </div><!-- End .entry-media -->
-
-                            <div class="entry-body">
-                                <div class="entry-date">
-                                    <span class="day">11</span>
-                                    <span class="month">May</span>
-                                </div><!-- End .entry-date -->
-
-                                <h2 class="entry-title">
-                                    <a href="single.php">Post Format - Image</a>
-                                </h2>
-
-                                <div class="entry-content">
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula.</p>
-
-                                    <a href="single.php" class="read-more">Read More <i class="icon-angle-double-right"></i></a>
-                                </div><!-- End .entry-content -->
-
-                                <div class="entry-meta">
-                                    <span><i class="icon-calendar"></i>May 11, 2018</span>
-                                    <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
-                                    <span><i class="icon-folder-open"></i>
-                                        <a href="#">Haircuts & hairstyles</a>,
-                                        <a href="#">Fashion trends</a>,
-                                        <a href="#">Accessories</a>
-                                    </span>
-                                </div><!-- End .entry-meta -->
-                            </div><!-- End .entry-body -->
-                        </article><!-- End .entry -->
-
-                        <nav class="toolbox toolbox-pagination">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><span>...</span></li>
-                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div><!-- End .col-lg-9 -->
-
-                    <aside class="sidebar col-lg-3">
-                        <div class="sidebar-wrapper">
-                            <div class="widget widget-search">
-                                <form role="search" method="get" class="search-form" action="#">
-                                    <input type="search" class="form-control" placeholder="Search posts here..." name="s" required>
-                                    <button type="submit" class="search-submit" title="Search">
-                                        <i class="icon-search"></i>
-                                        <span class="sr-only">Search</span>
-                                    </button>
-                                </form>
-                            </div><!-- End .widget -->
-
-                            <div class="widget widget-categories">
-                                <h4 class="widget-title">Blog Categories</h4>
-
-                                <ul class="list">
-                                    <li><a href="#">All about clothing</a></li>
-                                    <li><a href="#">Make-up &amp; beauty</a></li>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Fashion trends</a></li>
-                                    <li><a href="#">Haircuts &amp; hairstyles</a></li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Recent Posts</h4>
-
-                                <ul class="simple-entry-list">
-                                    <li>
-                                        <div class="entry-media">
-                                            <a href="single.php">
-                                                <img src="assets/images/blog/widget/post-1.jpg" alt="Post">
-                                            </a>
-                                        </div><!-- End .entry-media -->
-                                        <div class="entry-info">
-                                            <a href="single.php">Post Format - Video</a>
-                                            <div class="entry-meta">
-                                                April 08, 2018
-                                            </div><!-- End .entry-meta -->
-                                        </div><!-- End .entry-info -->
-                                    </li>
-
-                                    <li>
-                                        <div class="entry-media">
-                                            <a href="single.php">
-                                                <img src="assets/images/blog/widget/post-2.jpg" alt="Post">
-                                            </a>
-                                        </div><!-- End .entry-media -->
-                                        <div class="entry-info">
-                                            <a href="single.php">Post Format - Image</a>
-                                            <div class="entry-meta">
-                                                March 23, 2016
-                                            </div><!-- End .entry-meta -->
-                                        </div><!-- End .entry-info -->
-                                    </li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Tagcloud</h4>
-
-                                <div class="tagcloud">
-                                    <a href="#">Fashion</a>
-                                    <a href="#">Shoes</a>
-                                    <a href="#">Skirts</a>
-                                    <a href="#">Dresses</a>
-                                    <a href="#">Bags</a>
-                                </div><!-- End .tagcloud -->
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Archive</h4>
-
-                                <ul class="list">
-                                    <li><a href="#">April 2018</a></li>
-                                    <li><a href="#">March 2018</a></li>
-                                    <li><a href="#">February 2018</a></li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-
-                            <div class="widget widget_compare">
-                                <h4 class="widget-title">Compare Products</h4>
-
-                                <p>You have no items to compare.</p>
-                            </div><!-- End .widget -->
-                        </div><!-- End .sidebar-wrapper -->
-                    </aside><!-- End .col-lg-3 -->
+                   
                 </div><!-- End .row -->
             </div><!-- End .container -->
 
@@ -869,5 +690,191 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
+    <script type="text/javascript">
+        
+        function note1(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=1;
+            document.getElementById('noteposte_'+id_post).onchange();
+
+           
+        }
+        function note2(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=2;
+            document.getElementById('noteposte_'+id_post).onchange();
+           
+        }
+        function note3(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=3;
+            document.getElementById('noteposte_'+id_post).onchange();
+            
+        }
+        function note4(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=4;
+            document.getElementById('noteposte_'+id_post).onchange();
+          
+        }
+        function note5(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=5;
+            document.getElementById('noteposte_'+id_post).onchange();
+            
+        }
+
+
+        function notechange(id)
+        {
+             var id_post=id.substring(id.indexOf("_")+1,id.length);
+            var x=document.getElementById(id);
+            var b1=document.getElementById("b1_"+id_post);
+            var b2=document.getElementById("b2_"+id_post);
+            var b3=document.getElementById("b3_"+id_post);
+            var b4=document.getElementById("b4_"+id_post);
+            var b5=document.getElementById("b5_"+id_post);
+           if (x.value==1)
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#303030';
+                b3.style.color='#303030';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="2")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#303030';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="3")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="4")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#f1c40f';
+                b1.style.color='#303030';
+            }
+            if (x.value=="5")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#f1c40f';
+                b1.style.color='#f1c40f';
+            }
+
+
+
+        }
+
+        function triepost(str)
+        {
+            document.getElementById("recherchetitre").value="";
+            if(str=="")
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfront.php",true);
+                xmlhttp.send();
+            }
+            if(str=="Date")
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfrontTrieDateDesc.php",true);
+                xmlhttp.send();
+            }
+            if(str=="Popularite")
+            {
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfrontTrieNoteDesc.php",true);
+                xmlhttp.send();
+            }
+
+            if(str=="DateC")
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfrontTrieDateASC.php",true);
+                xmlhttp.send();
+            }
+            if(str=="PopulariteC")
+            {
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfrontTrieNoteASC.php",true);
+                xmlhttp.send();
+            }
+        }
+
+        function recherchetitre(str)
+        {
+            
+            if(str=="")
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../afficherpostfront.php",true);
+                xmlhttp.send();
+            }
+            else
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","../recherchepostepartitrefront.php?recherche="+str,true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+   
+
 </body>
 </html>

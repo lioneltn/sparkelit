@@ -9,7 +9,8 @@ class Produit
 	private $thumbnail;
 	private $prix;
 	private $reference;
-	function __construct($nom,$description,$type,$fournisseur,$categorie,$thumbnail,$prix,$reference)
+	private $quantite;
+	function __construct($nom,$description,$type,$fournisseur,$categorie,$thumbnail,$prix,$reference,$quantite)
 	{
 		$this->nom=$nom;
 		$this->description=$description;
@@ -19,6 +20,7 @@ class Produit
 		$this->thumbnail=$thumbnail;
 		$this->prix=$prix;
 		$this->reference=$reference;
+		$this->quantite=$quantite;
 
 	}
 
@@ -62,9 +64,9 @@ class Produit
 		return $this->prix;
 	}
 
-	function getdetails()
+	function getquantite()
 	{
-		return $this->details;
+		return $this->quantite;
 	}
 
 

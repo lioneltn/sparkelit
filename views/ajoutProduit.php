@@ -65,6 +65,7 @@ include "../core/produitC.php";
 		$destination3="uploads/".$filename3;
 		$destination4="uploads/".$filename4;
 		echo "<br>".getcwd()."<br>";
+		chdir(__DIR__);
 		move_uploaded_file($filetmp, $destination);
 		move_uploaded_file($filetmp1, $destination1);
 		move_uploaded_file($filetmp2, $destination2);
@@ -76,53 +77,72 @@ include "../core/produitC.php";
 			array("Bleu",$_POST['Tailles3'],$_POST['Taillem3'],$_POST['Taillel3'],$_POST['Taillexl3']),
 			array("jaune",$_POST['Tailles4'],$_POST['Taillem4'],$_POST['Taillel4'],$_POST['Taillexl4'])
 		);
-		$produit=new Produit($_POST['nom'],$_POST['description'],$_POST['type'],$_POST['fournisseur'],$_POST['categorie'],$destination,$_POST['prix'],$_POST['reference']);
+		$produit=new Produit($_POST['nom'],$_POST['description'],$_POST['type'],$_POST['fournisseur'],$_POST['categorie'],$destination,$_POST['prix'],$_POST['reference'],NULL);
+		$ajout=true;
 		$produitc=new ProduitC();
-		$produitc->ajouterProduit($produit);
-		for ($i = 0; $i<4; $i++)
+		try
 		{
-			for ( $j = 1; $j < 5; $j++ )
+			$produitc->ajouterProduit($produit);
+		}
+		catch (Exception $e)
+		{
+			$ajout=false;
+			header('Location: backend/pages/AjoutProduitErreur.php');
+
+		}
+		if($ajout)
+		{
+
+			for ($i = 0; $i<4; $i++)
 			{
-				switch ($j) 
+				for ( $j = 1; $j < 5; $j++ )
 				{
-					case 1:
-						$taille="small";
-						break;
-					
-					case 2:
-						$taille="Meduim";
-						break;
+					switch ($j) 
+					{
+						case 1:
+							$taille="small";
+							break;
+						
+						case 2:
+							$taille="Meduim";
+							break;
 
-					case 3:
-						$taille="Large";
-						break;
-					
-					case 4:
-						$taille="XtraLarge";
-						break;
-				}
-				switch ($i) 
-				{
-					case 0:
-						$destinationloop=$destination1;
-						break;
-					
-					case 1:
-						$destinationloop=$destination2;
-						break;
-					case 2:
-						$destinationloop=$destination3;
-						break;
-					case 3:
-						$destinationloop=$destination4;
-						break;
-				}
-				echo "<br"."taille=".$taille."<br"."couleur=".$details[$i][0]."<br>"."quantite=".$details[$i][$j]."destination=".$destinationloop."<br"."ref=".$_POST['reference']."<br>";
-				$produitc->ajouterDetails($taille,$details[$i][0],$details[$i][$j],$destinationloop,$_POST['reference']);
+						case 3:
+							$taille="Large";
+							break;
+						
+						case 4:
+							$taille="XtraLarge";
+							break;
+					}
+					switch ($i) 
+					{
+						case 0:
+							$destinationloop=$destination1;
+							break;
+						
+						case 1:
+							$destinationloop=$destination2;
+							break;
+						case 2:
+							$destinationloop=$destination3;
+							break;
+						case 3:
+							$destinationloop=$destination4;
+							break;
+					}
+					echo "<br"."taille=".$taille."<br"."couleur=".$details[$i][0]."<br>"."quantite=".$details[$i][$j]."destination=".$destinationloop."<br"."ref=".$_POST['reference']."<br>";
+					$produitc->ajouterDetails($taille,$details[$i][0],$details[$i][$j],$destinationloop,$_POST['reference']);
+					header('Location: backend/pages/AjoutProduitOk.php');
 
+				}
 			}
 		}
 
+	}
+	else
+	{
+		header('Location: backend/pages/AjoutProduitErreur.php');
 	}
 
 	//$fournisseur=new Fournisseur($_POST['reference'],$_POST['ville'],$_POST['pays'],$_POST['region'],$_POST['email'],$_POST['numero']);

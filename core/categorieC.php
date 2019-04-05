@@ -1,4 +1,5 @@
 <?PHP
+chdir(__DIR__);
 include "../config.php";
 class CategorieC 
 {
@@ -11,8 +12,8 @@ class CategorieC
 	{
 		$sql="insert into categorie (nom,type) values (:nom,:type)";
 		$db = config::getConnexion();
-		try
-		{
+		/*try
+		{*/
         $req=$db->prepare($sql);
 		
         $type=$categorie->getType();
@@ -21,11 +22,12 @@ class CategorieC
 		$req->bindValue(':type',$type);
             $req->execute();
            
-        }
-        catch (Exception $e)
+        /*}*/
+        /*catch (Exception $e)
         {
+        	//header('location:../views/backend/pages/AjoutCategorieErreur.php');
             echo 'Erreur: '.$e->getMessage();
-        }
+        }*/
 		
 	}
 	
@@ -38,6 +40,57 @@ class CategorieC
 		{
 		$liste=$db->query($sql);
 		return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+
+	function trieCategorienom()
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From categorie ORDER BY nom";
+		$db = config::getConnexion();
+		try
+		{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+
+	function trieCategorietype()
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From categorie ORDER BY type";
+		$db = config::getConnexion();
+		try
+		{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+
+	function afficherCategorieparnom($nom)
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From categorie where nom=:nom";
+		$db = config::getConnexion();
+		try
+		{
+		$req=$db->prepare($sql);
+		$req->bindValue(':nom',$nom);
+            $req->execute();
+            $liste=$req->fetch();
+            return $liste;
 		}
         catch (Exception $e)
         {
@@ -97,6 +150,48 @@ class CategorieC
         {
             die('Erreur: '.$e->getMessage());
         }	
+	}
+
+	function modifierCategorie($categorie,$anciennom)
+	{
+		$sql="Update categorie set nom=:nom, type=:type where nom=:anciennom";
+		$db = config::getConnexion();
+		/*try
+		{*/
+        $req=$db->prepare($sql);
+		
+        $type=$categorie->getType();
+        $nom=$categorie->getNom();
+		$req->bindValue(':nom',$nom);
+		$req->bindValue(':type',$type);
+		$req->bindValue(':anciennom',$anciennom);
+            $req->execute();
+           
+       // }
+        /*catch (Exception $e)
+        {
+            echo 'Erreur: '.$e->getMessage();
+        }*/
+		
+	}
+
+	function supprimerCategorie($nom)
+	{
+		$sql="Delete from categorie where nom=:nom";
+		$db = config::getConnexion();
+		try
+		{
+        $req=$db->prepare($sql);
+		
+		$req->bindValue(':nom',$nom);
+            $req->execute();
+           
+        }
+        catch (Exception $e)
+        {
+            echo 'Erreur: '.$e->getMessage();
+        }
+		
 	}
 
 /*	function supprimerCategorie($cin){

@@ -1,10 +1,31 @@
 
+const Nom=document.getElementById("Nom");
+const Reference=document.getElementById("Reference");
+const Description=document.getElementById("Description");
+
+
+/*function controleNom()
+{
+	alert("hello");
+
+}
+function controleReference()
+{
+	alert("hello2");	
+}
+
+function controleDescription()
+{
+	alert("hello3");	
+}
+
+
 function couleur() 
 
 {
 	alert("hello");
 	//document.getElementsByName("taille").value=0;
-}
+}*/
 
 
 

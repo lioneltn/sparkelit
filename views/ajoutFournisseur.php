@@ -1,26 +1,28 @@
 <?PHP
 chdir(__DIR__);
 include "../entities/fournisseur.php";
+chdir(__DIR__);
 include "../core/fournisseurC.php";
+chdir(__DIR__);
 
-if (isset($_POST['reference']) and isset($_POST['pays']) and isset($_POST['ville']) and isset($_POST['region']) and isset($_POST['email']) and isset($_POST['numero']))
-{
 	$fournisseur=new Fournisseur($_POST['reference'],$_POST['ville'],$_POST['pays'],$_POST['region'],$_POST['email'],$_POST['numero']);
-//Partie2
-/*
-var_dump($employe1);
-}
-*/
-//Partie3
 $fournisseurC=new FournisseurC();
-$fournisseurC->ajouterFournisseur($fournisseur);
-//header('Location: afficherCategorie.php');
-	
-}
-else
+$ajout=true;
+try
 {
-	echo "vérifier les champs";
+	$fournisseurC->ajouterFournisseur($fournisseur);
 }
+catch (Exception $e)
+{
+	$ajout=false;
+	header('Location: backend/pages/AjoutFournisseurErreur.php');
+}
+if($ajout)
+{
+	header('Location: backend/pages/AjoutFournisseurok.php');
+}
+	
+
 //*/
 
 ?>
