@@ -1,6 +1,5 @@
 <?PHP
 session_start();
-//$_SESSION['email'] = "dqsdqsd";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +20,7 @@ session_start();
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
-
-    <!-- Javascript File -->
-    <script type="text/javascript" language="javascript" src="../../js/my-account.js">
-
-    </script>
+    <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 
 <body>
@@ -34,10 +28,10 @@ session_start();
     include "../../../../entities/comptes/admin.php";
     include "../../../../core/comptes/adminC.php";
 
-    echo $_SESSION['email_admin'];
-    if (isset($_SESSION['email_admin'])) {
+    echo $_SESSION['email_artiste'];
+    if (isset($_SESSION['email_artiste'])) {
         $adminC = new AdminC();
-        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        $result = $adminC->recupererAdmin($_SESSION['email_artiste']);
         foreach ($result as $row) {
             $nom = $row['nom'];
             $prenom = $row['prenom'];
@@ -46,11 +40,11 @@ session_start();
             $password = $row['motdepasse'];
         }
     } else {
-        header('Location: login_admin.php');
+        header('Location: login.php');
     }
     ?>
     <div class="container-scroller">
-        <!-- partial:../../partials/_horizontal-navbar.html -->
+        <!-- partial:../../partials/_horizontal-navbar.php -->
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
@@ -187,12 +181,12 @@ session_start();
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href="../samples/profile.php">
+                                    <a class="dropdown-item" href="profile-2.php">
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profile
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../samples/login.php">
+                                    <a class="dropdown-item" href="login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Se déconnecter
                                     </a>
@@ -211,50 +205,6 @@ session_start();
                         <li class="nav-item">
                             <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="../Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
-                            <div class="submenu">
-                                <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../Ajouterproduit.php"> Ajouter produit</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../afficherProduits.php">Afficher produits</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-
-
-
-                        <li class="nav-item">
-                            <a href="../ajoutercategorie.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Categorie</span><i class="menu-arrow"></i></a>
-                            <div class="submenu">
-                                <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../ajoutercategorie.php"> Ajouter Categorie</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../afficherCategorie.php">Afficher Categorie</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="../forms/formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
-                            <div class="submenu">
-                                <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
-
-                                    <li class="nav-item"><a class="nav-link" href="../forms/afficherpostadmin.php">Afficher posts</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Fournisseur</span><i class="menu-arrow"></i></a>
-                            <div class="submenu">
-                                <ul class="submenu-item">
-                                    <li class="nav-item"><a class="nav-link" href="../ajouterfournisseur.php"> Ajouter fournisseur</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../afficherFournisseur">Afficher fournisseurs</a></li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -264,111 +214,131 @@ session_start();
         <div class="container-fluid page-body-wrapper">
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-12 grid-margin">
+                    <div class="row profile-page">
+                        <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Modifier le compte administrateur</h4>
-
-                                    <form id="example-form" method="POST">
-                                        <div>
-                                            <h3>Compte</h3>
-                                            <section>
-                                                <h6>Compte</h6>
-                                                <div class="form-group">
-                                                    <label>Adresse email</label>
-                                                    <label class="form-control">
-                                                        <?PHP echo $_SESSION['email_admin'] ?></label>
-                                                    <small id="emailHelp" class="form-text text-muted">Nous n'allons jamais patarger votre email.</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Mot de passe</label>
-                                                    <input type="password" class="form-control" placeholder="modifier le mot de passe" id="password" name="password" onfocusout="validatePassword(this)" value=<?PHP echo $password ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Mot de passe de confirmation</label>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation" name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" value=<?PHP echo $password ?> required>
-                                                </div>
-                                            </section>
-                                            <h3>Profile</h3>
-                                            <section>
-                                                <h6>Profile</h6>
-                                                <div class="form-group">
-                                                    <label>Nom</label>
-                                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="entrer votre nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Prénom</label>
-                                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="acc-birthday">Date de naissance</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="acc-sexe">Sexe</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="form-control" name="sexe" id="sexe">
-                                                            <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                                            <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
+                                    <div class="profile-header text-white">
+                                        <div class="d-md-flex justify-content-around">
+                                            <div class="profile-info d-flex align-items-center">
+                                                <img class="rounded-circle img-lg" src="https://via.placeholder.com/92x92" alt="profile image">
+                                                <div class="wrapper pl-4">
+                                                    <p class="profile-user-name">Richard V.Welsh (UI/UX Designer)</p>
+                                                    <div class="wrapper d-flex align-items-center">
+                                                        <p class="profile-user-designation">User Experience Specialist</p>
+                                                        <select id="example-css" name="rating" autocomplete="off">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </section>
-                                            <h3>Confirmation</h3>
-                                            <section>
-                                                <h6>Confirmation</h6>
-                                                <div class="form-group">
-                                                    <br><br>
-                                                    <label>Cliquer sur terminer pour confirmer les modifications </label>
-                                                    <br><br><br><br><br><br><br>
-                                                    <button type="submit" name="modifier" id="modifier" class="btn btn-primary mr-2">Terminer</button>
+                                            </div>
+                                            <div class="details">
+                                                <div class="detail-col">
+                                                    <p>Projects</p>
+                                                    <p>130</p>
                                                 </div>
+                                                <div class="detail-col">
+                                                    <p>Projects</p>
+                                                    <p>130</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
-                                    <?PHP
-                                                                                                                                                                                                                                        if (isset($_POST['modifier']) and isset($_POST['password']) and isset($_POST['confirmPassword']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and $_POST['password'] == $_POST['confirmPassword']  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                                                                                                                                                                                                                                            $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_SESSION['email_admin'], $_POST['sexe'], 1);
-                                                                                                                                                                                                                                            $admin1C = new AdminC();
-                                                                                                                                                                                                                                            $admin1C->modifierAdmin($admin1);
-                                                                                                                                                                                                                                            //header('Location: modify_account_admin.php');
-                                                                                                                                                                                                                                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                        ?>
+                                    </div>
+                                    <div class="profile-body">
+                                        <ul class="nav tab-switch" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
+                                            </li>
+                                        </ul>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="tab-content tab-body" id="profile-log-switch">
+                                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+
+
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                Contact Information
+                                                                <a href="../forms/formulaire_modifier_artiste.php" class="card-edit">Edit</a>
+                                                            </div><!-- End .card-header -->
+
+                                                            <div class="card-body">
+                                                                <p>
+                                                                    <?PHP echo $nom . "  " . $prenom ?><br>
+                                                                    <?PHP echo $_SESSION['email_artiste'] ?><br>
+                                                                    <a href="../forms/new_password-2.php">Change Password</a>
+                                                                </p>
+                                                            </div><!-- End .card-body -->
+                                                        </div><!-- End .card -->
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                Autres informations
+                                                                <a href="../forms/formulaire_modifier_artiste.php" class="card-edit">Edit</a>
+                                                            </div><!-- End .card-header -->
+
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <h4 class="">Date de naissance</h4>
+                                                                        <address>
+                                                                            <?PHP echo $datenaissance ?><br>
+                                                                            <a href="../forms/formulaire_modifier_artiste.php">Edit </a>
+                                                                        </address>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div><!-- End .card-body -->
+                                                        </div><!-- End .card -->
+                                                    </div>
+                                                    <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                                        <div class="horizontal-timeline">
+                                                            ///////////////////////////////////////////////////////////////
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- content-wrapper ends -->
-                    <!-- partial:../../partials/_footer.html -->
-                    <footer class="footer">
-                        <div class="w-100 clearfix">
-                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-                        </div>
-                    </footer>
-                    <!-- partial -->
                 </div>
-                <!-- main-panel ends -->
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.php -->
+                <footer class="footer">
+                    <div class="w-100 clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
             </div>
-            <!-- page-body-wrapper ends -->
+            <!-- main-panel ends -->
         </div>
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="../../vendors/js/vendor.bundle.base.js"></script>
-        <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page-->
-        <!-- End plugin js for this page-->
-        <!-- inject:js -->
-        <script src="../../js/template.js"></script>
-        <!-- endinject -->
-        <!-- Custom js for this page-->
-        <script src="../../js/wizard.js"></script>
-        <!-- End custom js for this page-->
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../js/template.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/form-addons.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
 </html>

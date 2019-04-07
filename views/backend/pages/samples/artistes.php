@@ -1,51 +1,70 @@
 <?PHP
 session_start();
+echo "azeze" . $_SESSION['email_admin'];
+if ($_SESSION['email_admin'] == "") {
+    header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
-  <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-  <?PHP
-  include "../../../../entities/comptes/admin.php";
-  include "../../../../core/comptes/adminC.php";
+    <?PHP
+    include "../../../../entities/comptes/admin.php";
+    include "../../../../core/comptes/adminC.php";
 
-  echo $_SESSION['email_admin'];
-  if (isset($_SESSION['email_admin'])) {
-    $adminC = new AdminC();
-    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
-    foreach ($result as $row) {
-      $nom = $row['nom'];
-      $prenom = $row['prenom'];
-      $datenaissance = $row['datenaissance'];
-      $sexe = $row['sexe'];
-      $password = $row['motdepasse'];
+    echo $_SESSION['email_admin'];
+    if (isset($_SESSION['email_admin'])) {
+        $adminC = new AdminC();
+        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        $nbr = $result->rowCount();
+        echo $nbr . "rows";
+        if ($nbr == 0) {
+            echo "   vide ";
+            header('Location: login.php');
+        }
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+        }
+    } else {
+        header('Location: login.php');
     }
-  } else {
-    header('Location: login.php');
-  }
-  ?>
-  <div class="container-scroller">
-    <!-- partial:../../partials/_horizontal-navbar.php -->
-    <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+    ?>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_horizontal-navbar.php -->
+        <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
       <div class="nav-top flex-grow-1">
         <div class="container d-flex flex-row h-100 align-items-center">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center">
@@ -254,135 +273,140 @@ session_start();
       </div>
     </nav>
 
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row profile-page">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="profile-header text-white">
-                    <div class="d-md-flex justify-content-around">
-                      <div class="profile-info d-flex align-items-center">
-                        <img class="rounded-circle img-lg" src="https://via.placeholder.com/92x92" alt="profile image">
-                        <div class="wrapper pl-4">
-                          <p class="profile-user-name">Richard V.Welsh (UI/UX Designer)</p>
-                          <div class="wrapper d-flex align-items-center">
-                            <p class="profile-user-designation">User Experience Specialist</p>
-                            <select id="example-css" name="rating" autocomplete="off">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="details">
-                        <div class="detail-col">
-                          <p>Projects</p>
-                          <p>130</p>
-                        </div>
-                        <div class="detail-col">
-                          <p>Projects</p>
-                          <p>130</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-body">
-                    <ul class="nav tab-switch" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
-                      </li>
-                    </ul>
-                    <div class="row">
-                      <div class="col-md-9">
-                        <div class="tab-content tab-body" id="profile-log-switch">
-                          <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
-
-
-                            <div class="card">
-                              <div class="card-header">
-                                Contact Information
-                                <a href="../forms/modify_account_admin.php" class="card-edit">Edit</a>
-                              </div><!-- End .card-header -->
-
-                              <div class="card-body">
-                                <p>
-                                  <?PHP echo $nom . "  " . $prenom ?><br>
-                                  <?PHP echo $_SESSION['email_admin'] ?><br>
-                                  <a href="../forms/new_password">Change Password</a>
-                                </p>
-                              </div><!-- End .card-body -->
-                            </div><!-- End .card -->
-                            <div class="card">
-                              <div class="card-header">
-                                Autres informations
-                                <a href="../forms/modify_account_admin.php" class="card-edit">Edit</a>
-                              </div><!-- End .card-header -->
-
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <h4 class="">Date de naissance</h4>
-                                    <address>
-                                      <?PHP echo $datenaissance ?><br>
-                                      <a href="../forms/modify_account_admin.php">Edit </a>
-                                    </address>
-                                  </div>
-
-                                </div>
-                              </div><!-- End .card-body -->
-                            </div><!-- End .card -->
-                          </div>
-                          <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
-                            <div class="horizontal-timeline">
-                              ///////////////////////////////////////////////////////////////
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <!-- partial -->
+        <div class="container">
+            <br />
+            <div class="table-responsive">
+                <h3 align="center">Liste des artistes de la boutique</h3><br />
+                <div id="grid_table"></div>
             </div>
-          </div>
         </div>
-        <!-- content-wrapper ends -->
+        <script>
+            $('#grid_table').jsGrid({
+
+                width: "100%",
+                height: "600px",
+
+                filtering: true,
+                inserting: true,
+                editing: true,
+                sorting: true,
+                paging: true,
+                autoload: true,
+                pageSize: 10,
+                pageButtonCount: 5,
+                deleteConfirm: "Do you really want to delete data?",
+
+                controller: {
+                    loadData: function(filter) {
+                        return $.ajax({
+                            type: "GET",
+                            url: "gestionArtistes.php",
+                            data: filter
+                        });
+                    },
+                    insertItem: function(item) {
+                        return $.ajax({
+                            type: "POST",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                    updateItem: function(item) {
+                        return $.ajax({
+                            type: "PUT",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                    deleteItem: function(item) {
+                        return $.ajax({
+                            type: "DELETE",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                },
+
+                fields: [{
+                        name: "email",
+                        type: "text",
+                        width: 200,
+                        validate: "required"
+                    },
+                    {
+                        name: "nom",
+                        type: "text",
+                        width: 150,
+                        validate: "required"
+                    },
+                    {
+                        name: "prenom",
+                        type: "text",
+                        width: 150,
+                        validate: "required"
+                    },
+                    {
+                        name: "datenaissance",
+                        type: "text",
+                        width: 50,
+                        validate: "required"
+                    },
+                    {
+                        name: "sexe",
+                        type: "select",
+                        items: [{
+                                Name: "homme",
+                                Id: 'homme'
+                            },
+                            {
+                                Name: "femme",
+                                Id: 'femme'
+                            }
+                        ],
+                        valueField: "Id",
+                        textField: "Name",
+                        validate: "required"
+                    },
+                    {
+                        type: "control"
+                    }
+                ]
+
+            }, {
+                name: "prenom",
+                type: "text",
+                width: 150,
+                validate: "required"
+            });
+        </script>
+
         <!-- partial:../../partials/_footer.php -->
         <footer class="footer">
-          <div class="w-100 clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-          </div>
+            <div class="w-100 clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+            </div>
         </footer>
         <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+    </div>
+    <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../../js/template.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="../../js/form-addons.js"></script>
-  <!-- End custom js for this page-->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../js/template.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/form-addons.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
-</html>
+</html> 

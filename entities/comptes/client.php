@@ -3,10 +3,11 @@ include "utilisateur.php";
 class Client extends Utilisateur
 {
     private $tel;
+    private $region;
     private $codePostal;
     private $addLivr;
     private $addLivr_2;
-    function __construct($nom, $prenom, $dateNaissance, $motdepasse, $email, $sexe, $tel, $code, $addlivr, $addlivr_2)
+    function __construct($nom, $prenom, $dateNaissance, $motdepasse, $email, $sexe, $tel, $region, $code, $addlivr, $addlivr_2)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -15,6 +16,7 @@ class Client extends Utilisateur
         $this->sexe = $sexe;
         $this->motdepasse = $motdepasse;
         $this->tel = $tel;
+        $this->region = $region;
         $this->codePostal = $code;
         $this->addLivr = $addlivr;
         $this->addLivr_2 = $addlivr_2;
@@ -23,6 +25,11 @@ class Client extends Utilisateur
     function getTel()
     {
         return $this->tel;
+    }
+
+    function getRegion()
+    {
+        return $this->region;
     }
 
     function getCodePostal()
@@ -43,6 +50,11 @@ class Client extends Utilisateur
     function setTel($tel)
     {
         $this->tel = $tel;
+    }
+
+    function setRegion($region)
+    {
+        $this->region = $region;
     }
 
     function setCodePostal($code)

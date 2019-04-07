@@ -1,4 +1,4 @@
-<?PHP
+<?PHP 
 session_start();
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ session_start();
 
     </script>
 
-    <title>Modifier artiste</title>
+    <title>Mot de passe oublié </title>
 </head>
 
 <body>
@@ -47,11 +47,11 @@ session_start();
             $password = $row['motdepasse'];
         }
     } else {
-        header('Location: login_admin.php');
+        header('Location: ../samples/login-2.php');
     }
     ?>
     <div class="container-scroller">
-        <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+    <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
@@ -219,55 +219,27 @@ session_start();
         <!-- partial -->
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Gestion Artiste</h4>
+                <h4 class="card-title">Aide avec le mot de passe</h4>
                 <p class="card-description">
-                    <strong>Modifier artiste</strong>
+                    <strong>Saisissez votre nouveau mot de passe.</strong>
                 </p>
-                <form method="POST" class="forms-sample">
+                <br>
+                <form method="POST" action="newPassword_2.php" class="forms-sample">
                     <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Nom</label>
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">nouveau mot de passe(8 characters minimum)</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout="validatePassword(this)" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Modifier Prenom</label>
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">confirmer mot de passe</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prenom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout="validateConfirmPassword(this)" required>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="acc-birthday" class="col-sm-3 col-form-label">Date de naissance</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="sexe" id="sexe">
-                                <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Modifier Email</label>
-                        <div class="col-sm-9">
-                            <label class="form-control">
-                                <?PHP echo $_SESSION['email_artiste'] ?></label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2" name="modifier" id="modifier" onclick="contr=ole4()">Modifier </button>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="verification()">Réinitialiser</button>
                 </form>
-                <?PHP
-                                                                                                                                                                    if (isset($_POST['modifier']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance'])  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                                                                                                                                                                        $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email_artiste'], $_POST['sexe'], 2);
-                                                                                                                                                                        $admin1C = new AdminC();
-                                                                                                                                                                        $admin1C->modifierAdmin($admin1);
-                                                                                                                                                                        echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                                                                                                                                                                    }
-                                                                                                                                                                    ?>
             </div>
         </div>
 
@@ -285,4 +257,4 @@ session_start();
     <script type="text/javascript" src="formulaire.js"></script>
 </body>
 
-</html>
+</html> 

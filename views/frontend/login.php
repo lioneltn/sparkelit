@@ -1,5 +1,13 @@
+<?PHP
+session_start();
+if(isset($_SESSION['email'])) {
+    $_SESSION['email'] = NULL;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +18,22 @@
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">
-        
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
-    
+
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+
+    <!-- Javascript File -->
+    <script type="text/javascript" language="javascript" src="assets/js/my-account.js">
+    </script>
+
 </head>
+
 <body>
     <div class="page-wrapper">
         <header class="header">
@@ -34,39 +48,39 @@
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                        <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
-                                                        <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
-                                                        <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
-                                                        <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
-                                                        <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
-                                                        <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
-                                                        <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 2</a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="#">Product List Item Types</a></li>
-                                                        <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
-                                                        <li><a href="category-3col.php">3 Columns Products</a></li>
-                                                        <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                        <li><a href="category.php">5 Columns Products</a></li>
-                                                        <li><a href="category-6col.php">6 Columns Products</a></li>
-                                                        <li><a href="category-7col.php">7 Columns Products</a></li>
-                                                        <li><a href="category-8col.php">8 Columns Products</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .col-lg-8 -->
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
+                                                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
+                                                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
+                                                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
+                                                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
+                                                            <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
+                                                            <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 2</a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="#">Product List Item Types</a></li>
+                                                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
+                                                            <li><a href="category-3col.php">3 Columns Products</a></li>
+                                                            <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
+                                                            <li><a href="category.php">5 Columns Products</a></li>
+                                                            <li><a href="category-6col.php">6 Columns Products</a></li>
+                                                            <li><a href="category-7col.php">7 Columns Products</a></li>
+                                                            <li><a href="category-8col.php">8 Columns Products</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                </div><!-- End .row -->
+                                            </div><!-- End .col-lg-8 -->
                                             <div class="col-lg-4">
                                                 <div class="banner">
                                                     <a href="#">
@@ -142,10 +156,10 @@
                                                 <li><a href="checkout-review.php">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Dashboard</a>
+                                        <li><a href="dashboard.php">Dashboard</a>
                                             <ul>
                                                 <li><a href="dashboard.php">Dashboard</a></li>
-                                                <li><a href="my-account.php">My Account</a></li>
+                                                <li><a href="my-account.php">Mon compte</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.php">About Us</a></li>
@@ -156,8 +170,8 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="#" class="login-link">Login</a></li>
-                                        <li><a href="forgot-password.php">Forgot Password</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -211,7 +225,7 @@
                         <button class="mobile-menu-toggler" type="button">
                             <i class="icon-menu"></i>
                         </button>
-                        
+
                         <div class="header-dropdowns">
                             <div class="header-dropdown">
                                 <a href="#">USD</a>
@@ -234,15 +248,15 @@
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                                <a href="#">Links</a>
+                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.php">MY ACCOUNT </a></li>
+                                        <li><a href="my-account.php">Mon compte</a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -257,7 +271,7 @@
                                 <span class="cart-count">2</span>
                             </a>
 
-                            <div class="dropdown-menu" >
+                            <div class="dropdown-menu">
                                 <div class="dropdownmenu-wrapper">
                                     <div class="dropdown-cart-products">
                                         <div class="product">
@@ -318,7 +332,7 @@
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-        
+
         <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
@@ -335,15 +349,18 @@
                     <p></p>
                 </div><!-- End .heading -->
 
-                <form method = "POST" action="connexion.php">
+                <form method="POST" action="connexion.php">
                     <div class="form-group required-field">
                         <label for="login">login</label>
-                        <input type="email" class="form-control" id="login" name="login" required>
+                        <input type="email" class="form-control" id="login" name="login" onfocusout="validateEmail(this)" required>
                         <label for="motdepasse">Mot de passe</label>
-                        <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
+                        <input type="password" class="form-control" id="motdepasse" name="motdepasse" onfocusout="validatePassword(this)" required>
                     </div><!-- End .form-group -->
-
+                    <a href="forgot-password.php"><label><u>mot de passe oublié ? </u></label></a>
+                    <a href="new_account.php"><label><u>Créer un nouveau compte </u></label></a>
+                    <br><br>
                     <div class="form-footer">
+
                         <button type="submit" class="btn btn-primary">Connexion</button>
                     </div><!-- End .form-footer -->
                 </form>
@@ -441,21 +458,21 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.php">About Us</a></li>
                                                     <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">My Account</a></li>
+                                                    <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="#" class="login-link">Login</a></li>
+                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -465,7 +482,7 @@
                                 <div class="col-lg-5">
                                     <div class="widget">
                                         <h4 class="widget-title">Main Features</h4>
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
@@ -497,7 +514,7 @@
                             </div><!-- End .row -->
 
                             <div class="footer-bottom">
-                                <p class="footer-copyright">Porto eCommerce. &copy;  2018.  All Rights Reserved</p>
+                                <p class="footer-copyright">Porto eCommerce. &copy; 2018. All Rights Reserved</p>
                                 <img src="assets/images/payments.png" alt="payment methods" class="footer-payments">
                             </div><!-- End .footer-bottom -->
                         </div><!-- End .col-lg-9 -->
@@ -575,26 +592,25 @@
                         <ul>
                             <li><a href="cart.php">Shopping Cart</a></li>
                             <li>
-                                <a href="#">Checkout</
-                                <ul>
-                                    <li><a href="checkout-shipping.php">Checkout Shipping</a></li>
-                                    <li><a href="checkout-shipping-2.php">Checkout Shipping 2</a></li>
-                                    <li><a href="checkout-review.php">Checkout Review</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.php">About</a></li>
-                            <li><a href="#" class="login-link">Login</a></li>
-                            <li><a href="forgot-password.php">Forgot Password</a></li>
+                                <a href="#">Checkout</ <ul>
+                            <li><a href="checkout-shipping.php">Checkout Shipping</a></li>
+                            <li><a href="checkout-shipping-2.php">Checkout Shipping 2</a></li>
+                            <li><a href="checkout-review.php">Checkout Review</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.php">Blog</a>
-                        <ul>
-                            <li><a href="single.php">Blog Post</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.php">Contact Us</a></li>
-                    <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
-                    <li><a href="#">Buy Porto!</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                    <li><a href="forgot-password.php">Mot de passe oublié</a></li>
+                </ul>
+                </li>
+                <li><a href="blog.php">Blog</a>
+                    <ul>
+                        <li><a href="single.php">Blog Post</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
+                <li><a href="#">Buy Porto!</a></li>
                 </ul>
             </nav><!-- End .mobile-nav -->
 
@@ -640,4 +656,5 @@
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
 </body>
-</html>
+
+</html> 

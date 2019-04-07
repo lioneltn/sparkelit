@@ -1,6 +1,9 @@
 <?PHP
 session_start();
-//$_SESSION['email'] = "dqsdqsd";
+echo "azeze" . $_SESSION['email_admin'];
+if ($_SESSION['email_admin'] == "") {
+    header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +24,16 @@ session_start();
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
-
-    <!-- Javascript File -->
-    <script type="text/javascript" language="javascript" src="../../js/my-account.js">
-
-    </script>
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,6 +45,12 @@ session_start();
     if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
         $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+        $nbr = $result->rowCount();
+        echo $nbr . "rows";
+        if ($nbr == 0) {
+            echo "   vide ";
+            header('Location: login.php');
+        }
         foreach ($result as $row) {
             $nom = $row['nom'];
             $prenom = $row['prenom'];
@@ -46,11 +59,11 @@ session_start();
             $password = $row['motdepasse'];
         }
     } else {
-        header('Location: login_admin.php');
+        header('Location: login.php');
     }
     ?>
     <div class="container-scroller">
-        <!-- partial:../../partials/_horizontal-navbar.html -->
+        <!-- partial:../../partials/_horizontal-navbar.php -->
         <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
@@ -187,12 +200,12 @@ session_start();
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href="../samples/profile.php">
+                                    <a class="dropdown-item" href="profile.php">
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profile
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../samples/login.php">
+                                    <a class="dropdown-item" href="login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Se déconnecter
                                     </a>
@@ -261,114 +274,139 @@ session_start();
         </nav>
 
         <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-12 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Modifier le compte administrateur</h4>
-
-                                    <form id="example-form" method="POST">
-                                        <div>
-                                            <h3>Compte</h3>
-                                            <section>
-                                                <h6>Compte</h6>
-                                                <div class="form-group">
-                                                    <label>Adresse email</label>
-                                                    <label class="form-control">
-                                                        <?PHP echo $_SESSION['email_admin'] ?></label>
-                                                    <small id="emailHelp" class="form-text text-muted">Nous n'allons jamais patarger votre email.</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Mot de passe</label>
-                                                    <input type="password" class="form-control" placeholder="modifier le mot de passe" id="password" name="password" onfocusout="validatePassword(this)" value=<?PHP echo $password ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Mot de passe de confirmation</label>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe de confirmation" name="confirmPassword" id="confirmPassword" onfocusout="validateConfirmPassword(this)" value=<?PHP echo $password ?> required>
-                                                </div>
-                                            </section>
-                                            <h3>Profile</h3>
-                                            <section>
-                                                <h6>Profile</h6>
-                                                <div class="form-group">
-                                                    <label>Nom</label>
-                                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="entrer votre nom" onfocusout="validateFirstName(this)" value=<?PHP echo $nom ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Prénom</label>
-                                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom" onfocusout="validateFirstName(this)" value=<?PHP echo $prenom ?> required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="acc-birthday">Date de naissance</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" value=<?PHP echo $datenaissance ?> required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="acc-sexe">Sexe</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="form-control" name="sexe" id="sexe">
-                                                            <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                                            <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                            <h3>Confirmation</h3>
-                                            <section>
-                                                <h6>Confirmation</h6>
-                                                <div class="form-group">
-                                                    <br><br>
-                                                    <label>Cliquer sur terminer pour confirmer les modifications </label>
-                                                    <br><br><br><br><br><br><br>
-                                                    <button type="submit" name="modifier" id="modifier" class="btn btn-primary mr-2">Terminer</button>
-                                                </div>
-                                        </div>
-                                    </form>
-                                    <?PHP
-                                                                                                                                                                                                                                        if (isset($_POST['modifier']) and isset($_POST['password']) and isset($_POST['confirmPassword']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and $_POST['password'] == $_POST['confirmPassword']  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                                                                                                                                                                                                                                            $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_SESSION['email_admin'], $_POST['sexe'], 1);
-                                                                                                                                                                                                                                            $admin1C = new AdminC();
-                                                                                                                                                                                                                                            $admin1C->modifierAdmin($admin1);
-                                                                                                                                                                                                                                            //header('Location: modify_account_admin.php');
-                                                                                                                                                                                                                                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                        ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- content-wrapper ends -->
-                    <!-- partial:../../partials/_footer.html -->
-                    <footer class="footer">
-                        <div class="w-100 clearfix">
-                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-                        </div>
-                    </footer>
-                    <!-- partial -->
-                </div>
-                <!-- main-panel ends -->
+        <div class="container">
+            <br />
+            <div class="table-responsive">
+                <h3 align="center">Liste des utilisateurs du site</h3><br />
+                <div id="grid_table"></div>
             </div>
-            <!-- page-body-wrapper ends -->
         </div>
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="../../vendors/js/vendor.bundle.base.js"></script>
-        <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page-->
-        <!-- End plugin js for this page-->
-        <!-- inject:js -->
-        <script src="../../js/template.js"></script>
-        <!-- endinject -->
-        <!-- Custom js for this page-->
-        <script src="../../js/wizard.js"></script>
-        <!-- End custom js for this page-->
+        <script>
+            $('#grid_table').jsGrid({
+
+                width: "100%",
+                height: "600px",
+
+                filtering: true,
+                inserting: true,
+                editing: true,
+                sorting: true,
+                paging: true,
+                autoload: true,
+                pageSize: 10,
+                pageButtonCount: 5,
+                deleteConfirm: "Do you really want to delete data?",
+
+                controller: {
+                    loadData: function(filter) {
+                        return $.ajax({
+                            type: "GET",
+                            url: "gestionArtistes.php",
+                            data: filter
+                        });
+                    },
+                    insertItem: function(item) {
+                        return $.ajax({
+                            type: "POST",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                    updateItem: function(item) {
+                        return $.ajax({
+                            type: "PUT",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                    deleteItem: function(item) {
+                        return $.ajax({
+                            type: "DELETE",
+                            url: "gestionArtistes.php",
+                            data: item
+                        });
+                    },
+                },
+
+                fields: [{
+                        name: "email",
+                        type: "text",
+                        width: 200,
+                        validate: "required"
+                    },
+                    {
+                        name: "nom",
+                        type: "text",
+                        width: 100,
+                        validate: "required"
+                    },
+                    {
+                        name: "prenom",
+                        type: "text",
+                        width: 100,
+                        validate: "required"
+                    },
+                    {
+                        name: "datenaissance",
+                        type: "text",
+                        width: 80,
+                        validate: "required"
+                    },
+                    {
+                        name: "sexe",
+                        type: "select",
+                        items: [{
+                                Name: "homme",
+                                Id: 'homme'
+                            },
+                            {
+                                Name: "femme",
+                                Id: 'femme'
+                            }
+                        ],
+                        valueField: "Id",
+                        textField: "Name",
+                        validate: "required"
+                    },
+                    {
+                        type: "control"
+                    }
+                ]
+
+            }, {
+                name: "prenom",
+                type: "text",
+                width: 150,
+                validate: "required"
+            });
+        </script>
+
+        <!-- partial:../../partials/_footer.php -->
+        <footer class="footer">
+            <div class="w-100 clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+            </div>
+        </footer>
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../js/template.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/form-addons.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
 </html>

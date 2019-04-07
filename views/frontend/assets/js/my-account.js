@@ -17,15 +17,15 @@ const form = document.getElementById("newAccount");
 const green = '#4CAF50';
 const red = '#F44336';
 
-function validateFirstName(field){
-	if(checkIfEmty(field)) return;
-	if(!checkIfOnlyLetters(field)) return;
-	if(!beginSpace(field)) return;
+function validateFirstName(field) {
+	if (checkIfEmty(field)) return;
+	if (!checkIfOnlyLetters(field)) return;
+	if (!beginSpace(field)) return;
 	return true;
 }
 
-function checkIfEmty(field){
-	if(isEmpty(field.value)){
+function checkIfEmty(field) {
+	if (isEmpty(field.value)) {
 		//set field invalid
 		setInvalid(field, " ne doit pas être vide");
 		return true;
@@ -34,28 +34,28 @@ function checkIfEmty(field){
 		return false;
 	}
 }
-function isEmpty(value){
-	if(value == '') return true;
+function isEmpty(value) {
+	if (value == '') return true;
 	return false;
 }
-function setInvalid(field, message){
+function setInvalid(field, message) {
 	//field.className = 'invalid';
-	if(!field.parentElement.querySelector("p"))
-	field.insertAdjacentHTML("afterend", "<p style='color:red;'>"+message+"</p>");
-	else field.parentElement.querySelector("p").textContent=message;
+	if (!field.parentElement.querySelector("p"))
+		field.insertAdjacentHTML("afterend", "<p style='color:red;'>" + message + "</p>");
+	else field.parentElement.querySelector("p").textContent = message;
 	//field.innerHTML = message;
 	field.style.borderColor = red;
 }
-function setValid(field){
+function setValid(field) {
 	//field.className = 'valid';
-	if(!field.parentElement.querySelector("p"))
-	field.insertAdjacentHTML("afterend", "<p style='color:red;'>"+""+"</p>");
-	else field.parentElement.querySelector("p").textContent="";
+	if (!field.parentElement.querySelector("p"))
+		field.insertAdjacentHTML("afterend", "<p style='color:red;'>" + "" + "</p>");
+	else field.parentElement.querySelector("p").textContent = "";
 	//field.innerHTML = '';
 	field.style.borderColor = green;
 }
-function checkIfOnlyLetters(field){
-	if(/^[a-zA-Z ]+$/.test(field.value)){
+function checkIfOnlyLetters(field) {
+	if (/^[a-zA-Z ]+$/.test(field.value)) {
 		setValid(field);
 		return true;
 	} else {
@@ -63,8 +63,8 @@ function checkIfOnlyLetters(field){
 		return false;
 	}
 }
-function beginSpace(field){
-	if(field.value.indexOf(" ") != 0){
+function beginSpace(field) {
+	if (field.value.indexOf(" ") != 0) {
 		setValid(field);
 		return true;
 	} else {
@@ -73,25 +73,25 @@ function beginSpace(field){
 	}
 }
 
-function validatePassword(field){
-	if(checkIfEmty(field)) return;
-	if(!meetLength(field, 6, 100)) return;
-	if(!containsCharacters(field, 4)) return;
+function validatePassword(field) {
+	if (checkIfEmty(field)) return;
+	if (!meetLength(field, 6, 100)) return;
+	if (!containsCharacters(field, 4)) return;
 	return true;
 }
-function meetLength(field, minLength, maxLength){
-	if(field.value.length >= minLength && field.value.length < maxLength){
+function meetLength(field, minLength, maxLength) {
+	if (field.value.length >= minLength && field.value.length < maxLength) {
 		setValid(field);
 		return true;
-	} else if(field.value.length < minLength){
+	} else if (field.value.length < minLength) {
 		setInvalid(field, `${field.name} mot de passe trop court ${minLength} characters long`)
 	} else {
 		setInvalid(field, `${field.name} mot de passe doit être inférieur à ${maxLength} characters`)
 	}
 }
-function containsCharacters(field, nbre){
+function containsCharacters(field, nbre) {
 	let regEx;
-	switch(nbre){
+	switch (nbre) {
 		case 1:
 			regEx = /(?=.*[a-zA-Z])/;
 			return matchWidthRegEx(regEx, field, `${field.name} doit contenir au-moins une lettre`);
@@ -110,12 +110,12 @@ function containsCharacters(field, nbre){
 		case 6:
 			regEx = /(?=.*[a-zA-Z]["-"])/;
 			return matchWidthRegEx(regEx, field, 'doit contenir au-moins une lettre, . ou -');
-			default:
+		default:
 			return false;
 	}
 }
-function matchWidthRegEx(regEx, field, message){
-	if(field.value.match(regEx)){
+function matchWidthRegEx(regEx, field, message) {
+	if (field.value.match(regEx)) {
 		setValid(field);
 		return true;
 	} else {
@@ -124,12 +124,12 @@ function matchWidthRegEx(regEx, field, message){
 	}
 }
 
-function validateConfirmPassword(field){
-	if(!validatePassword(document.getElementById("password"))){
+function validateConfirmPassword(field) {
+	if (!validatePassword(document.getElementById("password"))) {
 		setInvalid(field, 'mot de passe doit être valide');
 		return;
 	}
-	if(field.value !== document.getElementById("password").value){
+	if (field.value !== document.getElementById("password").value) {
 		setInvalid(field, 'mot de passe doit être pareil ');
 		return;
 	} else {
@@ -137,11 +137,11 @@ function validateConfirmPassword(field){
 	}
 	return true;
 }
-function validateEmail(field){
-	if(checkIfEmty(field)) return;
-	if(!containsCharacters(field, 5)) return;
+function validateEmail(field) {
+	if (checkIfEmty(field)) return;
+	if (!containsCharacters(field, 5)) return;
 	return true;
-}
+}/*
 function verification(field) 
 {
 	if(
@@ -152,12 +152,12 @@ function verification(field)
 	) {
 		
 	}
-}
+}*/
 function validateDateNaissance(field) {
-	ladate=new Date()
+	ladate = new Date()
 	var dateNaissance = new Date(document.getElementById("dateNaissance").value);
 	var annee = dateNaissance.getFullYear();
-	if(annee > (ladate.getFullYear() - 5 )) {
+	if (annee > (ladate.getFullYear() - 5)) {
 		setInvalid(field, 'année de naissance invalide');
 		return;
 	} else {
@@ -165,7 +165,7 @@ function validateDateNaissance(field) {
 	}
 }
 function checkPositiveNumber(field) {
-	if(/^[0-9]+$/.test(field.value) && field.value > 0){
+	if (/^[0-9]+$/.test(field.value) && field.value > 0) {
 		setValid(field);
 		return true;
 	} else {
@@ -173,12 +173,11 @@ function checkPositiveNumber(field) {
 		return false;
 	}
 }
-function validateNumTel(field)
-{
-	if(!checkPositiveNumber(field)) {
+function validateNumTel(field) {
+	if (!checkPositiveNumber(field)) {
 		return;
 	}
-	if(field.value.length <= 13 && field.value.length >= 8) {
+	if (field.value.length > 13 || field.value.length < 8) {
 		setInvalid(field, 'nombre de chiffre du numéro de téléphone invalide');
 		return;
 	} else {
@@ -186,28 +185,32 @@ function validateNumTel(field)
 	}
 }
 function validatePays(field) {
-	if(!containsCharacters(field, 6)){
-		return ;
+	if (!containsCharacters(field, 6)) {
+		return;
 	}
 	return true;
 }
 function validateCodePostal(field) {
-	if(!checkPositiveNumber(field)) {
+	if (!checkPositiveNumber(field)) {
 		return;
-	} 
-	
-	if(field.value.length != 4)
-	{
+	}
+
+	if (field.value.length != 4) {
 		setInvalid(field, 'nombre de chiffre du code postal invalide');
 		return;
-	}else {
-		setValid(field);	
-		
+	} else {
+		setValid(field);
+
 	}
 	return true;
 }
 
-function verification()
-{
-	
+function verification() {
+	if (validateFirstName(firstName) && validateFirstName(lastName) && validateCodePostal(codePostal) && validateConfirmPassword(confirmPassword) && validateDateNaissance(dateNaissance) && validateEmail(email) && validateNumTel(numTel) && validatePassword(password) && validatePays(pays)) {
+		return true;
+	} else {
+		$('[bouton="1"]').removeAttr('disabled');
+		return false;
+		//header ( Location : new_account.php);
+	}
 }

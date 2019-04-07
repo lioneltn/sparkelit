@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+
+  <!-- Javascript File -->
+  <script type="text/javascript" language="javascript" src="../../js/my-account.js">
+    </script>
 </head>
 
 <body>
@@ -35,44 +39,56 @@
                 <p>Already have an account?</p>
                 <a class="btn get-started-btn" href="login-2.php">SIGN IN</a>
               </div>
-              <form action="#">
-                <h3 class="mr-auto">Register</h3>
-                <p class="mb-5 mr-auto">Enter your details below.</p>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
+              <form method="POST" action="../forms/ajoutArtiste.php" class="forms-sample">
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="nom" onfocusout="validateFirstName(this)" required>
+                        </div>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Prenom</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="prenom" onfocusout="validateFirstName(this)" required>
+                        </div>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    <div class="form-group row">
+                        <label for="acc-birthday" class="col-sm-3 col-form-label">Date de naissance</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" onfocusout="validateDateNaissance(this)" required>
+                        </div>
                     </div>
-                    <input type="password" class="form-control" placeholder="Confirm Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary submit-btn">SIGN IN</button>
-                </div>
-                <div class="wrapper mt-5 text-gray">
-                  <p class="footer-text">Copyright © 2018 Urbanui. All rights reserved.</p>
-                  <ul class="auth-footer text-gray">
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                  </ul>
-                </div>
-              </form>
+                    <div class="form-group row">
+                        <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="sexe" id="sexe">
+                                <option value="homme" selected="selected">Homme </option>
+                                <option value="femme">Femme </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="acc-email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" onfocusout = "validateEmail(this)" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="mot de passe" onfocusout = "validatePassword(this)" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="mot de passe de confirmation" onfocusout = "validateConfirmPassword(this)" required>
+                        </div>
+                    </div>
+                  
+                    <br>
+                    <button type="submit" class="btn btn-primary mr-2">Créer</button>
+                </form>
             </div>
           </div>
         </div>

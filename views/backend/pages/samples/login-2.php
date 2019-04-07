@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+$_SESSION['email_artiste'] = NULL;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +22,12 @@
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+
+  <!-- Javascript File -->
+  <script type="text/javascript" language="javascript" src="../../js/my-account.js">
+
+</script>
+
 </head>
 
 <body>
@@ -35,7 +45,7 @@
                 <p>Don't have an account?</p>
                 <a class="btn get-started-btn" href="register-2.php">GET STARTED</a>
               </div>
-              <form action="#">
+              <form action="loginArtiste.php" method ="POST">
                 <h3 class="mr-auto">Hello! let's get started</h3>
                 <p class="mb-5 mr-auto">Enter your details below.</p>
                 <div class="form-group">
@@ -43,7 +53,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" onfocusout="validateEmail(this)" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,11 +61,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" onfocusout="validatePassword(this)" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary submit-btn">SIGN IN</button>
+                  <button type = "submit" class="btn btn-primary submit-btn">SIGN IN</button>
+                  <a href="../forms/forgot-password.php" class="text-small forgot-password text-black"> Mot de passe oublié</a>
                 </div>
                 <div class="wrapper mt-5 text-gray">
                   <p class="footer-text">Copyright © 2018 Urbanui. All rights reserved.</p>

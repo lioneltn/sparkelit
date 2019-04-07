@@ -15,8 +15,7 @@ class UtilisateurC
             $req->bindValue(':datenaissance', $utilisateur->getDateNaissance());
             $req->bindValue(':motdepasse', $utilisateur->getMotdepasse());
             $req->bindValue(':sexe', $utilisateur->getSexe());
-
-
+            
             $req->execute();
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();

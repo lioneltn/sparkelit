@@ -25,7 +25,6 @@
 
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="assets/js/my-account.js">
-        
     </script>
 </head>
 <body>
@@ -164,7 +163,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">Login</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                     </ul>
                                 </li>
@@ -250,7 +249,7 @@
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.html">BLOG</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -332,7 +331,7 @@
                 <div class="container-fluid">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouveau compte</li>
                     </ol>
                 </div><!-- End .container-fluid -->
             </nav>
@@ -342,7 +341,7 @@
                     <div class="col-lg-9 order-lg-last dashboard-content">
                         <h2>Créer un nouveau compte</h2>
                         
-                        <form method = "POST" action="ajouterClient.php" name = "acc_new" >
+                        <form method = "POST" action="ajouterClient.php" name = "acc_new" onsubmit="return verification()">
                             <div class="row">
                                 <div class="col-sm-11">
                                     <div class="row">
@@ -350,13 +349,6 @@
                                             <div class="form-group required-field">
                                                 <label for="acc-name">Nom</label>
                                                 <input type="text" class="form-control" id="firstName" name="firstName" onfocusout="validateFirstName(this)" required>
-                                            </div><!-- End .form-group -->
-                                        </div><!-- End .col-md-4 -->
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="acc-mname">Nom</label>
-                                                <input type="text" class="form-control" id="firstName_2" name="firstName_2" onfocusout="validateFirstName(this)"/>
                                             </div><!-- End .form-group -->
                                         </div><!-- End .col-md-4 -->
 
@@ -458,31 +450,12 @@
 
                                 <div class="form-footer-right">
                                 </div>
-                                <button type="submit" class="btn btn-primary" onclick="verification()">Save</button>
+                                <button type="submit" bouton="1" class="btn btn-primary">S'inscrire</button>
                             </div><!-- End .form-footer -->
                         </form>
                     </div><!-- End .col-lg-9 -->
 
-                    <aside class="sidebar col-lg-3">
-                        <div class="widget widget-dashboard">
-                            <h3 class="widget-title">My Account</h3>
-
-                            <ul class="list">
-                                <li class="active"><a href="http://localhost/projet/testconnexion/views/frontend/new_account.php#">New Account</a></li>
-                                <li><a href="http://localhost/projet/testconnexion/views/frontend/my-account.php">Account Information</a></li>
-                                <li><a href="#">Address Book</a></li>
-                                <li><a href="#">My Orders</a></li>
-                                <li><a href="#">Billing Agreements</a></li>
-                                <li><a href="#">Recurring Profiles</a></li>
-                                <li><a href="#">My Product Reviews</a></li>
-                                <li><a href="#">My Tags</a></li>
-                                <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">My Applications</a></li>
-                                <li><a href="#">Newsletter Subscriptions</a></li>
-                                <li><a href="#">My Downloadable Products</a></li>
-                            </ul>
-                        </div><!-- End .widget -->
-                    </aside><!-- End .col-lg-3 -->
+                    
                 </div><!-- End .row -->
             </div><!-- End .container -->
 
@@ -583,16 +556,16 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="about.php">About Us</a></li>
+                                                    <li><a href="contact.php">Contact Us</a></li>
+                                                    <li><a href="my-account.php">My Account</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">Login1</a></li>
+                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -720,7 +693,7 @@
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="http://localhost/projet/testconnexion/views/frontend/login.php" class="login-link">Login</a></li>
+                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.html">Forgot Password</a></li>
                         </ul>
                     </li>
