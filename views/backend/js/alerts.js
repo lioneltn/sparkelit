@@ -14,7 +14,7 @@
 
     } else if (type === 'title-and-text') {
       swal({
-        title: 'Read the alert!',
+        title: 'Données ajoutées!',
         text: 'Click OK to close this alert',
         button: {
           text: "OK",

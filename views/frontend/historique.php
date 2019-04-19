@@ -1,15 +1,12 @@
 
 <?php 
-include "../../core/PanierC.php";
- echo $_SESSION['idCommande'];
-?>
+    session_start();
+    include "../../core/CommandeC.php";
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-   
-   
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,9 +25,18 @@ include "../../core/PanierC.php";
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+       <style>
+        td {
+/*            padding:50px 50px;*/
+            text-align:center;
+        }
+
+    </style>
 </head>
 <body>
+      
     <div class="page-wrapper">
+       
         <header class="header">
             <div class="header-middle sticky-header">
                 <div class="container-fluid">
@@ -285,7 +291,7 @@ include "../../core/PanierC.php";
                                                 <a href="product.php" class="product-image">
                                                     <img src="assets/images/products/cart/product-1.jpg" alt="product">
                                                 </a>
-<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>-->
+                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
                                             </figure>
                                         </div><!-- End .product -->
 
@@ -305,7 +311,7 @@ include "../../core/PanierC.php";
                                                 <a href="product.php" class="product-image">
                                                     <img src="assets/images/products/cart/product-2.jpg" alt="product">
                                                 </a>
-<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>-->
+                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
                                             </figure>
                                         </div><!-- End .product -->
                                     </div><!-- End .cart-product -->
@@ -327,305 +333,14 @@ include "../../core/PanierC.php";
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-        
-        <main class="main">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                <div class="container-fluid">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
-                    </ol>
-                </div><!-- End .container-fluid -->
-            </nav>
+         
+           
+               
+         <div style="margin-top:10%;" id="historique"><?php 
+                  CommandeC ::afficherHistorique($_SESSION["login"]);
+                ?></div>       
+          
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="cart-table-container">
-                            <table class="table table-cart">
-                                <thead>
-                                    <tr>
-                                        <th class="product-col">Product</th>
-                                        <th class="price-col">Price</th>
-                                        <th class="qty-col">Qty</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <?php produitPanierC::afficherPanier($_SESSION['idCommande']) ;?>
-      
-                                    <tr class="product-action-row">
-                                        <td colspan="4" class="clearfix">
-                                            <div class="float-left">
-                                                <a href="#" class="btn-move">Move to Wishlist</a>
-                                            </div><!-- End .float-left 
-                                            
-                                            <div class="float-right">
-                                                <a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-                                                <a href="#" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
-                                            </div><!-- End .float-right -->
-                                        </td>
-                                    </tr>
-                                </tbody>
-
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="4" class="clearfix">
-                                            <div class="float-left">
-                                                <a href="category2.php" class="btn btn-outline-secondary">Continue Shopping</a>
-                                            </div><!-- End .float-left -->
-
-                                           <!-- End .float-right -->
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div><!-- End .cart-table-container -->
-
-                        <div class="cart-discount">
-                            <h4>Apply Discount Code</h4>
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Enter discount code"  required>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-sm btn-primary" type="submit">Apply Discount</button>
-                                    </div>
-                                </div><!-- End .input-group -->
-                            </form>
-                        </div><!-- End .cart-discount -->
-                    </div><!-- End .col-lg-8 -->
-
-                    <div class="col-lg-4">
-                        <div class="cart-summary">
-                            <h3>Sommaire</h3>
-
-                
-
-                            <div class="collapse" id="total-estimate-section">
-                                <form action="#">
-                                    <div class="form-group form-group-sm">
-                                        <label>Country</label>
-                                        <div class="select-custom">
-                                            <select class="form-control form-control-sm">
-                                                <option value="USA">United States</option>
-                                                <option value="Turkey">Turkey</option>
-                                                <option value="China">China</option>
-                                                <option value="Germany">Germany</option>
-                                            </select>
-                                        </div><!-- End .select-custom -->
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group form-group-sm">
-                                        <label>State/Province</label>
-                                        <div class="select-custom">
-                                            <select class="form-control form-control-sm">
-                                                <option value="CA">California</option>
-                                                <option value="TX">Texas</option>
-                                            </select>
-                                        </div><!-- End .select-custom -->
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group form-group-sm">
-                                        <label>Zip/Postal Code</label>
-                                        <input type="text" class="form-control form-control-sm">
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group form-group-custom-control">
-                                        <label>Flat Way</label>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="flat-rate">
-                                            <label class="custom-control-label" for="flat-rate">Fixed $5.00</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group form-group-custom-control">
-                                        <label>Best Rate</label>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="best-rate">
-                                            <label class="custom-control-label" for="best-rate">Table Rate $15.00</label>
-                                        </div><!-- End .custom-checkbox -->
-                                    </div><!-- End .form-group -->
-                                </form>
-                            </div><!-- End #total-estimate-section -->
-
-                            <table class="table table-totals">
-                                <tbody>
-                                    <tr>
-                                       
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td>Total Commande</td>
-                                        <td id="prixTotal">$17.90</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
-                            <div class="checkout-methods">
-                                <span  class="btn btn-block btn-sm btn-primary" >passer la commande</span>
-                            </div><!-- End .checkout-methods -->
-                        </div><!-- End .cart-summary -->
-                    </div><!-- End .col-lg-4 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-
-            <div class="mb-6"></div><!-- margin -->
-        </main><!-- End .main -->
-
-        <footer class="footer">
-            <div class="info-boxes-container">
-                <div class="container">
-                    <div class="info-box">
-                        <i class="icon-shipping"></i>
-
-                        <div class="info-box-content">
-                            <h4>FREE SHIPPING & RETURN</h4>
-                            <p>Free shipping on all orders over $99.</p>
-                        </div><!-- End .info-box-content -->
-                    </div><!-- End .info-box -->
-
-                    <div class="info-box">
-                        <i class="icon-us-dollar"></i>
-
-                        <div class="info-box-content">
-                            <h4>MONEY BACK GUARANTEE</h4>
-                            <p>100% money back guarantee</p>
-                        </div><!-- End .info-box-content -->
-                    </div><!-- End .info-box -->
-
-                    <div class="info-box">
-                        <i class="icon-support"></i>
-
-                        <div class="info-box-content">
-                            <h4>ONLINE SUPPORT 24/7</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                        </div><!-- End .info-box-content -->
-                    </div><!-- End .info-box -->
-                </div><!-- End .container -->
-            </div><!-- End .info-boxes-container -->
-
-            <div class="container-fluid">
-                <div class="footer-top">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <div class="widget widget-newsletter">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h4 class="widget-title">Subscribe newsletter</h4>
-                                        <p>Get all the latest information on Events,Sales and Offers. Sign up for newsletter today</p>
-                                    </div><!-- End .col-lg-6 -->
-
-                                    <div class="col-lg-6">
-                                        <form action="#">
-                                            <input type="email" class="form-control" placeholder="Email address" required>
-
-                                            <input type="submit" class="btn" value="Subscribe">
-                                        </form>
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .widget -->
-                        </div><!-- End .col-md-9 -->
-
-                        <div class="col-lg-2 widget-social">
-                            <div class="social-icons">
-                                <a href="#" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
-                                <a href="#" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
-                                <a href="#" class="social-icon" target="_blank"><i class="icon-linkedin"></i></a>
-                            </div><!-- End .social-icons -->
-                        </div><!-- End .col-md-3 -->
-                    </div><!-- End .row -->
-                </div><!-- End .footer-top -->
-            </div><!-- End .container-fluid -->
-
-            <div class="footer-middle">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="widget">
-                                <h4 class="widget-title">Contact Info</h4>
-                                <ul class="contact-info">
-                                    <li>
-                                        <span class="contact-info-label">Address:</span>123 Street Name, City, England
-                                    </li>
-                                    <li>
-                                        <span class="contact-info-label">Phone:</span>Toll Free <a href="tel:">(123) 456-7890</a>
-                                    </li>
-                                    <li>
-                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">mail@example.com</a>
-                                    </li>
-                                </ul>
-                            </div><!-- End .widget -->
-                        </div><!-- End .col-lg-3 -->
-
-                        <div class="col-lg-9">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
-
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="about.php">About Us</a></li>
-                                                    <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">My Account</a></li>
-                                                </ul>
-                                            </div><!-- End .col-sm-6 -->
-                                            <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="#">Orders History</a></li>
-                                                    <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="#" class="login-link">Login</a></li>
-                                                </ul>
-                                            </div><!-- End .col-sm-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .widget -->
-                                </div><!-- End .col-md-4 -->
-
-                                <div class="col-lg-5">
-                                    <div class="widget">
-                                        <h4 class="widget-title">Main Features</h4>
-                                        
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="#">Super Fast Magento Theme</a></li>
-                                                    <li><a href="#">1st Fully working Ajax Theme</a></li>
-                                                    <li><a href="#">20 Unique Homepage Layouts</a></li>
-                                                </ul>
-                                            </div><!-- End .col-sm-6 -->
-                                            <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="#">Powerful Admin Panel</a></li>
-                                                    <li><a href="#">Mobile & Retina Optimized</a></li>
-                                                </ul>
-                                            </div><!-- End .col-sm-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .widget -->
-                                </div><!-- End .col-md-5 -->
-
-                                <div class="col-lg-3">
-                                    <div class="widget">
-                                        <h4 class="widget-title">Working Days/Hours</h4>
-                                        <ul class="contact-info">
-                                            <li>
-                                                Mon - Sun / 9:00AM - 8:00PM
-                                            </li>
-                                        </ul>
-                                    </div><!-- End .widget -->
-                                </div><!-- End .col-md-33 -->
-                            </div><!-- End .row -->
-
-                            <div class="footer-bottom">
-                                <p class="footer-copyright">Porto eCommerce. &copy;  2018.  All Rights Reserved</p>
-                                <img src="assets/images/payments.png" alt="payment methods" class="footer-payments">
-                            </div><!-- End .footer-bottom -->
-                        </div><!-- End .col-lg-9 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container-fluid -->
-            </div><!-- End .footer-middle -->
-        </footer><!-- End .footer -->
     </div><!-- End .page-wrapper -->
 
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
@@ -717,7 +432,7 @@ include "../../core/PanierC.php";
                     <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
                     <li><a href="#">Buy Porto!</a></li>
                 </ul>
-            </nav><!-- End .mobile-nav -->
+            </nav><!-- End .mobile-nav -->s
 
             <div class="social-icons">
                 <a href="#" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
@@ -758,19 +473,14 @@ include "../../core/PanierC.php";
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
-    <script >
-        
-        $(function(){
-            var index=0;
-            var image;
-            $(".btn-remove").click(function() {
-                image=$(this).attr("id");
-                console.log($(this).parent().parent().parent().prev());
-                $(this).parent().parent().parent().prev().remove();
-                $(this).parent().parent().parent().remove();
-                
-                 $.post("supprimerPanier.php", {
-                       image:image
+    <script>
+   $(function(){
+    $('[type="button"]').click(function(){
+        $(this).each(function(){
+           $(this).parent().parent().hide();
+            let image=$(this).attr("id");
+             $.post("supprimerPanier.php", {
+                      image:image
                     },
                     function(data, status) {
 
@@ -779,50 +489,9 @@ include "../../core/PanierC.php";
 
                     });
         })
-            
-            var prixTotal=0;
-             var x=document.getElementsByClassName("prix");
-            for(var i=0;i<x.length;i++){
-                console.log(typeof(x[i].textContent));
-                prixTotal+=parseInt(x[i].textContent);
-               
-            }
-            $(".btn.btn-block.btn-sm.btn-primary").click(function(){
-                
-                window.location.href="checkout-shipping.php?prixTotal="+prixTotal+"";
-            })
-           
-            $("tbody").eq(1).children("tr").html("<p style='font-size:15px;margin-top:20px;'>Nombre de Produits :"+ x.length+"</p>");
-             $("#prixTotal").text(prixTotal+" dinars");
-              var quantite=new Array();
-              var image2=new Array();
-            $(".btn.btn-outline.bootstrap-touchspin-up.icon-up-dir,.btn.btn-outline.bootstrap-touchspin-down.icon-down-dir").click(function() {
-                $(this).each(function() {
-                    console.log($(this).parent().siblings("input").attr("image2"));
-                    var index=parseInt($(this).parent().siblings("input").attr("index"));
-                    quantite[index]=$(this).parent().siblings("input").val();
-                    console.log(quantite[index]);
-                    image2[index]=$(this).parent().siblings("input").attr("image2");
-                    })
-                
-                 $.post("modifierPanier.php", {
-                       image2:image2,
-                     quantite:quantite
-                    },
-                    function(data, status) {
+    })
 
-//                        alert(data, status);
-
-
-                    });
-                })
-            
-            
-            
-            
-        })
-  
-    </script>
-    
+})
+</script>
 </body>
 </html>

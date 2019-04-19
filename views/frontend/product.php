@@ -1,6 +1,8 @@
 <?php
 include "../../core/produitC.php";
+session_start();
 chdir(__DIR__);
+
 $ref=$_POST['ref'];
 $produitC=new ProduitC();
 $liste=$produitC->afficherProduitParRef($ref);
@@ -159,7 +161,7 @@ $avaiblable_sizes= array();
 
                                                        
                                                         <input hidden type="radio" id="color-<?php echo $C ?>" name="color-<?php echo $C ?>" value="<?php echo $C ?>">
-                                                        <label for="color-<?php echo $C ?>" style="background-color: <?php echo $colors_code ?>;
+                                                        <label class="couleur" for="color-<?php echo $C ?>" style="background-color: <?php echo $colors_code ?>;
                                                         width: 25px;color:transparent;" onclick="getSize('<?php echo $C; ?>','<?php echo $liste['reference'];?>');" color="red">
 
                                                            -   
@@ -237,7 +239,7 @@ $avaiblable_sizes= array();
 
                                             <form class="test" action="cart.php" method="POST">
                                             <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>">
-                                            <button type="submit" class="paction add-cart" value="Add to Cart"><span>Ajouter au panier</span></button>
+                                            <button  id="ajouter" class="paction add-cart" value="Add to Cart"><span>Ajouter au panier</span></button>
                                             </form>
                                            
                                            
@@ -276,5 +278,104 @@ $avaiblable_sizes= array();
 
     <!-- www.addthis.com share plugin -->
     <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b927288a03dbde6"></script>
+    <script> 
+  $(function() {
+            var image = "";
+            var prix = 0;
+            var quantite = 0;
+            var couleur = "non entree";
+            var taille = "non entree";
+     
+     
+      
+//      $("product-single-image").each(function(){
+//          $(this).click(function(){
+//              alert($(this).attr("src"));
+//          })
+//      })
+
+
+            $(".col-3.owl-dot").click(function() {
+                $(this).each(function() {
+//                    alert($(this).children("img").attr("src"));
+                    image = $(this).children("img").attr("src");
+                    
+                })
+            })
+            prix = $(".product-price").eq(0).text();
+//            alert(prix);
+
+
+            $(".couleur").click(function() {
+                $(this).each(function() {
+//                    alert($(this).css("color"));
+                    couleur = $(this).css("backgroundColor");
+//                    alert(couleur);
+                })
+
+            }) // quantite
+        $('[for="option-0"]').click(function() {
+                $(this).each(function() {
+//                    alert($(this).css("color"));
+                    taille = $(this).text();
+                    console.log($(this));
+                    alert(couleur);
+                })
+
+            })
+            $(".btn.btn-outline.btn-up-icon.bootstrap-touchspin-up").click(function() {
+                quantite = $(".horizontal-quantity").val();
+                console.log(quantite);
+            })
+            $(".btn.btn-outline.btn-down-icon.bootstrap-touchspin-down").click(function() {
+                quantite = $(".horizontal-quantity").val();
+                console.log(quantite);
+            })
+            $('#ajouter').click(function() {
+                
+                $.post("ajouterPanier.php", {
+                        image:image,
+                        prix:prix,
+                        quantite:quantite,
+                        couleur:couleur
+                    },
+                    function(data, status) {
+
+                   window.location.href="cart.php";
+
+
+                    });
+//                 $.post("creerPanier.php", {
+//                        creer:0
+//                    },
+//                    function(data, status) {
+//
+////                  alert(data);
+//
+//
+//                    })
+                
+                
+
+            });
+            
+            $('#creer').click(function(){
+                 $.post("creerPanier.php", {
+                        creer:1
+                    },
+                    function(data, status) {
+
+//                  alert(data );
+                     
+
+
+                    });
+                
+                
+               
+            })
+
+        })                    
+</script>
 </body>
 </html>

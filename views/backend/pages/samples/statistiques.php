@@ -1,9 +1,53 @@
-<?PHP
+<?php 
 session_start();
-echo "azeze" . $_SESSION['email_admin'];
-if ($_SESSION['email_admin'] == "") {
-    header('Location: login.php');
-}
+  include "../../../../entities/comptes/admin.php";
+  include "../../../../core/comptes/adminC.php";
+	$sql='select COUNT(*) as nombre from commande where date like "%2019-0-%" and etat LIKE "%paye"';
+	$sql2='select COUNT(*)as nombre  from commande where date like "%2019-1%" and etat LIKE "%paye"';
+	$sql3='select COUNT(*) as nombre from commande where date like "%2019-2%" and etat LIKE "%paye"';
+	$sql4='select COUNT(*)as nombre  from commande where date like "%2019-3%" and etat LIKE "%paye"';
+	$sql5='select COUNT(*) as nombre from commande where date like "%2019-4%" and etat LIKE "%paye"';
+	$sql6='select COUNT(*)as nombre  from commande where date like "%2019-5%" and etat LIKE "%paye"';
+$db = config::getConnexion();
+	try
+		{
+        $req=$db->prepare($sql);
+        $req2=$db->prepare($sql2);
+        $req3=$db->prepare($sql3);
+        $req4=$db->prepare($sql4);
+        $req5=$db->prepare($sql5);
+        $req6=$db->prepare($sql6);
+         $req->execute();
+        $rows=$req->fetchAll();
+        $janvier=$rows[0]["nombre"];
+         $req2->execute();
+        $rows=$req2->fetchAll();
+        $fevrier=$rows[0]["nombre"];
+           $req3->execute();
+        $rows=$req3->fetchAll();
+        $mars=$rows[0]["nombre"];
+            $req4->execute();
+        $rows=$req4->fetchAll();
+        $avril=$rows[0]["nombre"];
+            $req5->execute();
+        $rows=$req5->fetchAll();
+        $mai=$rows[0]["nombre"];
+           $req6->execute();
+        $rows=$req6->fetchAll();
+        $juin=$rows[0]["nombre"];
+        echo $janvier,$fevrier,$mars,$avril,$mai,$juin;
+        
+        
+        
+        
+    
+       
+        }
+        catch (Exception $e)
+        {
+            echo 'Erreur: '.$e->getMessage();
+        }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +62,7 @@ if ($_SESSION['email_admin'] == "") {
     <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -25,51 +70,45 @@ if ($_SESSION['email_admin'] == "") {
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <style>
-        .hide {
-            display: none;
+        canvas{
+            transform: scale(0.7,0.7);
         }
     </style>
+
+
 </head>
 
 <body>
-    <?PHP
-    include "../../../../entities/comptes/admin.php";
-    include "../../../../core/comptes/adminC.php";
+      <?PHP
 
-    echo $_SESSION['email_admin'];
-    if (isset($_SESSION['email_admin'])) {
-        $adminC = new AdminC();
-        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
-        $nbr = $result->rowCount();
-        echo $nbr . "rows";
-        if ($nbr == 0) {
-            echo "   vide ";
-            header('Location: login.php');
-        }
-        foreach ($result as $row) {
-            $nom = $row['nom'];
-            $prenom = $row['prenom'];
-            $datenaissance = $row['datenaissance'];
-            $sexe = $row['sexe'];
-            $password = $row['motdepasse'];
-        }
-    } else {
-        header('Location: login.php');
+
+  echo $_SESSION['email_admin'];
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
     }
-    ?>
-    <div class="container-scroller">
+  } else {
+    header('Location: login.php');
+  }
+  ?>
+
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+<div class="container-scroller" style="margin-bottom:100px">
         <!-- partial:../../partials/_horizontal-navbar.php -->
-        <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+           <nav class="navbar horizontal-layout col-lg-12 col-12 p-0" >
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
-                        <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="index.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
                         <form class="search-field d-none d-md-flex" action="#">
@@ -200,12 +239,12 @@ if ($_SESSION['email_admin'] == "") {
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href="profile.php">
+                                    <a class="dropdown-item" href = "pages/samples/profile.php">
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profile
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="login.php">
+                                    <a class="dropdown-item" href="pages/samples/login.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Se déconnecter
                                     </a>
@@ -268,134 +307,54 @@ if ($_SESSION['email_admin'] == "") {
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="orders.php"> commandes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="">statistiques des ventes</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <!-- partial -->
-        <div class="container">
-            <br />
-            <div class="table-responsive">
-                <h3 align="center">Liste des utilisateurs du site</h3><br />
-                <div id="grid_table"></div>
+            <canvas id="myChart" style=""></canvas>
+
+        <div class="container-fluid page-body-wrapper" heigt="500px">
+            <div class="main-panel">
+             
+                <!-- partial:../../partials/_footer.php -->
+                
+                <footer >
+                 
+                    <!--                    Modal-->
+               
+
+                  
+                 
+                </footer>
+                <!-- partial -->
             </div>
+            <!-- main-panel ends -->
         </div>
-        <script>
-            $('#grid_table').jsGrid({
-
-                width: "100%",
-                height: "600px",
-
-                filtering: true,
-                inserting: true,
-                editing: true,
-                sorting: true,
-                paging: true,
-                autoload: true,
-                pageSize: 10,
-                pageButtonCount: 5,
-                deleteConfirm: "Do you really want to delete data?",
-
-                controller: {
-                    loadData: function(filter) {
-                        return $.ajax({
-                            type: "GET",
-                            url: "gestionUtilisateurs.php",
-                            data: filter
-                        });
-                    },
-                    insertItem: function(item) {
-                        return $.ajax({
-                            type: "POST",
-                            url: "gestionUtilisateurs.php",
-                            data: item
-                        });
-                    },
-                    updateItem: function(item) {
-                        return $.ajax({
-                            type: "PUT",
-                            url: "gestionUtilisateurs.php",
-                            data: item
-                        });
-                    },
-                    deleteItem: function(item) {
-                        return $.ajax({
-                            type: "DELETE",
-                            url: "gestionUtilisateurs.php",
-                            data: item
-                        });
-                    },
-                },
-
-                fields: [{
-                        name: "email",
-                        type: "text",
-                        width: 200,
-                        validate: "required"
-                    },
-                    {
-                        name: "nom",
-                        type: "text",
-                        width: 100,
-                        validate: "required"
-                    },
-                    {
-                        name: "prenom",
-                        type: "text",
-                        width: 100,
-                        validate: "required"
-                    },
-                    {
-                        name: "datenaissance",
-                        type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "sexe",
-                        type: "select",
-                        items: [{
-                                Name: "homme",
-                                Id: 'homme'
-                            },
-                            {
-                                Name: "femme",
-                                Id: 'femme'
-                            }
-                        ],
-                        valueField: "Id",
-                        textField: "Name",
-                        validate: "required"
-                    },
-                    {
-                        type: "control"
-                    }
-                ]
-
-            }, {
-                name: "prenom",
-                type: "text",
-                width: 150,
-                validate: "required"
-            });
-        </script>
-
-        <!-- partial:../../partials/_footer.php -->
-        <footer class="footer">
-            <div class="w-100 clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-            </div>
-        </footer>
-        <!-- partial -->
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+    <script src="Commandes.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../js/template.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/data-table.js"></script>
+    <!-- End custom js for this page-->
     <script src="../../vendors/js/vendor.bundle.base.js"></script>
     <script src="../../vendors/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->
@@ -405,8 +364,68 @@ if ($_SESSION['email_admin'] == "") {
     <script src="../../js/template.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="../../js/form-addons.js"></script>
-    <!-- End custom js for this page-->
+    <script src="../../js/wizard.js"></script>
+
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../js/template.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/js-grid.js"></script>
+    <script src="../../js/db.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    
+<script>
+var canvas= document.getElementById('myChart');
+var janvier=parseInt("<?php echo $janvier;?>");
+var fevrier=parseInt("<?php echo $fevrier;?>");
+var mars=parseInt("<?php echo $mars;?>");
+var avril=parseInt("<?php echo $avril;?>");
+var mai=parseInt("<?php echo $mai;?>");
+var juin=parseInt("<?php echo $juin;?>");
+var ctx = canvas.getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin'],
+        datasets: [{
+            label: 'Nombre de ventes',
+            data: [janvier, fevrier, mars, avril, mai, juin],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+    
 </body>
 
 </html>

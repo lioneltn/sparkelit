@@ -1,5 +1,16 @@
+
+<?php 
+include "../../core/config.php";
+session_start();
+
+ $_SESSION["prixTotal"]=$_GET["prixTotal"];
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +21,18 @@
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">
-        
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
-    
+
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="Commande.css">
 </head>
+
 <body>
     <div class="page-wrapper">
         <header class="header">
@@ -34,39 +47,39 @@
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                        <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
-                                                        <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
-                                                        <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
-                                                        <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
-                                                        <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
-                                                        <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
-                                                        <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                                <div class="col-lg-6">
-                                                    <div class="menu-title">
-                                                        <a href="#">Variations 2</a>
-                                                    </div>
-                                                    <ul>
-                                                        <li><a href="#">Product List Item Types</a></li>
-                                                        <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
-                                                        <li><a href="category-3col.php">3 Columns Products</a></li>
-                                                        <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                        <li><a href="category.php">5 Columns Products</a></li>
-                                                        <li><a href="category-6col.php">6 Columns Products</a></li>
-                                                        <li><a href="category-7col.php">7 Columns Products</a></li>
-                                                        <li><a href="category-8col.php">8 Columns Products</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-6 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .col-lg-8 -->
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
+                                                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
+                                                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
+                                                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
+                                                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
+                                                            <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
+                                                            <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                    <div class="col-lg-6">
+                                                        <div class="menu-title">
+                                                            <a href="#">Variations 2</a>
+                                                        </div>
+                                                        <ul>
+                                                            <li><a href="#">Product List Item Types</a></li>
+                                                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
+                                                            <li><a href="category-3col.php">3 Columns Products</a></li>
+                                                            <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
+                                                            <li><a href="category.php">5 Columns Products</a></li>
+                                                            <li><a href="category-6col.php">6 Columns Products</a></li>
+                                                            <li><a href="category-7col.php">7 Columns Products</a></li>
+                                                            <li><a href="category-8col.php">8 Columns Products</a></li>
+                                                        </ul>
+                                                    </div><!-- End .col-lg-6 -->
+                                                </div><!-- End .row -->
+                                            </div><!-- End .col-lg-8 -->
                                             <div class="col-lg-4">
                                                 <div class="banner">
                                                     <a href="#">
@@ -179,7 +192,7 @@
                     <div class="header-right">
                         <div class="header-search">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                            <form action="#" method="get">
+                            <form action="" method="post">
                                 <div class="header-search-wrapper">
                                     <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
                                     <div class="select-custom">
@@ -211,7 +224,7 @@
                         <button class="mobile-menu-toggler" type="button">
                             <i class="icon-menu"></i>
                         </button>
-                        
+
                         <div class="header-dropdowns">
                             <div class="header-dropdown">
                                 <a href="#">USD</a>
@@ -257,7 +270,7 @@
                                 <span class="cart-count">2</span>
                             </a>
 
-                            <div class="dropdown-menu" >
+                            <div class="dropdown-menu">
                                 <div class="dropdownmenu-wrapper">
                                     <div class="dropdown-cart-products">
                                         <div class="product">
@@ -318,200 +331,67 @@
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-        
+
         <main class="main">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                <div class="container-fluid">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                    </ol>
-                </div><!-- End .container-fluid -->
-            </nav>
 
             <div class="container">
-                <ul class="checkout-progress-bar">
+                <ul class="checkout-progress-bar" style="margin-top:50px;">
                     <li class="active">
-                        <span>Shipping</span>
+                        <span>Connexion</span>
                     </li>
                     <li>
-                        <span>Review &amp; Payments</span>
+                        <span>Commande</span>
                     </li>
                 </ul>
                 <div class="row">
                     <div class="col-lg-8">
                         <ul class="checkout-steps">
                             <li>
-                                <h2 class="step-title">Shipping Address</h2>
+                                <h2 class="step-title">Connexion</h2>
 
-                                <form action="#">
+
+                                <form action="#" method="post">
                                     <div class="form-group required-field">
-                                        <label>Email Address </label>
+                                        <label>Adresse mail </label>
                                         <div class="form-control-tooltip">
-                                            <input type="email" class="form-control" required>
-                                            <span class="input-tooltip" data-toggle="tooltip" title="We'll send your order confirmation here." data-placement="right"><i class="icon-question-circle"></i></span>
+                                            <input type="email" class="form-control" value="" name="login" required>
+<!--                                            <span class="input-tooltip" data-toggle="tooltip" title="We'll send your order confirmation here." data-placement="right"><i class="icon-question-circle"></i></span>-->
                                         </div><!-- End .form-control-tooltip -->
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group required-field">
-                                        <label>Password </label>
-                                        <input type="password" class="form-control" required>
+                                        <label>Mot de passe </label>
+                                        <input type="password" class="form-control" name="password" required maxlength="8" value="" oninput="controlSaisie(this)">
                                     </div><!-- End .form-group -->
-                                    
-                                    <p>You already have an account with us. Sign in or continue as guest.</p>
+
+                                    <p>Vous n'avez pas encore de compte? Connectez Vous ou créez en un</p>
                                     <div class="form-footer">
-                                        <button type="submit" class="btn btn-primary">LOGIN</button>
-                                        <a href="forgot-password.php" class="forget-pass"> Forgot your password?</a>
+                                        <button type="button" class="btn btn-primary" id="login" name="valider">LOGIN</button>
+                                        <a href="forgot-password.php" class="forget-pass"> avez vous oublie votre mot de passe?</a>
                                     </div><!-- End .form-footer -->
+
                                 </form>
 
-                                <form action="#">
-                                    <div class="form-group required-field">
-                                        <label>First Name </label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .form-group -->
+                                <div style="margin-top:50px">
+                                    <h1 style="font-size: 2.2rem;font-weight:300;margin-bottom:30px;" class="step-title">Creer un compte </h1>
+                                    <div class="row">
+                                        <button type="submit" class="btn btn-primary container" style="margin-top: :200px;margin-right:300px">Creer un compte</button>
+                                    </div>
 
-                                    <div class="form-group required-field">
-                                        <label>Last Name </label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .form-group -->
 
-                                    <div class="form-group">
-                                        <label>Company </label>
-                                        <input type="text" class="form-control">
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group required-field">
-                                        <label>Street Address </label>
-                                        <input type="text" class="form-control" required>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group required-field">
-                                        <label>City  </label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group">
-                                        <label>State/Province</label>
-                                        <div class="select-custom">
-                                            <select class="form-control">
-                                                <option value="CA">California</option>
-                                                <option value="TX">Texas</option>
-                                            </select>
-                                        </div><!-- End .select-custom -->
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group required-field">
-                                        <label>Zip/Postal Code </label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <div class="select-custom">
-                                            <select class="form-control">
-                                                <option value="USA">United States</option>
-                                                <option value="Turkey">Turkey</option>
-                                                <option value="China">China</option>
-                                                <option value="Germany">Germany</option>
-                                            </select>
-                                        </div><!-- End .select-custom -->
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group required-field">
-                                        <label>Phone Number </label>
-                                        <div class="form-control-tooltip">
-                                            <input type="tel" class="form-control" required>
-                                            <span class="input-tooltip" data-toggle="tooltip" title="For delivery questions." data-placement="right"><i class="icon-question-circle"></i></span>
-                                        </div><!-- End .form-control-tooltip -->
-                                    </div><!-- End .form-group -->
-                                </form>
+                                </div>
                             </li>
 
-                            <li>
-                                <div class="checkout-step-shipping">
-                                    <h2 class="step-title">Shipping Methods</h2>
 
-                                    <table class="table table-step-shipping">
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="radio" name="shipping-method" value="flat"></td>
-                                                <td><strong>$20.00</strong></td>
-                                                <td>Fixed</td>
-                                                <td>Flat Rate</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><input type="radio" name="shipping-method" value="best"></td>
-                                                <td><strong>$15.00</strong></td>
-                                                <td>Table Rate</td>
-                                                <td>Best Way</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div><!-- End .checkout-step-shipping -->
-                            </li>
                         </ul>
                     </div><!-- End .col-lg-8 -->
-
-                    <div class="col-lg-4">
-                        <div class="order-summary">
-                            <h3>Summary</h3>
-
-                            <h4>
-                                <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="false" aria-controls="order-cart-section">2 products in Cart</a>
-                            </h4>
-
-                            <div class="collapse" id="order-cart-section">
-                                <table class="table table-mini-cart">
-                                    <tbody>
-                                        <tr>
-                                            <td class="product-col">
-                                                <figure class="product-image-container">
-                                                    <a href="product.php" class="product-image">
-                                                        <img src="assets/images/products/product-1.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <div>
-                                                    <h2 class="product-title">
-                                                        <a href="product.php">Woman Fashion</a>
-                                                    </h2>
-
-                                                    <span class="product-qty">Qty: 4</span>
-                                                </div>
-                                            </td>
-                                            <td class="price-col">$17.90</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="product-col">
-                                                <figure class="product-image-container">
-                                                    <a href="product.php" class="product-image">
-                                                        <img src="assets/images/products/product-2.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <div>
-                                                    <h2 class="product-title">
-                                                        <a href="product.php">Dress</a>
-                                                    </h2>
-
-                                                    <span class="product-qty">Qty: 4</span>
-                                                </div>
-                                            </td>
-                                            <td class="price-col">$7.90</td>
-                                        </tr>
-                                    </tbody>    
-                                </table>
-                            </div><!-- End #order-cart-section -->
-                        </div><!-- End .order-summary -->
-                    </div><!-- End .col-lg-4 -->
+                    <!-- End .col-lg-4 -->
                 </div><!-- End .row -->
 
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="checkout-steps-action">
-                            <a href="checkout-review.php" class="btn btn-primary float-right">NEXT</a>
+                            <!--                            <a href="checkout-review.php" class="btn btn-primary float-right">Suivant</a>-->
                         </div><!-- End .checkout-steps-action -->
                     </div><!-- End .col-lg-8 -->
                 </div><!-- End .row -->
@@ -633,7 +513,7 @@
                                 <div class="col-lg-5">
                                     <div class="widget">
                                         <h4 class="widget-title">Main Features</h4>
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
@@ -665,7 +545,7 @@
                             </div><!-- End .row -->
 
                             <div class="footer-bottom">
-                                <p class="footer-copyright">Porto eCommerce. &copy;  2018.  All Rights Reserved</p>
+                                <p class="footer-copyright">Porto eCommerce. &copy; 2018. All Rights Reserved</p>
                                 <img src="assets/images/payments.png" alt="payment methods" class="footer-payments">
                             </div><!-- End .footer-bottom -->
                         </div><!-- End .col-lg-9 -->
@@ -805,5 +685,76 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
+    <script src="Commandes.js"></script>
+    <script src="Commandes2.js"></script>
+    <script>
+
+      $(function(){
+            
+        
+ $("#login").click(function () {
+        let email = $("[name='login']").val();
+    let class1=$("[name='login']").attr("class");
+        console.log(class1);
+        if (email.match(/[.]/g) && email.match(/[@]/g)) {
+            $.post("connexion2.php", {
+                    login: $("[name='login']").val(),
+                    password: $("[name='password']").val()
+                },
+                function (data) {
+                if(data!="negatif")
+                   
+                        window.location.href = "checkout-review.php?login="+data;
+                else alert(" soit vous n'existez pas dans la base de donnee soit vous avez un probleme de control de saisie");
+                 
+
+                });
+          
+            
+            
+              $("[name='login']").css("borderColor","#ced4da");
+           
+                
+           
+             if( $("[name='login']").parent().children("p").length!=0
+              
+               )
+                  $("[name='login']").parent().children("p").remove();
+
+        }
+        else {
+
+            if( $("[name='login']").parent().children("p").length==0){
+              
+              $("[name='login']").after("<p style='color:red'>erreur sur l'adresse mail</p>");
+            $("[name='login']").css({
+                borderColor:"red"
+            })   
+        }
+           
+        }
+
+    })
+            
+            
+        })
+        
+
+    </script>
+
 </body>
+
 </html>
+<?php 
+
+//$_SESSION["login"] = $_POST["login"];
+if(isset($_POST["login"]) and isset($_POST["password"])){
+    
+        echo $_POST["login"];
+        echo $_POST["password"];
+        
+    }
+            else echo "<h1>cela n'existe pas</h1>";
+
+?>
+

@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+}
+.popup {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    
+}
+.popup img:nth-child(1) {
+    float: left;
+}
+.popup div:nth-child(2) {
+    display: inline;
+    border: 1px solid #332828;
+  float: left;
+    height: 400px;
+    opacity: 0.4;
+}
+.popup div:nth-child(3) {
+    float: left;
+    
+}
+.popup div:nth-child(3) p:nth-child(1) {
+    padding: 0px 30px;
+    text-align: center;
+    font-size: 40px;
+    font-family: Noto Serif;
+    margin-bottom: 45px;
+    
+}
+.popup div:nth-child(3) p:nth-child(2) {
+    text-align: center;
+    font-size: 20px;
+    font-family: Noto Serif;
+    color: #030101;
+        margin-bottom: 30px;
+    opacity: 0.73;
+
+}
+.popup div:nth-child(3) p:nth-child(4) {
+    padding: 0 10%;
+    display: inline-block;
+    text-align: center;
+    font-size: 10px;
+    font-family: Noto Serif;
+    color: #030101;
+    width: 90%;
+
+}
+.popup div hr{
+    width:75%;
+}
+.popup div button{
+    text-align: center;
+    width:200px;
+    height:50px;
+    background: #000000;
+    color: white;
+    font-size:20px;
+    margin-left:30%;
+    margin-top:10%;
+    border-radius:8.5px;
+    transition:transform 1s; 
+    font-size: 25px;
+}
+.popup div button:hover{
+   border-color: blue;
+    transform:scale(1.1,1.1);
+    
+}
+.popup div button:nth-child(2){
+    
+    position:absolute;
+  
+    
+}
