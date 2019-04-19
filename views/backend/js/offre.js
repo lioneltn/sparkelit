@@ -1,7 +1,6 @@
 //input fields
 
 const id=document.getElementById("exampleInputID");
-const idSlider=document.getElementById("exampleInputIDSlider");
 const nom=document.getElementById("exampleInputNom");
 const desc=document.getElementById("exampleInputDescripition");
 const prix=document.getElementById("exampleInputPrix");
@@ -37,24 +36,11 @@ if(checkIfOnlyLetters(nom))
     return true;
 }
 
-/*function validerDesc()
+function validerDesc()
 {
 //si il est vide
 if(checkIfEmpty(desc))
 	return;
-//si il ya seulement des nombres
-if(checkIfdesc(desc))
-    return;
-}
-*/
-function valideridSlider()
-{
-//si il est vide
-if(checkIfEmpty(idSlider))
-	return;
-//si il ya seulement des nombres
-if(checkIfOnlyNumbers(idSlider))
-    return;
 }
 
 function validerPrix()
@@ -123,47 +109,23 @@ function checkIfOnlyNumbers(field)
 	}
 	else 
 	{
-        setInvalid(field, `${field.name} must contain only numbers`)
+        setInvalid(field, `${field.name} contient seulement des nombres`)
         return false;
 	}
 }
 
 function checkIfOnlyLetters(field)
 {
-	if(/^[A-Za-z]+$/.test(field.value))
+	if(/^[A-Za-z0-9]+$/.test(field.value))
 	{
 		setValid(field);
 		return true;
 	}
 	else 
 	{
-        setInvalid(field, `${field.value} must contain only letters and 8 caracters `);
+        setInvalid(field, `${field.value} seulement nombres , caracteres et % `);
         return false;
 	}
 }
 
-/*function checkIfdesc(field)
-{
-	if(/^[%]+$/.test(field.value) )
-	{
-		setValid(field);
-		return true;
-	}
-	else 
-	{
-        setInvalid(field, `${field.name} Description trop longue `);
-        return false;
-    }
-}
-
-*/
-
-function annuler()
-{
- id=document.getElementById("exampleInputID").value="";
- idSlider=document.getElementById("exampleInputIDSlider").value="";
- nom=document.getElementById("exampleInputNom").value="";
- desc=document.getElementById("exampleInputDescripition").value="";
-
-}
 

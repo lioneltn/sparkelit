@@ -718,8 +718,23 @@ function search($query)
 		}
 
 	}
-
+	
+function afficherRefProduit()
+	{
+		$sql="SElECT reference From produit";
+		$db = config3::getConnexion();
+		try
+		{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 }
+
 
 
 

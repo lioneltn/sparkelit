@@ -5,9 +5,8 @@ include "../core/produitC.php";
 $produitC=new ProduitC();
 $listeProduit=$produitC->afficherRefProduit();
 
-//var_dump($listeEmployes->fetchAll());
 ?>
-<select class="form-control" name="reference">
+<select class="form-control" name="refP">
 
 <?PHP
 foreach($listeProduit as $row){

@@ -3,23 +3,29 @@ class Offre
 {
 	private $id;
 	private $nom;
-	private $idSlider;
 	private $desc;
 	private $refP;
-	private $prix;
+	//private $prix;
     private $prix_anc;
-    
+    private $image;
+    private $remise;
+    private $dateD;
+    private $dateF;
 
-	function __construct($id,$nom,$idSlider,$desc,$refP,$image)
+	function __construct($id,$nom,$desc,$refP,$prix,$prix_anc,$image,$remise,$dateD,$dateF)
 	{
 		$this->id=$id;
-		$this->nom=$nom;
-		$this->idSlider=$idSlider;
+		$this->nom=$nom;	
 		$this->desc=$desc;
 		$this->refP=$refP;
-		$this->image=$image;
+		
 		$this->prix=$prix;
+		$this->remise=$remise;
 		$this->prix_anc=$prix_anc;
+		$this->image=$image;
+		$this->dateD=$dateD;
+		$this->dateF=$dateF;
+
 	}
 
 	function getid()
@@ -30,11 +36,6 @@ class Offre
 	function getnom()
 	{
 		return $this->nom;
-	}
-
-	function getidSlider()
-	{
-		return $this->idSlider;
 	}
 
 	function getrefP()
@@ -58,6 +59,18 @@ class Offre
 	function getprix_anc()
 	{
 		return $this->prix_anc;
+	}
+	function getremise()
+	{
+		return $this->remise;
+	}
+function getdateD()
+	{
+		return $this->dateD;
+	}
+function getdateF()
+	{
+		return $this->dateF;
 	}
 
 }

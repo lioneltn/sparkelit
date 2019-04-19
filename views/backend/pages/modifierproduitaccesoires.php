@@ -120,7 +120,29 @@ else
                 </ul>
               </div>
             </li>
-
+<li class="nav-item">
+              <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
+              <div class="submenu">
+                <ul class="submenu-item">
+                  <li class="nav-item"><a class="nav-link" href="ajouterOffre.php"> Ajouter offre</a></li>
+                  <li class="nav-item"><a class="nav-link" href="afficherOffres.php">Afficher offre</a></li>
+                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+                </ul>
+              </div>
+            </li> 
+             
+            <li class="nav-item">
+              <a href="ajouterMetadonnee.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Metadonnee</span><i class="menu-arrow"></i></a>
+              <div class="submenu">
+                <ul class="submenu-item">
+                  <li class="nav-item"><a class="nav-link" href="ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
+                  <li class="nav-item"><a class="nav-link" href="afficherMetadonnee.php">Afficher metadonnee</a></li>
+                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+                </ul>
+              </div>
+            </li>
             
           </ul>
         </div>
