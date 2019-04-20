@@ -68,12 +68,10 @@ $_SESSION['email_admin'] = NULL;
                                     </div>
                                     <a href="../forms/forgot-password.php" class="text-small forgot-password text-black">Mot de passe oublié</a>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-block g-login"><img class="mr-3" src="../../images/file-icons/icon-google.svg" alt="">Log in with Google</button>
-                                </div>
+                                
                                 <div class="text-block text-center my-3">
                                     <span class="text-small font-weight-semibold">Pas un membre ?</span>
-                                    <a href="../forms/new_account_admin.php" class="text-black text-small">Créer un nouveau compte</a>
+                                    <a href="register.php" class="text-black text-small">Créer un nouveau compte</a>
                                 </div>
                             </form>
                         </div>

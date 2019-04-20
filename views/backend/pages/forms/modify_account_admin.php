@@ -311,8 +311,8 @@ session_start();
                                                     <label for="acc-sexe">Sexe</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="sexe" id="sexe">
-                                                            <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                                            <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
+                                                            <option value="homme" selected="<?PHP if ($sexe = "homme") echo "selected" ?>">Homme </option>
+                                                            <option value="femme" selected="<?PHP if ($sexe = "femme") echo "selected" ?>">Femme </option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -329,14 +329,14 @@ session_start();
                                         </div>
                                     </form>
                                     <?PHP
-                                                                                                                                                                                                                                        if (isset($_POST['modifier']) and isset($_POST['password']) and isset($_POST['confirmPassword']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and $_POST['password'] == $_POST['confirmPassword']  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                                                                                                                                                                                                                                            $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_SESSION['email_admin'], $_POST['sexe'], 1);
-                                                                                                                                                                                                                                            $admin1C = new AdminC();
-                                                                                                                                                                                                                                            $admin1C->modifierAdmin($admin1);
-                                                                                                                                                                                                                                            //header('Location: modify_account_admin.php');
-                                                                                                                                                                                                                                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                        ?>
+                                     if (isset($_POST['modifier']) and isset($_POST['password']) and isset($_POST['confirmPassword']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and $_POST['password'] == $_POST['confirmPassword']  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
+                                          $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_SESSION['email_admin'], $_POST['sexe'], 1);
+                                          $admin1C = new AdminC();
+                                          $admin1C->modifierAdmin($admin1);
+                                          //header('Location: modify_account_admin.php');
+                                        echo "<script> window.location.href='../../index.php'</script>";
+                                         echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";                                                                                                                                            }
+                                    ?>
                                 </div>
                             </div>
                         </div>

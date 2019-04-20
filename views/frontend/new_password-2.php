@@ -1,6 +1,6 @@
 <?PHP 
 session_start();
-$_SESSION['forgot_client'] = $_GET['email'];
+$_SESSION['forgot_client'] = $_GET['code'];
 echo $_SESSION['forgot_client'] ;
 ?>
 <!DOCTYPE html>
@@ -168,7 +168,7 @@ echo $_SESSION['forgot_client'] ;
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
@@ -254,7 +254,7 @@ echo $_SESSION['forgot_client'] ;
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -467,7 +467,7 @@ echo $_SESSION['forgot_client'] ;
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                                    <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -594,7 +594,7 @@ echo $_SESSION['forgot_client'] ;
                         </ul>
                     </li>
                     <li><a href="about.php">About</a></li>
-                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                    <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                     <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                 </ul>
                 </li>

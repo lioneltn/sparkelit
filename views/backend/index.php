@@ -40,7 +40,7 @@ session_start();
       $password = $row['motdepasse'];
     }
   } else {
-    header('Location: login.php');
+    header('Location: pages/samples/login.php');
   }
   ?>
   <div class="container-scroller">
@@ -246,6 +246,15 @@ session_start();
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="pages/ajouterfournisseur.php"> Ajouter fournisseur</a></li>
                                     <li class="nav-item"><a class="nav-link" href="pages/afficherFournisseur">Afficher fournisseurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="pages/samples/orders.php"> commandes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="pages/samples/statistiques.php">statistiques des ventes</a></li>
                                 </ul>
                             </div>
                         </li>

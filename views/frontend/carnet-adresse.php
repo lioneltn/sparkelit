@@ -27,9 +27,33 @@ session_start();
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="assets/js/my-account.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
+    <?PHP
+    include "../../entities/comptes/client.php";
+    include "../../core/comptes/clientC.php";
+
+    echo $_SESSION['email'];
+    if (isset($_SESSION['email'])) {
+        $clientC = new ClientC();
+        $result = $clientC->recupererClient($_SESSION['email']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+            $tel = $row['tel'];
+            $code = $row['codePostal'];
+            $addlivr = $row['adresse'];
+            $region = $row['region'];
+        }
+    } else {
+        header('Location: login.php');
+    }
+    ?>
     <div class="page-wrapper">
         <header class="header">
             <div class="header-middle sticky-header">
@@ -39,7 +63,7 @@ session_start();
                             <ul class="menu sf-arrows">
                                 <li><a href="index.php">Home</a></li>
                                 <li>
-                                    <a href="category.php" class="sf-with-ul">Categories</a>
+                                    <a href="category.html" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                             <div class="col-lg-8">
@@ -49,14 +73,14 @@ session_start();
                                                             <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="category-banner-full-width.php">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
-                                                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
-                                                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
-                                                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
-                                                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
-                                                            <li><a href="category-horizontal-filter1.php">Horizontal Filter1</a></li>
-                                                            <li><a href="category-horizontal-filter2.php">Horizontal Filter2</a></li>
+                                                            <li><a href="category-banner-full-width.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
+                                                            <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
+                                                            <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
+                                                            <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
+                                                            <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
+                                                            <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a></li>
+                                                            <li><a href="category-horizontal-filter2.html">Horizontal Filter2</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-6 -->
                                                     <div class="col-lg-6">
@@ -65,13 +89,13 @@ session_start();
                                                         </div>
                                                         <ul>
                                                             <li><a href="#">Product List Item Types</a></li>
-                                                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
-                                                            <li><a href="category-3col.php">3 Columns Products</a></li>
-                                                            <li><a href="category-4col.php">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                            <li><a href="category.php">5 Columns Products</a></li>
-                                                            <li><a href="category-6col.php">6 Columns Products</a></li>
-                                                            <li><a href="category-7col.php">7 Columns Products</a></li>
-                                                            <li><a href="category-8col.php">8 Columns Products</a></li>
+                                                            <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a></li>
+                                                            <li><a href="category-3col.html">3 Columns Products</a></li>
+                                                            <li><a href="category-4col.html">4 Columns Products <span class="tip tip-new">New</span></a></li>
+                                                            <li><a href="category.html">5 Columns Products</a></li>
+                                                            <li><a href="category-6col.html">6 Columns Products</a></li>
+                                                            <li><a href="category-7col.html">7 Columns Products</a></li>
+                                                            <li><a href="category-8col.html">8 Columns Products</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-6 -->
                                                 </div><!-- End .row -->
@@ -87,7 +111,7 @@ session_start();
                                     </div><!-- End .megamenu -->
                                 </li>
                                 <li class="megamenu-container">
-                                    <a href="product.php" class="sf-with-ul">Products</a>
+                                    <a href="product.html" class="sf-with-ul">Products</a>
                                     <div class="megamenu">
                                         <div class="row">
                                             <div class="col-lg-8">
@@ -97,11 +121,11 @@ session_start();
                                                             <a href="#">Variations</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product.php">Horizontal Thumbnails</a></li>
-                                                            <li><a href="product-full-width.php">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="product.php">Inner Zoom</a></li>
-                                                            <li><a href="product-addcart-sticky.php">Addtocart Sticky</a></li>
-                                                            <li><a href="product-sidebar-left.php">Accordion Tabs</a></li>
+                                                            <li><a href="product.html">Horizontal Thumbnails</a></li>
+                                                            <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="product.html">Inner Zoom</a></li>
+                                                            <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
+                                                            <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                     <div class="col-lg-4">
@@ -109,9 +133,9 @@ session_start();
                                                             <a href="#">Variations</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product-sticky-tab.php">Sticky Tabs</a></li>
-                                                            <li><a href="product-simple.php">Simple Product</a></li>
-                                                            <li><a href="product-sidebar-left.php">With Left Sidebar</a></li>
+                                                            <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
+                                                            <li><a href="product-simple.html">Simple Product</a></li>
+                                                            <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                     <div class="col-lg-4">
@@ -119,12 +143,12 @@ session_start();
                                                             <a href="#">Product Layout Types</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product.php">Default Layout</a></li>
-                                                            <li><a href="product-extended-layout.php">Extended Layout</a></li>
-                                                            <li><a href="product-full-width.php">Full Width Layout</a></li>
-                                                            <li><a href="product-grid-layout.php">Grid Images Layout</a></li>
-                                                            <li><a href="product-sticky-both.php">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="product-sticky-info.php">Sticky Right Side Info</a></li>
+                                                            <li><a href="product.html">Default Layout</a></li>
+                                                            <li><a href="product-extended-layout.html">Extended Layout</a></li>
+                                                            <li><a href="product-full-width.html">Full Width Layout</a></li>
+                                                            <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
+                                                            <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                 </div><!-- End .row -->
@@ -143,35 +167,30 @@ session_start();
                                     <a href="#" class="sf-with-ul">Pages</a>
 
                                     <ul>
-                                        <li><a href="cart.php">Shopping Cart</a></li>
+                                        <li><a href="cart.html">Shopping Cart</a></li>
                                         <li><a href="#">Checkout</a>
                                             <ul>
-                                                <li><a href="checkout-shipping.php">Checkout Shipping</a></li>
-                                                <li><a href="checkout-shipping-2.php">Checkout Shipping 2</a></li>
-                                                <li><a href="checkout-review.php">Checkout Review</a></li>
+                                                <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
+                                                <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
+                                                <li><a href="checkout-review.html">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard.php">Tableau de bord</a>
+                                        <li><a href="#">Tableau de bord</a>
                                             <ul>
-                                                <li><a href="dashboard.php">Tableau de bord</a></li>
-                                                <li><a href="my-account.php">Mon compte</a></li>
+                                                <li><a href="dashboard.html">Tableau de bord</a></li>
+                                                <li><a href="my-account.html">Mon compte</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about.php">About Us</a></li>
+                                        <li><a href="about.html">About Us</a></li>
                                         <li><a href="#">Blog</a>
                                             <ul>
-                                                <li><a href="blog.php">Blog</a></li>
-                                                <li><a href="single.php">Blog Post</a></li>
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="single.html">Blog Post</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="login.php">
-                                                <?PHP if (isset($_SESSION['email'])) {
-                                                    echo "se déconnecter";
-                                                } else {
-                                                    echo  "se connecter";
-                                                } ?></a></li>
-                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="forgot-password.html">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -248,20 +267,15 @@ session_start();
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                                <a href="#">Links</a>
+                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.php">Mon compte</a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
-                                        <li><a href="blog.php">BLOG</a></li>
-                                        <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="login.php">
-                                                <?PHP if (isset($_SESSION['email'])) {
-                                                    echo "se déconnecter";
-                                                } else {
-                                                    echo  "se connecter";
-                                                } ?></a></li>
+                                        <li><a href="blog.html">BLOG</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -282,7 +296,7 @@ session_start();
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="product.php">Woman Ring</a>
+                                                    <a href="product.html">Woman Ring</a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
@@ -292,7 +306,7 @@ session_start();
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="product.php" class="product-image">
+                                                <a href="product.html" class="product-image">
                                                     <img src="assets/images/products/cart/product-1.jpg" alt="product">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
@@ -302,7 +316,7 @@ session_start();
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="product.php">Woman Necklace</a>
+                                                    <a href="product.html">Woman Necklace</a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
@@ -312,7 +326,7 @@ session_start();
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="product.php" class="product-image">
+                                                <a href="product.html" class="product-image">
                                                     <img src="assets/images/products/cart/product-2.jpg" alt="product">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
@@ -327,8 +341,8 @@ session_start();
                                     </div><!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
-                                        <a href="cart.php" class="btn">View Cart</a>
-                                        <a href="checkout-shipping.php" class="btn">Checkout</a>
+                                        <a href="cart.html" class="btn">View Cart</a>
+                                        <a href="checkout-shipping.html" class="btn">Checkout</a>
                                     </div><!-- End .dropdown-cart-total -->
                                 </div><!-- End .dropdownmenu-wrapper -->
                             </div><!-- End .dropdown-menu -->
@@ -342,31 +356,122 @@ session_start();
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Mot de passe oublié</li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Adresses</li>
                     </ol>
                 </div><!-- End .container-fluid -->
             </nav>
 
-            <div class="container">
-                <div class="heading mb-4">
-                    <h2 class="title">Aide avec le mot de passe</h2>
-                    <p>Saisissez l'adresse e-mail associé à votre compte 5icha. Nous vous enverrons un lien sur cette adresse e-mail pour réinitialiser votre mot de passe.</p>
-                </div><!-- End .heading -->
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last dashboard-content">
+                        <h2>Modifier l'adresse</h2>
 
-                <form action="forgotPassword.php" method="POST">
-                    <div class="form-group required-field">
-                        <label for="reset-email">Adresse Email</label>
-                        <input type="email" class="form-control" id="email" name="email" onfocusout="validateEmail(this)" required>
-                    </div><!-- End .form-group -->
+                        <form method="POST" name="acc_edit">
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group required-field">
+                                                <label for="acc-name">Nom</label>
+                                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?PHP echo $nom ?>" onfocusout="validateFirstName(this)" required>
+                                            </div><!-- End .form-group -->
+                                        </div><!-- End .col-md-4 -->
 
-                    <div class="form-footer">
-                        <button type="submit" class="btn btn-primary">Reinitialiser mon mot de passe </button>
-                    </div><!-- End .form-footer -->
-                </form>
+                                        <div class="col-md-4">
+                                            <div class="form-group required-field">
+                                                <label for="acc-lastname">Prénom</label>
+                                                <input type="text" class="form-control" id="lastName" name="lastName" value="<?PHP echo $prenom ?>" onfocusout="validateFirstName(this)" required>
+                                            </div><!-- End .form-group -->
+                                        </div><!-- End .col-md-4 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .col-sm-11 -->
+                            </div><!-- End .row -->
+
+                            <div class="form-group required-field">
+                                <label for="acc-tel">Téléphone</label>
+                                <input type="number" class="form-control" id="numTel" name="numTel" value="<?PHP echo $tel ?>" onfocusout="validateNumTel(this)" required>
+                            </div><!-- End .form-group -->
+
+                            <div class="form-group required-field">
+                                <label for="acc-region">Région</label>
+                                <?PHP $_POST['region'] = $region ?>
+                                <select name="region" id ="region" class="form-control">
+                                    <option value="tunis">Tunis </option>
+                                    <option value="sfax">Sfax </option>
+                                    <option value="sousse">Sousse </option>
+                                    <option value="ariana">Ariana </option>
+                                    <option value="kiarouan"> Kiarouan</option>
+                                    <option value="bizerte"> Bizerte</option>
+                                    <option value="gabès">Gabès </option>
+                                    <option value="ben arous">Ben Arous </option>
+                                    <option value="gafsa"> Gafsa</option>
+                                    <option value="monastir"> Monastir</option>
+                                    <option value="kasserine">Kasserine </option>
+                                    <option value="la manouba"> La Manouba</option>
+                                    <option value="medenine">Médenine </option>
+                                </select>
+                            </div><!-- End .form-group -->
+
+                            <div class="form-group required-field">
+                                <label for="acc-code">Code Postal</label>
+                                <input type="text" class="form-control" id="codePostal" name="codePostal" value="<?PHP echo $code ?>" onfocusout="validateCodePostal(this)" required>
+                            </div><!-- End .form-group -->
+
+                            <div class="form-group required-field">
+                                <label for="acc-add">Adresse de livraison</label>
+                                <input type="text" class="form-control" id="addLivraison" name="addLivraison" value="<?PHP echo $addlivr ?>" required>
+                            </div><!-- End .form-group -->
+
+                            <div class="required text-right">* Champ requis</div>
+                            <div class="form-footer">
+                                <a href="dashboard.php"><i class="icon-angle-double-left"></i>précédent</a>
+
+                                <div class="form-footer-right">
+                                    <input type="submit" class="btn btn-primary" name = "modifier" id= "modifier" onclick="verification()" value = "modifier">
+                                </div>
+                            </div><!-- End .form-footer -->
+                        </form>
+                        <?PHP
+                        
+                        if (isset($_POST['modifier'])  and isset($_POST['firstName']) and isset($_POST['lastName']) and $_POST['numTel'] > 10000000 and $_POST['codePostal'] > 1000 ) {
+                            $client1 = new Client($_POST['firstName'], $_POST['lastName'], "", "", $_SESSION['email'], "", $_POST['numTel'], $_POST['region'], $_POST['codePostal'], $_POST['addLivraison'], "");
+                            $client1C = new ClientC();
+                            $client1C->modifierClient_a($client1);
+                            //header('Location: dashboard.php');
+                            echo "<script> window.location.href='dashboard.php'</script>";
+                            //header('Location : carnet-adresse.php');
+                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
+                        } else {
+                            //echo "errorr echec";
+                        }
+                        ?>
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="widget widget-dashboard">
+                            <h3 class="widget-title">Mon compte</h3>
+
+                            <ul class="list">
+                                <li><a href="dashboard.php">Tableau de bord</a></li>
+                                <li><a href="my-account.php#">Information du compte</a></li>
+                                <li class="active"><a href="#">Carnet d'adresse</a></li>
+                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">Billing Agreements</a></li>
+                                <li><a href="#">Recurring Profiles</a></li>
+                                <li><a href="#">My Product Reviews</a></li>
+                                <li><a href="#">My Tags</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">My Applications</a></li>
+                                <li><a href="#">Newsletter Subscriptions</a></li>
+                                <li><a href="#">My Downloadable Products</a></li>
+                            </ul>
+                        </div><!-- End .widget -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
             </div><!-- End .container -->
 
-            <div class="mb-10"></div><!-- margin -->
+            <div class="mb-5"></div><!-- margin -->
         </main><!-- End .main -->
 
         <footer class="footer">
@@ -458,13 +563,13 @@ session_start();
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="about.php">About Us</a></li>
-                                                    <li><a href="contact.php">Contact Us</a></li>
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="contact.html">Contact Us</a></li>
                                                     <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
@@ -472,12 +577,7 @@ session_start();
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php">
-                                                            <?PHP if (isset($_SESSION['email'])) {
-                                                                echo "se déconnecter";
-                                                            } else {
-                                                                echo  "se connecter";
-                                                            } ?></a></li>
+                                                    <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -538,56 +638,56 @@ session_start();
                 <ul class="mobile-menu">
                     <li><a href="index.php">Home</a></li>
                     <li>
-                        <a href="category.php">Categories</a>
+                        <a href="category.html">Categories</a>
                         <ul>
-                            <li><a href="category-banner-full-width.php">Full Width Banner</a></li>
-                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
-                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
-                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
-                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
-                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
-                            <li><a href="category-horizontal-filter1.php">Horizontal Filter 1</a></li>
-                            <li><a href="category-horizontal-filter2.php">Horizontal Filter 2</a></li>
+                            <li><a href="category-banner-full-width.html">Full Width Banner</a></li>
+                            <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
+                            <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
+                            <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
+                            <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
+                            <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
+                            <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
+                            <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li>
                             <li><a href="#">Product List Item Types</a></li>
-                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll<span class="tip tip-new">New</span></a></li>
-                            <li><a href="category-3col.php">3 Columns Products</a></li>
-                            <li><a href="category-4col.php">4 Columns Products</a></li>
-                            <li><a href="category.php">5 Columns Products</a></li>
-                            <li><a href="category-6col.php">6 Columns Products</a></li>
-                            <li><a href="category-7col.php">7 Columns Products</a></li>
-                            <li><a href="category-8col.php">8 Columns Products</a></li>
+                            <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll<span class="tip tip-new">New</span></a></li>
+                            <li><a href="category-3col.html">3 Columns Products</a></li>
+                            <li><a href="category-4col.html">4 Columns Products</a></li>
+                            <li><a href="category.html">5 Columns Products</a></li>
+                            <li><a href="category-6col.html">6 Columns Products</a></li>
+                            <li><a href="category-7col.html">7 Columns Products</a></li>
+                            <li><a href="category-8col.html">8 Columns Products</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="product.php">Products</a>
+                        <a href="product.html">Products</a>
                         <ul>
                             <li>
                                 <a href="#">Variations</a>
                                 <ul>
-                                    <li><a href="product.php">Horizontal Thumbnails</a></li>
-                                    <li><a href="product-full-width.php">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                    <li><a href="product.php">Inner Zoom</a></li>
-                                    <li><a href="product-addcart-sticky.php">Addtocart Sticky</a></li>
-                                    <li><a href="product-sidebar-left.php">Accordion Tabs</a></li>
+                                    <li><a href="product.html">Horizontal Thumbnails</a></li>
+                                    <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product.html">Inner Zoom</a></li>
+                                    <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
+                                    <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Variations</a>
                                 <ul>
-                                    <li><a href="product-sticky-tab.php">Sticky Tabs</a></li>
-                                    <li><a href="product-simple.php">Simple Product</a></li>
-                                    <li><a href="product-sidebar-left.php">With Left Sidebar</a></li>
+                                    <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
+                                    <li><a href="product-simple.html">Simple Product</a></li>
+                                    <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Product Layout Types</a>
                                 <ul>
-                                    <li><a href="product.php">Default Layout</a></li>
-                                    <li><a href="product-extended-layout.php">Extended Layout</a></li>
-                                    <li><a href="product-full-width.php">Full Width Layout</a></li>
-                                    <li><a href="product-grid-layout.php">Grid Images Layout</a></li>
-                                    <li><a href="product-sticky-both.php">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                    <li><a href="product-sticky-info.php">Sticky Right Side Info</a></li>
+                                    <li><a href="product.html">Default Layout</a></li>
+                                    <li><a href="product-extended-layout.html">Extended Layout</a></li>
+                                    <li><a href="product-full-width.html">Full Width Layout</a></li>
+                                    <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
+                                    <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -595,31 +695,26 @@ session_start();
                     <li>
                         <a href="#">Pages<span class="tip tip-hot">Hot!</span></a>
                         <ul>
-                            <li><a href="cart.php">Shopping Cart</a></li>
+                            <li><a href="cart.html">Shopping Cart</a></li>
                             <li>
                                 <a href="#">Checkout</a>
                                 <ul>
-                                    <li><a href="checkout-shipping.php">Checkout Shipping</a></li>
-                                    <li><a href="checkout-shipping-2.php">Checkout Shipping 2</a></li>
-                                    <li><a href="checkout-review.php">Checkout Review</a></li>
+                                    <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
+                                    <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
+                                    <li><a href="checkout-review.html">Checkout Review</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.php">About</a></li>
-                            <li><a href="login.php">
-                                    <?PHP if (isset($_SESSION['email'])) {
-                                        echo "se déconnecter";
-                                    } else {
-                                        echo  "se connecter";
-                                    } ?></a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.php">Blog</a>
+                    <li><a href="blog.html">Blog</a>
                         <ul>
-                            <li><a href="single.php">Blog Post</a></li>
+                            <li><a href="single.html">Blog Post</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
                     <li><a href="#">Buy Porto!</a></li>
                 </ul>
@@ -656,8 +751,6 @@ session_start();
     </div><!-- End .newsletter-popup -->
 
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
-
-
 
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>

@@ -41,10 +41,9 @@ session_start();
             $datenaissance = $row['datenaissance'];
             $sexe = $row['sexe'];
             $password = $row['motdepasse'];
-            $tel = $row['telephone'];
-            $code = $row['codepostal'];
-            $addlivr = $row['adresselivraison'];
-            $addlivr_2 = $row['adresselivraison_2'];
+            $tel = $row['tel'];
+            $code = $row['codePostal'];
+            $addlivr = $row['adresse'];
         }
     } else {
         header('Location: login.php');
@@ -186,7 +185,7 @@ session_start();
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
                                         <li><a href="login.php">
-                                                <?PHP if ($_SESSION['email'] !== null) {
+                                                <?PHP if (isset($_SESSION['email'])) {
                                                     echo "se déconnecter";
                                                 } else {
                                                     echo  "se connecter";
@@ -279,7 +278,7 @@ session_start();
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
                                         <li><a href="login.php">
-                                                <?PHP if ($_SESSION['email'] !== null) {
+                                                <?PHP if (isset($_SESSION['email'])) {
                                                     echo "se déconnecter";
                                                 } else {
                                                     echo  "se connecter";
@@ -437,8 +436,9 @@ session_start();
                             $client1C = new ClientC();
                             $client1C->modifierClient_i($client1);
                             echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
+                            echo "<script> window.location.href='dashboard.php'</script>";
                         } else {
-                            echo "errorr echec";
+                            //echo "errorr echec";
                         }
                         ?>
                     </div><!-- End .col-lg-9 -->
@@ -573,7 +573,7 @@ session_start();
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
                                                     <li><a href="login.php">
-                                                            <?PHP if ($_SESSION['email'] !== null) {
+                                                            <?PHP if (isset($_SESSION['email'])) {
                                                                 echo "se déconnecter";
                                                             } else {
                                                                 echo  "se connecter";
@@ -706,7 +706,7 @@ session_start();
                             </li>
                             <li><a href="about.php">About</a></li>
                             <li><a href="login.php">
-                                    <?PHP if ($_SESSION['email'] !== null) {
+                                    <?PHP if (isset($_SESSION['email'])) {
                                         echo "se déconnecter";
                                     } else {
                                         echo  "se connecter";

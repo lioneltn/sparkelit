@@ -5,7 +5,7 @@ class ClientC
 {
     function ajouterClient($client)
     {
-        $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe)";
+        $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -16,41 +16,55 @@ class ClientC
             $req->bindValue(':datenaissance', $client->getDateNaissance());
             $req->bindValue(':motdepasse', $client->getMotdepasse());
             $req->bindValue(':sexe', $client->getSexe());
-
+            $req->bindValue(':code', "");
 
             $req->execute();
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();
         }
 
-        $sql = "insert into client values (:login, :tel, :code, :region, :addlivr, :addlivr_2)";
+        $sql = "insert into client (login) values (:login)";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
 
             $login = $client->getEmail();
-            $tel = $client->getTel();
-            $code = $client->getCodePostal();
-            $addlivr = $client->getAddLivr();
-            $addLivr_2 = $client->getAddLivr_2();
 
             $req->bindValue(':login', $login);
-            $req->bindValue(':tel', $tel);
-            $req->bindValue(':code', $code);
-            $req->bindValue(':region', $client->getRegion());
-            $req->bindValue(':addlivr', $addlivr);
-            $req->bindValue(':addlivr_2', $addLivr_2);
-
             $req->execute();
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();
         }
+
+        $sql="insert into adressetotal(adresse,ville,pays,codePostal,tel,region,email,companie) values (:adresse,:ville,:pays,:codePostal,:tel,:region,:email,:companie)";
+		$db = config::getConnexion();
+		try
+		{
+            $addlivr = $client->getAddLivr();
+        $addLivr_2 = $client->getAddLivr_2();
+        $req=$db->prepare($sql);
+		$req->bindValue(':adresse',$addlivr." ".$addLivr_2);
+        $req->bindValue(':ville',"");
+        $req->bindValue(':pays',"");
+        $req->bindValue(':companie',"");
+		$req->bindValue(':codePostal',$client->getCodePostal());
+		$req->bindValue(':tel',$client->getTel());
+		$req->bindValue(':region',$client->getRegion());
+		$req->bindValue(':email',$client->getEmail());
+            $req->execute();
+           
+        }
+        catch (Exception $e)
+        {
+            echo 'Erreur: '.$e->getMessage();
+        }
+
     }
 
     function recupererClient($login)
     {
         //$sql = "SELECT * from utilisateur where email = :email";
-        $sql = "select u.nom, u.prenom, u.sexe, u.datenaissance, u.motdepasse, u.email, login, telephone, codepostal, region, adresselivraison, adresselivraison_2 from utilisateur u inner join client c on u.email = c.login where u.email=:email";
+        $sql = "select u.nom, u.prenom, u.sexe, u.datenaissance, u.motdepasse, u.email, c.email, c.tel, c.codePostal, c.region, c.adresse from utilisateur u inner join adressetotal c on u.email = c.email where u.email=:email";
         $db = config::getConnexion();
         try {
             $client1 = $db->prepare($sql);
@@ -96,7 +110,7 @@ class ClientC
             echo 'Erreur: ' . $e->getMessage();
         }
 
-        $sql = "update client set telephone = :tel, codepostal = :code, adresselivraison = :addlivr, adresselivraison_2 = :addlivr_2 where login = :login";
+        $sql = "update adressetotal set tel = :tel, codePostal = :code, adresse = :addlivr where email = :login";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -132,7 +146,7 @@ class ClientC
             echo 'Erreur: ' . $e->getMessage();
         }
 
-        $sql = "update client set telephone = :tel where login = :login";
+        $sql = "update adressetotal set tel = :tel where email = :login";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -157,13 +171,12 @@ class ClientC
             $req->bindValue(':prenom', $client->getPrenom());
             $req->bindValue(':email', $client->getEmail());
 
-
             $req->execute();
         } catch (Exception $e) {
             echo 'Erreur: ' . $e->getMessage();
         }
 
-        $sql = "update client set telephone = :tel, codepostal = :code, region = :region, adresselivraison = :addlivr, adresselivraison_2 = :addlivr_2 where login = :login";
+        $sql = "update adressetotal set tel = :tel, codePostal = :code, region = :region, adresse = :addlivr where email = :login";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -172,8 +185,7 @@ class ClientC
             $req->bindValue(':tel', $client->getTel());
             $req->bindValue(':code', $client->getCodePostal());
             $req->bindValue(':region', $client->getRegion());
-            $req->bindValue(':addlivr', $client->getAddLivr());
-            $req->bindValue(':addlivr_2', $client->getAddLivr_2());
+            $req->bindValue(':addlivr', $client->getAddLivr()." ".$client->getAddLivr_2());
 
             $req->execute();
         } catch (Exception $e) {
@@ -194,6 +206,18 @@ class ClientC
         }
 
         $sql="DELETE FROM utilisateur where email= :login";
+		$db = config::getConnexion();
+        $req=$db->prepare($sql);
+		$req->bindValue(':login',$login);
+		try{
+            $req->execute();
+            header('Location: index.php');
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+
+        $sql="DELETE FROM adressetotal where email= :login";
 		$db = config::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':login',$login);

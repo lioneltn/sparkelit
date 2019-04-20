@@ -1,18 +1,6 @@
 <?php
 // Ouverture ou récupération de la session
-session_start();
-$fp = fopen("compteur.txt", "r+");
-$nbvisites = fgets($fp, 11);
-// Incrémentation du compteur si la 
-// variable (de session) 'ouverture' n'existe pas
-if (empty($_SESSION['ouverture'])) $nbvisites++;
-// Sinon création de cette variable
-else $_SESSION['ouverture'] = 'oui';
-fseek($fp, 0);
-fputs($fp, $nbvisites);
-fclose($fp);
-// Écriture du nombre de visites
-print("$nbvisites visiteurs"); ?>
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,10 +41,9 @@ print("$nbvisites visiteurs"); ?>
             $datenaissance = $row['datenaissance'];
             $sexe = $row['sexe'];
             $password = $row['motdepasse'];
-            $tel = $row['telephone'];
-            $code = $row['codepostal'];
-            $addlivr = $row['adresselivraison'];
-            $addlivr_2 = $row['adresselivraison_2'];
+            $tel = $row['tel'];
+            $code = $row['codePostal'];
+            $addlivr = $row['adresse'];
         }
     }
     ?>
@@ -195,7 +182,7 @@ print("$nbvisites visiteurs"); ?>
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                         <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
@@ -281,7 +268,7 @@ print("$nbvisites visiteurs"); ?>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -1019,7 +1006,7 @@ print("$nbvisites visiteurs"); ?>
                                                 <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                                                    <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -1147,7 +1134,7 @@ print("$nbvisites visiteurs"); ?>
                                 </ul>
                             </li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="login.php"><?PHP if($_SESSION['email']!==NULL){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
+                            <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                         </ul>
                     </li>

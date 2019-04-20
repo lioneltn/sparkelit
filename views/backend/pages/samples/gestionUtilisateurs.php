@@ -6,31 +6,33 @@ $connect = new PDO("mysql:host=localhost;dbname=5icha", "root", "");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($method == 'GET') {
-        $data = array(
-            ':nom'   => "%" . $_GET['nom'] . "%",
-            ':prenom'   => "%" . $_GET['prenom'] . "%",
-            ':datenaissance'     => "%" . $_GET['datenaissance'] . "%",
-            ':sexe'    => "%" . $_GET['sexe'] . "%",
-        );
-        $query = "SELECT nom, prenom, sexe, email, datenaissance FROM utilisateur inner join admin a where a.type = :type ORDER BY email ASC";
+if($method == 'GET')
+{
+ $data = array(
+  ':nom'   => "%" . $_GET['nom'] . "%",
+  ':prenom'   => "%" . $_GET['prenom'] . "%",
+  ':email'     => "%" . $_GET['email'] . "%",
+  ':datenaissance'     => "%" . $_GET['datenaissance'] . "%",
+  ':sexe'    => "%" . $_GET['sexe'] . "%"
+ );
+ $query = "SELECT * FROM utilisateur WHERE nom LIKE :nom AND prenom LIKE :prenom AND email LIKE :email AND datenaissance LIKE :datenaissance AND sexe LIKE :sexe ORDER BY email DESC";
 
-        $statement = $connect->prepare($query);
-        $statement->bindValue(':type', "1");
-        $statement->execute($data);
-        $result = $statement->fetchAll();
-        foreach ($result as $row) {
-                $output[] = array(
-                    'email'    => $row['email'],
-                    'nom'  => $row['nom'],
-                    'prenom'   => $row['prenom'],
-                    'datenaissance'    => $row['datenaissance'],
-                    'sexe'   => $row['sexe'],
-                );
-            }
-        header("Content-Type: application/json");
-        echo json_encode($output);
-    }
+ $statement = $connect->prepare($query);
+ $statement->execute($data);
+ $result = $statement->fetchAll();
+ foreach($result as $row)
+ {
+  $output[] = array(
+   'email'    => $row['email'],   
+   'nom'  => $row['nom'],
+   'prenom'   => $row['prenom'],
+   'datenaissance'    => $row['datenaissance'],
+   'sexe'   => $row['sexe']
+  );
+ }
+ header("Content-Type: application/json");
+ echo json_encode($output);
+}
 /*
 if ($method == "POST") {
         $data = array(

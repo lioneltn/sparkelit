@@ -23,6 +23,7 @@ if (isset($_POST['password']) and isset($_POST['confirmPassword']) and $_POST['p
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Mot de passe changé avec succès</div></body></html>";
+        echo "<script> window.location.href='../samples/dashboard-artiste.php'</script>";
     } catch (Exception $e) {
         echo 'Erreur: ' . $e->getMessage();
     }

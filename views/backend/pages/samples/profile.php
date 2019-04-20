@@ -262,36 +262,6 @@ session_start();
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <div class="profile-header text-white">
-                    <div class="d-md-flex justify-content-around">
-                      <div class="profile-info d-flex align-items-center">
-                        <img class="rounded-circle img-lg" src="https://via.placeholder.com/92x92" alt="profile image">
-                        <div class="wrapper pl-4">
-                          <p class="profile-user-name">Richard V.Welsh (UI/UX Designer)</p>
-                          <div class="wrapper d-flex align-items-center">
-                            <p class="profile-user-designation">User Experience Specialist</p>
-                            <select id="example-css" name="rating" autocomplete="off">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="details">
-                        <div class="detail-col">
-                          <p>Projects</p>
-                          <p>130</p>
-                        </div>
-                        <div class="detail-col">
-                          <p>Projects</p>
-                          <p>130</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class="profile-body">
                     <ul class="nav tab-switch" role="tablist">
                       <li class="nav-item">

@@ -4,7 +4,7 @@ class AdminC
 {
      function ajouterAdmin($admin)
      {
-          $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe)";
+          $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
           $db = config::getConnexion();
           try {
                $req = $db->prepare($sql);
@@ -15,6 +15,7 @@ class AdminC
                $req->bindValue(':datenaissance', $admin->getDateNaissance());
                $req->bindValue(':motdepasse', $admin->getMotdepasse());
                $req->bindValue(':sexe', $admin->getSexe());
+               $req->bindValue(':code', "");
 
 
                $req->execute();
@@ -38,7 +39,7 @@ class AdminC
 
      function modifierAdmin($admin)
      {
-          $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+          $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe, motdepasse = :pwd where email = :email";
           $db = config::getConnexion();
           try {
                $req = $db->prepare($sql_u);
@@ -48,57 +49,12 @@ class AdminC
                $req->bindValue(':email', $admin->getEmail());
                $req->bindValue(':datenaissance', $admin->getDateNaissance());
                $req->bindValue(':sexe', $admin->getSexe());
+               $req->bindValue(':pwd', $admin->getmotdepasse());
 
                $req->execute();
           } catch (Exception $e) {
                echo 'Erreur: ' . $e->getMessage();
           }
-          /*
-          if ($email == $admin->getEmail()) {
-               $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe, motdepasse = :password where email = :email";
-          } else {
-               echo "different ";
-               $sql_ad = "delete admin where login = $email";
-               $db = config::getConnexion();
-               try {
-                    $req = $db->prepare($sql_ad);
-                    $req->bindValue(':email', $admin->getEmail());
-
-                    $req->execute();
-               } catch (Exception $e) {
-                    echo 'Erreur: ' . $e->getMessage();
-               }
-
-               $sql_ud = "delete utilisateur where email = $email";
-               $db = config::getConnexion();
-               try {
-                    $req = $db->prepare($sql_ud);
-                    $req->bindValue(':email', $admin->getEmail());
-
-                    $req->execute();
-               } catch (Exception $e) {
-                    echo 'Erreur: ' . $e->getMessage();
-               }
-               $_SESSION['email_admin'] = $admin->getEmail();
-               $sql_u = "insert utilisateur into values (:nom, :prenom, :email, :datenaissance, :password, :sexe)";
-               $sql_a = "insert into admin values (:login, :type)";
-          }
-
-          
-
-          if ($email != $admin->getEmail()) {
-               $db = config::getConnexion();
-               try {
-                    $req = $db->prepare($sql_a);
-
-                    $req->bindValue(':login', $admin->getEmail());
-                    $req->bindValue(':type', $admin->getType());
-
-                    $req->execute();
-               } catch (Exception $e) {
-                    echo 'Erreur: ' . $e->getMessage();
-               }
-          }*/
      }
 
      function recupererAdmin($email)

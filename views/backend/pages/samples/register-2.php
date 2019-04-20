@@ -39,7 +39,7 @@
                 <p>Already have an account?</p>
                 <a class="btn get-started-btn" href="login-2.php">SIGN IN</a>
               </div>
-              <form method="POST" action="../forms/ajoutArtiste.php" class="forms-sample">
+              <form method="POST" action="ajoutArtiste.php" class="forms-sample">
                     <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
                         <div class="col-sm-9">

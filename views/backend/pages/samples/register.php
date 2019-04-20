@@ -30,7 +30,7 @@
             <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
                 <div class="row w-100 mx-auto">
                     <div class="col-lg-4 mx-auto">
-                        <h2 class="text-center mb-4">Register</h2>
+                        <h2 class="text-center mb-4"></h2>
                         <div class="auto-form-wrapper">
                             <form id="example-form" method="POST" action="ajouterAdmin.php">
                                 <div>
@@ -75,18 +75,14 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </section>
-
-                                    <section>
                                         <div class="form-group">
-                                            <br><br>
                                             <h6>Terminé</h6>
                                             <div class="form-check">
                                                 <label class="form-check-label">
                                                     <input class="checkbox" type="checkbox">
                                                     Je suis d'accord avec les termes et conditions.
                                                 </label>
-                                                <br><br><br><br><br><br><br>
+                                                <br><br>
                                                 <button type="submit" class="btn btn-primary mr-2">Terminer</button>
                                             </div>
                                         </div>

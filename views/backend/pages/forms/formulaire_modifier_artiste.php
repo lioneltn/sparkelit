@@ -261,13 +261,14 @@ session_start();
                     <button type="submit" class="btn btn-primary mr-2" name="modifier" id="modifier" onclick="contr=ole4()">Modifier </button>
                 </form>
                 <?PHP
-                                                                                                                                                                    if (isset($_POST['modifier']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance'])  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
-                                                                                                                                                                        $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email_artiste'], $_POST['sexe'], 2);
-                                                                                                                                                                        $admin1C = new AdminC();
-                                                                                                                                                                        $admin1C->modifierAdmin($admin1);
-                                                                                                                                                                        echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                                                                                                                                                                    }
-                                                                                                                                                                    ?>
+                    if (isset($_POST['modifier']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance'])  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
+                        $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email_artiste'], $_POST['sexe'], 2);
+                        $admin1C = new AdminC();
+                        $admin1C->modifierAdmin($admin1);
+                        echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
+                        echo "<script> window.location.href='../samples/dashboard-artiste.php'</script>";
+                    }
+                    ?>
             </div>
         </div>
 

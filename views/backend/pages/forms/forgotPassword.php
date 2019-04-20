@@ -1,3 +1,12 @@
+<?php $characts = 'abcdefghijklmnopqrstuvwxyz';
+$characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$characts .= '1234567890';
+$code_aleatoire = '';
+for ($i = 0; $i < 10; $i++) {
+        $code_aleatoire .= substr($characts, rand() % (strlen($characts)), 1);
+    }
+echo $code_aleatoire;
+?>
 <?php
 session_start();
 include "../../../../core/comptes/adminC.php";
@@ -20,8 +29,7 @@ include "../../../../core/comptes/adminC.php";
                 
                 Vous avez oublié votre mot de passe?
                 Vous pouvez le réinitialiser en cliquant sur ce lien: 
-                <a href= \"localhost/projetWeb/sparkelit/views/backend/pages/forms/new_password-3.php?email=<?=$email;?>\" > lien</a>
-                http://localhost/projetWeb/sparkelit/views/backend/pages/forms/new_password-3.php?email=$email
+                http://localhost/projetWebfinal/sparkelit/views/backend/pages/forms/new_password-3.php?code=$code_aleatoire
                 
                 N'hésitez pas à visiter nos nombreuses boutiques! 5icha s'est associé avec les plus grandes marques internationales pour vous offrir le plus grand choix, au meilleur prix. 
                 Bon shopping!
@@ -61,4 +69,17 @@ include "../../../../core/comptes/adminC.php";
                 <!-- End plugin css for this page -->
                 <!-- inject:css -->
                 <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Email envoyé</div></body></html>";
+
+                $sql = "update utilisateur set code = :code where email = :email";
+                $db = config::getConnexion();
+                try {
+                    $req = $db->prepare($sql);
+        
+                    $req->bindValue(':code', $code_aleatoire);
+                    $req->bindValue(':email', $_POST['email']);
+        
+                    $req->execute();
+                } catch (Exception $e) {
+                    echo 'Erreur: ' . $e->getMessage();
+                }
                 ?>

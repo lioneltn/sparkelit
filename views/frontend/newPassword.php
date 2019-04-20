@@ -2,12 +2,12 @@
 session_start();
 include "../../config.php";
 if (isset($_POST['password']) and isset($_POST['confirmPassword']) and $_POST['password'] == $_POST['confirmPassword']) {
-     $sql = "update utilisateur set motdepasse = :mdp where email = :email";
+     $sql = "update utilisateur set motdepasse = :mdp where code = :code";
      $db = config::getConnexion();
      try {
           $req = $db->prepare($sql);
 
-          $req->bindValue(':email', $_SESSION['forgot_client']);
+          $req->bindValue(':code', $_SESSION['forgot_client']);
           $req->bindValue(':mdp', $_POST['password']);
           $req->execute();
           echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">

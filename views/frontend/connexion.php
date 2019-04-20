@@ -15,6 +15,8 @@ if (isset($_POST['login']) and isset($_POST['motdepasse'])){
     }
     if($mdp == $_POST['motdepasse']) {
         header('Location: my-account.php');
+    } else {
+        echo "Mot de passe incorrect";
     }
 }
 	
