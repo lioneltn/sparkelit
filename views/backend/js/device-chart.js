@@ -1,51 +1,51 @@
 $(document).ready(function(){
   $.ajax({
-    url: "../../json_country.php",
+    url: "../../json_device.php",
     method: "GET",
     success: function(data) {
       console.log(data);
-      var country = [];
+      var device = [];
       var count = [];
 
       for(var i in data) {
-        country.push("Country " + data[i].country);
-        count.push(data[i].score);
+        device.push("Country " + data[i].device);
+        count.push(data[i].count);
       }
 
     // Region Charts Starts
-
-google.charts.load('current', {
-  'packages': ['geochart'],
-  // Note: you will need to get a mapsApiKey for your project.
-  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+google.charts.load("current", {
+  packages: ["corechart"]
 });
-google.charts.setOnLoadCallback(drawRegionsMap);
+google.charts.setOnLoadCallback(drawChart);
 
-function drawRegionsMap() {
-  var data = google.visualization.arrayToDataTable([
-    ['Country', 'Popularity'],
-    ['Germany', 200],
-    ['United States', 300],
-    ['Brazil', 400],
-    ['Canada', 500],
-    ['France', 600],
-    ['RU', 700],
-    ['TN', 700]
+function drawChart() {
+ var data = google.visualization.arrayToDataTable([
+    ['Device', 'Visits'],
+    ['Mobile', 2],
+    ['Desktop', 11],
+    
   ]);
 
-  var options = {
-    colorAxis: {
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66']
-    }
-  };
-  var chart = new google.visualization.GeoChart(document.getElementById('regions-chart'));
 
-  chart.draw(data, options);
+  var options = {
+    title: 'Visits by devices',
+    pieHole: 0.4,
+    colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66'],
+    chartArea: {
+      width: 500
+    },
+  };
+
+  var Donutchart = new google.visualization.PieChart(document.getElementById('device-chart'));
+  Donutchart.draw(data, options);
 }
+
+
+
     },
     error: function(data) {
       console.log(data);
     }
   });
+
 });

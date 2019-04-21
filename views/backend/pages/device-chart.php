@@ -414,9 +414,9 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Visitors By Device</h4>
+                  <h4 class="card-title">Device By Device</h4>
                   <div class="google-chart-container">
-                    <div id="regions-chart" class="google-charts"></div>
+                    <div id="device-chart" class="google-charts"></div>
                   </div>
                 </div>
               </div>
@@ -453,7 +453,7 @@
   <script src="../js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/region-chart.js"></script>
+  <script src="../js/device-chart.js"></script>
   <!-- End custom js for this page-->
 </body>
 

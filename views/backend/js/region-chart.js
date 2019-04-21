@@ -9,7 +9,7 @@ $(document).ready(function(){
 
       for(var i in data) {
         country.push("Country " + data[i].country);
-        count.push(data[i].score);
+        count.push(data[i].count);
       }
 
     // Region Charts Starts
