@@ -25,13 +25,10 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 function drawRegionsMap() {
   var data = google.visualization.arrayToDataTable([
     ['Country', 'Popularity'],
-    ['Germany', 200],
-    ['United States', 300],
-    ['Brazil', 400],
-    ['Canada', 500],
-    ['France', 600],
-    ['RU', 700],
-    ['TN', 700]
+   
+    ['France', 2],
+    
+    ['TN', 3]
   ]);
 
   var options = {

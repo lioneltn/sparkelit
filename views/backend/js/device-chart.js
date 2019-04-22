@@ -22,7 +22,7 @@ function drawChart() {
  var data = google.visualization.arrayToDataTable([
     ['Device', 'Visits'],
     ['Mobile', 2],
-    ['Desktop', 11],
+    ['Desktop', 3],
     
   ]);
 
