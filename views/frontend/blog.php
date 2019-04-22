@@ -1,5 +1,7 @@
 <?php
-chdir(__DIR__);?>
+chdir(__DIR__);
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@ chdir(__DIR__);?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+    <title>Blog</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -24,6 +26,36 @@ chdir(__DIR__);?>
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
     <style type="text/css">
+
+    .lienActive
+        {
+            background-color: #29363c;
+            color:#fff;
+            font-size: 15px;
+            padding-left:5px;
+            padding-right:5px;
+            margin-left: 7px;
+            margin-right: 7px;
+            text-decoration: none;
+           
+        }
+        .lien
+        {
+            padding-left:5px;
+            padding-right:5px;
+            font-size: 15px;
+            margin-left: 7px;
+            margin-right: 7px;
+            text-decoration: none;
+           
+        }
+        .lien:hover , .lienActive:hover
+        {
+             text-decoration: none;
+             background-color: #29363c;
+            color:#fff;
+
+        }
         .rating{
             direction: rtl;
         }
@@ -385,6 +417,18 @@ chdir(__DIR__);?>
                 </select>
                 <input  class="form-control" placeholder="titre" type="text" name="recherchetitre" id="recherchetitre" onkeyup="recherchetitre(this.value)">
 
+                <?php
+                        if (isset ($_GET['page']))
+                        {
+                            $_COOKIE['page']=$_GET['page'];
+                        }
+                        else
+                        {
+                            $_COOKIE['page']=1;
+                        }
+                        //echo $_COOKIE['page'];
+                ?>
+
                 <div class="row" id="contenu">
                     <!--<div class="col-lg-9">-->
                         <?php 
@@ -400,6 +444,44 @@ chdir(__DIR__);?>
 
                    
                 </div><!-- End .row -->
+
+                <?php 
+                chdir(__DIR__);
+                //echo "afficherpostfront.php?page=".$_GET['page'];
+                $nbpost1=$poste1C->totalpost();
+                    $nbpost=$nbpost1['total'];
+                   $lien=ceil($nbpost/10);
+                   $debut1=$debut+1;
+                   $debut2=$debut+10;
+                   if($nbpost<$debut2)
+                   {
+                    $debut2=$nbpost;
+                   }
+                   
+                   ?>
+
+                   <nav class="toolbox toolbox-pagination">
+                    <div class="toolbox-item toolbox-show">
+                        <label><?php echo "Affichage de " . $debut1 ."-".$debut2 ." de ". $nbpost ." resultats"?></label>
+                    </div><!-- End .toolbox-item -->
+
+                    <ul class="pagination">
+                    <?php
+                        for($i=1;$i<=$lien;$i++)
+                        {
+                            if($_COOKIE['page']==$i)
+                            {
+                                echo "<li><a class='lienActive' style='background-color=black;color=white' href=blog.php?page=".$i.">".$i."</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li><a class='lien' href=blog.php?page=".$i.">".$i."</a></li>";
+                            }
+                            
+                        }
+                     ?>
+                    </ul>
+                </nav>
             </div><!-- End .container -->
 
             <div class="mb-6"></div><!-- margin -->

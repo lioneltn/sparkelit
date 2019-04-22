@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-$_SESSION['email_artiste'] = NULL;
+$_SESSION['email_admin'] = NULL;
 ?>
 <!DOCTYPE html>
 <html lang="en">

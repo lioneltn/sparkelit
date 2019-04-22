@@ -19,6 +19,37 @@
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <style type="text/css">
+        .lienActive
+        {
+            background-color: #29363c;
+            color:#fff;
+            font-size: 15px;
+            padding-left:5px;
+            padding-right:5px;
+            margin-left: 7px;
+            margin-right: 7px;
+            text-decoration: none;
+           
+        }
+        .lien
+        {
+            padding-left:5px;
+            padding-right:5px;
+            font-size: 15px;
+            margin-left: 7px;
+            margin-right: 7px;
+            text-decoration: none;
+           
+        }
+        .lien:hover , .lienActive:hover
+        {
+             text-decoration: none;
+             background-color: #29363c;
+            color:#fff;
+
+        }
+    </style>
 </head>
 <body>
     <div class="page-wrapper">
@@ -62,8 +93,19 @@
 
                             
                         </nav>
+                        <?php
+                            if (isset ($_GET['page']))
+                            {
+                                $_COOKIE['page']=$_GET['page'];
+                            }
+                            else
+                            {
+                                $_COOKIE['page']=1;
+                            }
+                            //echo $_COOKIE['page'];
+                        ?>
 
-                        <div id=product_sorted class="row row-sm">
+                        <div id="product_sorted" class="row row-sm" style="width:1500px; ">
                             <?php 
                             chdir(__DIR__);
                             include "../afficherProduitfront.php";
@@ -71,7 +113,43 @@
 
                             ?>
                         </div><!-- End .row -->
+                            <?php 
+                            chdir(__DIR__);
+                            //echo "afficherpostfront.php?page=".$_GET['page'];
+                            $nbproduit1=$produit1C->totalproduit();
+                                $nbproduit=$nbproduit1['total'];
+                               $lien=ceil($nbproduit/10);
+                               $debut1=$debut+1;
+                               $debut2=$debut+10;
+                               if($nbproduit<$debut2)
+                               {
+                                $debut2=$nbproduit;
+                               }
+                   
+                            ?>
 
+                               <nav class="toolbox toolbox-pagination" style="width: 1500px;">
+                                <div class="toolbox-item toolbox-show">
+                                    <label><?php echo "Affichage de " . $debut1 ."-".$debut2 ." de ". $nbproduit ." resultats"?></label>
+                                </div><!-- End .toolbox-item -->
+
+                                <ul class="pagination">
+                                <?php
+                                    for($i=1;$i<=$lien;$i++)
+                                    {
+                                        if($_COOKIE['page']==$i)
+                                        {
+                                            echo "<li><a class='lienActive' style='background-color=black;color=white' href=category2.php?page=".$i.">".$i."</a></li>";
+                                        }
+                                        else
+                                        {
+                                            echo "<li><a class='lien' href=category2.php?page=".$i.">".$i."</a></li>";
+                                        }
+                                        
+                                    }
+                                 ?>
+                                </ul>
+                            </nav>
                        
                     </div>
 

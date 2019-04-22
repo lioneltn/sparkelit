@@ -28,16 +28,20 @@ session_start();
     include "../../../../entities/comptes/admin.php";
     include "../../../../core/comptes/adminC.php";
 
-    echo $_SESSION['email_artiste'];
-    if (isset($_SESSION['email_artiste'])) {
+    echo $_SESSION['email_admin'];
+    if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
-        $result = $adminC->recupererAdmin($_SESSION['email_artiste']);
+        $result = $adminC->recupererAdmin($_SESSION['email_admin']);
         foreach ($result as $row) {
             $nom = $row['nom'];
             $prenom = $row['prenom'];
             $datenaissance = $row['datenaissance'];
             $sexe = $row['sexe'];
             $password = $row['motdepasse'];
+            $type = $row['type'];
+            if($type != 2) {
+                header('Location: login-2.php');
+            }
         }
     } else {
         header('Location: login-2.php');
@@ -49,11 +53,11 @@ session_start();
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
-                        <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="index.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
-                        <form class="search-field d-none d-md-flex" action="#">
+                        <!--<form class="search-field d-none d-md-flex" action="#">
                             <div class="form-group mb-0">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -62,9 +66,9 @@ session_start();
                                     <input type="text" class="form-control" placeholder="search here...">
                                 </div>
                             </div>
-                        </form>
+                        </form>-->
                         <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
-                            <li class="nav-item dropdown">
+                            <!--<li class="nav-item dropdown">
                                 <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                                     <i class="icon-envelope mx-0"></i>
                                     <span class="count"></span>
@@ -173,7 +177,7 @@ session_start();
                                         </div>
                                     </a>
                                 </div>
-                            </li>
+                            </li>-->
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
@@ -181,12 +185,12 @@ session_start();
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href="profile-2.php">
+                                    <a class="dropdown-item" href = "profile.php">
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profile
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="login.php">
+                                    <a class="dropdown-item" href="login-2.php">
                                         <i class="icon-logout text-primary mr-2"></i>
                                         Se déconnecter
                                     </a>
@@ -205,6 +209,20 @@ session_start();
                         <li class="nav-item">
                             <a href="dashboard-artiste.php#" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="../../pages/forms/formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/afficherpostadmin.php">Afficher posts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/statpost.php">Statistiques posts</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
                     </ul>
                 </div>
             </div>

@@ -22,7 +22,7 @@ include "../core/produitC.php";
 foreach($liste as $row)
 {
 ?>
-    <div class="col-6 col-md-4">
+    <div class="col-6 col-md-4 col-xl-5col">
         <div class="product">
             <figure style=" max-width: 222px;max-height:246px; transform: translate(-50%,0px);position: relative;left:50%;" class="product-image-container">
                 <div  class="product-image">

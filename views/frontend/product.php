@@ -1,7 +1,5 @@
 <?php
 include "../../core/produitC.php";
-include "../views/detect_visit.php";
-
 session_start();
 chdir(__DIR__);
 

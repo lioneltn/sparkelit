@@ -8,7 +8,7 @@ session_start();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+  <title>5icha</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -28,7 +28,6 @@ session_start();
   include "../../entities/comptes/admin.php";
   include "../../core/comptes/adminC.php";
 
-  echo $_SESSION['email_admin'];
   if (isset($_SESSION['email_admin'])) {
     $adminC = new AdminC();
     $result = $adminC->recupererAdmin($_SESSION['email_admin']);
@@ -53,7 +52,7 @@ session_start();
                         <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
-                        <form class="search-field d-none d-md-flex" action="#">
+                        <!--<form class="search-field d-none d-md-flex" action="#">
                             <div class="form-group mb-0">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -62,9 +61,9 @@ session_start();
                                     <input type="text" class="form-control" placeholder="search here...">
                                 </div>
                             </div>
-                        </form>
+                        </form>-->
                         <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
-                            <li class="nav-item dropdown">
+                            <!--<li class="nav-item dropdown">
                                 <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                                     <i class="icon-envelope mx-0"></i>
                                     <span class="count"></span>
@@ -173,7 +172,7 @@ session_start();
                                         </div>
                                     </a>
                                 </div>
-                            </li>
+                            </li>-->
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
@@ -258,6 +257,32 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+<li class="nav-item">
+              <a href="pages/ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
+              <div class="submenu">
+                <ul class="submenu-item">
+                  <li class="nav-item"><a class="nav-link" href="pages/ajouterOffre.php"> Ajouter offre</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/afficherOffres.php">Afficher offre</a></li>
+                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+                </ul>
+              </div>
+            </li> 
+             
+            <li class="nav-item">
+              <a href="pages/ajouterMetadonnee.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Metadonnee</span><i class="menu-arrow"></i></a>
+              <div class="submenu">
+                <ul class="submenu-item">
+                  <li class="nav-item"><a class="nav-link" href="pages/ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/afficherMetadonnee.php">Afficher metadonnee</a></li>
+                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+                </ul>
+              </div>
+            </li>
+
+
+
                     </ul>
                 </div>
             </div>

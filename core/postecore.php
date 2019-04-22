@@ -188,7 +188,7 @@ class posteC {
 
     function typeadmin($id_admin)
     {
-       $sql="SELECT type from admin where id_admin=:admin";
+       $sql="SELECT type from admin where login=:admin";
        $db = config::getConnexion();
        
 
@@ -282,6 +282,67 @@ class posteC {
 	            die('Erreur: '.$e->getMessage());
 	     }
     }
+    function stat_sans_note()
+    {
+    	$sql="select count(*) as totaln from poste WHERE note is null";
+    	$db = config::getConnexion();
+    	$req=$db->prepare($sql);
+		try{
+			$s=$req->execute();
+		$liste=$req->fetch();
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
+    function id_poste_total()
+    {
+    	$sql="select id_poste from poste where not note is null";
+    	$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+    }
+
+
+    function totalpost()
+    {
+    	$sql="SELECT count(*) as total From poste";
+		$db = config::getConnexion();
+		$req=$db->prepare($sql);
+		try
+		{
+			$s=$req->execute();
+			$liste=$req->fetch();
+			return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+    function afficher_post_page($aa)
+    {
+    	$sql="select * from poste limit :aa , 10";
+		$db = config::getConnexion();
+		$req=$db->prepare($sql);
+		
+		try{
+			
+			$req->bindValue(':aa',  $aa, PDO::PARAM_INT);
+			$liste=$req->execute();
+			return $req->fetchAll();
+		}
+        catch (Exception $e){
+        	echo $e->getMessage();
+            //die('Erreur: '.$e->getMessage());
+        }
+    }
+
 }
 
 

@@ -162,11 +162,7 @@
                       <span class="helper-text" > </span>
                     </div>
 
-                     <div class="form-group">
-                      <label for="exampleInputPrix">Prix de solde</label>
-                                          <input type="text" class="form-control" id="exampleInputPrix" name ="prix"  maxlength="100" onfocusout="validerPrix()" required/>
-                      <span class="helper-text" > </span>
-                    </div>
+            
 
                      <div class="form-group">
                       <label for="exampleInputPrix">Date debut</label>

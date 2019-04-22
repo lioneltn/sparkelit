@@ -1,4 +1,6 @@
-
+<?PHP
+session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -70,6 +72,7 @@
                   <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
                   
                   <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
+                  <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -82,8 +85,7 @@
               <div class="submenu">
                 <ul class="submenu-item">
                   <li class="nav-item"><a class="nav-link" href="ajouterfournisseur.php"> Ajouter fournisseur</a></li>
-                  <li class="nav-item"><a class="nav-link" href="modifierfournisseur.php">Modifier fournisseur</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/wizard.php">Afficher fournisseurs</a></li>
+                  <li class="nav-item"><a class="nav-link" href="afficherFournisseur.php">Afficher fournisseurs</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -95,8 +97,7 @@
               <div class="submenu">
                 <ul class="submenu-item">
                   <li class="nav-item"><a class="nav-link" href="ajoutercategorie.php"> Ajouter Categorie</a></li>
-                  <li class="nav-item"><a class="nav-link" href="modifiercategorie.php">Modifier Categorie</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/wizard.php">Afficher fournisseurs</a></li>
+                  <li class="nav-item"><a class="nav-link" href="afficherCategorie.php">Afficher Categorie</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>

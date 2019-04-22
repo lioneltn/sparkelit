@@ -1,5 +1,6 @@
 <?php 
 chdir(__DIR__);
+session_start();
 include "../entities/poste.php";
 include "../core/postecore.php";
 
@@ -19,7 +20,7 @@ if (isset($_POST['titre']) and isset($_POST['description']))
 		echo $destination;
 		echo $filetmp;
 		move_uploaded_file($filetmp,$destination);
-		$poste1=new poste($_POST['titre'],$_POST['description'],$destination,"4");
+		$poste1=new poste($_POST['titre'],$_POST['description'],$destination,$_SESSION["email_admin"]);
 		$poste1C=new posteC();
 		$poste1C->ajouterposte($poste1);
 		header('location:backend/pages/forms/afficherpostadmin.php');

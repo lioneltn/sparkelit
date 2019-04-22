@@ -36,7 +36,7 @@ class ClientC
             echo 'Erreur: ' . $e->getMessage();
         }
 
-        $sql="insert into adressetotal(adresse,ville,pays,codePostal,tel,region,email,companie) values (:adresse,:ville,:pays,:codePostal,:tel,:region,:email,:companie)";
+        $sql="insert into adressetotal(adresse,ville,pays,codePostal,tel,region,email,id,companie) values (:adresse,:ville,:pays,:codePostal,:tel,:region,:email,NULL,:companie)";
 		$db = config::getConnexion();
 		try
 		{
@@ -71,8 +71,9 @@ class ClientC
 
             $client1->bindValue(':email', $login);
             $client1->execute();
-
-            return $client1;
+            $liste=$client1->fetchall();
+            echo "test";
+            return $liste;
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
         }

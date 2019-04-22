@@ -15,17 +15,16 @@ $file=$_FILES['image'];
    
 
 
-if (isset($_POST['id']) and isset($_POST['nom']) and isset($_POST['desc']) and isset($_POST['prix']) and isset($_POST['prix_anc'])and isset($_FILES['image']) and isset($_POST['remise']) and isset($_POST['dateD']) and isset($_POST['dateF']) and in_array($extension,$disponible))
+if (isset($_POST['id']) and isset($_POST['nom']) and isset($_POST['desc']) and isset($_POST['prix_anc'])and isset($_FILES['image']) and isset($_POST['remise']) and isset($_POST['dateD']) and isset($_POST['dateF']) and in_array($extension,$disponible))
    {
 
         $destination="uploads/".$filename;
 
-        $offre=new Offre($_POST['id'],$_POST['nom'],$_POST['desc'],$_POST['refP'],$_POST['prix'],$_POST['prix_anc'],$_POST['remise'],$destination,$_POST['dateD'],$_POST['dateF']);
+        $offre=new Offre($_POST['id'],$_POST['nom'],$_POST['desc'],$_POST['refP'],$_POST['prix_anc'],$destination,$_POST['remise'],$_POST['dateD'],$_POST['dateF']);
 		$offrec=new OffreC();
 		$offrec->ajouterOffre($offre);
-		$offrec->calculerPrix($offre);
 		header('Location: backend/pages/afficherOffres.php');
-echo "aaaa";
+//echo "aaaa";
 
 	}
 

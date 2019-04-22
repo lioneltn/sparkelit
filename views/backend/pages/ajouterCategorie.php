@@ -1,3 +1,7 @@
+<?PHP
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +24,7 @@
   </style>
 </head>
 <body>
+  
   <div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
     <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -66,6 +71,8 @@
                   <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
                   
                   <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
+
+                  <li class="nav-item"><a class="nav-link" href="forms/statpost.php">Statistiques posts</a></li>
 
                 </ul>
               </div>

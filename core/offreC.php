@@ -10,7 +10,7 @@ class offreC
 
 	function ajouterOffre($offre)
 	{
-		$sql="insert into offre values (:id,:nom,:descripition,:refP,:prix,:prix_anc,:remise,:image,:dateD,:dateF)";
+		$sql="insert into offre values (:id,:nom,:descripition,:refP,:prix,:prix_anc,:image,:remise,:dateD,:dateF)";
 		$db = config::getConnexion();
 		try
 		{
@@ -52,7 +52,7 @@ class offreC
 	function afficherOffre()
 	{
 		
-		$sql="SElECT * From offre order by dateD";
+		$sql="SElECT * From offre order by id ";
 		$db = config::getConnexion();
 		try
 		{
@@ -101,7 +101,7 @@ function calculerPrix($offre){
 	}
 		function modifierOffre($offre,$idd)
 		{
-		$sql="UPDATE offre SET id=:id, nom=:nom, descripition=:descripition, refP=:refP , prix=:prix
+		$sql="UPDATE offre SET id=:id, nom=:nom, descripition=:descripition, refP=:refP 
 		, prix_anc=:prix_anc, remise=:remise , image=:image , dateD=:dateD , dateF=:dateF WHERE id=$idd ";
 		
 		$db = config::getConnexion();
@@ -113,7 +113,7 @@ function calculerPrix($offre){
         $nom=$offre->getnom();
         $descripition=$offre->getdesc();
         $refP=$offre->getrefP();
-        $prix=$offre->getprix();
+        //$prix=$offre->getprix();
         $prix_anc=$offre->getprix_anc();
         $image=$offre->getimage();
         $remise=$offre->getremise();
@@ -127,7 +127,7 @@ function calculerPrix($offre){
 		$req->bindValue(':descripition',$descripition);
 		$req->bindValue(':refP',$refP);
 		$req->bindValue(':image',$image);
-        $req->bindValue(':prix',$prix);
+        //$req->bindValue(':prix',$prix);
         $req->bindValue(':prix_anc',$prix_anc);	
         $req->bindValue(':remise',$remise);
         $req->bindValue(':dateD',$dateD);	

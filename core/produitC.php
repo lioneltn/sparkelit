@@ -733,6 +733,41 @@ function afficherRefProduit()
             die('Erreur: '.$e->getMessage());
         }	
 	}
+
+	function totalproduit()
+    {
+    	$sql="SELECT count(*) as total From produit";
+		$db = config3::getConnexion();
+		$req=$db->prepare($sql);
+
+		try
+		{
+			$s=$req->execute();
+			$liste=$req->fetch();
+			return $liste;
+		}
+        catch (Exception $e){
+        	echo $e->getMessage();
+            //die('Erreur: '.$e->getMessage());
+        }
+    }
+    function afficher_produit_page($aa)
+    {
+    	$sql="select * from produit limit :aa , 10";
+		$db = config3::getConnexion();
+		$req=$db->prepare($sql);
+		
+		try{
+			
+			$req->bindValue(':aa',  $aa, PDO::PARAM_INT);
+			$liste=$req->execute();
+			return $req->fetchAll();
+		}
+        catch (Exception $e){
+        	echo $e->getMessage();
+            //die('Erreur: '.$e->getMessage());
+        }
+    }
 }
 
 

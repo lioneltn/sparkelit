@@ -2,15 +2,20 @@
 chdir(__DIR__);
 include "../entities/produit.php";
 include "../core/produitC.php";
+if(!isset($_COOKIE['page']))
+    {
+        $_COOKIE['page']=1;
+    }
+    $debut=(($_COOKIE['page']-1)*10);
     $produit1C=new ProduitC();
-    $liste=$produit1C->afficherProduits();
+    $liste=$produit1C->afficher_produit_page($debut);
         
 ?>
 <?PHP
 foreach($liste as $row)
 {
 ?>
-    <div class="col-6 col-md-4 ">
+    <div class="col-6 col-md-4 col-xl-5col">
         <div  class="product">
             <figure style=" max-width: 222px;max-height:246px; transform: translate(-50%,0px);position: relative;left:50%;" class="product-image-container">
                 <div  class="product-image">

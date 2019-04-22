@@ -38,7 +38,7 @@ if (isset($_POST['modifier']))
 	{ 
 		$destination="uploads/".$filename;
    echo $_POST['id'];
-	$offre1=new offre($_POST['id'],$_POST['nom'],$_POST['desc'],$_POST['refP'],$_POST['prix'],$_POST['prix_anc'],$destination,$_POST['remise'],$_POST['dateD'] ,$_POST['dateF']);
+	$offre1=new offre($_POST['id'],$_POST['nom'],$_POST['desc'],$_POST['refP'],$_POST['prix_anc'],$destination,$_POST['remise'],$_POST['dateD'] ,$_POST['dateF']);
 	$offre1C=new OffreC();
 	$offre1C->modifierOffre($offre1,$_POST['id']);
 	//echo $_POST["ref"];

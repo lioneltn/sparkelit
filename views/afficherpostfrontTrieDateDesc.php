@@ -15,6 +15,7 @@ chdir(__DIR__);
     $poste1C=new posteC();
     $note1C= new noteC();
     $liste=$poste1C->triepostepardate();
+    session_start();
 
 
 ?>
@@ -22,11 +23,11 @@ chdir(__DIR__);
 <?PHP
                 foreach($liste as $row)
                 {
-                   $nb1=$note1C->nbnoteclientetposte($row['id_poste'],'4');
+                   $nb1=$note1C->nbnoteclientetposte($row['id_poste'],$_SESSION["email"]);
                     $nb=$nb1['total'];
                     if($nb!=0)
                     {
-                     $listenote=$note1C->noteetcommentaireclientposte($row['id_poste'],"4");
+                     $listenote=$note1C->noteetcommentaireclientposte($row['id_poste'],$_SESSION["email"]);
                      $note=$listenote['note'];
                      $commantaire=$listenote['commantaire'];
                     }
@@ -107,7 +108,7 @@ chdir(__DIR__);
                                 <br>
                                 <form action="../ajouterNote.php" method="POST">
                                     <input type="hidden" name="id_poste" value="<?php echo $row['id_poste'] ;?>">
-                                      <input type="hidden" name="id_client" value="4">
+                                      <input type="hidden" name="id_client" value="<?php echo $_SESSION["email"]?>">
                                     <div class="rating" style="padding-top: 20px ">
                                         <?php
                                             if($nb!=0)

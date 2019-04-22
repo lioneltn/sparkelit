@@ -1,4 +1,6 @@
-
+<?PHP
+session_start();
+?>
 <?php 
 
 include "../../../core/produitC.php";
@@ -237,6 +239,7 @@ else
                   <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
                   
                   <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
+                  <li class="nav-item"><a class="nav-link" href="forms/statpost.php">Statistiques posts</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>

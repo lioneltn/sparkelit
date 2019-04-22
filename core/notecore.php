@@ -197,6 +197,25 @@ class noteC {
 
 	}
 
+	function stat_all($id_poste)
+	{ 
+		$sql="SELECT count(*) as total from note where id_poste=:poste and commantaire!=:commantaire";
+		$db = config2::getConnexion();
+		$req=$db->prepare($sql);
+		$req->bindValue(':poste',$id_poste);
+		$req->bindValue(':commantaire',"");
+		try
+		{
+			$req->execute();
+			return $req->fetch();
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+
+	}
+
 	function supprimernote($id_client,$id_poste)
 	{
 		$sql="DELETE FROM note where id_client=:client AND id_poste=:poste";

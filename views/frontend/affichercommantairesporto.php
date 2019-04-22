@@ -1,14 +1,14 @@
-<?PHP
-session_start();
-?>
+<?php
+session_start();  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+    <title>Poste</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -20,36 +20,53 @@ session_start();
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <style type="text/css">
+        .rating{
+            direction: rtl;
+        }
+      .rating  i{
+        font-size: 40px;
+        color: #303030;
+        transition: 0.3s all;
+        cursor: pointer;
+      }  
+       .rating i:hover 
+       {
+        color:#f1c40f;
 
-    <!-- Javascript File -->
-    <script type="text/javascript" language="javascript" src="assets/js/my-account.js"></script>
+       
+       }
+        .b1:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b2:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b3:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b4:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+          .b5:hover~ i
+        { 
+
+            color:#f1c40f;
+        }
+    </style>
 </head>
 <body>
-<?PHP
-    include "../../entities/comptes/client.php";
-    include "../../core/comptes/clientC.php";
-
-    echo $_SESSION['email'];
-    if (isset($_SESSION['email'])) {
-        $clientC = new ClientC();
-        $result = $clientC->recupererClient($_SESSION['email']);
-        foreach ($result as $row) {
-            $nom = $row['nom'];
-            $prenom = $row['prenom'];
-            $datenaissance = $row['datenaissance'];
-            $sexe = $row['sexe'];
-            $password = $row['motdepasse'];
-            $tel = $row['tel'];
-            $code = $row['codePostal'];
-            $addlivr = $row['adresse'];
-        }
-        echo $nom.$prenom.$datenaissance.$sexe.$password.$tel.$code.$addlivr;
-    } else {
-        header('Location: login.php');
-    }
-    ?>
     <div class="page-wrapper">
         <header class="header">
             <div class="header-middle sticky-header">
@@ -171,10 +188,10 @@ session_start();
                                                 <li><a href="checkout-review.php">Checkout Review</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Tableau de bord</a>
+                                        <li><a href="#">Dashboard</a>
                                             <ul>
-                                                <li><a href="dashboard.php">Tableau de bord</a></li>
-                                                <li><a href="my-account.php">Mon compte</a></li>
+                                                <li><a href="dashboard.php">Dashboard</a></li>
+                                                <li><a href="my-account.php">My Account</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about.php">About Us</a></li>
@@ -185,13 +202,8 @@ session_start();
                                             </ul>
                                         </li>
                                         <li><a href="contact.php">Contact Us</a></li>
-                                        <li><a href="login.php">
-                                                <?PHP if (isset($_SESSION['email'])) {
-                                                    echo "se déconnecter";
-                                                } else {
-                                                    echo  "se connecter";
-                                                } ?></a></li>
-                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
+                                        <li><a href="#" class="login-link">Login</a></li>
+                                        <li><a href="forgot-password.php">Forgot Password</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#" class="sf-with-ul">Features</a>
@@ -268,22 +280,15 @@ session_start();
                             </div><!-- End .header-dropown -->
 
                             <div class="header-dropdown">
-                            <a href="#">
-                                    <?PHP if (isset($_SESSION['email'])) echo "Salut " . $prenom;
-                                    else echo "liens" ?></a>
+                                <a href="#">Links</a>
                                 <div class="header-menu">
                                     <ul>
-                                    <li><a href="my-account.php">Mon compte </a></li>
+                                        <li><a href="my-account.php">MY ACCOUNT </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="login.php">
-                                                <?PHP if (isset($_SESSION['email'])) {
-                                                    echo "se déconnecter";
-                                                } else {
-                                                    echo  "se connecter";
-                                                } ?></a></li>
+                                        <li><a href="#" class="login-link">LOG IN</a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->
@@ -359,115 +364,32 @@ session_start();
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-        
+            
         <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                <div class="container-fluid">
+                <div class="container-fluid ">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tableau de bord</li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
                     </ol>
-                </div><!-- End .container-fluid -->
+                </div><!-- End .container-fluid  -->
             </nav>
 
-            <div class="container mt-2">
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 order-lg-last dashboard-content">
-                        <h2>Modifier les informations de son compte</h2>
+                    <!--<div class="col-lg-9">-->
+                        <?php include "../afficherpostfront.php";?>
+                        
+                     
 
-                        <form method="POST" name="acc_edit">
-                            <div class="row">
-                                <div class="col-sm-11">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group required-field">
-                                                <label for="acc-name">Nom</label>
-                                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?PHP echo $nom ?>" onfocusout="validateFirstName(this)" required>
-                                            </div><!-- End .form-group -->
-                                        </div><!-- End .col-md-4 -->
+                       
+                    <!--</div>--><!-- End .col-lg-9 -->
 
-                                        <div class="col-md-4">
-                                            <div class="form-group required-field">
-                                                <label for="acc-lastname">Prénom</label>
-                                                <input type="text" class="form-control" id="lastName" name="lastName" value="<?PHP echo $prenom ?>" onfocusout="validateFirstName(this)" required>
-                                            </div><!-- End .form-group -->
-                                        </div><!-- End .col-md-4 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .col-sm-11 -->
-                            </div><!-- End .row -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-birthday">Date de naissance</label>
-                                <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" value="<?PHP echo $datenaissance ?>" onfocusout="validateDateNaissance(this)" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-birthday">Sexe</label>
-                                <select name="sexe" class="form-control">
-                                    <option value="homme" <?PHP $opt1 = $sexe == "homme" ? "selected" : "";
-                                                            $opt2 = $sexe == "femme" ? "selected" : "";
-                                                            if ($sexe == " homme") echo $opt1 ?>>Homme </option>
-                                    <option value="femme" <?PHP if ($sexe == " femme") echo $opt2 ?>>Femme </option>
-                                </select>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-email">Email</label>
-                                <label class="form-control">
-                                    <?PHP echo $_SESSION['email'] ?> </label>
-                            </div><!-- End .form-group -->
-
-                            <div class="form-group required-field">
-                                <label for="acc-tel">Téléphone</label>
-                                <input type="number" class="form-control" id="numTel" name="numTel" value="<?PHP echo $tel ?>" onfocusout="validateNumTel(this)" required>
-                            </div><!-- End .form-group -->
-
-                            <div class="required text-right">* Champ requis</div>
-                            <div class="form-footer">
-                                <a href="dashboard.php"><i class="icon-angle-double-left"></i>précédent</a>
-
-                                <div class="form-footer-right">
-                                    <input type="submit" class="btn btn-primary" name="modifier" id="modifier" onclick="verification()" value="modifier">
-                                </div>
-                            </div><!-- End .form-footer -->
-                        </form>
-                        <?PHP
-                        if (isset($_POST['modifier'])  and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01" and $_POST['numTel'] > 10000000) {
-                            $client1 = new Client($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email'], $_POST['sexe'], $_POST['numTel'], "", "", "", "");
-                            $client1C = new ClientC();
-                            $client1C->modifierClient_i($client1);
-                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                            echo "<script> window.location.href='dashboard.php'</script>";
-                        } else {
-                            //echo "errorr echec";
-                        }
-                        ?>
-                    </div><!-- End .col-lg-9 -->
-
-                    <aside class="sidebar col-lg-3">
-                        <div class="widget widget-dashboard">
-                            <h3 class="widget-title">Mon compte</h3>
-
-                            <ul class="list">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li class="active"><a href="my-account.php#">Information sur mon compte</a></li>
-                                <li><a href="carnet-adresse.php">carnet d'adresse</a></li>
-                                <li><a href="#">My Orders</a></li>
-                                <li><a href="#">Billing Agreements</a></li>
-                                <li><a href="#">Recurring Profiles</a></li>
-                                <li><a href="#">My Product Reviews</a></li>
-                                <li><a href="#">My Tags</a></li>
-                                <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">My Applications</a></li>
-                                <li><a href="#">Newsletter Subscriptions</a></li>
-                                <li><a href="#">My Downloadable Products</a></li>
-                            </ul>
-                        </div><!-- End .widget -->
-                    </aside><!-- End .col-lg-3 -->
+                   
                 </div><!-- End .row -->
             </div><!-- End .container -->
 
-            <div class="mb-5"></div><!-- margin -->
+            <div class="mb-6"></div><!-- margin -->
         </main><!-- End .main -->
 
         <footer class="footer">
@@ -559,26 +481,21 @@ session_start();
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="widget">
-                                        <h4 class="widget-title">Mon compte</h4>
+                                        <h4 class="widget-title">My Account</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
                                                     <li><a href="about.php">About Us</a></li>
                                                     <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">Mon compte</a></li>
+                                                    <li><a href="my-account.php">My Account</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
-                                            <ul class="links">
+                                                <ul class="links">
                                                     <li><a href="#">Orders History</a></li>
                                                     <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="login.php">
-                                                            <?PHP if (isset($_SESSION['email'])) {
-                                                                echo "se déconnecter";
-                                                            } else {
-                                                                echo  "se connecter";
-                                                            } ?></a></li>
+                                                    <li><a href="#" class="login-link">Login</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -628,6 +545,18 @@ session_start();
                 </div><!-- End .container-fluid -->
             </div><!-- End .footer-middle -->
         </footer><!-- End .footer -->
+        <div id="modelsupprimer_bg" class="modelsupprimer_bg" style="background-color: rgba(0,0,0,0.7);min-height: 100%;min-width: 100%;position: fixed; bottom: 0; right: 0; z-index: 1000;justify-content: center;display: flex; align-items: center;">
+        <div class="modelsupprimer-content" style="width: 1000px;background-color: white;position: relative; border-radius: 5px;text-align: center;align-items: center;">
+          <div id="closemodelsupprimer" style="font-size: 30px; transform: rotate(45deg);position: absolute;right: 14px; top: 0;cursor: pointer;" onclick="document.location.href='blog.php'">+</div>
+          <br><br><br>
+          
+          <?php 
+          chdir(__DIR__);
+          include '../affichercommantaireduposte.php'; 
+          chdir(__DIR__); 
+           ?>
+          
+        </div>
     </div><!-- End .page-wrapper -->
 
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
@@ -706,13 +635,8 @@ session_start();
                                 </ul>
                             </li>
                             <li><a href="about.php">About</a></li>
-                            <li><a href="login.php">
-                                    <?PHP if (isset($_SESSION['email'])) {
-                                        echo "se déconnecter";
-                                    } else {
-                                        echo  "se connecter";
-                                    } ?></a></li>
-                            <li><a href="forgot-password.html">Mot de passe oublié</a></li>
+                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="forgot-password.php">Forgot Password</a></li>
                         </ul>
                     </li>
                     <li><a href="blog.php">Blog</a>
@@ -732,6 +656,7 @@ session_start();
                 <a href="#" class="social-icon" target="_blank"><i class="icon-instagram"></i></a>
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
+
     </div><!-- End .mobile-menu-container -->
 
     <div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background-image: url(assets/images/newsletter_popup_bg.jpg)">
@@ -758,6 +683,9 @@ session_start();
 
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
+   
+  </div>
+
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -765,5 +693,101 @@ session_start();
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
+    <script type="text/javascript">
+        
+        function note1(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=1;
+            document.getElementById('noteposte_'+id_post).onchange();
+
+           
+        }
+        function note2(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=2;
+            document.getElementById('noteposte_'+id_post).onchange();
+           
+        }
+        function note3(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=3;
+            document.getElementById('noteposte_'+id_post).onchange();
+            
+        }
+        function note4(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=4;
+            document.getElementById('noteposte_'+id_post).onchange();
+          
+        }
+        function note5(id)
+        {
+            var id_post=id.substring(id.indexOf("_")+1,id.length);
+            document.getElementById('noteposte_'+id_post).value=5;
+            document.getElementById('noteposte_'+id_post).onchange();
+            
+        }
+
+
+        function notechange(id)
+        {
+             var id_post=id.substring(id.indexOf("_")+1,id.length);
+            var x=document.getElementById(id);
+            var b1=document.getElementById("b1_"+id_post);
+            var b2=document.getElementById("b2_"+id_post);
+            var b3=document.getElementById("b3_"+id_post);
+            var b4=document.getElementById("b4_"+id_post);
+            var b5=document.getElementById("b5_"+id_post);
+           if (x.value==1)
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#303030';
+                b3.style.color='#303030';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="2")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#303030';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="3")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#303030';
+                b1.style.color='#303030';
+            }
+            if (x.value=="4")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#f1c40f';
+                b1.style.color='#303030';
+            }
+            if (x.value=="5")
+            {
+                b5.style.color='#f1c40f';
+                b4.style.color='#f1c40f';
+                b3.style.color='#f1c40f';
+                b2.style.color='#f1c40f';
+                b1.style.color='#f1c40f';
+            }
+
+
+
+        }
+    </script>
+   
+
 </body>
 </html>

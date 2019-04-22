@@ -16,7 +16,7 @@ session_start();?>
     <meta name="author" content="SW-THEMES">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/Logoreduit.png">
+    <link rel="icon" type="image/x-icon" href="../meta/Logoreduit.png">
     <!--/icons/favicon.ico-->
 
     <!-- Plugins CSS File -->
@@ -198,7 +198,7 @@ session_start();?>
 
                     <div class="header-center" style="width: 92px;height: 49px">
                         <a href="index.php" class="logo">
-                            <img src="assets/images/Logoreduit.png" alt="Porto Logo " style="width: 92px;height: 49px">
+                            <img src="..//meta/Logoreduit.png" alt="Porto Logo " style="width: 92px;height: 49px">
                         </a>
                     </div><!-- End .header-center -->
 

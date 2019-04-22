@@ -2,6 +2,7 @@
 unset($_COOKIE["type"]);
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,10 @@ unset($_COOKIE["type"]);
 	<link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 <body>
+  <?PHP
+  
+  
+  ?>
 	<div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
     <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -63,6 +68,8 @@ unset($_COOKIE["type"]);
                   <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
                   
                   <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
+
+                  <li class="nav-item"><a class="nav-link" href="forms/statpost.php">Statistiques posts</a></li>
                   
                 </ul>
               </div>
@@ -76,6 +83,8 @@ unset($_COOKIE["type"]);
                   <li class="nav-item"><a class="nav-link" href="ajouterfournisseur.php"> Ajouter fournisseur</a></li>
                   
                   <li class="nav-item"><a class="nav-link" href="afficherFournisseur.php">Afficher fournisseurs</a></li>
+
+
                  
                 </ul>
               </div>

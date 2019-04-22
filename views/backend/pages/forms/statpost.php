@@ -1,18 +1,75 @@
 <?php 
 session_start();
+include "../../../../core/notecore.php";
+chdir(__DIR__);
+include "../../../../core/postecore.php";
+chdir(__DIR__);
+$noteC= new noteC();
+$posteC= new posteC();
+$listeposte=$posteC->id_poste_total();
+$nbsansnote=0;
+$nbsanscommantaire=0;
+$nbaveccommantaire=0;
+foreach ($listeposte as $row) 
+{
+  $nbcommantaire1=$noteC->nombrecommantaire($row['id_poste']);
+  $nbcommantaire=$nbcommantaire1['total'];
+  if($nbcommantaire==0)
+  {
+    $nbsanscommantaire++;
+  }
+  else
+  {
+    $nbaveccommantaire++;
+  }
+}
+$nbsansnote1=$posteC->stat_sans_note();
+$nbsansnote=$nbsansnote1['totaln'];
+
+
+$_COOKIE['nbsansnote']=$nbsansnote;
+$_COOKIE['nbsanscommantaire']=$nbsanscommantaire;
+$_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-	
-	<link rel="stylesheet" type="text/css" href="Formulaire.css">
+  
+  <link rel="stylesheet" type="text/css" href="Formulaire.css">
 
 
   <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+        var nbsansnote=<?php echo $nbsansnote ;?>;
+        var nbaveccommantaire=<?php echo $nbaveccommantaire ;?>;
+        var nbsanscommantaire=<?php echo $nbsanscommantaire ;?>;
+        
+        var data = google.visualization.arrayToDataTable([
+          ['Post', 'Nombre'],
+          ['Postes sans note ni commantaires',     nbsansnote],
+          ['Poste avec note sans commantaire',      nbsanscommantaire],
+          ['Poste avec note et commantaires',  nbaveccommantaire]
+        ]);
+
+        var options = {
+          title: 'Statistiques sur les postes'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('contenu'));
+
+        chart.draw(data, options);
+      }
+    </script>
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -24,7 +81,7 @@ session_start();
 
 
 </style>
-	<title>Modifier Poste</title>
+  <title>Afficher Poste</title>
 </head>
 <body>
 
@@ -305,12 +362,12 @@ session_start();
             </li>-->
 
             <li class="nav-item">
-              <a href="Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
+              <a href="../Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="Ajouterproduit.php"> Ajouter produit</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../Ajouterproduit.php"> Ajouter produit</a></li>
                   
-                  <li class="nav-item"><a class="nav-link" href="afficherProduits.php">Afficher produits</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../afficherProduits.php">Afficher produits</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -321,12 +378,14 @@ session_start();
 
 
              <li class="nav-item">
-              <a href="pages/produit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
+              <a href="#" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href=#> Ajouter post</a></li>
+                  <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
                   
-                  <li class="nav-item"><a class="nav-link" href="#">Afficher posts</a></li>
+                  <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
+
+                   <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -335,12 +394,12 @@ session_start();
 
 
             <li class="nav-item">
-              <a href="ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Fournisseur</span><i class="menu-arrow"></i></a>
+              <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Fournisseur</span><i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="ajouterfournisseur.php"> Ajouter fournisseur</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../ajouterfournisseur.php"> Ajouter fournisseur</a></li>
                   
-                  <li class="nav-item"><a class="nav-link" href="afficherFournisseur.php">Afficher fournisseurs</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../afficherFournisseur.php">Afficher fournisseurs</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -348,11 +407,11 @@ session_start();
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Categorie</span><i class="menu-arrow"></i></a>
+              <a href="../ajoutercategorie.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Categorie</span><i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="ajoutercategorie.php"> Ajouter Categorie</a></li>
-                  <li class="nav-item"><a class="nav-link" href="afficherCategorie.php">Afficher Categorie</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../ajoutercategorie.php"> Ajouter Categorie</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../afficherCategorie.php">Afficher Categorie</a></li>
                   <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
                 </ul>
@@ -471,7 +530,7 @@ session_start();
     </nav>
 
     <!-- partial -->
-	<div class="card">
+  <div class="card">
                <!-- <div class="card-body">
                   <h4 class="card-title">Gestion Poste</h4>
                   <p class="card-description">
@@ -500,29 +559,24 @@ session_start();
                   </form>
                 </div>
               </div>-->
-              <div class="table-sorter-wrapper col-lg-12 table-responsive">
-                <?php 
-                  include "../../../afficherposteBD.php" ;
-                ?>
+
+
+              <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row" id="contenu" style="margin-left:350px;width: 700px;height: 500px;">
+                   
+                    
+                      <!--<div class="table-sorter-wrapper col-lg-12 table-responsive">-->
+                        
+                      
+                    <!--</div>-->
+                  </div>
+                </div>
               </div>
-
-
-
-
+            </div>
 
 </div>
-
-  <div id="modelsupprimer_bg" class="modelsupprimer_bg" style="background-color: rgba(0,0,0,0.7);min-height: 100%;min-width: 100%;position: fixed; bottom: 0; right: 0; z-index: 1000;justify-content: center;display: flex; align-items: center;">
-        <div class="modelsupprimer-content" style="width: 400px;height: 200px;background-color: white;position: relative; border-radius: 5px;text-align: center;align-items: center;">
-          <div id="closemodelsupprimer" style="font-size: 30px;transform: rotate(45deg);position: absolute;right: 14px; top: 0;cursor: pointer;" onclick="document.location.href='afficherpostadmin.php'">+</div>
-          <p style="position: relative;top:50% ;transform:translate(0,-60%);">Etes vous sur de supprimer le post <?php echo $_POST['titre']; ?>?</p>
-          <form method="POST" action="../../../supprimerposteparadminok.php">
-            <input type="hidden" class="hiddenreference" name="id" value="<?PHP echo $_POST['id']; ?>" readonly >
-            <input style="position: absolute;bottom: 0;transform: translate(-60px,-10px);" type="submit" value="Supprimer" class="btn btn-danger mr-2">
-          </form>
-          
-        </div>
-  </div>
 <script src="../../vendors/js/vendor.bundle.base.js"></script>
   <script src="../../vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->

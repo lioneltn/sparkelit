@@ -1,13 +1,14 @@
 <?php 
 chdir(__DIR__);
+
 include "../entities/poste.php";
 include "../core/postecore.php";
 	$poste1C=new posteC();
-		$ret=$poste1C->typeadmin("5"); 
+		$ret=$poste1C->typeadmin($_SESSION['email_admin']); 
 		$type=$ret['type'];
 		if ($type ==2)   
 		{
-		 	$liste=$poste1C->afficherposte_pourartiste("5");
+		 	$liste=$poste1C->afficherposte_pourartiste($_SESSION['email_admin']);
 ?>
 
 <style type="text/css">
