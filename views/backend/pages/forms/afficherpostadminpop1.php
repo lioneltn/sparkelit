@@ -19,7 +19,7 @@ session_start();
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/logoreduit.png" />
   <style type="text/css">
 
 
@@ -27,7 +27,28 @@ session_start();
 	<title>Modifier Poste</title>
 </head>
 <body>
+  <?PHP
+chdir(__DIR__);
 
+  include "../../../../entities/comptes/admin.php";
+  include "../../../../core/comptes/adminC.php";
+
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
+      $type = $row['type'];
+    }
+  } else {
+    header('Location: ../samples/login.php');
+  }
+  chdir(__DIR__);
+  ?>
 
   <div class="container-scroller">
   <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -77,9 +98,12 @@ session_start();
             <div class="nav-bottom">
                 <div class="container">
                     <ul class="nav page-navigation">
+                        <?php if($type==1)
+                        {?>
                         <li class="nav-item">
                             <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
                         </li>
+                       
 
                         <li class="nav-item">
                             <a href="../Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
@@ -109,9 +133,9 @@ session_start();
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
-
                                     <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
-                                </ul>
+                                    <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
+                                  </ul>
                             </div>
                         </li>
 
@@ -125,7 +149,7 @@ session_start();
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="../samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../samples/orders.php"> commandes</a></li>
@@ -156,6 +180,32 @@ session_start();
                 </ul>
               </div>
             </li>
+            <?php
+            }
+            else
+            {
+              ?>
+
+              <li class="nav-item">
+              <a href="../samples/dashboard-artiste.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
+            </li>
+
+                        <li class="nav-item">
+                            <a href="formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
+                                    
+                                  </ul>
+                            </div>
+                        </li>
+
+            <?php
+
+            }  
+
+            ?>
 
 
 

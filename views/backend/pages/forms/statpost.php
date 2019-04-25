@@ -76,7 +76,7 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/logoreduit.png" />
   <style type="text/css">
 
 
@@ -84,7 +84,30 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
   <title>Afficher Poste</title>
 </head>
 <body>
+  <?PHP
+chdir(__DIR__);
 
+  include "../../../../entities/comptes/admin.php";
+  include "../../../../core/comptes/adminC.php";
+
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
+      $type = $row['type'];
+    
+    }
+  } else {
+    header('Location: ../samples/login.php');
+  }
+  chdir(__DIR__);
+
+  ?>
 
   <div class="container-scroller">
   <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -134,6 +157,8 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
             <div class="nav-bottom">
                 <div class="container">
                     <ul class="nav page-navigation">
+                      <?php if($type==1)
+                        {?>
                         <li class="nav-item">
                             <a href="../../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
                         </li>
@@ -168,6 +193,8 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
                                     <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -213,7 +240,32 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
                 </ul>
               </div>
             </li>
+            <?php
+            }
+            else
+            {
+              ?>
 
+              <li class="nav-item">
+              <a href="../samples/dashboard-artiste.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
+            </li>
+
+                        <li class="nav-item">
+                            <a href="formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
+                                    
+                                  </ul>
+                            </div>
+                        </li>
+
+            <?php
+
+            }  
+
+            ?>
 
 
                     </ul>

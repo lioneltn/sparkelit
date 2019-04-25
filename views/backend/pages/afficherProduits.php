@@ -18,7 +18,7 @@ unset($_COOKIE["type"]);
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
 
 	<link rel="stylesheet" href="../css/style.css">
-	<link rel="shortcut icon" href="../images/favicon.png" />
+	<link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 <body>
 <?PHP
@@ -42,6 +42,7 @@ unset($_COOKIE["type"]);
   } else {
     header('Location: samples/login.php');
   }
+  chdir(__DIR__);
   ?>
 	<div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
@@ -141,7 +142,7 @@ unset($_COOKIE["type"]);
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="samples/orders.php"> commandes</a></li>

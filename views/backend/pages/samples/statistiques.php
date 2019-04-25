@@ -8,7 +8,7 @@ session_start();
 	$sql4='select COUNT(*)as nombre  from commande where date like "%2019-3%" and etat LIKE "%paye"';
 	$sql5='select COUNT(*) as nombre from commande where date like "%2019-4%" and etat LIKE "%paye"';
 	$sql6='select COUNT(*)as nombre  from commande where date like "%2019-5%" and etat LIKE "%paye"';
-$db = config::getConnexion();
+$db = config4::getConnexion();
 	try
 		{
         $req=$db->prepare($sql);

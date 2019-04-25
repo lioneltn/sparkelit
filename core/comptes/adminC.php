@@ -1,11 +1,13 @@
 <?PHP
-include "config.php";
+chdir(__DIR__);
+
+include "../../config4.php";
 class AdminC
 {
      function ajouterAdmin($admin)
      {
           $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
-          $db = config::getConnexion();
+          $db = config4::getConnexion();
           try {
                $req = $db->prepare($sql);
 
@@ -24,7 +26,7 @@ class AdminC
           }
 
           $sql = "insert into admin values (:login, :type)";
-          $db = config::getConnexion();
+          $db = config4::getConnexion();
           try {
                $req = $db->prepare($sql);
 
@@ -40,7 +42,7 @@ class AdminC
      function modifierAdmin($admin)
      {
           $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe, motdepasse = :pwd where email = :email";
-          $db = config::getConnexion();
+          $db = config4::getConnexion();
           try {
                $req = $db->prepare($sql_u);
 
@@ -61,7 +63,7 @@ class AdminC
      {
           //$sql = "select * from utilisateur where email = :email";
           $sql = "select u.nom, u.prenom, u.datenaissance, u.motdepasse, u.sexe, a.type from utilisateur u inner join admin a on u.email = a.login where u.email = :email";
-          $db = config::getConnexion();
+          $db = config4::getConnexion();
           try {
                $liste = $db->prepare($sql);
                $liste->bindValue(':email', $email);
@@ -75,7 +77,7 @@ class AdminC
      function recupererType($email)
      {
           $sql = "select type from admin where login = :email";
-          $db = config::getConnexion();
+          $db = config4::getConnexion();
           try {
                $liste = $db->prepare($sql);
                $liste->bindValue(':email', $email);
@@ -88,7 +90,7 @@ class AdminC
 
      function supprimerAdmin($login) {
           $sql="DELETE FROM admin where login= :login";
-            $db = config::getConnexion();
+            $db = config4::getConnexion();
           $req=$db->prepare($sql);
             $req->bindValue(':login',$login);
             try{
@@ -99,7 +101,7 @@ class AdminC
           }
   
           $sql="DELETE FROM utilisateur where email= :login";
-            $db = config::getConnexion();
+            $db = config4::getConnexion();
           $req=$db->prepare($sql);
             $req->bindValue(':login',$login);
             try{

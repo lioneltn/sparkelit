@@ -1,16 +1,14 @@
 <?php
-session_start();
-chdir(__DIR__);
-?>
+// Ouverture ou récupération de la session
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
 
-    <title>Blog</title>
+    <title>Catalogue</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -22,84 +20,11 @@ chdir(__DIR__);
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.min.css">
-    <style type="text/css">
-
-    .lienActive
-        {
-            background-color: #29363c;
-            color:#fff;
-            font-size: 15px;
-            padding-left:5px;
-            padding-right:5px;
-            margin-left: 7px;
-            margin-right: 7px;
-            text-decoration: none;
-           
-        }
-        .lien
-        {
-            padding-left:5px;
-            padding-right:5px;
-            font-size: 15px;
-            margin-left: 7px;
-            margin-right: 7px;
-            text-decoration: none;
-           
-        }
-        .lien:hover , .lienActive:hover
-        {
-             text-decoration: none;
-             background-color: #29363c;
-            color:#fff;
-
-        }
-        .rating{
-            direction: rtl;
-        }
-      .rating  i{
-        font-size: 40px;
-        color: #303030;
-        transition: 0.3s all;
-        cursor: pointer;
-      }  
-       .rating i:hover 
-       {
-        color:#f1c40f;
-
-       
-       }
-        .b1:hover~ i
-        { 
-
-            color:#f1c40f;
-        }
-          .b2:hover~ i
-        { 
-
-            color:#f1c40f;
-        }
-          .b3:hover~ i
-        { 
-
-            color:#f1c40f;
-        }
-          .b4:hover~ i
-        { 
-
-            color:#f1c40f;
-        }
-          .b5:hover~ i
-        { 
-
-            color:#f1c40f;
-        }
-    </style>
 </head>
 <body>
-    <?PHP
+<?PHP
     include "../../entities/comptes/client.php";
     include "../../core/comptes/clientC.php";
 
@@ -116,21 +41,17 @@ chdir(__DIR__);
             $code = $row['codePostal'];
             $addlivr = $row['adresse'];
         }
-        /*else
-        {
-            header('location:')
-        }*/
     }
     ?>
     <div class="page-wrapper">
-        <header class="header">
+        <header class="header header-transparent">
             <div class="header-middle sticky-header">
                 <div class="container-fluid">
                     <div class="header-left">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li><a href="index.php">Accueil</a></li>
-                                <li>
+                                <li class="active">
                                     <a href="category.php" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
@@ -419,95 +340,663 @@ chdir(__DIR__);
                 </div><!-- End .container-fluid -->
             </div><!-- End .header-middle -->
         </header><!-- End .header -->
-            
+
         <main class="main">
+            <div class="banner banner-cat" style="background-image: url('assets/images/banners/banner-top.jpg');">
+                <div class="banner-content container">
+                    <h3 class="banner-subtitle">check out over <strong>200+</strong></h3>
+                    <h1 class="banner-title">INCREDIBLE deals</h1>
+
+                    <a href="#" class="btn btn-primary" role="button">Shop Now</a>
+                </div><!-- End .banner-content -->
+            </div><!-- End .banner -->
+            
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                        <li class="breadcrumb-item"><a href="#">Electronics</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Headsets</li>
                     </ol>
                 </div><!-- End .container-fluid  -->
             </nav>
 
-            <div class="container">
-                <select class="form-control" onchange="triepost(this.value)">
-                    <option value="" selected="selected"></option>
-                    <option value="Popularite">Popularite Decroissante</option>
-                    <option value="Date">Date Decroissante</option>
-                    <option value="PopulariteC">Popularite Croissante</option>
-                    <option value="DateC">Date Croissante</option>
-                </select>
-                <input  class="form-control" placeholder="titre" type="text" name="recherchetitre" id="recherchetitre" onkeyup="recherchetitre(this.value)">
+            <div class="container-fluid">
+                <nav class="toolbox">
+                    <div class="toolbox-left">
+                        <div class="toolbox-item toolbox-sort">
+                            <div class="select-custom">
+                                <select name="orderby" class="form-control">
+                                    <option value="menu_order" selected="selected">Default sorting</option>
+                                    <option value="popularity">Sort by popularity</option>
+                                    <option value="rating">Sort by average rating</option>
+                                    <option value="date">Sort by newness</option>
+                                    <option value="price">Sort by price: low to high</option>
+                                    <option value="price-desc">Sort by price: high to low</option>
+                                </select>
+                            </div><!-- End .select-custom -->
 
-                <?php
-                        if (isset ($_GET['page']))
-                        {
-                            $_COOKIE['page']=$_GET['page'];
-                        }
-                        else
-                        {
-                            $_COOKIE['page']=1;
-                        }
-                        //echo $_COOKIE['page'];
-                ?>
+                            <a href="#" class="sorter-btn" title="Set Ascending Direction"><span class="sr-only">Set Ascending Direction</span></a>
+                        </div><!-- End .toolbox-item -->
+                    </div><!-- End .toolbox-left -->
 
-                <div class="row" id="contenu">
-                    <!--<div class="col-lg-9">-->
-                        <?php 
-                        include "../afficherpostfront.php";
-                        chdir(__DIR__);
-                        ?>
+                    <div class="toolbox-item toolbox-show">
+                            <label>Showing 1–9 of 60 results</label>
+                        </div><!-- End .toolbox-item -->
 
-                        
-                     
+                    <div class="layout-modes">
+                        <a href="category.php" class="layout-btn btn-grid active" title="Grid">
+                            <i class="icon-mode-grid"></i>
+                        </a>
+                        <a href="category-list.php" class="layout-btn btn-list" title="List">
+                            <i class="icon-mode-list"></i>
+                        </a>
+                    </div><!-- End .layout-modes -->
+                </nav>
 
-                       
-                    <!--</div>--><!-- End .col-lg-9 -->
+                <div class="row row-sm">
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-1.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:80%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Woman Fashion</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$28.00</span>
+                                </div><!-- End .price-box -->
 
-                   
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-2.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                                <span class="product-label label-sale">-20%</span>
+                                <span class="product-label label-hot">New</span>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:0%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Dress</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="old-price">$60.00</span>
+                                    <span class="product-price">$48.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-3.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:60%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Black Bottom</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$850.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-4.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:40%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Jumpsuit</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$299.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-5.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:50%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Sweatshirt</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$79.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-6.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                                <span class="product-label label-hot">Hot</span>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:40%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Sleeve Dress</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$19.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-7.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                                <span class="product-label label-hot">Hot</span>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:100%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Grey Shirt</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$299.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-8.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:0%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Black Fedora</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$299.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-9.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:70%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Black Scarf</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$59.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-10.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:40%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Skinny Jeans</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$63.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-11.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:40%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Spotted Shirt</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$13.99</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-12.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                                <span class="product-label label-hot">Hot</span>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:0%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Sunglasses</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$4.99</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-13.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:40%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Silk Sweater</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$39.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-14.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                                <span class="product-label label-hot">Hot</span>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:90%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Black Fashion</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$11.99</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-6 col-md-4 col-xl-5col">
+                        <div class="product">
+                            <figure class="product-image-container">
+                                <a href="product.php" class="product-image">
+                                    <img src="assets/images/products/product-15.jpg" alt="product">
+                                </a>
+                                <a href="ajax/product-quick-view.php" class="btn-quickview">Quickview</a>
+                            </figure>
+                            <div class="product-details">
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:0%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+                                </div><!-- End .product-container -->
+                                <h2 class="product-title">
+                                    <a href="product.php">Cotton Print</a>
+                                </h2>
+                                <div class="price-box">
+                                    <span class="product-price">$11.00</span>
+                                </div><!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="#" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                    
+                                    <a href="product.php" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </a>
+
+                                    <a href="#" class="paction add-compare" title="Add to Compare">
+                                        <span>Add to Compare</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-md-4 -->
                 </div><!-- End .row -->
 
-                <?php 
-                chdir(__DIR__);
-                //echo "afficherpostfront.php?page=".$_GET['page'];
-                $nbpost1=$poste1C->totalpost();
-                    $nbpost=$nbpost1['total'];
-                   $lien=ceil($nbpost/10);
-                   $debut1=$debut+1;
-                   $debut2=$debut+10;
-                   if($nbpost<$debut2)
-                   {
-                    $debut2=$nbpost;
-                   }
-                   
-                   ?>
-
-                   <nav class="toolbox toolbox-pagination">
+                <nav class="toolbox toolbox-pagination">
                     <div class="toolbox-item toolbox-show">
-                        <label><?php echo "Affichage de " . $debut1 ."-".$debut2 ." de ". $nbpost ." resultats"?></label>
+                        <label>Showing 1–9 of 60 results</label>
                     </div><!-- End .toolbox-item -->
 
                     <ul class="pagination">
-                    <?php
-                        for($i=1;$i<=$lien;$i++)
-                        {
-                            if($_COOKIE['page']==$i)
-                            {
-                                echo "<li><a class='lienActive' style='background-color=black;color=white' href=blog.php?page=".$i.">".$i."</a></li>";
-                            }
-                            else
-                            {
-                                echo "<li><a class='lien' href=blog.php?page=".$i.">".$i."</a></li>";
-                            }
-                            
-                        }
-                     ?>
+                        <li class="page-item disabled">
+                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><span>...</span></li>
+                        <li class="page-item"><a class="page-link" href="#">15</a></li>
+                        <li class="page-item">
+                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
+                        </li>
                     </ul>
                 </nav>
-            </div><!-- End .container -->
+            </div><!-- End .container-fluid -->
 
-            <div class="mb-6"></div><!-- margin -->
         </main><!-- End .main -->
 
         <footer class="footer">
@@ -673,7 +1162,7 @@ chdir(__DIR__);
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li><a href="index.php">Home</a></li>
-                    <li>
+                    <li class="active">
                         <a href="category.php">Categories</a>
                         <ul>
                             <li><a href="category-banner-full-width.php">Full Width Banner</a></li>
@@ -792,194 +1281,9 @@ chdir(__DIR__);
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/plugins.min.js"></script>
+    <script src="assets/js/nouislider.min.js"></script>
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>
-    <script type="text/javascript">
-        
-        function note1(id)
-        {
-            var id_post=id.substring(id.indexOf("_")+1,id.length);
-            document.getElementById('noteposte_'+id_post).value=1;
-            document.getElementById('noteposte_'+id_post).onchange();
-
-           
-        }
-        function note2(id)
-        {
-            var id_post=id.substring(id.indexOf("_")+1,id.length);
-            document.getElementById('noteposte_'+id_post).value=2;
-            document.getElementById('noteposte_'+id_post).onchange();
-           
-        }
-        function note3(id)
-        {
-            var id_post=id.substring(id.indexOf("_")+1,id.length);
-            document.getElementById('noteposte_'+id_post).value=3;
-            document.getElementById('noteposte_'+id_post).onchange();
-            
-        }
-        function note4(id)
-        {
-            var id_post=id.substring(id.indexOf("_")+1,id.length);
-            document.getElementById('noteposte_'+id_post).value=4;
-            document.getElementById('noteposte_'+id_post).onchange();
-          
-        }
-        function note5(id)
-        {
-            var id_post=id.substring(id.indexOf("_")+1,id.length);
-            document.getElementById('noteposte_'+id_post).value=5;
-            document.getElementById('noteposte_'+id_post).onchange();
-            
-        }
-
-
-        function notechange(id)
-        {
-             var id_post=id.substring(id.indexOf("_")+1,id.length);
-            var x=document.getElementById(id);
-            var b1=document.getElementById("b1_"+id_post);
-            var b2=document.getElementById("b2_"+id_post);
-            var b3=document.getElementById("b3_"+id_post);
-            var b4=document.getElementById("b4_"+id_post);
-            var b5=document.getElementById("b5_"+id_post);
-           if (x.value==1)
-            {
-                b5.style.color='#f1c40f';
-                b4.style.color='#303030';
-                b3.style.color='#303030';
-                b2.style.color='#303030';
-                b1.style.color='#303030';
-            }
-            if (x.value=="2")
-            {
-                b5.style.color='#f1c40f';
-                b4.style.color='#f1c40f';
-                b3.style.color='#303030';
-                b2.style.color='#303030';
-                b1.style.color='#303030';
-            }
-            if (x.value=="3")
-            {
-                b5.style.color='#f1c40f';
-                b4.style.color='#f1c40f';
-                b3.style.color='#f1c40f';
-                b2.style.color='#303030';
-                b1.style.color='#303030';
-            }
-            if (x.value=="4")
-            {
-                b5.style.color='#f1c40f';
-                b4.style.color='#f1c40f';
-                b3.style.color='#f1c40f';
-                b2.style.color='#f1c40f';
-                b1.style.color='#303030';
-            }
-            if (x.value=="5")
-            {
-                b5.style.color='#f1c40f';
-                b4.style.color='#f1c40f';
-                b3.style.color='#f1c40f';
-                b2.style.color='#f1c40f';
-                b1.style.color='#f1c40f';
-            }
-
-
-
-        }
-
-        function triepost(str)
-        {
-            document.getElementById("recherchetitre").value="";
-            if(str=="")
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfront.php",true);
-                xmlhttp.send();
-            }
-            if(str=="Date")
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfrontTrieDateDesc.php",true);
-                xmlhttp.send();
-            }
-            if(str=="Popularite")
-            {
-                var xmlhttp = new XMLHttpRequest();
-
-                xmlhttp.onreadystatechange = function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfrontTrieNoteDesc.php",true);
-                xmlhttp.send();
-            }
-
-            if(str=="DateC")
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfrontTrieDateASC.php",true);
-                xmlhttp.send();
-            }
-            if(str=="PopulariteC")
-            {
-                var xmlhttp = new XMLHttpRequest();
-
-                xmlhttp.onreadystatechange = function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfrontTrieNoteASC.php",true);
-                xmlhttp.send();
-            }
-        }
-
-        function recherchetitre(str)
-        {
-            
-            if(str=="")
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST","../afficherpostfront.php",true);
-                xmlhttp.send();
-            }
-            else
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("contenu").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET","../recherchepostepartitrefront.php?recherche="+str,true);
-                xmlhttp.send();
-            }
-        }
-    </script>
-   
-
 </body>
 </html>

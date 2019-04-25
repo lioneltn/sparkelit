@@ -13,9 +13,34 @@ session_start();
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
 
 	<link rel="stylesheet" href="../css/style.css">
-	<link rel="shortcut icon" href="../images/favicon.png" />
+	<link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 <body>
+  <?PHP
+  chdir(__DIR__);
+
+  include "../../../entities/comptes/admin.php";
+  include "../../../core/comptes/adminC.php";
+
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
+      $type = $row['type'];
+      if($type == 2) {
+        header('Location: samples/login.php');
+      }
+    }
+  } else {
+    header('Location: samples/login.php');
+  }
+  chdir(__DIR__);
+  ?>
 	<div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
     <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">

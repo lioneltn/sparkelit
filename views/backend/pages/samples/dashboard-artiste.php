@@ -8,7 +8,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+    <title>5icha-Artiste</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -28,7 +28,7 @@ session_start();
     include "../../../../entities/comptes/admin.php";
     include "../../../../core/comptes/adminC.php";
 
-    echo $_SESSION['email_admin'];
+    //echo $_SESSION['email_admin'];
     if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
         $result = $adminC->recupererAdmin($_SESSION['email_admin']);
@@ -98,7 +98,7 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="../../pages/forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="../../pages/forms/afficherpostadmin.php">Afficher posts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/statpost.php">Statistiques posts</a></li>
+                                    
                                 </ul>
                             </div>
                         </li>

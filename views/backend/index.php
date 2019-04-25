@@ -20,11 +20,12 @@ session_start();
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/logoreduit.png" />
 </head>
 
 <body>
   <?PHP
+  chdir(__DIR__);
   include "../../entities/comptes/admin.php";
   include "../../core/comptes/adminC.php";
 
@@ -223,7 +224,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                     $sql = "select count(email) as nbre from utilisateur";
-                                                    $db = config::getConnexion();
+                                                    $db = config4::getConnexion();
                                                     try {
                                                         $req = $db->prepare($sql);
 
@@ -248,7 +249,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from client";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
 
@@ -273,7 +274,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
                                                             $req->bindValue(':type', 1);
@@ -298,7 +299,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
                                                             $req->bindValue(':type', 2);

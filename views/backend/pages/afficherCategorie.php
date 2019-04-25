@@ -13,7 +13,7 @@ session_start();
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
 
 	<link rel="stylesheet" href="../css/style.css">
-	<link rel="shortcut icon" href="../images/favicon.png" />
+	<link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 <body>
   <?PHP
@@ -37,6 +37,7 @@ session_start();
   } else {
     header('Location: samples/login.php');
   }
+  chdir(__DIR__);
   ?>
 	<div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
@@ -48,16 +49,6 @@ session_start();
                         <a class="navbar-brand brand-logo-mini" href="../index.php"><img src="../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
-                        <!--<form class="search-field d-none d-md-flex" action="#">
-                            <div class="form-group mb-0">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="search here...">
-                                </div>
-                            </div>
-                        </form>-->
                         <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
@@ -136,7 +127,7 @@ session_start();
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="samples/orders.php"> commandes</a></li>

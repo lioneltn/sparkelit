@@ -1,12 +1,12 @@
 <?PHP
-include "../../config.php";
+include "../../config4.php";
 
 class ClientC
 {
     function ajouterClient($client)
     {
         $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -24,7 +24,7 @@ class ClientC
         }
 
         $sql = "insert into client (login) values (:login)";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -37,7 +37,7 @@ class ClientC
         }
 
         $sql="insert into adressetotal(adresse,ville,pays,codePostal,tel,region,email,id,companie) values (:adresse,:ville,:pays,:codePostal,:tel,:region,:email,NULL,:companie)";
-		$db = config::getConnexion();
+		$db = config4::getConnexion();
 		try
 		{
             $addlivr = $client->getAddLivr();
@@ -65,7 +65,7 @@ class ClientC
     {
         //$sql = "SELECT * from utilisateur where email = :email";
         $sql = "select u.nom, u.prenom, u.sexe, u.datenaissance, u.motdepasse, u.email, c.email, c.tel, c.codePostal, c.region, c.adresse from utilisateur u inner join adressetotal c on u.email = c.email where u.email=:email";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $client1 = $db->prepare($sql);
 
@@ -82,7 +82,7 @@ class ClientC
     function modifierClient($client)
     {
         $verif = "select motdepasse from utilisateur where email = :email";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($verif);
 
@@ -94,7 +94,7 @@ class ClientC
         }
 
         $sql = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -112,7 +112,7 @@ class ClientC
         }
 
         $sql = "update adressetotal set tel = :tel, codePostal = :code, adresse = :addlivr where email = :login";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -131,7 +131,7 @@ class ClientC
     function modifierClient_i($client)
     {
         $sql = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -148,7 +148,7 @@ class ClientC
         }
 
         $sql = "update adressetotal set tel = :tel where email = :login";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -164,7 +164,7 @@ class ClientC
     function modifierClient_a($client)
     {
         $sql = "update utilisateur set nom = :nom, prenom = :prenom where email = :email";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -178,7 +178,7 @@ class ClientC
         }
 
         $sql = "update adressetotal set tel = :tel, codePostal = :code, region = :region, adresse = :addlivr where email = :login";
-        $db = config::getConnexion();
+        $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
 
@@ -196,7 +196,7 @@ class ClientC
 
     function supprimerClient($login) {
         $sql="DELETE FROM client where login= :login";
-		$db = config::getConnexion();
+		$db = config4::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':login',$login);
 		try{
@@ -207,7 +207,7 @@ class ClientC
         }
 
         $sql="DELETE FROM utilisateur where email= :login";
-		$db = config::getConnexion();
+		$db = config4::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':login',$login);
 		try{
@@ -219,7 +219,7 @@ class ClientC
         }
 
         $sql="DELETE FROM adressetotal where email= :login";
-		$db = config::getConnexion();
+		$db = config4::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':login',$login);
 		try{
