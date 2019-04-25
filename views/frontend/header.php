@@ -6,7 +6,7 @@
                     <div class="header-left">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="index.php">Accueil</a></li>
                                 
                                 
                                 <li>
@@ -64,15 +64,15 @@
                            
 
                             <div class="header-dropdown">
-                                <a href="#">Links</a>
+                            <a href="#"><?PHP if(isset($_SESSION['email'])) echo "Salut ".$prenom; else echo "liens" ?></a>
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="my-account.php">MY ACCOUNT </a></li>
-                                        <li><a href="#">DAILY DEAL</a></li>
-                                        <li><a href="#">MY WISHLIST </a></li>
+                                        <li><a href="my-account.php">Mon compte </a></li>
+                                        <li><a href="#">AFFAIRE QUOTIDIENNE</a></li>
+                                        <li><a href="#">MA LISTE D'ENVIES </a></li>
                                         <li><a href="blog.php">BLOG</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <li><a href="#" class="login-link">LOG IN</a></li>
+                                        <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div><!-- End .header-dropown -->

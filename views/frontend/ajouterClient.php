@@ -11,7 +11,7 @@ if(isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['da
 	$_SESSION['email'] = $_POST['email'];
 
 	echo $_SESSION['email'];
-	header('Location: my-account.php');
+	header('Location: dashboard.php');
 } else {
 	echo "vérifier les champs";
 }

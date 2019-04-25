@@ -9,7 +9,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+    <title>Carnet d'adresse</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
@@ -61,26 +61,26 @@ session_start();
                     <div class="header-left">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="index.php">Accueil</a></li>
                                 <li>
                                     <a href="category.html" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
-                                            <div class="col-lg-8">
+                                        <div class="col-lg-8">
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="menu-title">
                                                             <a href="#">Variations 1<span class="tip tip-new">New!</span></a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="category-banner-full-width.html">Fullwidth Banner<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                                                            <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                                                            <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                                                            <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                                            <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                                                            <li><a href="category-horizontal-filter1.html">Horizontal Filter1</a></li>
-                                                            <li><a href="category-horizontal-filter2.html">Horizontal Filter2</a></li>
+                                                            <li><a href="category-banner-full-width.php">Bannière pleine largeur<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="category-banner-boxed-slider.php">Bannière Slider Box</a></li>
+                                                            <li><a href="category-banner-boxed-image.php">Bannière image</a></li>
+                                                            <li><a href="category-sidebar-left.php">Barre latérale de gauche</a></li>
+                                                            <li><a href="category-sidebar-right.php">Barre latérale droite</a></li>
+                                                            <li><a href="category-flex-grid.php">Produit Flex Grid</a></li>
+                                                            <li><a href="category-horizontal-filter1.php">Filtre horizontal1</a></li>
+                                                            <li><a href="category-horizontal-filter2.php">Filtre horizontal2</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-6 -->
                                                     <div class="col-lg-6">
@@ -88,14 +88,14 @@ session_start();
                                                             <a href="#">Variations 2</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="#">Product List Item Types</a></li>
-                                                            <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a></li>
-                                                            <li><a href="category-3col.html">3 Columns Products</a></li>
-                                                            <li><a href="category-4col.html">4 Columns Products <span class="tip tip-new">New</span></a></li>
-                                                            <li><a href="category.html">5 Columns Products</a></li>
-                                                            <li><a href="category-6col.html">6 Columns Products</a></li>
-                                                            <li><a href="category-7col.html">7 Columns Products</a></li>
-                                                            <li><a href="category-8col.html">8 Columns Products</a></li>
+                                                            <li><a href="#">Liste des produits Types d'articles</a></li>
+                                                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll</a></li>
+                                                            <li><a href="category-3col.php">3 Colonnes Produits</a></li>
+                                                            <li><a href="category-4col.php">4 Colonnes Produits <span class="tip tip-new">New</span></a></li>
+                                                            <li><a href="category.php">5 Colonnes Produits</a></li>
+                                                            <li><a href="category-6col.php">6 Colonnes Produits</a></li>
+                                                            <li><a href="category-7col.php">7 Colonnes Produits</a></li>
+                                                            <li><a href="category-8col.php">8 Colonnes Produits</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-6 -->
                                                 </div><!-- End .row -->
@@ -111,21 +111,21 @@ session_start();
                                     </div><!-- End .megamenu -->
                                 </li>
                                 <li class="megamenu-container">
-                                    <a href="product.html" class="sf-with-ul">Products</a>
+                                    <a href="product.html" class="sf-with-ul">Produits</a>
                                     <div class="megamenu">
                                         <div class="row">
-                                            <div class="col-lg-8">
+                                        <div class="col-lg-8">
                                                 <div class="row">
                                                     <div class="col-lg-4">
                                                         <div class="menu-title">
                                                             <a href="#">Variations</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product.html">Horizontal Thumbnails</a></li>
-                                                            <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="product.html">Inner Zoom</a></li>
-                                                            <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
-                                                            <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
+                                                            <li><a href="product.php">Miniatures horizontales</a></li>
+                                                            <li><a href="product-full-width.php">Vignettes verticales<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="product.php">Zoom intérieur</a></li>
+                                                            <li><a href="product-addcart-sticky.php">Ajouter au panier</a></li>
+                                                            <li><a href="product-sidebar-left.php">Onglets Accordéon</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                     <div class="col-lg-4">
@@ -133,22 +133,22 @@ session_start();
                                                             <a href="#">Variations</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
-                                                            <li><a href="product-simple.html">Simple Product</a></li>
-                                                            <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
+                                                            <li><a href="product-sticky-tab.php">Onglets collants</a></li>
+                                                            <li><a href="product-simple.php">Produit simple</a></li>
+                                                            <li><a href="product-sidebar-left.php">Avec barre latérale gauche</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                     <div class="col-lg-4">
                                                         <div class="menu-title">
-                                                            <a href="#">Product Layout Types</a>
+                                                            <a href="#">Types de disposition du produit</a>
                                                         </div>
                                                         <ul>
-                                                            <li><a href="product.html">Default Layout</a></li>
-                                                            <li><a href="product-extended-layout.html">Extended Layout</a></li>
-                                                            <li><a href="product-full-width.html">Full Width Layout</a></li>
-                                                            <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
-                                                            <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                                            <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
+                                                            <li><a href="product.php">Mise en page par défaut</a></li>
+                                                            <li><a href="product-extended-layout.php">Mise en page étendue</a></li>
+                                                            <li><a href="product-full-width.php">Disposition pleine largeur</a></li>
+                                                            <li><a href="product-grid-layout.php">Mise en page des images de grille</a></li>
+                                                            <li><a href="product-sticky-both.php">Collant les deux côtés<span class="tip tip-hot">Hot!</span></a></li>
+                                                            <li><a href="product-sticky-info.php">Information collante du côté droit</a></li>
                                                         </ul>
                                                     </div><!-- End .col-lg-4 -->
                                                 </div><!-- End .row -->
@@ -167,36 +167,36 @@ session_start();
                                     <a href="#" class="sf-with-ul">Pages</a>
 
                                     <ul>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
-                                        <li><a href="#">Checkout</a>
+                                    <li><a href="cart.php">Chariot</a></li>
+                                        <li><a href="#">Check-out</a>
                                             <ul>
-                                                <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
-                                                <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
-                                                <li><a href="checkout-review.html">Checkout Review</a></li>
+                                                <li><a href="checkout-shipping.php">Paiement Expédition</a></li>
+                                                <li><a href="checkout-shipping-2.php">Paiement Expédition 2</a></li>
+                                                <li><a href="checkout-review.php">Vérification de la caisse</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Tableau de bord</a>
                                             <ul>
-                                                <li><a href="dashboard.html">Tableau de bord</a></li>
-                                                <li><a href="my-account.html">Mon compte</a></li>
+                                                <li><a href="dashboard.php">Tableau de bord</a></li>
+                                                <li><a href="my-account.php">Mon compte</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="about.php">À propos de nous</a></li>
                                         <li><a href="#">Blog</a>
                                             <ul>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single.html">Blog Post</a></li>
+                                                <li><a href="blog.php">Blog</a></li>
+                                                <li><a href="single.php">Message de blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="contact.php">Contactez nous</a></li>
                                         <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
-                                        <li><a href="forgot-password.html">Mot de passe oublié</a></li>
+                                        <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#" class="sf-with-ul">Features</a>
+                                <li><a href="#" class="sf-with-ul">Caractéristiques</a>
                                     <ul>
-                                        <li><a href="#">Header Types</a></li>
-                                        <li><a href="#">Footer Types</a></li>
+                                        <li><a href="#">Types d'en-tête</a></li>
+                                        <li><a href="#">Types de pied de page</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -282,7 +282,7 @@ session_start();
                         </div><!-- End .header-dropdowns -->
 
                         <div class="header-contact">
-                            <a href="tel:#">+000 1584 2578</a>
+                            <a href="tel:#">+216 55023485 </a>
                         </div><!-- End .header-contact -->
 
                         <div class="dropdown cart-dropdown">
@@ -356,7 +356,7 @@ session_start();
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container-fluid">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Adresses</li>
                     </ol>
                 </div><!-- End .container-fluid -->
@@ -454,17 +454,17 @@ session_start();
 
                             <ul class="list">
                                 <li><a href="dashboard.php">Tableau de bord</a></li>
-                                <li><a href="my-account.php#">Information du compte</a></li>
-                                <li class="active"><a href="#">Carnet d'adresse</a></li>
-                                <li><a href="#">My Orders</a></li>
-                                <li><a href="#">Billing Agreements</a></li>
-                                <li><a href="#">Recurring Profiles</a></li>
-                                <li><a href="#">My Product Reviews</a></li>
-                                <li><a href="#">My Tags</a></li>
-                                <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">My Applications</a></li>
-                                <li><a href="#">Newsletter Subscriptions</a></li>
-                                <li><a href="#">My Downloadable Products</a></li>
+                                <li><a href="my-account.php">Information sur le compte</a></li>
+                                <li class="active"><a href="carnet-adresse.php">Carnet d'adresses</a></li>
+                                <li><a href="#">Mes commandes</a></li>
+                                <li><a href="#">Contrats de facturation</a></li>
+                                <li><a href="#">Profils récurrents</a></li>
+                                <li><a href="#">Mes critiques de produits</a></li>
+                                <li><a href="#">Mes tags</a></li>
+                                <li><a href="#">Ma liste d'envies</a></li>
+                                <li><a href="#">Mes applications</a></li>
+                                <li><a href="#">Abonnement à la Newsletter</a></li>
+                                <li><a href="#">Mes produits téléchargeables</a></li>
                             </ul>
                         </div><!-- End .widget -->
                     </aside><!-- End .col-lg-3 -->
@@ -542,18 +542,18 @@ session_start();
             <div class="footer-middle">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3">
+                    <div class="col-lg-3">
                             <div class="widget">
-                                <h4 class="widget-title">Contact Info</h4>
+                                <h4 class="widget-title">Info Contact</h4>
                                 <ul class="contact-info">
                                     <li>
-                                        <span class="contact-info-label">Address:</span>123 Street Name, City, England
+                                        <span class="contact-info-label">Adresse:</span>04 Rue Babel Boumhal Bassatine Ben Arous
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Phone:</span>Toll Free <a href="tel:">(123) 456-7890</a>
+                                        <span class="contact-info-label">Tel:</span>Gratuit <a href="tel:">(216) 55023485 </a>
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">mail@example.com</a>
+                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">benyounesfiras@gmail.com</a>
                                     </li>
                                 </ul>
                             </div><!-- End .widget -->
@@ -562,21 +562,21 @@ session_start();
                         <div class="col-lg-9">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <div class="widget">
+                                <div class="widget">
                                         <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                    <li><a href="about.php">A propros de nous</a></li>
+                                                    <li><a href="contact.php">Contacter nous</a></li>
                                                     <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="#">Orders History</a></li>
-                                                    <li><a href="#">Advanced Search</a></li>
+                                                    <li><a href="#">Historique des commandes</a></li>
+                                                    <li><a href="#">Recherche Avancée</a></li>
                                                     <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
@@ -597,9 +597,9 @@ session_start();
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="#">Powerful Admin Panel</a></li>
-                                                    <li><a href="#">Mobile & Retina Optimized</a></li>
+                                            <ul class="links">
+                                                    <li><a href="../backend/pages/samples/login.php">Panneau d'administration puissant</a></li>
+                                                    <li><a href="../backend/pages/samples/login-2.php">Panneau d'artiste </a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -608,10 +608,10 @@ session_start();
 
                                 <div class="col-lg-3">
                                     <div class="widget">
-                                        <h4 class="widget-title">Working Days/Hours</h4>
+                                        <h4 class="widget-title">Jours / heures de travail</h4>
                                         <ul class="contact-info">
                                             <li>
-                                                Mon - Sun / 9:00AM - 8:00PM
+                                            Du lundi au dimanche / de 9h00 à 20h00
                                             </li>
                                         </ul>
                                     </div><!-- End .widget -->

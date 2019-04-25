@@ -10,9 +10,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="Formulaire.css">
 
 
-    <!--<link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">-->
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
@@ -20,7 +20,7 @@ session_start();
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
 
     <!-- Javascript File -->
     <script type="text/javascript" language="javascript" src="../../js/my-account.js">

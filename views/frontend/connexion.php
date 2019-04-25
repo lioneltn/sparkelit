@@ -3,7 +3,7 @@ session_start();
 include "../../entities/comptes/client.php";
 include "../../core/comptes/clientC.php";
 
-$_SESSION['email'] = $_POST['login'];
+
 
 $client1C = new ClientC();
 
@@ -14,7 +14,8 @@ if (isset($_POST['login']) and isset($_POST['motdepasse'])){
         $mdp = $row['motdepasse'];
     }
     if($mdp == $_POST['motdepasse']) {
-        header('Location: my-account.php');
+        $_SESSION['email'] = $_POST['login'];
+        header('Location: index.php');
     } else {
         echo "Mot de passe incorrect";
     }

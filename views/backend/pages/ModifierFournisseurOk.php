@@ -1,3 +1,6 @@
+<?PHP
+session_start();
+?>
 <?php
 /*include "../../../core/fournisseurC.php";
 $fournisseurC=new FournisseurC();

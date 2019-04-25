@@ -28,8 +28,11 @@ if (isset($_POST['email']) and isset($_POST['password'])  and preg_match ( " /^.
                 $_SESSION['email_admin'] = $_POST['email'];
             echo $_SESSION['email_admin'];
             header('Location: dashboard-artiste.php');
+            } else if($type == 1) {
+                $_SESSION['email_admin'] = $_POST['email'];
+            echo $_SESSION['email_admin'];
+            header('Location: ../../index.php');
             }
-            
             else {
                 echo "email ou mot de passe incorrect ";
             }

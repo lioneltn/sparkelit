@@ -11,7 +11,7 @@ if (isset($_POST['email']) and isset($_POST['password']) and isset($_POST['confi
     $admin1C = new AdminC();
     $admin1C->ajouterAdmin($admin1);
 
-    echo $_SESSION['email_artiste'];
+    echo $_SESSION['email_admin'];
     header('Location: formulaire_modifier_artiste.php');
 
 } else {

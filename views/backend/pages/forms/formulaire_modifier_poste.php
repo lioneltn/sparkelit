@@ -27,7 +27,7 @@ $liste=$poste1C->afficherposte($_POST['id']);
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/favicon.png" />
 
 
   <style type="text/css">
@@ -40,6 +40,26 @@ $liste=$poste1C->afficherposte($_POST['id']);
   <title>Modifier Poste</title>
 </head>
 <body>
+<?PHP
+  include "../../../../entities/comptes/admin.php";
+  include "../../../../core/comptes/adminC.php";
+
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
+      $type = $row['type'];
+     
+    }
+  } else {
+    header('Location: ../samples/login.php');
+  }
+  ?>
   <div class="container-scroller">
   <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
       <div class="nav-top flex-grow-1">

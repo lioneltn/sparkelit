@@ -8,8 +8,8 @@ if (isset($_POST['email']) and isset($_POST['password']) and isset($_POST['confi
     $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], $_POST['password'], $_POST['email'], $_POST['sexe'], 2);
     $admin1C = new AdminC();
     $admin1C->ajouterAdmin($admin1);
-    $_SESSION['email_artiste'] = $_POST['email'];
-    echo $_SESSION['email_artiste'];
+    $_SESSION['email_admin'] = $_POST['email'];
+    echo $_SESSION['email_admin'];
     header('Location: dashboard-artiste.php');
 
 } else {
