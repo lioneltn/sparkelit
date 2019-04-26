@@ -5,7 +5,7 @@
             <span class="mobile-menu-close"><i class="icon-cancel"></i></span>
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
-                    <li class="active"><a href="index.php">Home</a></li>
+                    <li class="active"><a href="index.php">Accueil</a></li>
                     <li>
                         <a href="category.php">Categories</a>
                         <ul>

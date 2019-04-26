@@ -66,18 +66,18 @@
             <div class="footer-middle">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3">
+                    <div class="col-lg-3">
                             <div class="widget">
-                                <h4 class="widget-title">Contact Info</h4>
+                                <h4 class="widget-title">Info Contact</h4>
                                 <ul class="contact-info">
                                     <li>
-                                        <span class="contact-info-label">Address:</span>123 Street Name, City, England
+                                        <span class="contact-info-label">Adresse:</span>04 Rue Babel Boumhal Bassatine Ben Arous
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Phone:</span>Toll Free <a href="tel:">(123) 456-7890</a>
+                                        <span class="contact-info-label">Tel:</span>Gratuit <a href="tel:">(216) 55023485 </a>
                                     </li>
                                     <li>
-                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">mail@example.com</a>
+                                        <span class="contact-info-label">Email:</span> <a href="mailto:mail@example.com">benyounesfiras@gmail.com</a>
                                     </li>
                                 </ul>
                             </div><!-- End .widget -->
@@ -86,22 +86,22 @@
                         <div class="col-lg-9">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <div class="widget">
-                                        <h4 class="widget-title">My Account</h4>
+                                <div class="widget">
+                                        <h4 class="widget-title">Mon compte</h4>
 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="about.php">About Us</a></li>
-                                                    <li><a href="contact.php">Contact Us</a></li>
-                                                    <li><a href="my-account.php">My Account</a></li>
+                                                    <li><a href="about.php">A propros de nous</a></li>
+                                                    <li><a href="contact.php">Contacter nous</a></li>
+                                                    <li><a href="my-account.php">Mon compte</a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="#">Orders History</a></li>
-                                                    <li><a href="#">Advanced Search</a></li>
-                                                    <li><a href="#" class="login-link">Login</a></li>
+                                                    <li><a href="#">Historique des commandes</a></li>
+                                                    <li><a href="#">Recherche Avancée</a></li>
+                                                    <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -121,9 +121,9 @@
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                             <div class="col-sm-6">
-                                                <ul class="links">
-                                                    <li><a href="#">Powerful Admin Panel</a></li>
-                                                    <li><a href="#">Mobile & Retina Optimized</a></li>
+                                            <ul class="links">
+                                                    <li><a href="../backend/pages/samples/login.php">Panneau d'administration puissant</a></li>
+                                                    <li><a href="../backend/pages/samples/login-2.php">Panneau d'artiste </a></li>
                                                 </ul>
                                             </div><!-- End .col-sm-6 -->
                                         </div><!-- End .row -->
@@ -132,10 +132,10 @@
 
                                 <div class="col-lg-3">
                                     <div class="widget">
-                                        <h4 class="widget-title">Working Days/Hours</h4>
+                                        <h4 class="widget-title">Jours / heures de travail</h4>
                                         <ul class="contact-info">
                                             <li>
-                                                Mon - Sun / 9:00AM - 8:00PM
+                                            Du lundi au dimanche / de 9h00 à 20h00
                                             </li>
                                         </ul>
                                     </div><!-- End .widget -->

@@ -1,3 +1,6 @@
+<?PHP
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +13,33 @@
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
 
 	<link rel="stylesheet" href="../css/style.css">
-	<link rel="shortcut icon" href="../images/favicon.png" />
+	<link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 <body>
+  <?PHP
+chdir(__DIR__);
+  include "../../../entities/comptes/admin.php";
+  include "../../../core/comptes/adminC.php";
+
+  if (isset($_SESSION['email_admin'])) {
+    $adminC = new AdminC();
+    $result = $adminC->recupererAdmin($_SESSION['email_admin']);
+    foreach ($result as $row) {
+      $nom = $row['nom'];
+      $prenom = $row['prenom'];
+      $datenaissance = $row['datenaissance'];
+      $sexe = $row['sexe'];
+      $password = $row['motdepasse'];
+      $type = $row['type'];
+      if($type == 2) {
+        header('Location: samples/login.php');
+      }
+    }
+  } else {
+    header('Location: samples/login.php');
+  }
+  chdir(__DIR__);
+  ?>
 	<div class="container-scroller">
     <!-- partial:partials/_horizontal-navbar.php -->
     <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -23,6 +50,27 @@
             <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../images/logo-mini.svg" alt="logo"/></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
+
+            <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
+                            <li class="nav-item nav-profile dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                                    <img src="https://via.placeholder.com/39x39" alt="profile" />
+                                    <span class="nav-profile-name">
+                                        <?PHP echo $nom . "  " . $prenom ?></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item" href = "samples/profile.php">
+                                        <i class="icon-settings text-primary mr-2"></i>
+                                        Profil
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="samples/login.php">
+                                        <i class="icon-logout text-primary mr-2"></i>
+                                        Se déconnecter
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
             
             <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="icon-menu text-dark"></span>
@@ -34,58 +82,62 @@
         <div class="container">
           <ul class="nav page-navigation">
             <li class="nav-item">
-              <a href="../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
-            </li>
+                            <a href="../index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
+                        </li>
 
-
-            <li class="nav-item">
-              <a href="Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="Ajouterproduit.php"> Ajouter produit</a></li>
-                  <li class="nav-item"><a class="nav-link" href="afficherProduits.php">Afficher produits</a></li>
-
-                </ul>
-              </div>
-            </li>
+                        <li class="nav-item">
+                            <a href="Ajouterproduit.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Produits</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="Ajouterproduit.php"> Ajouter produit</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="afficherProduits.php">Afficher produits</a></li>
+                                </ul>
+                            </div>
+                        </li>
 
 
 
 
-             <li class="nav-item">
-              <a href="forms/formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
-                  
-                  <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
-                  
-                </ul>
-              </div>
-            </li>
+                        <li class="nav-item">
+                            <a href="ajoutercategorie.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Categorie</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="ajoutercategorie.php"> Ajouter Categorie</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="afficherCategorie.php">Afficher Categorie</a></li>
+                                </ul>
+                            </div>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="forms/formulaire_ajouter_poste.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Post</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
-            <li class="nav-item">
-              <a href="ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Fournisseur</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="ajouterfournisseur.php"> Ajouter fournisseur</a></li>
-                  <li class="nav-item"><a class="nav-link" href="afficherFournisseur.php">Afficher fournisseurs</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="forms/afficherpostadmin.php">Afficher posts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="forms/statpost.php">Statistiques posts</a></li>
+                                </ul>
+                            </div>
+                        </li>
 
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a href="afficherCategorie.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Categorie</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="ajoutercategorie.php"> Ajouter Categorie</a></li>
-                  <li class="nav-item"><a class="nav-link" href="afficherCategorie.php">Afficher Categorie</a></li>
-
-                </ul>
-              </div>
-            </li>
+                        <li class="nav-item">
+                            <a href="ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Fournisseur</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="ajouterfournisseur.php"> Ajouter fournisseur</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="afficherFournisseur">Afficher fournisseurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="samples/orders.php"> commandes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="samples/statistiques.php">statistiques des ventes</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">

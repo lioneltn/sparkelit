@@ -27,7 +27,7 @@
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+            <div class="content-wrapper d-flex align-items-center auth theme-one">
                 <div class="row w-100 mx-auto">
                     <div class="col-lg-4 mx-auto">
                         <h2 class="text-center mb-4"></h2>

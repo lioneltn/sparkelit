@@ -1,3 +1,6 @@
+<?php
+// Ouverture ou récupération de la session
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +55,25 @@
     </style>
 </head>
 <body>
+<?PHP
+    include "../../entities/comptes/client.php";
+    include "../../core/comptes/clientC.php";
+
+    if (isset($_SESSION['email'])) {
+        $clientC = new ClientC();
+        $result = $clientC->recupererClient($_SESSION['email']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+            $tel = $row['tel'];
+            $code = $row['codePostal'];
+            $addlivr = $row['adresse'];
+        }
+    }
+    ?>
     <div class="page-wrapper">
          <?php 
                             chdir(__DIR__);

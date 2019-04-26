@@ -7,7 +7,7 @@ class ProduitC
 
 	function ajouterProduit($produit)
 	{
-		$sql="insert into produit values (:nom,:description,:type,:fournisseur,:categorie,:thumbnail,:prix,:reference,NULL)";
+		$sql="insert into produit values (:nom,:description,:type,:fournisseur,:categorie,:thumbnail,:prix,:reference,NULL,:date)";
 		$db = config3::getConnexion();
 		/*try
 		{*/
@@ -22,6 +22,8 @@ class ProduitC
         $thumbnail=$produit->getthumbnail();
         $prix=$produit->getprix();
         $reference=$produit->getreference();
+        date_default_timezone_set("Africa/tunis");
+		$date=date("Y-m-d h:i:s");
 
 		$req->bindValue(':nom',$nom);
 		$req->bindValue(':description',$description);
@@ -31,6 +33,7 @@ class ProduitC
 		$req->bindValue(':thumbnail',$thumbnail);
 		$req->bindValue(':prix',$prix);
 		$req->bindValue(':reference',$reference);
+		$req->bindValue(':date',$date);
             $req->execute();
            
         /*}
@@ -44,7 +47,7 @@ class ProduitC
 
 	function ajouterProduitaccesoire($produit)
 	{
-		$sql="insert into produit values (:nom,:description,:type,:fournisseur,:categorie,:thumbnail,:prix,:reference,:quantite)";
+		$sql="insert into produit values (:nom,:description,:type,:fournisseur,:categorie,:thumbnail,:prix,:reference,:quantite,:date)";
 		$db = config3::getConnexion();
 		/*try
 		{*/
@@ -60,6 +63,8 @@ class ProduitC
         $prix=$produit->getprix();
         $reference=$produit->getreference();
         $quantite=$produit->getquantite();
+        date_default_timezone_set("Africa/tunis");
+		$date=date("Y-m-d h:i:s");
 
 		$req->bindValue(':nom',$nom);
 		$req->bindValue(':description',$description);
@@ -70,6 +75,8 @@ class ProduitC
 		$req->bindValue(':prix',$prix);
 		$req->bindValue(':reference',$reference);
 		$req->bindValue(':quantite',$quantite);
+		$req->bindValue(':date',$date);
+
             $req->execute();
            
         /*}
@@ -760,6 +767,23 @@ function afficherRefProduit()
 		try{
 			
 			$req->bindValue(':aa',  $aa, PDO::PARAM_INT);
+			$liste=$req->execute();
+			return $req->fetchAll();
+		}
+        catch (Exception $e){
+        	echo $e->getMessage();
+            //die('Erreur: '.$e->getMessage());
+        }
+    }
+    function afficherDerniers($type)
+    {
+    	$sql="select * from produit where type=:type order by date DESC limit 0 , 4";
+		$db = config3::getConnexion();
+		$req=$db->prepare($sql);
+		
+		try{
+			
+			$req->bindValue(':type',$type);
 			$liste=$req->execute();
 			return $req->fetchAll();
 		}

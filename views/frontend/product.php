@@ -1,4 +1,7 @@
 <?php
+// Ouverture ou récupération de la session
+//session_start();?>
+<?php
 include "../../core/produitC.php";
 session_start();
 chdir(__DIR__);
@@ -69,6 +72,25 @@ $avaiblable_sizes= array();
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 <body>
+<?PHP
+    include "../../entities/comptes/client.php";
+    include "../../core/comptes/clientC.php";
+
+    if (isset($_SESSION['email'])) {
+        $clientC = new ClientC();
+        $result = $clientC->recupererClient($_SESSION['email']);
+        foreach ($result as $row) {
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            $datenaissance = $row['datenaissance'];
+            $sexe = $row['sexe'];
+            $password = $row['motdepasse'];
+            $tel = $row['tel'];
+            $code = $row['codePostal'];
+            $addlivr = $row['adresse'];
+        }
+    }
+    ?>
      <?php 
                             chdir(__DIR__);
                             include "header.php";

@@ -20,11 +20,12 @@ session_start();
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/logoreduit.png" />
 </head>
 
 <body>
   <?PHP
+  chdir(__DIR__);
   include "../../entities/comptes/admin.php";
   include "../../core/comptes/adminC.php";
 
@@ -37,6 +38,10 @@ session_start();
       $datenaissance = $row['datenaissance'];
       $sexe = $row['sexe'];
       $password = $row['motdepasse'];
+      $type = $row['type'];
+      if($type == 2) {
+        header('Location: pages/samples/login.php');
+      }
     }
   } else {
     header('Location: pages/samples/login.php');
@@ -63,116 +68,6 @@ session_start();
                             </div>
                         </form>-->
                         <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
-                            <!--<li class="nav-item dropdown">
-                                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="icon-envelope mx-0"></i>
-                                    <span class="count"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                                    <div class="dropdown-item">
-                                        <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                                        </p>
-                                        <span class="badge badge-info badge-pill float-right">View all</span>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                        </div>
-                                        <div class="preview-item-content flex-grow">
-                                            <h6 class="preview-subject ellipsis font-weight-medium">David Grey
-                                                <span class="float-right font-weight-light small-text">1 Minutes ago</span>
-                                            </h6>
-                                            <p class="font-weight-light small-text">
-                                                The meeting is cancelled
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                        </div>
-                                        <div class="preview-item-content flex-grow">
-                                            <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
-                                                <span class="float-right font-weight-light small-text">15 Minutes ago</span>
-                                            </h6>
-                                            <p class="font-weight-light small-text">
-                                                New product launch
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                        </div>
-                                        <div class="preview-item-content flex-grow">
-                                            <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
-                                                <span class="float-right font-weight-light small-text">18 Minutes ago</span>
-                                            </h6>
-                                            <p class="font-weight-light small-text">
-                                                Upcoming board meeting
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                                    <i class="icon-bell"></i>
-                                    <span class="count"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                                    <a class="dropdown-item py-3">
-                                        <p class="mb-0 font-weight-medium float-left">You have 4 new notifications
-                                        </p>
-                                        <span class="badge badge-pill badge-info float-right">View all</span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <div class="preview-icon bg-success">
-                                                <i class="icon-exclamation mx-0"></i>
-                                            </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-                                            <p class="font-weight-light small-text mb-0">
-                                                Just now
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <div class="preview-icon bg-warning">
-                                                <i class="icon-bubble mx-0"></i>
-                                            </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-                                            <p class="font-weight-light small-text mb-0">
-                                                Private message
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <div class="preview-icon bg-info">
-                                                <i class="icon-user-following mx-0"></i>
-                                            </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-                                            <p class="font-weight-light small-text mb-0">
-                                                2 days ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>-->
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img src="https://via.placeholder.com/39x39" alt="profile" />
@@ -182,7 +77,7 @@ session_start();
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                     <a class="dropdown-item" href = "pages/samples/profile.php">
                                         <i class="icon-settings text-primary mr-2"></i>
-                                        Profile
+                                        Profil
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="pages/samples/login.php">
@@ -202,7 +97,7 @@ session_start();
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="index.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
                         </li>
 
                         <li class="nav-item">
@@ -235,6 +130,7 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="pages/forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="pages/forms/afficherpostadmin.php">Afficher posts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="pages/forms/statpost.php">Statistiques posts</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -318,7 +214,7 @@ session_start();
                                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                                 <div>
                                                     <h1>28893</h1>
-                                                    <p class="text-muted mb-0">Total invoices</p>
+                                                    <p class="text-muted mb-0">Total des factures</p>
                                                 </div>
                                                 <i class="icon-layers text-primary icon-lg"></i>
                                             </div>
@@ -328,7 +224,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                     $sql = "select count(email) as nbre from utilisateur";
-                                                    $db = config::getConnexion();
+                                                    $db = config4::getConnexion();
                                                     try {
                                                         $req = $db->prepare($sql);
 
@@ -343,7 +239,7 @@ session_start();
                                                     <h1>
                                                         <?PHP echo $nbre ?>
                                                     </h1>
-                                                    <p class="text-muted mb-0">New users</p>
+                                                    <p class="text-muted mb-0">nouveau(x) utilisateur(s)</p>
                                                 </div>
                                                 <a href="pages/samples/utilisateurs.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
@@ -353,7 +249,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from client";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
 
@@ -368,7 +264,7 @@ session_start();
                                                     <h1>
                                                         <?PHP echo $nbre ?>
                                                     </h1>
-                                                    <p class="text-muted mb-0">New clients</p>
+                                                    <p class="text-muted mb-0">nouveau(x) client(s)</p>
                                                 </div>
                                                 <a href="pages/samples/clients.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
@@ -378,7 +274,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
                                                             $req->bindValue(':type', 1);
@@ -393,7 +289,7 @@ session_start();
                                                     <h1>
                                                         <?PHP echo $nbre ?>
                                                     </h1>
-                                                    <p class="text-muted mb-0">New admins</p>
+                                                    <p class="text-muted mb-0">nouveau(x) administrateur(s)</p>
                                                 </div>
                                                 <a href="pages/samples/admins"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
@@ -403,7 +299,7 @@ session_start();
                                                 <div>
                                                     <?PHP
                                                         $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config::getConnexion();
+                                                        $db = config4::getConnexion();
                                                         try {
                                                             $req = $db->prepare($sql);
                                                             $req->bindValue(':type', 2);
@@ -418,7 +314,7 @@ session_start();
                                                     <h1>
                                                         <?PHP echo $nbre ?>
                                                     </h1>
-                                                    <p class="text-muted mb-0">New artistes</p>
+                                                    <p class="text-muted mb-0">nouveau(x) artiste(s)</p>
                                                 </div>
                                                 <a href="pages/samples/artistes.php"><i class="icon-people text-primary icon-lg"></i></a>
                                             </div>
@@ -427,7 +323,7 @@ session_start();
                                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                                 <div>
                                                     <h1>6875</h1>
-                                                    <p class="text-muted mb-0">Unique visits</p>
+                                                    <p class="text-muted mb-0">visite(s) uniquement</p>
                                                 </div>
                                                 <i class="icon-pin text-primary icon-lg"></i>
                                             </div>
@@ -436,7 +332,7 @@ session_start();
                                             <div class="d-flex justify-content-between card-statistics-item">
                                                 <div>
                                                     <h1>45596</h1>
-                                                    <p class="text-muted mb-0">Sales</p>
+                                                    <p class="text-muted mb-0">ventes</p>
                                                 </div>
                                                 <i class="icon-refresh text-primary icon-lg"></i>
                                             </div>
