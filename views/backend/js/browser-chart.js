@@ -1,15 +1,15 @@
 $(document).ready(function(){
   $.ajax({
-    url: "../../json_country.php",
+    url: "../../json_browser.php",
     method: "GET",
     success: function(data1) {
       
-      let country = [];
+      let browser = [];
       let count = [];
      
 
       for(var i in data1) {
-        country.push(data1[i].country);
+        browser.push(data1[i].browser);
         count.push(data1[i].count);
       }
 
@@ -28,45 +28,57 @@ google.charts.load('current', {
  $(document).ready(function(){
        timeout = setInterval(function () {
           if (google.visualization != undefined) {
-             drawRegionsMap(country,count);
+             drawStuff(browser,count);
              clearInterval(timeout);
           }
        }, 300);
     });
-console.log(country);
+console.log(browser);
 console.log(count);
-console.log(Array.isArray(country));
-function drawRegionsMap(country,count) {
-  
+console.log(Array.isArray(browser));
+
+
+
+function drawStuff(browser,count) {
   var data2 = new google.visualization.DataTable();
-  data2.addColumn('string', 'Country');
+  data2.addColumn('string', 'Browser');
   data2.addColumn('string', 'Number of visits');
  
-  for (var i = 0; i < country.length; ++i) {
+  for (var i = 0; i < browser.length; ++i) {
      
 
-    data2.addRow([country[i],count[i]]);
+    data2.addRow([browser[i],count[i]]);
 }
-
-  
 
   var options = {
-    colorAxis: {
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66']
+    title: 'Approximating Normal Distribution',
+    legend: {
+      position: 'none'
+    },
+    colors: ['#76C1FA'],
+
+    chartArea: {
+      width: 401
+    },
+    hAxis: {
+      ticks: [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]
+    },
+    bar: {
+      gap: 0
+    },
+
+    histogram: {
+      bucketSize: 0.02,
+      maxNumBuckets: 200,
+      minValue: -1,
+      maxValue: 1
     }
   };
-  var chart = new google.visualization.GeoChart(document.getElementById('regions-chart'));
-  var chart_div = document.getElementById('regions-chart');
 
-
-  // Wait for the chart to finish drawing before calling the getImageURI() method.
-      google.visualization.events.addListener(chart, 'ready', function () {
-        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        console.log(chart_div.innerHTML);
-      });
-
+  var chart = new google.charts.Bar(document.getElementById('browsers-chart'));
   chart.draw(data2, options);
-}
+};
+
     },
     error: function(data) {
       console.log(data);

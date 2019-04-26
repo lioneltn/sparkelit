@@ -8,23 +8,40 @@ $(document).ready(function(){
       var count = [];
 
       for(var i in data) {
-        device.push("Country " + data[i].device);
+        device.push(data[i].device);
         count.push(data[i].count);
       }
 
     // Region Charts Starts
 google.charts.load("current", {
-  packages: ["corechart"]
+  packages: ['geochart','bar', 'corechart', 'table']
 });
-google.charts.setOnLoadCallback(drawChart);
+      var timeout;
+
+ $(document).ready(function(){
+       timeout = setInterval(function () {
+          if (google.visualization != undefined) {
+             drawChart(device,count);
+             clearInterval(timeout);
+          }
+       }, 300);
+    });
+
 
 function drawChart() {
- var data = google.visualization.arrayToDataTable([
-    ['Device', 'Visits'],
-    ['Mobile', 2],
-    ['Desktop', 3],
-    
-  ]);
+
+    var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Device');
+  data.addColumn('number', 'Number of visits');
+ 
+  for (var i = 0; i < device.length; ++i) {
+     
+
+    data.addRow([device[i],Number(count[i])]);
+}
+
+
+
 
 
   var options = {

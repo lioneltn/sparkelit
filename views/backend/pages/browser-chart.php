@@ -414,28 +414,13 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Visitors By Country</h4>
+                  <h4 class="card-title">Visitors By Browsers</h4>
                   <div class="google-chart-container">
-                    <div id="regions-chart" class="google-charts"></div>
+                    <div id="browsers-chart" class="google-charts"></div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Save as</button>
-                      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuSplitButton1" x-placement="top-start" style="position: relative; transform: translate3d(142px, -227px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <h6 class="dropdown-header">Export as</h6>
-                        <a class="dropdown-item" href="#">PDF</a>
-                        
-                        
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Image(PNG)</a>
-                      </div>
-                    </div>
 
             
             
@@ -468,7 +453,7 @@
   <script src="../js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/region-chart.js"></script>
+  <script src="../js/browser-chart.js"></script>
   <!-- End custom js for this page-->
 </body>
 
