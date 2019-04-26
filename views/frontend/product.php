@@ -148,6 +148,10 @@ $avaiblable_sizes= array();
 
                                 <div class="col-lg-5 col-md-6">
                                     <div class="product-single-details">
+                                        <div>
+                                            <span hidden="true"><?php echo $liste['id'];?></span>
+
+                                        </div>
                                         <h1 class="product-title"><?php echo $liste['nom'];?></h1>
 
                                         <div class="ratings-container">
