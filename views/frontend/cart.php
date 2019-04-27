@@ -1,7 +1,8 @@
 
 <?php 
-session_start();
+//session_start();
 include "../../core/PanierC.php";
+print_r($_SESSION);
  echo $_SESSION['idCommande'];
 ?>
 <!DOCTYPE html>

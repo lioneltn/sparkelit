@@ -19,7 +19,7 @@ google.charts.load('current', {
   'packages': ['geochart','bar', 'corechart', 'table'],
   // Note: you will need to get a mapsApiKey for your project.
   // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+  'mapsApiKey': 'AIzaSyDgXqq9lo_kS_zbLPhbZ3rFrQmySqD0mPA'
 });
 
 
@@ -62,10 +62,23 @@ function drawRegionsMap(country,count) {
   // Wait for the chart to finish drawing before calling the getImageURI() method.
       google.visualization.events.addListener(chart, 'ready', function () {
         chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        console.log(chart_div.innerHTML);
+        document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + chart.getImageURI() + '">Image(PNG)</a>';
+          var pdf_container = document.getElementById('chart-containter').innerHTML;
+  console.log(pdf_container);
+  document.getElementById('hidden_html').value = pdf_container;
+
       });
 
+  
+
+
   chart.draw(data2, options);
+
+
+
+  
+
+
 }
     },
     error: function(data) {

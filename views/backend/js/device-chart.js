@@ -8,40 +8,23 @@ $(document).ready(function(){
       var count = [];
 
       for(var i in data) {
-        device.push(data[i].device);
+        device.push("Country " + data[i].device);
         count.push(data[i].count);
       }
 
     // Region Charts Starts
 google.charts.load("current", {
-  packages: ['geochart','bar', 'corechart', 'table']
+  packages: ["corechart"]
 });
-      var timeout;
-
- $(document).ready(function(){
-       timeout = setInterval(function () {
-          if (google.visualization != undefined) {
-             drawChart(device,count);
-             clearInterval(timeout);
-          }
-       }, 300);
-    });
-
+google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-
-    var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Device');
-  data.addColumn('number', 'Number of visits');
- 
-  for (var i = 0; i < device.length; ++i) {
-     
-
-    data.addRow([device[i],Number(count[i])]);
-}
-
-
-
+ var data = google.visualization.arrayToDataTable([
+    ['Device', 'Visits'],
+    ['Mobile', 2],
+    ['Desktop', 11],
+    
+  ]);
 
 
   var options = {
@@ -54,6 +37,20 @@ function drawChart() {
   };
 
   var Donutchart = new google.visualization.PieChart(document.getElementById('device-chart'));
+
+  var chart_div = document.getElementById('device-chart');
+
+   // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(Donutchart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + Donutchart.getImageURI() + '">';
+        document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + Donutchart.getImageURI() + '">Image(PNG)</a>';
+          var pdf_container = document.getElementById('chart-containter').innerHTML;
+  console.log(pdf_container);
+  document.getElementById('hidden_html').value = pdf_container;
+
+      });
+
+
   Donutchart.draw(data, options);
 }
 

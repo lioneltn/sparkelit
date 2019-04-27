@@ -104,7 +104,7 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -145,8 +145,21 @@ session_start();
                         <label for="acc-sexe" class="col-sm-3 col-form-label">Sexe</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="sexe" id="sexe">
-                                <option value="homme" selected="<?PHP if ($sexe = " homme") echo "selected" ?>">Homme </option>
-                                <option value="femme" selected="<?PHP if ($sexe = " femme") echo "selected" ?>">Femme </option>
+                                <?php   
+                                if($sexe=="homme")
+                                { ?>
+                                <option value="homme" selected="selected">Homme </option>
+                                <option value="femme">Femme </option>
+                                <?php   
+                                }
+                                else
+                                {
+                                 ?>
+                                <option value="homme" >Homme </option>
+                                <option value="femme" selected="selected">Femme </option>
+                                <?php
+                                } 
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -163,7 +176,7 @@ session_start();
                     if (isset($_POST['modifier']) and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance'])  and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01") {
                         $admin1 = new Admin($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email_admin'], $_POST['sexe'], 2);
                         $admin1C = new AdminC();
-                        $admin1C->modifierAdmin($admin1);
+                        $admin1C->modifierAdminsansMdp($admin1);
                         echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
                         echo "<script> window.location.href='../samples/dashboard-artiste.php'</script>";
                     }
