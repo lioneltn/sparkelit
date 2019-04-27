@@ -67,6 +67,20 @@ class VisitC
         }	
 	}
 
+	function get_visits_by_browser(){
+		$sql="SELECT browser, COUNT(browser) as count FROM visits GROUP by browser";
+		$db = config3::getConnexion();
+		try
+		{
+			$liste=$db->query($sql);
+			return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+
 
 		function get_visits_by_device(){
 		$sql="SELECT device, COUNT(device) as count FROM visits GROUP by device";
