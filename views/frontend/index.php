@@ -351,12 +351,21 @@ echo $date;
         </header><!-- End .header -->
 
         <main class="main">
-            <div class="home-slider-container">
+           <!-- <div class="home-slider-container">-->
                 <div class="home-slider owl-carousel owl-theme">
-                    <div class="home-slide">
+                   <!-- <div class="home-slide">
                         <div class="slide-bg owl-lazy" data-src="assets/images/slider/slide-1.jpg"></div><!-- End .slide-bg -->
 
-                        <div class="home-slide-content container">
+                         
+<?php 
+chdir(__DIR__);
+include "../afficherImage.php";
+chdir(__DIR__);         
+ ?>
+
+
+
+                       <!-- <div class="home-slide-content container">
                             <div class="slide-text">Up to <br>
                                 <div>
                                     <span class="slide-sale">50</span>
@@ -372,8 +381,8 @@ echo $date;
                         </div><!-- End .home-slide-content -->
                     </div><!-- End .home-slide -->
 
-                    <div class="home-slide">
-                        <div class="slide-bg owl-lazy" data-src="assets/images/slider/slide-2.jpg"></div><!-- End .slide-bg -->
+                   <!-- <div class="home-slide">
+                        <div class="slide-bg owl-lazy" data-src="assets/images/slider/slide-2.jpg"></div><!-- End .slide-bg 
                         <div class="home-slide-content container">
                             <div class="row">
                                 <div class="col-md-6 offset-md-6 col-lg-5 offset-lg-7">
@@ -386,7 +395,7 @@ echo $date;
                         </div><!-- End .home-slide-content -->
                     </div><!-- End .home-slide -->
                 </div><!-- End .home-slider -->
-            </div><!-- End .home-slider-container -->
+            </div><!-- End .home-slider-container 
 
             <div class="banners-group">
                 <div class="row no-gutters">
@@ -396,7 +405,7 @@ echo $date;
                                 <img src="assets/images/banners/banner-1.jpg" alt="banner">
                             </a>
                         </div><!-- End .banner -->
-                    </div><!-- End .col-lg-3 -->
+                    </div><!-- End .col-lg-3 
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="banner banner-image">
@@ -404,7 +413,7 @@ echo $date;
                                 <img src="assets/images/banners/banner-2.jpg" alt="banner">
                             </a>
                         </div><!-- End .banner -->
-                    </div><!-- End .col-lg-3 -->
+                    </div><!-- End .col-lg-3 
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="banner banner-image">
@@ -412,7 +421,7 @@ echo $date;
                                 <img src="assets/images/banners/banner-3.jpg" alt="banner">
                             </a>
                         </div><!-- End .banner -->
-                    </div><!-- End .col-lg-3 -->
+                    </div><!-- End .col-lg-3 
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="banner banner-image">
@@ -498,7 +507,7 @@ echo $date;
                 </div><!-- End .no-gutters -->
             </div><!-- End .half-section -->
 
-            <div class="container-fluid products-bottom">
+           <!-- <div class="container-fluid products-bottom">
                 <div class="title-group text-center">
                     <h2 class="subtitle">Featured Products</h2>
                     <p>Check it out our this week's featured products.</p>
@@ -518,13 +527,13 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:80%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Woman Fashion</a>
                             </h2>
                             <div class="price-box">
                                 <span class="product-price">$40.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
@@ -540,7 +549,7 @@ echo $date;
                                 </a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product-details -->
-                    </div><!-- End .product -->
+                    </div><!-- End .product 
 
                     <div class="product">
                         <figure class="product-image-container">
@@ -554,13 +563,13 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:50%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Dress</a>
                             </h2>
                             <div class="price-box">
                                 <span class="product-price">$110.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
@@ -576,7 +585,7 @@ echo $date;
                                 </a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product-details -->
-                    </div><!-- End .product -->
+                    </div><!-- End .product 
 
                     <div class="product">
                         <figure class="product-image-container">
@@ -591,14 +600,14 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:0%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Black Bottom</a>
                             </h2>
                             <div class="price-box">
                                 <span class="old-price">$80.00</span>
                                 <span class="product-price">$60.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
@@ -614,7 +623,7 @@ echo $date;
                                 </a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product-details -->
-                    </div><!-- End .product -->
+                    </div><!-- End .product 
 
                     <div class="product">
                         <figure class="product-image-container">
@@ -628,13 +637,13 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:100%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Jumpsuit</a>
                             </h2>
                             <div class="price-box">
                                 <span class="product-price">$65.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
@@ -650,7 +659,7 @@ echo $date;
                                 </a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product-details -->
-                    </div><!-- End .product -->
+                    </div><!-- End .product 
 
                     <div class="product">
                         <figure class="product-image-container">
@@ -664,13 +673,13 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:60%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Sweatshirt</a>
                             </h2>
                             <div class="price-box">
                                 <span class="product-price">$130.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
@@ -686,7 +695,7 @@ echo $date;
                                 </a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product-details -->
-                    </div><!-- End .product -->
+                    </div><!-- End .product 
 
                     <div class="product">
                         <figure class="product-image-container">
@@ -700,13 +709,13 @@ echo $date;
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:50%"></span><!-- End .ratings -->
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
+                            </div><!-- End .product-container 
                             <h2 class="product-title">
                                 <a href="product.php">Sleeve Dress</a>
                             </h2>
                             <div class="price-box">
                                 <span class="product-price">$75.00</span>
-                            </div><!-- End .price-box -->
+                            </div><!-- End .price-box 
 
                             <div class="product-action">
                                 <a href="#" class="paction add-wishlist" title="Add to Wishlist">
