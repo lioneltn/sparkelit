@@ -98,7 +98,7 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="../../pages/forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="../../pages/forms/afficherpostadmin.php">Afficher posts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../../pages/forms/statpost.php">Statistiques posts</a></li>
+                                    
                                 </ul>
                             </div>
                         </li>

@@ -59,6 +59,27 @@ class AdminC
           }
      }
 
+
+     function modifierAdminsansMdp($admin)
+     {
+          $sql_u = "update utilisateur set nom = :nom, prenom = :prenom, datenaissance = :datenaissance, sexe = :sexe where email = :email";
+          $db = config4::getConnexion();
+          try {
+               $req = $db->prepare($sql_u);
+
+               $req->bindValue(':nom', $admin->getNom());
+               $req->bindValue(':prenom', $admin->getPrenom());
+               $req->bindValue(':email', $admin->getEmail());
+               $req->bindValue(':datenaissance', $admin->getDateNaissance());
+               $req->bindValue(':sexe', $admin->getSexe());
+               
+
+               $req->execute();
+          } catch (Exception $e) {
+               echo 'Erreur: ' . $e->getMessage();
+          }
+     }
+
      function recupererAdmin($email)
      {
           //$sql = "select * from utilisateur where email = :email";

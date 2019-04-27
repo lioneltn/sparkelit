@@ -63,7 +63,7 @@ session_start();
                             <ul class="menu sf-arrows">
                                 <li><a href="index.php">Accueil</a></li>
                                 <li>
-                                    <a href="category.html" class="sf-with-ul">Categories</a>
+                                    <a href="category.php" class="sf-with-ul">Categories</a>
                                     <div class="megamenu megamenu-fixed-width">
                                         <div class="row">
                                         <div class="col-lg-8">
@@ -111,7 +111,7 @@ session_start();
                                     </div><!-- End .megamenu -->
                                 </li>
                                 <li class="megamenu-container">
-                                    <a href="product.html" class="sf-with-ul">Produits</a>
+                                    <a href="product.php" class="sf-with-ul">Produits</a>
                                     <div class="megamenu">
                                         <div class="row">
                                         <div class="col-lg-8">
@@ -273,8 +273,8 @@ session_start();
                                         <li><a href="my-account.php">Mon compte </a></li>
                                         <li><a href="#">DAILY DEAL</a></li>
                                         <li><a href="#">MY WISHLIST </a></li>
-                                        <li><a href="blog.html">BLOG</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="blog.php">BLOG</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
                                         <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                     </ul>
                                 </div><!-- End .header-menu -->
@@ -296,7 +296,7 @@ session_start();
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="product.html">Woman Ring</a>
+                                                    <a href="product.php">Woman Ring</a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
@@ -306,7 +306,7 @@ session_start();
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
+                                                <a href="product.php" class="product-image">
                                                     <img src="assets/images/products/cart/product-1.jpg" alt="product">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
@@ -316,7 +316,7 @@ session_start();
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="product.html">Woman Necklace</a>
+                                                    <a href="product.php">Woman Necklace</a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
@@ -326,7 +326,7 @@ session_start();
                                             </div><!-- End .product-details -->
 
                                             <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
+                                                <a href="product.php" class="product-image">
                                                     <img src="assets/images/products/cart/product-2.jpg" alt="product">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
@@ -341,8 +341,8 @@ session_start();
                                     </div><!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
-                                        <a href="cart.html" class="btn">View Cart</a>
-                                        <a href="checkout-shipping.html" class="btn">Checkout</a>
+                                        <a href="cart.php" class="btn">View Cart</a>
+                                        <a href="checkout-shipping.php" class="btn">Checkout</a>
                                     </div><!-- End .dropdown-cart-total -->
                                 </div><!-- End .dropdownmenu-wrapper -->
                             </div><!-- End .dropdown-menu -->
@@ -638,56 +638,56 @@ session_start();
                 <ul class="mobile-menu">
                     <li><a href="index.php">Home</a></li>
                     <li>
-                        <a href="category.html">Categories</a>
+                        <a href="category.php">Categories</a>
                         <ul>
-                            <li><a href="category-banner-full-width.html">Full Width Banner</a></li>
-                            <li><a href="category-banner-boxed-slider.html">Boxed Slider Banner</a></li>
-                            <li><a href="category-banner-boxed-image.html">Boxed Image Banner</a></li>
-                            <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
-                            <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                            <li><a href="category-flex-grid.html">Product Flex Grid</a></li>
-                            <li><a href="category-horizontal-filter1.html">Horizontal Filter 1</a></li>
-                            <li><a href="category-horizontal-filter2.html">Horizontal Filter 2</a></li>
+                            <li><a href="category-banner-full-width.php">Full Width Banner</a></li>
+                            <li><a href="category-banner-boxed-slider.php">Boxed Slider Banner</a></li>
+                            <li><a href="category-banner-boxed-image.php">Boxed Image Banner</a></li>
+                            <li><a href="category-sidebar-left.php">Left Sidebar</a></li>
+                            <li><a href="category-sidebar-right.php">Right Sidebar</a></li>
+                            <li><a href="category-flex-grid.php">Product Flex Grid</a></li>
+                            <li><a href="category-horizontal-filter1.php">Horizontal Filter 1</a></li>
+                            <li><a href="category-horizontal-filter2.php">Horizontal Filter 2</a></li>
                             <li><a href="#">Product List Item Types</a></li>
-                            <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll<span class="tip tip-new">New</span></a></li>
-                            <li><a href="category-3col.html">3 Columns Products</a></li>
-                            <li><a href="category-4col.html">4 Columns Products</a></li>
-                            <li><a href="category.html">5 Columns Products</a></li>
-                            <li><a href="category-6col.html">6 Columns Products</a></li>
-                            <li><a href="category-7col.html">7 Columns Products</a></li>
-                            <li><a href="category-8col.html">8 Columns Products</a></li>
+                            <li><a href="category-infinite-scroll.php">Ajax Infinite Scroll<span class="tip tip-new">New</span></a></li>
+                            <li><a href="category-3col.php">3 Columns Products</a></li>
+                            <li><a href="category-4col.php">4 Columns Products</a></li>
+                            <li><a href="category.php">5 Columns Products</a></li>
+                            <li><a href="category-6col.php">6 Columns Products</a></li>
+                            <li><a href="category-7col.php">7 Columns Products</a></li>
+                            <li><a href="category-8col.php">8 Columns Products</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="product.html">Products</a>
+                        <a href="product.php">Products</a>
                         <ul>
                             <li>
                                 <a href="#">Variations</a>
                                 <ul>
-                                    <li><a href="product.html">Horizontal Thumbnails</a></li>
-                                    <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
-                                    <li><a href="product.html">Inner Zoom</a></li>
-                                    <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
-                                    <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
+                                    <li><a href="product.php">Horizontal Thumbnails</a></li>
+                                    <li><a href="product-full-width.php">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product.php">Inner Zoom</a></li>
+                                    <li><a href="product-addcart-sticky.php">Addtocart Sticky</a></li>
+                                    <li><a href="product-sidebar-left.php">Accordion Tabs</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Variations</a>
                                 <ul>
-                                    <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
-                                    <li><a href="product-simple.html">Simple Product</a></li>
-                                    <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
+                                    <li><a href="product-sticky-tab.php">Sticky Tabs</a></li>
+                                    <li><a href="product-simple.php">Simple Product</a></li>
+                                    <li><a href="product-sidebar-left.php">With Left Sidebar</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Product Layout Types</a>
                                 <ul>
-                                    <li><a href="product.html">Default Layout</a></li>
-                                    <li><a href="product-extended-layout.html">Extended Layout</a></li>
-                                    <li><a href="product-full-width.html">Full Width Layout</a></li>
-                                    <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
-                                    <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
-                                    <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
+                                    <li><a href="product.php">Default Layout</a></li>
+                                    <li><a href="product-extended-layout.php">Extended Layout</a></li>
+                                    <li><a href="product-full-width.php">Full Width Layout</a></li>
+                                    <li><a href="product-grid-layout.php">Grid Images Layout</a></li>
+                                    <li><a href="product-sticky-both.php">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product-sticky-info.php">Sticky Right Side Info</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -695,26 +695,26 @@ session_start();
                     <li>
                         <a href="#">Pages<span class="tip tip-hot">Hot!</span></a>
                         <ul>
-                            <li><a href="cart.html">Shopping Cart</a></li>
+                            <li><a href="cart.php">Shopping Cart</a></li>
                             <li>
                                 <a href="#">Checkout</a>
                                 <ul>
-                                    <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
-                                    <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
-                                    <li><a href="checkout-review.html">Checkout Review</a></li>
+                                    <li><a href="checkout-shipping.php">Checkout Shipping</a></li>
+                                    <li><a href="checkout-shipping-2.php">Checkout Shipping 2</a></li>
+                                    <li><a href="checkout-review.php">Checkout Review</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.php">About</a></li>
                             <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                             <li><a href="forgot-password.php">Mot de passe oublié</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html">Blog</a>
+                    <li><a href="blog.php">Blog</a>
                         <ul>
-                            <li><a href="single.html">Blog Post</a></li>
+                            <li><a href="single.php">Blog Post</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                     <li><a href="#">Special Offer!<span class="tip tip-hot">Hot!</span></a></li>
                     <li><a href="#">Buy Porto!</a></li>
                 </ul>
