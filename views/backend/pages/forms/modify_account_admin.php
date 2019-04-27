@@ -9,7 +9,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+    <title>Modifer Compte Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -147,7 +147,7 @@ session_start();
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="../samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../samples/orders.php"> commandes</a></li>
@@ -237,8 +237,21 @@ session_start();
                                                     <label for="acc-sexe">Sexe</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="sexe" id="sexe">
-                                                            <option value="homme" selected="<?PHP if ($sexe = "homme") echo "selected" ?>">Homme </option>
-                                                            <option value="femme" selected="<?PHP if ($sexe = "femme") echo "selected" ?>">Femme </option>
+                                                            <?php   
+                                if($sexe=="homme")
+                                { ?>
+                                <option value="homme" selected="selected">Homme </option>
+                                <option value="femme">Femme </option>
+                                <?php   
+                                }
+                                else
+                                {
+                                 ?>
+                                <option value="homme" >Homme </option>
+                                <option value="femme" selected="selected">Femme </option>
+                                <?php
+                                } 
+                                ?>
                                                         </select>
                                                     </div>
                                                 </div>

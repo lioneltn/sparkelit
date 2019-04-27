@@ -1,5 +1,7 @@
 <?PHP
 session_start();
+
+print_r($_SESSION);
 include "../../../../config.php";
 if ($_POST['password'] == $_POST['confirmPassword'] ) {
 
@@ -12,7 +14,7 @@ if ($_POST['password'] == $_POST['confirmPassword'] ) {
           $req->bindValue(':email', $_SESSION['email_admin']);
           $req->bindValue(':mdp', $_POST['password']);
           $req->execute();
-          echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
+          /*echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
           <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
           <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
           <!-- plugins:css -->
@@ -24,9 +26,9 @@ if ($_POST['password'] == $_POST['confirmPassword'] ) {
           <!-- plugin css for this page -->
           <!-- End plugin css for this page -->
           <!-- inject:css -->
-          <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Mot de passe modifié avec succès</div></body></html>";
+          <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Mot de passe modifié avec succès</div></body></html>";*/
           header('Location : ../../index.php');
-          echo "<script>window.location.href='../../index.php'</script>";
+          //echo "<script>window.location.href='../../index.php'</script>";
      } catch (Exception $e) {
           echo 'Erreur: ' . $e->getMessage();
      }

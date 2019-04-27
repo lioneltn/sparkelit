@@ -83,7 +83,20 @@ chdir(__DIR__);
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                    <?php   
+                                  if($type==1)
+                                  {
+                                   ?>
                                     <a class="dropdown-item" href = "../samples/profile.php">
+                                  <?php
+                                  }
+                                  else
+                                  {
+                                  ?>
+                                  <a class="dropdown-item" href = "../samples/profile-2.php">
+                                  <?php 
+                                  }    
+                                  ?>
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profil
                                     </a>

@@ -7,7 +7,7 @@ if (isset($_POST['password']) and isset($_POST['confirmPassword']) and $_POST['p
     try {
         $req = $db->prepare($sql);
 
-        $req->bindValue(':email', $_SESSION['email_artiste']);
+        $req->bindValue(':email', $_SESSION['email_admin']);
         $req->bindValue(':mdp', $_POST['password']);
         $req->execute();
         echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">

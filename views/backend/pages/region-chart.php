@@ -425,21 +425,6 @@ session_start();
               </div>
             </div>
 
-            <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Save as</button>
-                      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuSplitButton1" x-placement="top-start" style="position: relative; transform: translate3d(142px, -227px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <h6 class="dropdown-header">Export as</h6>
-                        <a class="dropdown-item" href="#">PDF</a>
-                        
-                        
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Image(PNG)</a>
-                      </div>
-                    </div>
-
             
             
         </div>

@@ -8,6 +8,7 @@ session_start();
 class produitPanierC
 {
   static function ajouterProduitPanier($produitPanier) {
+    echo("hello");
       
          	$sql2="SELECT idCommande FROM commande ORDER BY idCommande DESC LIMIT 1";
      
