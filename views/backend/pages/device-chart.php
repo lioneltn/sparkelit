@@ -411,7 +411,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
+            <div id="chart-containter" class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Device By Device</h4>
@@ -421,6 +421,27 @@
                 </div>
               </div>
             </div>
+
+            <div class="btn-group">
+                      <button type="button" class="btn btn-primary">Save as</button>
+                      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuSplitButton1" x-placement="top-start" style="position: relative; transform: translate3d(142px, -227px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <form method="POST" id="make_pdf" action="create_pdf.php">
+                          <input type="hidden" name="hidden_html" id="hidden_html">
+
+                          <button class="btn btn-link btn-fw">Export as PDF</button>
+                          
+                        </form>
+                        
+                        
+                        <div class="dropdown-divider"></div>
+                        <div id="png">
+
+                        </div>
+                      </div>
+                    </div>
 
             
             

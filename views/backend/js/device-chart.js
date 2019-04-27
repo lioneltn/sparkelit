@@ -54,6 +54,20 @@ function drawChart() {
   };
 
   var Donutchart = new google.visualization.PieChart(document.getElementById('device-chart'));
+
+  var chart_div = document.getElementById('device-chart');
+
+   // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(Donutchart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + Donutchart.getImageURI() + '">';
+        document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + Donutchart.getImageURI() + '">Image(PNG)</a>';
+          var pdf_container = document.getElementById('chart-containter').innerHTML;
+  console.log(pdf_container);
+  document.getElementById('hidden_html').value = pdf_container;
+
+      });
+
+
   Donutchart.draw(data, options);
 }
 

@@ -76,6 +76,19 @@ function drawStuff(browser,count) {
   };
 
   var chart = new google.charts.Bar(document.getElementById('browsers-chart'));
+  var chart_div = document.getElementById('browsers-chart');
+
+   // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(chart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + chart.getImageURI() + '">Image(PNG)</a>';
+          var pdf_container = document.getElementById('chart-containter').innerHTML;
+  console.log(pdf_container);
+  document.getElementById('hidden_html').value = pdf_container;
+
+      });
+
+  
   chart.draw(data2, options);
 };
 
