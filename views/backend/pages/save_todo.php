@@ -1,9 +1,9 @@
 <?php 
 require_once "../../../config3.php";
-if (isset($_POST['item'])){
+if (isset($_POST['item']) && isset($_POST['id'])){
 
 	$activity = $_POST['item'];
-	$id = rand(10,100);
+	$id = $_POST['id'];
 	$done = 0;
 	$sql="insert into todo values (:id,:activity,:done)";
 		$db = config3::getConnexion();
