@@ -4,7 +4,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Success',
-      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
+      text: 'Email with PDF attachement has been sent to your email!',
       showHideTransition: 'slide',
       icon: 'success',
       loaderBg: '#f96868',
@@ -16,7 +16,7 @@
     resetToastPosition();
     $.toast({
       heading: 'Info',
-      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
+      text: 'Email with PDF attachement has been sent to your email!',
       showHideTransition: 'slide',
       icon: 'info',
       loaderBg: '#46c35f',

@@ -52,7 +52,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Email</span>
                       </div>
-                      <button type="button" class="email btn btn-primary">Send to email</button>
+                      <button type="button" class="email btn btn-primary" onclick="showSuccessToast()">Send to email</button>
                       </form>
                     </div>
                   </div>

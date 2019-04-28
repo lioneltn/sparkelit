@@ -52,7 +52,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Email</span>
                       </div>
-                      <button type="button" id="submit" class="btn btn-primary">Send to email</button>
+                      <button type="button" id="submit" class="btn btn-primary" onclick="showSuccessToast()">Send to email</button>
                       </form>
                     </div>
                   </div>
@@ -111,6 +111,7 @@
   <script src="../js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../js/toastDemo.js"></script>
   <script src="../js/device-chart.js"></script>
   <!-- End custom js for this page-->
 </body>

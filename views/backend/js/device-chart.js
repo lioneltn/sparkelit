@@ -52,11 +52,14 @@ function drawChart() {
 
 
         $('#submit').on("click", function(event) {
-      event.preventDefault();
+      
+
+
       console.log('lol');
         var html = document.getElementById('hidden_html').value;
         var email = document.getElementById('email').value
         console.log(email);
+        
         
        $.ajax({
                     type: "POST",
@@ -66,6 +69,7 @@ function drawChart() {
                       console.log(msg);
                     },
                 });
+
 
   });
 
@@ -82,3 +86,5 @@ function drawChart() {
   });
 
 });
+
+
