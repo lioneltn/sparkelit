@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "../../json_country.php",
+    url: "../../views/json_country.php",
     method: "GET",
     success: function(data1) {
       
@@ -55,37 +55,14 @@ function drawRegionsMap(country,count) {
       colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66']
     }
   };
-  var chart = new google.visualization.GeoChart(document.getElementById('regions-chart'));
-  var chart_div = document.getElementById('regions-chart');
+  var chart = new google.visualization.GeoChart(document.getElementById('chart-activity'));
+  var chart_div = document.getElementById('chart-activity');
 
 
   // Wait for the chart to finish drawing before calling the getImageURI() method.
-      google.visualization.events.addListener(chart, 'ready', function () {
-        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + chart.getImageURI() + '">Image(PNG)</a>';
-          var pdf_container = document.getElementById('chart-containter').innerHTML;
-  console.log(pdf_container);
-  document.getElementById('hidden_html').value = pdf_container;
+    
 
-      });
-
-    $('#submit').on("click", function(event) {
-      event.preventDefault();
-      console.log('lol');
-        var html = document.getElementById('hidden_html').value;
-        var email = document.getElementById('email').value
-        console.log(email);
-        
-       $.ajax({
-                    type: "POST",
-                    url: "../pages/send_email.php",
-                    data: 'email=' +  email +"&hidden_html=" +html ,
-                    success: function(msg) {
-                      console.log(msg);
-                    },
-                });
-
-  });
+  
 
 
   chart.draw(data2, options);

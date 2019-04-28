@@ -41,6 +41,24 @@
               </div>
             </div>
 
+
+              <div class="form-group">
+                    <div class="input-group">
+                      
+                      <form id="emailform">
+                      <div  class="col-lg-12 grid-margin stretch-card">
+                        
+                      <input type="text" id="email" class="form-control" placeholder="email@email.com" aria-label="Username">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                      </div>
+                      <button type="button" id="submit" class="btn btn-primary" onclick="showSuccessToast()">Send to email</button>
+                      </form>
+                    </div>
+                  </div>
+                    </div>
+          
+
             <div class="btn-group">
                       <button type="button" class="btn btn-primary">Save as</button>
                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,6 +111,7 @@
   <script src="../js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../js/toastDemo.js"></script>
   <script src="../js/device-chart.js"></script>
   <!-- End custom js for this page-->
 </body>

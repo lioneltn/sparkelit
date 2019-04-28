@@ -230,4 +230,6 @@ class ClientC
             die('Erreur: '.$e->getMessage());
         }
     }
+
+    
 }
