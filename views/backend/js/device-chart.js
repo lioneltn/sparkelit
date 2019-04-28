@@ -45,10 +45,33 @@ function drawChart() {
         chart_div.innerHTML = '<img src="' + Donutchart.getImageURI() + '">';
         document.getElementById('png').outerHTML = '<a class="dropdown-item" href="' + Donutchart.getImageURI() + '">Image(PNG)</a>';
           var pdf_container = document.getElementById('chart-containter').innerHTML;
-  console.log(pdf_container);
+  
   document.getElementById('hidden_html').value = pdf_container;
 
       });
+
+
+        $('#submit').on("click", function(event) {
+      
+
+
+      console.log('lol');
+        var html = document.getElementById('hidden_html').value;
+        var email = document.getElementById('email').value
+        console.log(email);
+        
+        
+       $.ajax({
+                    type: "POST",
+                    url: "../pages/send_email.php",
+                    data: 'email=' +  email +"&hidden_html=" +html ,
+                    success: function(msg) {
+                      console.log(msg);
+                    },
+                });
+
+
+  });
 
 
   Donutchart.draw(data, options);
@@ -63,3 +86,5 @@ function drawChart() {
   });
 
 });
+
+

@@ -31,7 +31,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div id="chart-containter" class="col-lg-6 grid-margin stretch-card">
+            <div id="chart-containter" class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div  class="card-body">
                   <h4 class="card-title">Visitors By Country</h4>
@@ -42,11 +42,25 @@
               </div>
             </div>
 
-
+            <div class="form-group">
+                    <div class="input-group">
+                      
+                      <form id="emailform">
+                      <div  class="col-lg-6 grid-margin stretch-card">
+                        
+                      <input type="text" id="email" class="form-control" placeholder="email@email.com" aria-label="Username">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                      </div>
+                      <button type="button" class="email btn btn-primary" onclick="showSuccessToast()">Send to email</button>
+                      </form>
+                    </div>
+                  </div>
+                    </div>
           
 
 
-             <div class="btn-group">
+             <div class="btn-group col-lg-6 grid-margin stretch-card">
                       <button type="button" class="btn btn-primary">Save as</button>
                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuSplitButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
@@ -64,6 +78,7 @@
                         <div id="png">
 
                         </div>
+                       
                       </div>
                     </div>
 

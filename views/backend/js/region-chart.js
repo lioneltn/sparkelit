@@ -69,7 +69,23 @@ function drawRegionsMap(country,count) {
 
       });
 
-  
+    $('#submit').on("click", function(event) {
+      event.preventDefault();
+      console.log('lol');
+        var html = document.getElementById('hidden_html').value;
+        var email = document.getElementById('email').value
+        console.log(email);
+        
+       $.ajax({
+                    type: "POST",
+                    url: "../pages/send_email.php",
+                    data: 'email=' +  email +"&hidden_html=" +html ,
+                    success: function(msg) {
+                      console.log(msg);
+                    },
+                });
+
+  });
 
 
   chart.draw(data2, options);
