@@ -197,7 +197,7 @@ session_start();
                     </div>
                     <div class="form-group">
                       <label for="exampleInputNom">Nom</label>
-                      <input type="text" class="form-control" id="exampleInputNom" name ="nom" placeholder="Nom" onfocusout="validernom()" maxlength="8" required/>
+                      <input type="text" class="form-control" id="exampleInputNom" name ="nom" placeholder="Nom" onfocusout="validernom()" required/>
                       <span class="helper-text" > </span>
                     </div>
 

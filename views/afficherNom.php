@@ -14,16 +14,12 @@ include "../core/offreC.php";
 				foreach($liste as $row)
 				{
 				?>
+					<tr>
 					
-					<img  src="<?php echo '../'.$row['image'];?>">	
-
-						
-              
+					<td name="nom"> <?php echo $row['nom'];?></td> 					
+					</tr>
 					<?php 
 				}
 
 				
 					?>
-
-			
-				
