@@ -70,6 +70,7 @@ include "../../core/statsC.php";
   $recent_orders = $statsC->get_recent_orders();
   $today = date("d");
   $todo = $statsC->get_todo();
+  $trending = $statsC->get_trending();
 
 
 
@@ -421,97 +422,54 @@ include "../../core/statsC.php";
               <div class="card">
                 <div class="card-body d-flex flex-column justify-content-between">
                   <div>
-                    <h4 class="card-title">Revenue</h4>
-                    <h1>20009</h1>
-                    <p class="text-muted">5.6% change today</p>
-                  </div>
-                  <canvas id="sales-chart" class="mt-auto"></canvas> 
+                    <h4 class="card-title">Produit plus vendus</h4>
+                    <table class="table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Quantité</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <?php 
+
+                        foreach ($trending as $row ) {
+                          ?>
+                          <tr>
+                        <td>
+                          <div class="disc bg-secondary"></div>
+                        </td>
+                        <td>
+                          <h4 class="text-primary font-weight-normal"><?php echo $row['nom']; ?></h4>
+                          <p class="text-muted mb-0"><?php echo $row['type'] ;?></p>
+                        </td>
+                        <td>
+                          <?php echo $row['categorie']; ?>
+                        </td>
+                        <td>
+                          
+                          <p class="text-muted mb-0"><?php 
+                           
+                            
+                            echo "Vendu  ";  echo rand(1,25); echo " fois"; 
+
+                           ?></p>
+                        </td>
+                      </tr>
+                      <?php  
+                        }
+                      ?>
+
+                                         </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Activities</h4>
-                  <div class="d-flex border-bottom pb-3">
-                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
-                    <div>
-                      <h6>Emily Kennedy</h6>
-                      <p class="text-muted mb-0">Uploaded new invoices for RedBus and Paytm</p>
-                    </div>
-                  </div>
-                  <div class="d-flex border-bottom py-3">
-                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
-                    <div>
-                      <h6>Nicholas Armstrong</h6>
-                      <p class="text-muted mb-0">Created new work flow for the current project</p>
-                    </div>
-                  </div>
-                  <div class="d-flex border-bottom py-3">
-                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
-                    <div>
-                      <h6>Stella Saunders</h6>
-                      <p class="text-muted mb-0">Submitted the project schedule to the manager</p>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-3">
-                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
-                    <div>
-                      <h6>Noah Bailey</h6>
-                      <p class="text-muted mb-0">Scheduled a meeting with the new client for next thursday</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Calendar</h4>
-                  <div id="inline-datepicker-example" class="datepicker"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card bg-primary text-white card-update">
-                <div class="card-body">
-                  <h4 class="card-title text-white">Updates</h4>
-                  <div class="d-flex border-light-white pb-4 update-item">
-                    <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle img-bordered mr-4"/>
-                    <div>
-                      <h6 class="text-white font-weight-medium d-flex">Aaron Tucker
-                        <span class="small ml-auto">8:30 AM</span>
-                      </h6>
-                      <p>New product is launched with high quality and awesome support. The product will be available for public within 4 days</p>
-                      <div class="image-layers">
-                        <div class="profile-image-text bg-danger rounded-circle image-layer-item">S</div>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-4 update-item">
-                    <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle img-bordered mr-4"/>
-                    <div>
-                      <h6 class="text-white font-weight-medium d-flex">Joseph Delgado
-                        <span class="small ml-auto">8:45 AM</span>
-                      </h6>
-                      <p>The test report is handed over to the production manager. The final decision will be based on the report. It will be announced in the meeting</p>
-                      <div class="image-layers">
-                        <div class="profile-image-text bg-warning rounded-circle image-layer-item">M</div>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <div class="row">
             <div class="col-md-7 grid-margin grid-margin-md-0 stretch-card">
               <div class="card">
@@ -554,68 +512,12 @@ include "../../core/statsC.php";
                 </div>
               </div>
             </div>
-            <div class="col-md-5 grid-margin grid-margin-md-0 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Projects</h4>
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td class="py-1">
-                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
-                        </td>
-                        <td>
-                          South Shyanne
-                        </td>
-                        <td>
-                          <label class="badge badge-warning">Medium</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
-                        </td>
-                        <td>
-                          New Trystan
-                        </td>
-                        <td>
-                          <label class="badge badge-danger">High</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
-                        </td>
-                        <td>
-                          East Helga
-                        </td>
-                        <td>
-                          <label class="badge badge-success">Low</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="py-1">
-                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
-                        </td>
-                        <td>
-                          Omerbury
-                        </td>
-                        <td>
-                          <label class="badge badge-warning">Medium</label>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="w-100 clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.urbanui.com/" target="_blank">5icha</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
           </div>
         </footer>

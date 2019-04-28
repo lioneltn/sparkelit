@@ -20,6 +20,21 @@ class statsC
         }   
     }
 
+    function get_trending(){
+        $sql="SELECT * FROM produit LIMIT 5";
+        $db = config3::getConnexion();
+        try
+        {
+            $liste=$db->query($sql);
+            return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
+
     function get_total_commands(){
         $sql="SELECT COUNT(*) FROM commande";
         $db = config3::getConnexion();

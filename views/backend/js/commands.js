@@ -6,7 +6,7 @@ $(document).ready(function(){
       console.log(data);
       
 
-      
+     
 
 
   document.getElementById('commandes').innerHTML ='<p class="text-muted mb-0">' + data[0] +' % change cette semaine </p>';
@@ -30,6 +30,29 @@ $(document).ready(function(){
     }
   });
 
-   
+
+    showSuccessToast = function() {
+    'use strict';
+    resetToastPosition();
+    $.toast({
+      heading: 'Success',
+      text: 'Email with PDF attachement has been sent to your email!',
+      showHideTransition: 'slide',
+      icon: 'success',
+      loaderBg: '#f96868',
+      position: 'top-right'
+    })
+  };
+    resetToastPosition = function() {
+    $('.jq-toast-wrap').removeClass('bottom-left bottom-right top-left top-right mid-center'); // to remove previous position class
+    $(".jq-toast-wrap").css({
+      "top": "",
+      "left": "",
+      "bottom": "",
+      "right": ""
+    }); //to remove previous position style
+  }
+
+  showSuccessToast();
 
 });
