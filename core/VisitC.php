@@ -40,7 +40,7 @@ class VisitC
 
 
 	function get_total_visits(){
-		$sql="SElECT * FROM visits";
+		$sql="SElECT COUNT(*) FROM visits";
 		$db = config3::getConnexion();
 		try
 		{
@@ -133,5 +133,8 @@ class VisitC
             die('Erreur: '.$e->getMessage());
         }
       }
+
+
+
 }	
 	

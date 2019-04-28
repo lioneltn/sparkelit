@@ -1,5 +1,9 @@
 <?PHP
 session_start();
+chdir(__DIR__);
+include "../../core/statsC.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +33,12 @@ session_start();
   include "../../entities/comptes/admin.php";
   include "../../core/comptes/adminC.php";
 
+
+
+
+  
+
+
   if (isset($_SESSION['email_admin'])) {
     $adminC = new AdminC();
     $result = $adminC->recupererAdmin($_SESSION['email_admin']);
@@ -47,6 +57,24 @@ session_start();
     header('Location: pages/samples/login.php');
   }
   ?>
+
+
+  <?php 
+  $statsC = new statsC();
+  $total_visits  = $statsC->get_total_visits();
+
+ 
+  $total_clients = $statsC->get_total_clients();
+  $total_commands = $statsC->get_total_commands();
+  $total_price = $statsC->get_total_price();
+  $recent_orders = $statsC->get_recent_orders();
+  $today = date("d");
+  $todo = $statsC->get_todo();
+
+
+
+
+   ?>
   <div class="container-scroller">
     <!-- partial:../../partials/_horizontal-navbar.php -->
     <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
@@ -185,182 +213,420 @@ session_start();
         </nav>
 
     <!-- partial -->
+    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-            <div class="main-panel">
-                <div class="content-wrapper">
-                <div class="row">
-                        <div class="col-12 grid-margin">
-                        <div class="card card-statistics">
-                                <div class="card-body p-0">
-                                    <div class="row">
-                                    <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-  <h1> Bonjour</h1>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-</div>
-</div>
-                    <div class="row">
-                        <div class="col-12 grid-margin">
-                            <div class="card card-statistics">
-                                <div class="card-body p-0">
-                                    <div class="row">
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <h1>28893</h1>
-                                                    <p class="text-muted mb-0">Total des factures</p>
-                                                </div>
-                                                <i class="icon-layers text-primary icon-lg"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <?PHP
-                                                    $sql = "select count(email) as nbre from utilisateur";
-                                                    $db = config4::getConnexion();
-                                                    try {
-                                                        $req = $db->prepare($sql);
-
-                                                        $req->execute();
-                                                    } catch (Exception $e) {
-                                                        echo 'Erreur: ' . $e->getMessage();
-                                                    }
-                                                    foreach ($req as $row) {
-                                                        $nbre = $row['nbre'];
-                                                    }
-                                                    ?>
-                                                    <h1>
-                                                        <?PHP echo $nbre ?>
-                                                    </h1>
-                                                    <p class="text-muted mb-0">nouveau(x) utilisateur(s)</p>
-                                                </div>
-                                                <a href="pages/samples/utilisateurs.php"><i class="icon-people text-primary icon-lg"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <?PHP
-                                                        $sql = "select count(login) as nbre from client";
-                                                        $db = config4::getConnexion();
-                                                        try {
-                                                            $req = $db->prepare($sql);
-
-                                                            $req->execute();
-                                                        } catch (Exception $e) {
-                                                            echo 'Erreur: ' . $e->getMessage();
-                                                        }
-                                                        foreach ($req as $row) {
-                                                            $nbre = $row['nbre'];
-                                                        }
-                                                        ?>
-                                                    <h1>
-                                                        <?PHP echo $nbre ?>
-                                                    </h1>
-                                                    <p class="text-muted mb-0">nouveau(x) client(s)</p>
-                                                </div>
-                                                <a href="pages/samples/clients.php"><i class="icon-people text-primary icon-lg"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <?PHP
-                                                        $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config4::getConnexion();
-                                                        try {
-                                                            $req = $db->prepare($sql);
-                                                            $req->bindValue(':type', 1);
-                                                            $req->execute();
-                                                        } catch (Exception $e) {
-                                                            echo 'Erreur: ' . $e->getMessage();
-                                                        }
-                                                        foreach ($req as $row) {
-                                                            $nbre = $row['nbre'];
-                                                        }
-                                                        ?>
-                                                    <h1>
-                                                        <?PHP echo $nbre ?>
-                                                    </h1>
-                                                    <p class="text-muted mb-0">nouveau(x) administrateur(s)</p>
-                                                </div>
-                                                <a href="pages/samples/admins"><i class="icon-people text-primary icon-lg"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <?PHP
-                                                        $sql = "select count(login) as nbre from admin where type = :type";
-                                                        $db = config4::getConnexion();
-                                                        try {
-                                                            $req = $db->prepare($sql);
-                                                            $req->bindValue(':type', 2);
-                                                            $req->execute();
-                                                        } catch (Exception $e) {
-                                                            echo 'Erreur: ' . $e->getMessage();
-                                                        }
-                                                        foreach ($req as $row) {
-                                                            $nbre = $row['nbre'];
-                                                        }
-                                                        ?>
-                                                    <h1>
-                                                        <?PHP echo $nbre ?>
-                                                    </h1>
-                                                    <p class="text-muted mb-0">nouveau(x) artiste(s)</p>
-                                                </div>
-                                                <a href="pages/samples/artistes.php"><i class="icon-people text-primary icon-lg"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between border-right card-statistics-item">
-                                                <div>
-                                                    <h1>6875</h1>
-                                                    <p class="text-muted mb-0">visite(s) uniquement</p>
-                                                </div>
-                                                <i class="icon-pin text-primary icon-lg"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="d-flex justify-content-between card-statistics-item">
-                                                <div>
-                                                    <h1>45596</h1>
-                                                    <p class="text-muted mb-0">ventes</p>
-                                                </div>
-                                                <i class="icon-refresh text-primary icon-lg"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card card-statistics">
+                <div class="card-body p-0">
+                  <div class="row">
+                    
+                    <div class="col-md-6 col-lg-3">
+                      <div class="d-flex justify-content-between border-right card-statistics-item">
+                        <div>
+                          <h1><?php echo $total_clients ?></h1>
+                          <p class="text-muted mb-0">Clients</p>
                         </div>
+                        <i class="icon-people text-primary icon-lg"></i>
+                      </div>
                     </div>
-              
-                        
-              
+                    <div class="col-md-6 col-lg-3">
+                      <div class="d-flex justify-content-between border-right card-statistics-item">
+                        <div>
+                          <h1><?php echo $total_visits ?></h1>
+                          <p class="text-muted mb-0">Visites uniques</p>
+                        </div>
+                        <i class="icon-pin text-primary icon-lg"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                      <div class="d-flex justify-content-between card-statistics-item">
+                        <div>
+                          <h1><?php echo $total_commands ?></h1>
+                          <p class="text-muted mb-0">Commandes</p>
+                        </div>
+                        <i class="icon-refresh text-primary icon-lg"></i>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.php -->
-                <footer class="footer">
-                    <div class="w-100 clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-                    </div>
-                </footer>
-                <!-- partial -->
+              </div>
             </div>
-            <!-- main-panel ends -->
+          </div>
+          <div class="row">
+            <div class="col-md-3 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">RAPPORT DE GAIN</h4>
+                  <div class="w-75 mx-auto">
+                    <canvas id="earning-report" width="100" height="100"></canvas>
+                  </div>
+                  <div class="py-4 d-flex justify-content-center align-items-end">
+                    <h1 class="text-center text-md-left mb-0"><?php echo $total_price ?> Dt</h1>
+                    <p class="text-muted mb-0 ml-2">Total</p>
+                  </div>
+                  <div id="earning-report-legend" class="earning-report-legend"></div>                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-9 grid-margin stretch-card">
+              <div class="card">
+                <div class="row h-100">
+                  <div class="col-md-5 border-right">
+                    <div class="card-body">
+                      <h4 class="card-title">Performance</h4>
+                      <table class="table table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              
+                              <h6>Commandes</h6>
+
+                              <div id="commandes">
+                              <p class="text-muted mb-0"></p>
+                              </div>
+                            </td>
+                            <td>
+                              <div id="nCommandes">
+                              <h3 class="text-primary">
+                                
+                              </h3>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h6>Visites ce mois</h6>
+                              <div id="VisiteM">
+                              <p class="text-muted mb-0"></p>
+                              </div>
+                            </td>
+                            <td> 
+                              <div id="nVisites"></div>
+                              <h3 class="text-danger">
+                               
+                              </h3>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h6>Visites cette semaine</h6>
+                              <div id="VisiteS"></div>
+                              <p class="text-muted mb-0"></p>
+                              </div>
+                            </td>
+                            <td>
+                              <div id="nVisiteS"></div>
+                              <h3 class="text-success">
+                                  
+                              </h3>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h6>Pending</h6>
+                              <p class="text-muted mb-0">Pending Tasks</p>
+                            </td>
+                            <td>
+                              <h3 class="text-warning">
+                                  +5152
+                              </h3>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h6>Revenue</h6>
+                              <p class="text-muted mb-0">5% increase</p>
+                            </td>
+                            <td>
+                              <h3 class="text-primary">
+                                  +89997
+                              </h3>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body d-flex flex-column h-100">
+                      <div class="d-flex flex-row">
+                        <h4 class="card-title">Carte régionale des visiteurs!</h4>
+                      </div>
+                      <p>Allez dans statistiques pour plus de détails!</p>
+                      <div id="chart-activity" class="mt-auto" ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Commandes récentes</h4>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Facture</th>
+                        <th>Montant</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <?php 
+
+                        foreach ($recent_orders as $row ) {
+                          ?>
+                          <tr>
+                        <td>
+                          <div class="disc bg-secondary"></div>
+                        </td>
+                        <td>
+                          <h4 class="text-primary font-weight-normal"><?php echo $row['idCommande']; ?></h4>
+                          <p class="text-muted mb-0"><?php echo $row['etat'] ;?></p>
+                        </td>
+                        <td>
+                          <?php echo $row['totalPaiement']; ?>
+                        </td>
+                        <td>
+                          <p><?php echo $row['date'] ;?></p>
+                          <p class="text-muted mb-0"><?php 
+                            $day = date("d", strtotime($row['date']));
+                            
+                            $days_ago = $today-$day;
+                            
+                            echo "Il y a ";  echo $days_ago; echo " jours"; 
+
+                           ?></p>
+                        </td>
+                      </tr>
+                      <?php  
+                        }
+                      ?>
+
+                                         </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <div>
+                    <h4 class="card-title">Revenue</h4>
+                    <h1>20009</h1>
+                    <p class="text-muted">5.6% change today</p>
+                  </div>
+                  <canvas id="sales-chart" class="mt-auto"></canvas> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Activities</h4>
+                  <div class="d-flex border-bottom pb-3">
+                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
+                    <div>
+                      <h6>Emily Kennedy</h6>
+                      <p class="text-muted mb-0">Uploaded new invoices for RedBus and Paytm</p>
+                    </div>
+                  </div>
+                  <div class="d-flex border-bottom py-3">
+                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
+                    <div>
+                      <h6>Nicholas Armstrong</h6>
+                      <p class="text-muted mb-0">Created new work flow for the current project</p>
+                    </div>
+                  </div>
+                  <div class="d-flex border-bottom py-3">
+                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
+                    <div>
+                      <h6>Stella Saunders</h6>
+                      <p class="text-muted mb-0">Submitted the project schedule to the manager</p>
+                    </div>
+                  </div>
+                  <div class="d-flex pt-3">
+                    <img src="https://via.placeholder.com/40x40" class="img-sm mr-4 rounded-circle" alt="profile"/>
+                    <div>
+                      <h6>Noah Bailey</h6>
+                      <p class="text-muted mb-0">Scheduled a meeting with the new client for next thursday</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Calendar</h4>
+                  <div id="inline-datepicker-example" class="datepicker"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card bg-primary text-white card-update">
+                <div class="card-body">
+                  <h4 class="card-title text-white">Updates</h4>
+                  <div class="d-flex border-light-white pb-4 update-item">
+                    <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle img-bordered mr-4"/>
+                    <div>
+                      <h6 class="text-white font-weight-medium d-flex">Aaron Tucker
+                        <span class="small ml-auto">8:30 AM</span>
+                      </h6>
+                      <p>New product is launched with high quality and awesome support. The product will be available for public within 4 days</p>
+                      <div class="image-layers">
+                        <div class="profile-image-text bg-danger rounded-circle image-layer-item">S</div>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex pt-4 update-item">
+                    <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle img-bordered mr-4"/>
+                    <div>
+                      <h6 class="text-white font-weight-medium d-flex">Joseph Delgado
+                        <span class="small ml-auto">8:45 AM</span>
+                      </h6>
+                      <p>The test report is handed over to the production manager. The final decision will be based on the report. It will be announced in the meeting</p>
+                      <div class="image-layers">
+                        <div class="profile-image-text bg-warning rounded-circle image-layer-item">M</div>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                        <img class="rounded-circle image-layer-item" src="https://via.placeholder.com/20x20" alt="profile"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 grid-margin grid-margin-md-0 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Todo list</h4>
+                  <div class="add-items d-flex">
+                    <input type="text" class="form-control todo-list-input"  placeholder="What do you need to do today?">
+                    <button class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                  </div>
+                  <div class="list-wrapper">
+                    <ul class="d-flex flex-column-reverse todo-list">
+                      <?php 
+
+                      foreach ($todo as $row) {
+                        
+                      
+                       ?>
+
+
+                      <li>
+                        <div class="form-check">
+                          <label class="form-check-label">
+
+                          <input type="hidden" class="id" id="id-todo" value=" <?php echo $row['id']; ?> ">
+
+                            <input class="checkbox" type="checkbox" <?php 
+                            if($row['done']==1) {echo "checked";} ?>>
+                            <?php echo $row['activity']; ?>
+                          </label>
+                        </div>
+                        <i class="remove icon-close"></i>
+                      </li>
+
+                      <?php 
+                    }
+                       ?>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 grid-margin grid-margin-md-0 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Projects</h4>
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td class="py-1">
+                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
+                        </td>
+                        <td>
+                          South Shyanne
+                        </td>
+                        <td>
+                          <label class="badge badge-warning">Medium</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-1">
+                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
+                        </td>
+                        <td>
+                          New Trystan
+                        </td>
+                        <td>
+                          <label class="badge badge-danger">High</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-1">
+                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
+                        </td>
+                        <td>
+                          East Helga
+                        </td>
+                        <td>
+                          <label class="badge badge-success">Low</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="py-1">
+                          <img src="https://via.placeholder.com/40x40" alt="profile" class="img-sm rounded-circle"/>
+                        </td>
+                        <td>
+                          Omerbury
+                        </td>
+                        <td>
+                          <label class="badge badge-warning">Medium</label>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="w-100 clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <script src="vendors/js/vendor.bundle.addons.js"></script>
@@ -371,7 +637,11 @@ session_start();
   <script src="js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/form-addons.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script src="js/dashboard-region.js"></script>
+  <script src="js/todolist.js"></script>
+  <script src="js/commands.js"></script>
   <!-- End custom js for this page-->
 </body>
 
