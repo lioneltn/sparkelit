@@ -4,11 +4,13 @@ echo $_POST["image"];
  echo $_POST["prix"];
  echo $_POST["quantite"];
  echo $_POST["couleur"];
+ echo $_POST["reference"];
+ echo $_POST["nom"];
 echo "oui";
 
-if(!empty($_POST["image"]) && !empty($_POST["prix"])  && !empty($_POST["quantite"]) && !empty($_POST["couleur"])){
+if(!empty($_POST["image"]) && !empty($_POST["prix"])  && !empty($_POST["quantite"]) && !empty($_POST["couleur"]) && !empty($_POST["reference"]) && !empty($_POST["nom"])){
    extract($_POST);
-    $produitPanier=new ProduitPanier($image,$quantite,$couleur,$prix);
+    $produitPanier=new ProduitPanier($image,$quantite,$couleur,$prix,$reference,$nom);
     produitPanierC::ajouterProduitPanier($produitPanier);
     
 }

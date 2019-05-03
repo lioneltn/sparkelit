@@ -264,7 +264,7 @@ $avaiblable_sizes= array();
                                             </div><!-- End .product-single-qty -->
 
                                             <form class="test" action="cart.php" method="POST">
-                                            <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>">
+                                            <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>" nom="<?php echo $liste['nom']?>">
                                             <button  id="ajouter" class="paction add-cart" value="Add to Cart"><span>Ajouter au panier</span></button>
                                             </form>
                                            
@@ -311,6 +311,10 @@ $avaiblable_sizes= array();
             var quantite = 0;
             var couleur = "non entree";
             var taille = "non entree";
+            var reference= $('[name="reference"]').val();
+      var nom=$('[name="reference"]').attr("nom");
+      alert(nom);
+      console.log(reference);
      
      
       
@@ -363,11 +367,14 @@ $avaiblable_sizes= array();
                         image:image,
                         prix:prix,
                         quantite:quantite,
-                        couleur:couleur
+                        couleur:couleur,
+                    reference:reference,
+                    nom:nom
                     },
                     function(data, status) {
 
-                   window.location.href="cart.php";
+//                   window.location.href="cart.php";
+                    alert(data);
 
 
                     });
@@ -400,6 +407,8 @@ $avaiblable_sizes= array();
                 
                
             })
+//      alert("manger");
+
 
         })                    
 </script>
