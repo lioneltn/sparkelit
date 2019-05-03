@@ -44,8 +44,12 @@ $result6 = $statsC->get_visits_by_week($last_two_weeks,$last_seven_days);
 
 
 $increase = $result2 - $result1; 
+if ($result1>0 && $increase>0){
 $increase_percentage = ($increase/$result1)*100;
-
+}
+else{
+	$increase_percentage = $result2 * 100;
+}
 $increase2 = $result4 - $result3; 
 if ($result3>0){
 $increase_percentage2 = ($increase2/$result3)*100;
