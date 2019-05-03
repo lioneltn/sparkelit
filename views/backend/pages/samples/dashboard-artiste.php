@@ -20,7 +20,7 @@ session_start();
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/logoreduit.png" />
 </head>
 
 <body>
@@ -122,6 +122,8 @@ session_start();
                                             <div class="d-flex justify-content-between border-right card-statistics-item">
                                                 <div>
                                                     <h1> Bonjour</h1>
+                                                    <br>
+                                                    <h2> <?PHP echo $nom . "  " . $prenom ?></h2>
                                                 </div>
                                             </div>
                                         </div>

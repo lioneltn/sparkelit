@@ -1,6 +1,14 @@
 <?PHP
 session_start();
 ?>
+
+
+<?php
+include "../../../core/metadonneeC.php";
+$metadonneeC=new MetadonneeC();
+$liste=$metadonneeC->afficherMetaParRef($_POST['ref']);
+//print_r($listeFournisseur);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,6 +148,16 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -168,7 +186,7 @@ session_start();
         </div>
       </div>
     </nav>
-  <div class="card">
+ <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Gestion Metadonnee</h4>
                   <p class="card-description">
@@ -182,12 +200,12 @@ session_start();
                     <div class="form-group">
                       
                       <label for="exampleInputID">Reference</label>
-                      <input type="test" class="form-control" id="exampleInputID" name ="ref" placeholder="Reference" value="<?PHP echo $_POST["ref"]; ?> "/>
+                      <input type="test" class="form-control" id="exampleInputID" name ="ref" placeholder="Reference" value="<?PHP echo $liste["reference"]; ?> "/>
                       <span class="helper-text" > </span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputNom">Descripition</label>
-                      <input type="text" class="form-control" name ="desc"  maxlength="50" required/>
+                      <input type="text" class="form-control" name ="desc" value="<?PHP echo $liste["descripition"]; ?> "  maxlength="50" required/>
                       <span class="helper-text" > </span>
                     </div>
                     
@@ -196,6 +214,7 @@ session_start();
                       <div class="card">
                       <div class="card-body">
                           <h4 class="card-title">Image du Metadonnee</h4>
+                           <img  style="max-width: 40%;max-height: 40%;position: relative;left:50%;transform: translate(-50%,0px);padding-bottom: 50px;"  src="../../<?php echo $liste['logo'];?>">
                           <input type="file" class="dropify" name="logo" />
                            
                       </div>

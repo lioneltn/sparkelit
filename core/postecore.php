@@ -146,8 +146,26 @@ class posteC {
 		$sql="SELECT * from poste where titre like :titre" ;
 		$db = config3::getConnexion();
 		$req=$db->prepare($sql);
-		$titre2=$titre."%";
+		$titre2="%".$titre."%";
 		$req->bindValue(':titre',$titre2);
+		try{
+		$liste=$req->execute();
+		return $req->fetchAll();
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+
+	}
+
+	function rechercheposteparnote_tit_artiste($titre,$admin){
+		
+		$sql="SELECT * from poste where titre like :titre and id_admin=:admin" ;
+		$db = config3::getConnexion();
+		$req=$db->prepare($sql);
+		$titre2="%".$titre."%";
+		$req->bindValue(':titre',$titre2);
+		$req->bindValue(':admin',$admin);
 		try{
 		$liste=$req->execute();
 		return $req->fetchAll();
@@ -238,7 +256,7 @@ class posteC {
 
     function modifier_poste($poste,$id_poste)
     {
-   	   $sql="UPDATE poste SET titre=:titre,description=:description,image=:image,date=:datee WHERE id_poste=:poste";
+   	   $sql="UPDATE poste SET titre=:titre,description=:description,image=:image WHERE id_poste=:poste";
    	   	$db = config3::getConnexion();
         $req=$db->prepare($sql);
 		
@@ -251,7 +269,6 @@ class posteC {
 		$req->bindValue(':titre',$titre);
 		$req->bindValue(':description',$description);
 		$req->bindValue(':image',$image);
-		$req->bindValue(':datee',$date);
 		
 		
             $s=$req->execute();

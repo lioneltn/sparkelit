@@ -1,6 +1,7 @@
 <?php 
 include "../../../../core/postecore.php";
 
+
 $poste1C= new posteC();
 
 $liste=$poste1C->afficherposte($_POST['id']);
@@ -22,12 +23,9 @@ session_start();
   <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
+
   <link rel="stylesheet" href="../../css/style.css">
-  <!-- endinject -->
+
   <link rel="shortcut icon" href="../../images/logoreduit.png" />
 
 
@@ -195,7 +193,16 @@ chdir(__DIR__);
                             </div>
                         </li>
 
-            
+            <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 
             <li class="nav-item">
               <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
@@ -215,8 +222,7 @@ chdir(__DIR__);
                 <ul class="submenu-item">
                   <li class="nav-item"><a class="nav-link" href="../ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
                   <li class="nav-item"><a class="nav-link" href="../afficherMetadonnee.php">Afficher metadonnee</a></li>
-                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+             
                 </ul>
               </div>
             </li>
@@ -277,11 +283,12 @@ chdir(__DIR__);
                     <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Image</h4>
+                  <img  style="max-width: 30%;max-height: 30%;position: relative;left:50%;transform: translate(-50%,0px);padding-bottom: 50px;"  src="../../../<?php echo $liste['image'];?>">
                   <input type="file" class="dropify" name="image" id="image">
                 </div>
               </div>
               <input type="hidden" name="id" value="<?php echo $_POST['id'];?>">
-              <input type="hidden" name="chemin" value="<?php echo $liste[3]; ?>">
+              <input type="hidden" name="chemin" value="<?php echo $liste['image']; ?>">
                     <button type="submit" class="btn btn-primary mr-2" >Modifier</button>
 
                   </form>
@@ -310,7 +317,7 @@ chdir(__DIR__);
     {
         if(isvalueEmpty(field.value.trim()))
         {
-            setInvalid(field,"Ne laissze pas se champs vide");
+            setInvalid(field,"Ne laissez pas se champs vide");
             return true;
         }
         else
@@ -332,14 +339,14 @@ chdir(__DIR__);
       }
       else
       {
-          if(/^[a-zA-Z0-9\s]+$/.test(value))
+        if(/^[a-zA-Z0-9\s,:/._'()]+$/.test(value))
           {
             setValid(field);
             return true;
           }
           else
           {
-            setInvalid(field,"Ce champs doit comporter seulement des lettres ,des lettres et des espaces!");
+             setInvalid(field,"Ce champs ne doit pas comporter des caractères spéciaux (@ , + , * .... )");
             return false;
           }
       }

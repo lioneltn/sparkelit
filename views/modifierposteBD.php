@@ -1,11 +1,11 @@
 <?php 
  chdir(__DIR__);
+ session_start();
 include "../entities/poste.php";
 include "../core/postecore.php";
-echo($_FILES['image']['name']);
+
 if ($_FILES['image']['name'])
 {
-	echo "1";
 	$file=$_FILES['image'];
 	$filename=$file['name'];
 	$filetmp=$file['tmp_name'];
@@ -18,7 +18,7 @@ if ($_FILES['image']['name'])
 		chdir(__DIR__);
 		$destination="upload/".$filename;
 		move_uploaded_file($filetmp,$destination);
-		$poste1=new poste($_POST['titre'],$_POST['description'],$destination,"5");
+		$poste1=new poste($_POST['titre'],$_POST['description'],$destination,$_SESSION['email_admin']);
 		$poste1C=new posteC();
 		$poste1C->modifier_poste($poste1,$_POST["id"]);
 		header('location:backend/pages/forms/afficherpostadmin.php');
@@ -26,8 +26,7 @@ if ($_FILES['image']['name'])
 }
 else
 {
-	echo "2";
-	$poste1=new poste($_POST['titre'],$_POST['description'],$_POST["chemin"],"5");
+	$poste1=new poste($_POST['titre'],$_POST['description'],$_POST["chemin"],$_SESSION['email_admin']);
 		$poste1C=new posteC();
 		$poste1C->modifier_poste($poste1,$_POST["id"]);
 		header('location:backend/pages/forms/afficherpostadmin.php');

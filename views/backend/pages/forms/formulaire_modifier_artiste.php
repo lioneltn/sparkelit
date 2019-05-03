@@ -94,7 +94,7 @@ session_start();
                 <div class="container">
                     <ul class="nav page-navigation">
                         <li class="nav-item">
-                            <a href="../samples/dashboard-artiste.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Dashboard</span></a>
+                            <a href="../samples/dashboard-artiste.php" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span class="menu-title">Tableau de bord</span></a>
                         </li>
 
                         <li class="nav-item">
@@ -104,6 +104,7 @@ session_start();
                                     <li class="nav-item"><a class="nav-link" href="formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="afficherpostadmin.php">Afficher posts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="statpost.php">Statistiques posts</a></li>
                                     
                                 </ul>
                             </div>

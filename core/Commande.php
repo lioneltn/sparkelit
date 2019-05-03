@@ -7,13 +7,15 @@ class Commande
 	private $dates;
 	private $login;
 	private $modePaiement;
-	function __construct($totalPaiement,$etat,$dates,$login,$modePaiement)
+	private $idPanier;
+	function __construct($totalPaiement,$etat,$dates,$login,$modePaiement,$idPanier)
 	{
 		$this->setTotalPaiement($totalPaiement);
 		$this->setEtat($etat);
 		$this->setDates($dates);
 		$this->setLogin($login);
 		$this->setModePaiement($modePaiement);
+		$this-> setIdPanier($idPanier);
 
 	}
 
@@ -23,7 +25,10 @@ class Commande
 		return $this->totalPaiement;
 	}
     
-   
+    function getIdPanier()
+	{
+		return $this->idPanier;
+	}
 	function getEtat()
 	{
 		return $this->etat;
@@ -69,7 +74,10 @@ function setModePaiement($modePaiement)
 	{
 		 $this->modePaiement=$modePaiement;
 	}
- 
+     function setIdPanier($idPanier)
+	{
+		 $this->idPanier=$idPanier;
+	}
 
 
 }

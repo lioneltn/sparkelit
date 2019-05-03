@@ -16,7 +16,7 @@ session_start();
     <meta name="author" content="SW-THEMES">
         
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../meta/Logoreduit.png">
     
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -53,6 +53,11 @@ session_start();
             color:#fff;
 
         }
+        .add-cart::before
+        {
+            content:'';
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +83,7 @@ session_start();
     <div class="page-wrapper">
          <?php 
                             chdir(__DIR__);
-                            include "header.php";
+                            include "header3.php";
                             chdir(__DIR__);
 
                             ?>
@@ -181,13 +186,14 @@ session_start();
             </div><!-- End .container-fluid -->
 
         </main><!-- End .main -->
+        <?php include "footer2.php";?>
 
         
     </div><!-- End .page-wrapper -->
 
     
 
-    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+    <a id="scroll-top" href="#top" title="Top" role="button"><i>UP</i></a>
 
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>

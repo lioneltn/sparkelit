@@ -2,6 +2,8 @@
 chdir(__DIR__);
 include "../entities/produit.php";
 include "../core/produitC.php";
+chdir(__DIR__);
+print_r($_POST);
 	$file=$_FILES['image'];
 
 	$disponible=array('jpg','jpeg','png','gif');

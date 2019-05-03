@@ -6,18 +6,14 @@ class ProduitPanier
 	private $quantite;
 	private $couleur;
 	private $prix;
-	private $reference;
-	private $nom;
 	
 
-	function __construct($image,$quantite,$couleur,$prix,$reference,$nom)
+	function __construct($image,$quantite,$couleur,$prix)
 	{
 		$this->setImage($image);
 		$this->setQuantite($quantite);
 		$this->setCouleur($couleur);
 		$this->setPrix($prix);
-		$this->setReference($reference);
-		$this->setNom($nom);
 
 	}
 
@@ -40,12 +36,7 @@ class ProduitPanier
 	{
 		  return $this->prix;
 	}
-      function getReference(){
-        		  return $this->reference;
-    }
-  function getNom(){
-      return $this->nom;
-  }
+  
     
     	function setImage($image)
 	{
@@ -66,12 +57,6 @@ class ProduitPanier
 	{
 		  $this->prix=$prix;
 	}
-    function setReference($reference){
-        		  $this->reference=$reference;
-    }
-    function setNom($nom){
-        $this->nom=$nom;
-    }
 	
 
 }

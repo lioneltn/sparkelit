@@ -47,7 +47,7 @@ include "../core/offreC.php";
           <td name="refP"><?PHP echo $row['refP']; ?></td>
           <td name="prix_anc"><?PHP echo $row['prix_anc']; ?></td>
           <td name="remise"><?PHP echo $row['remise']; ?></td>
-          <td name="prix" style="color: #F44336"><?PHP echo $row['prix']; ?></td>
+          <td name="prix" style="color: #F44336"> <?PHP echo $row['prix']=$row['prix_anc']-($row['prix_anc']*$row['remise'])/100; ?></td>
           <td name="dateD"><?PHP echo $row['dateD']; ?></td>
           <td name="dateF"><?PHP echo $row['dateF']; ?></td>
           <td name="image"><img width="200px" height="200px "  src= "<?php echo '../../'.$row['image'];?>"></td>
@@ -57,12 +57,10 @@ include "../core/offreC.php";
                 <input type="submit" value="modifier" class="btn btn-primary mr-2">
               </form>
             </td>           
-            <td>
-              <form method="POST" action="../../supprimerOffre.php">
+          <td>
+              <form method="POST" action="popupsupp.php">
                 <input type="hidden" class="hiddenreference" name="id" value="<?PHP echo $row['id']; ?>" readonly >
-                <input type="submit" value="supprimer" onclick="validerSuppOffre()" class="btn btn-danger mr-2">
-                
-                
+                <input type="submit" value="Supprimer" class="btn btn-danger mr-2">
               </form>
             </td>
           </tr>

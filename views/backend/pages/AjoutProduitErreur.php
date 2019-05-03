@@ -144,6 +144,16 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -400,7 +410,7 @@ session_start();
               <div id="modelsupprimer_bg" class="modelsupprimer_bg" style="background-color: rgba(0,0,0,0.7);height: 100%;width: 100%;position: fixed;right: 0;bottom: 0;top: 0; z-index: 1000;justify-content: center;align-items: center;display: flex;">
                 <div class="modelsupprimer-content" style="width: 400px;height: 200px;background-color: white;position: relative; border-radius: 5px;text-align: center;align-items: center;">
                   <!--<div id="closemodelsupprimer" style="font-size: 30px;transform: rotate(45deg);position: absolute;right: 14px; top: 0;cursor: pointer;" onclick="document.location.href='afficherProduits.php'">+</div>-->
-                  <p style="position: relative;top:50% ;transform:translate(0,-60%);">Erreur d'ajout de produit</p>
+                  <p style="position: relative;top:50% ;transform:translate(0,-60%);">Erreur d'ajout de produit:La reference existe deja!</p>
                   <!--<form method="POST" action="../../supprimerProduit.php">
                     <input type="hidden" class="hiddenreference" name="reference" value="<?PHP /*echo $_POST['reference']; */?>" readonly >-->
                     <button style="position: absolute;bottom: 0;transform: translate(-40px,-10px);" type="button" value="Ok" class="btn btn-primary mr-2" onclick="document.location.href='afficherProduits.php'">ok</button>

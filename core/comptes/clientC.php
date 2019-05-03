@@ -72,7 +72,7 @@ class ClientC
             $client1->bindValue(':email', $login);
             $client1->execute();
             $liste=$client1->fetchall();
-            echo "test";
+            
             return $liste;
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
@@ -230,6 +230,4 @@ class ClientC
             die('Erreur: '.$e->getMessage());
         }
     }
-
-    
 }

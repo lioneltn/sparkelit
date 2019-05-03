@@ -10,6 +10,7 @@ $listeproduit=$produitC->afficherProduitsparCategorie($_POST['nom']);
 foreach ($listeproduit as $row) 
 {
 	$produitC->supprimerDetailsParRef($row['reference']);
+	$produitC->supprimerOffreProduit($row['reference']);
 	$produitC->supprimerProduitParRef($row['reference']);
 }
 $categorieC->supprimerCategorie($_POST['nom']);

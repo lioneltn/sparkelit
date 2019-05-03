@@ -1,8 +1,11 @@
 <?php 
 chdir(__DIR__);
-
 include "../entities/poste.php";
 include "../core/postecore.php";
+if (!isset($_SESSION['email_admin'])) 
+{
+	session_start();
+}
 	$poste1C=new posteC();
 		$ret=$poste1C->typeadmin($_SESSION['email_admin']); 
 		$type=$ret['type'];
@@ -11,15 +14,6 @@ include "../core/postecore.php";
 		 	$liste=$poste1C->afficherposte_pourartiste($_SESSION['email_admin']);
 ?>
 
-<style type="text/css">
-	.seyedfoul
-	{
-		background-color: red ;
-		width: 100px;
-		overflow: scroll ;
-	}
-
-</style>
  		 	<table id="sortable-table-2" class="table table-striped">
 				<thead>
                           <tr>

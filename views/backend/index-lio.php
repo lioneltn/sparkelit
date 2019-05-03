@@ -174,7 +174,7 @@ include "../../core/statsC.php";
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="pages/samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="pages/samples/orders.php"> commandes</a></li>
@@ -184,7 +184,7 @@ include "../../core/statsC.php";
                         </li>
 
                            <li class="nav-item">
-                            <a href="samples/orders.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <a href="../backend/pages/region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../backend/pages/region-chart.php"> Statistiques visites par région</a></li>

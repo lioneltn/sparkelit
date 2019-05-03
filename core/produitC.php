@@ -23,7 +23,7 @@ class ProduitC
         $prix=$produit->getprix();
         $reference=$produit->getreference();
         date_default_timezone_set("Africa/tunis");
-		$date=date("Y-m-d h:i:s");
+		$date=date("Y-m-d H:i:s");
 
 		$req->bindValue(':nom',$nom);
 		$req->bindValue(':description',$description);
@@ -792,6 +792,22 @@ function afficherRefProduit()
             //die('Erreur: '.$e->getMessage());
         }
     }
+
+    function supprimerOffreProduit($id)
+	{
+		$sql="DELETE from offre where refP=:id";
+		$db = config3::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindValue(':id',$id);
+			$req->execute(); 
+		} 
+		catch (Exception $e)
+		{
+			 echo 'Erreur: '.$e->getMessage();	
+		}
+	}
 }
 
 

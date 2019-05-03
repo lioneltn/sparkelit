@@ -81,7 +81,7 @@ $_COOKIE['nbaveccommantaire']=$nbaveccommantaire;
 
 
 </style>
-  <title>Afficher Poste</title>
+  <title>Stat Poste</title>
 </head>
 <body>
   <?PHP
@@ -217,6 +217,16 @@ chdir(__DIR__);
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -275,34 +285,7 @@ chdir(__DIR__);
 
     <!-- partial -->
   <div class="card">
-               <!-- <div class="card-body">
-                  <h4 class="card-title">Gestion Poste</h4>
-                  <p class="card-description">
-                    <strong>Modifier poste</strong>
-                  </p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Titre</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="Titre" name="Titre" placeholder="Titre">
-                      </div>
-                    </div>
-                   <div class="form-group">
-                      <label for="exampleTextarea1">Description</label>
-                      <textarea class="form-control" id="Discription" name="Description" rows="4"></textarea>
-                    </div>
-                    <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Image</h4>
-                  <input type="file" class="dropify" name="image" id="image"/>
-                </div>
-              </div>
-                    <button type="submit" class="btn btn-primary mr-2" ">Modifier</button>
-                    <button class="btn btn-light">Annuler</button>
-
-                  </form>
-                </div>
-              </div>-->
+     
 
 
               <div class="col-12">
@@ -311,11 +294,16 @@ chdir(__DIR__);
                   <div class="row" id="contenu" style="margin-left:350px;width: 700px;height: 500px;">
                    
                     
-                      <!--<div class="table-sorter-wrapper col-lg-12 table-responsive">-->
-                        
-                      
-                    <!--</div>-->
+               
                   </div>
+                 
+                  <form action="../../../ajoutstatposte.php" method="POST">
+                 
+                    <input type="hidden" name="1" value="<?php echo $nbsansnote;?>">
+                    <input type="hidden" name="2" value="<?php echo $nbsanscommantaire;?>">
+                    <input type="hidden" name="3" value="<?php echo $nbaveccommantaire;?>">
+                    <input style="transform:translate(0,-100px);  " type="submit" class="btn btn-primary mr-2" value="Exporter PDF">
+                  </form>
                 </div>
               </div>
             </div>

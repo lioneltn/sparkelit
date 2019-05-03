@@ -2424,11 +2424,11 @@ transition-duration:0s
 }
 .add-cart::before
 {
-	display:inline-block;
+	/*display:inline-block;
 	line-height:1;
 font-size:1.9rem;
-content:'\e87f';
-font-family:'porto'
+/*content:'\e87f';
+font-family:'porto'*/
 }
 .add-cart span
 {
@@ -7281,7 +7281,7 @@ margin-left:1.8rem
 }
 .product-single-extended .paction.add-cart::before
 {
-	font-size:2rem
+	/*font-size:2rem*/
 }
 .product-single-extended .paction.add-cart span
 {

@@ -13,12 +13,9 @@ session_start();
   <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
+
   <link rel="stylesheet" href="../../css/style.css">
-  <!-- endinject -->
+
   <link rel="shortcut icon" href="../../images/logoreduit.png" />
   <style type="text/css">
 
@@ -58,16 +55,7 @@ chdir(__DIR__);
                         <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
-                        <!--<form class="search-field d-none d-md-flex" action="#">
-                            <div class="form-group mb-0">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="search here...">
-                                </div>
-                            </div>
-                        </form>-->
+                 
                         <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
@@ -179,14 +167,23 @@ chdir(__DIR__);
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
                   <li class="nav-item"><a class="nav-link" href="../ajouterOffre.php"> Ajouter offre</a></li>
                   <li class="nav-item"><a class="nav-link" href="../afficherOffres.php">Afficher offre</a></li>
-                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+           
                 </ul>
               </div>
             </li> 
@@ -197,8 +194,7 @@ chdir(__DIR__);
                 <ul class="submenu-item">
                   <li class="nav-item"><a class="nav-link" href="../ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
                   <li class="nav-item"><a class="nav-link" href="../afficherMetadonnee.php">Afficher metadonnee</a></li>
-                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
+                
                 </ul>
               </div>
             </li>
@@ -235,51 +231,28 @@ chdir(__DIR__);
                 </div>
             </div>
         </nav>
-
-    <!-- partial -->
+       
+    
 	<div class="card">
-               <!-- <div class="card-body">
-                  <h4 class="card-title">Gestion Poste</h4>
-                  <p class="card-description">
-                    <strong>Modifier poste</strong>
-                  </p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Titre</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="Titre" name="Titre" placeholder="Titre">
-                      </div>
-                    </div>
-                   <div class="form-group">
-                      <label for="exampleTextarea1">Description</label>
-                      <textarea class="form-control" id="Discription" name="Description" rows="4"></textarea>
-                    </div>
-                    <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Image</h4>
-                  <input type="file" class="dropify" name="image" id="image"/>
-                </div>
-              </div>
-                    <button type="submit" class="btn btn-primary mr-2" ">Modifier</button>
-                    <button class="btn btn-light">Annuler</button>
-
-                  </form>
-                </div>
-              </div>-->
-
+    
+ 
 
               <div class="col-12">
               <div class="card">
                 <div class="card-body">
+                        <div class="col-md-3 grid-margin" style="padding-right: 10px;">
+                        <input class="form-control" style="border-color: grey ;" type="text" name="recherche" id="rechercheReference" placeholder="Recherche par titre" onkeyup="recherchetitre(this.value);">
+                      </div>
                   <div class="row" id="contenu">
                    
                     
-                      <!--<div class="table-sorter-wrapper col-lg-12 table-responsive">-->
+                    
                         <?php 
                           include "../../../afficherposteBD.php" ;
+                          chdir(__DIR__);
                         ?>
                       
-                    <!--</div>-->
+                    
                   </div>
                 </div>
               </div>
@@ -288,16 +261,40 @@ chdir(__DIR__);
 </div>
 <script src="../../vendors/js/vendor.bundle.base.js"></script>
   <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
+
   <script src="../../js/template.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
+
   <script src="../../js/dropify.js"></script>
   <script type="text/javascript" src="formulaire.js"></script>
   <script type="text/javascript">
+     function recherchetitre(str)
+        {
+        
+            
+            if(str=="")
+            {
+              
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST","../../../afficherposteBD.php",true);
+                xmlhttp.send();
+            }
+            else
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","../../../recherchepostepartitreback.php?recherche="+str,true);
+                xmlhttp.send();
+            }
+        }
     function trieNote()
     {
         var xmlhttp = new XMLHttpRequest();

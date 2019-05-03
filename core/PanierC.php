@@ -23,15 +23,13 @@ class produitPanierC
              print_r($rows);
               $_SESSION['idCommande']=$idCommande;
                 echo "lidee panier est".$idCommande;
-                $sql3="insert into produitpanier(image,quantite,couleur,idCommande,prix,reference,nom) values (:image,:quantite,:couleur,:idCommande,:prix,:reference,:nom)";
+                $sql3="insert into produitpanier(image,quantite,couleur,idCommande,prix) values (:image,:quantite,:couleur,:idCommande,:prix)";
                 $req3=$db->prepare($sql3);
                 $req3->bindValue(':image',$produitPanier->getImage());
 		$req3->bindValue(':quantite',$produitPanier->getQuantite());
 		$req3->bindValue(':couleur',$produitPanier->getCouleur());
 		$req3->bindValue(':prix',floatval($produitPanier->getPrix()));
 		$req3->bindValue(':idCommande',$idCommande);
-		$req3->bindValue(':reference',$produitPanier->getReference());
-		$req3->bindValue(':nom',$produitPanier->getNom());
                  if($req3->execute()){
                      echo "oui";
                  }
@@ -47,7 +45,7 @@ class produitPanierC
   
 }
     static function afficherPanier($idCommande){
-        $sql="SELECT image,quantite,prix,nom from produitpanier where idCommande=:idCommande";
+        $sql="SELECT image,quantite,prix from produitpanier where idCommande=:idCommande";
         $db = config::getConnexion();
         try
 		{  
@@ -69,7 +67,7 @@ $req=$db->prepare($sql);
                                                 </a>
                                             </figure>
                                             <h2 class="product-title">
-                                                <a >'.$rows[$i]["nom"].'</a>
+                                                <a >Jumpsuit</a>
                                             </h2>
                                         </td>
                                         <td>'.$rows[$i]["prix"].'</td>

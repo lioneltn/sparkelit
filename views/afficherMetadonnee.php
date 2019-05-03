@@ -35,10 +35,10 @@ include "../core/metadonneeC.php";
                 <input type="submit" value="modifier" class="btn btn-primary mr-2">
               </form>
             </td>
-            <td>
-              <form method="POST" action="../../supprimerMetadonnee.php">
+           <td>
+              <form method="POST" action="popupsupp2.php">
                 <input type="hidden" class="hiddenreference" name="ref" value="<?PHP echo $row['reference']; ?>" readonly >
-                <input type="submit" value="supprimer" class="btn btn-danger mr-2">
+                <input type="submit" value="Supprimer" class="btn btn-danger mr-2">
               </form>
             </td>
           </tr>

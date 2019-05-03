@@ -143,7 +143,7 @@ class noteC {
 	}
 	function affichercommantaire ($id_poste)
 	{ 
-		$sql="SELECT commantaire,id_client from note where id_poste=:poste AND commantaire!=:commantaire";
+		$sql="SELECT utilisateur.nom , utilisateur.prenom, note.commantaire, note.note FROM utilisateur INNER JOIN note ON note.id_client=utilisateur.email WHERE note.id_poste=:poste AND note.commantaire!=:commantaire ";
 		$db = config2::getConnexion();
 		$req=$db->prepare($sql);
 		$req->bindValue(':poste',$id_poste);
@@ -223,6 +223,20 @@ class noteC {
         $req=$db->prepare($sql);
 		$req->bindValue(':poste',$id_poste);
 		$req->bindValue(':client',$id_client);
+		try{
+            $req->execute();
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+	}
+  function supprimernoteposte($id_poste)
+	{
+		$sql="DELETE FROM note where id_poste=:poste";
+		$db = config2::getConnexion();
+        $req=$db->prepare($sql);
+		$req->bindValue(':poste',$id_poste);
+		
 		try{
             $req->execute();
         }

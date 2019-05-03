@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+  <title>Visitors By Country</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -18,7 +18,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 
 <body>
@@ -89,12 +89,7 @@
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.php -->
 
-        <footer class="footer">
-          <div class="w-100 clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-          </div>
-        </footer>
+       
 
         <!-- partial -->
       </div>

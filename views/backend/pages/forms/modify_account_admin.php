@@ -34,7 +34,7 @@ session_start();
     include "../../../../entities/comptes/admin.php";
     include "../../../../core/comptes/adminC.php";
 
-    echo $_SESSION['email_admin'];
+    
     if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
         $result = $adminC->recupererAdmin($_SESSION['email_admin']);
@@ -152,6 +152,16 @@ session_start();
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../samples/orders.php"> commandes</a></li>
                                     <li class="nav-item"><a class="nav-link" href="../samples/statistiques.php">statistiques des ventes</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
                                 </ul>
                             </div>
                         </li>

@@ -1,7 +1,7 @@
 <?php
 
 
-include "../config.php";
+include "config.php";
 
 
 
@@ -236,7 +236,44 @@ function rechercherParID($cher)
 		}
 	}
 
+function rechercherParRemise($cher)
+	{
+		
+		$sql="SElECT * from offre where remise like :cher";
+		$db = config::getConnexion();
+		try
+		{
+			$cher2=$cher."%";
+			$req=$db->prepare($sql);
+			$req->bindValue(':cher',$cher2);
+			$req->execute();
+			$ret=$req->fetchAll();
+           	return $ret; 
+		} 
+		catch (Exception $e)
+		{
+			 echo 'Erreur: '.$e->getMessage();	
+		}
+	}
 
+	function afficherOffrerParId($idd)
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From offre where id=:idd";
+		$db = config::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindValue(':idd',$idd);
+			$req->execute();
+			$liste=$req->fetch();
+			return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 
 
 }

@@ -182,6 +182,16 @@ chdir(__DIR__);
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -288,13 +298,13 @@ chdir(__DIR__);
     {
         if(isvalueEmpty(field.value.trim()))
         {
-            setInvalid(field,"Ne laissze pas se champs vide");
+            setInvalid(field,"Ne laissez pas se champs vide");
             return true;
         }
         else
         {
           setValid(field);
-          return false
+          return false;
         }
     }
 
@@ -302,7 +312,6 @@ chdir(__DIR__);
     function checkNom(field)
     {
       var value=field.value;
-      var exp=/\w\s$/;
       if(value[0]==" ")
       {
         setInvalid(field,"Ce champs ne doit pas commencer par un espace");
@@ -310,14 +319,14 @@ chdir(__DIR__);
       }
       else
       {
-          if(/^[a-zA-Z0-9\s]+$/.test(value))
+          if(/^[a-zA-Z0-9\s,:/._'()]+$/.test(value))
           {
             setValid(field);
             return true;
           }
           else
           {
-            setInvalid(field,"Ce champs doit comporter seulement des lettres ,des lettres et des espaces!");
+            setInvalid(field,"Ce champs ne doit pas comporter des caractères spéciaux (@ , + , * .... )");
             return false;
           }
       }

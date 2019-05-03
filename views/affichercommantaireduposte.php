@@ -18,7 +18,7 @@ else
 	{
 		 ?>
 		 <div style=" border: solid 1.5px; border-radius: 20px; font-size: 20px ; word-wrap: break-word;padding: 10px; margin: 20px">
-		 	<p><?php echo $row['id_client'];?><strong> A dit:</strong> </p>
+		 	<p><?php echo $row['prenom']."  ".$row["nom"];?><span>:</span> </p>
 		 	<?php echo $row['commantaire'];?> 
 		 </div>
 		 <?php 

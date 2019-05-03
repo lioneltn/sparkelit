@@ -144,6 +144,16 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -186,16 +196,29 @@ session_start();
                         <input class="form-control" type="text" name="recherche" id="rechercherNom" placeholder="Nom" onkeyup="rechercherParNom(this.value);">
                       </div>
 
+                       <div class="col-md-3 grid-margin" style="padding-right: 10px; ">
+                        <input class="form-control" type="text" name="recherche" id="rechercherRemise" placeholder="Remise" onkeyup="rechercherParRemise(this.value);">
+                      </div>
+
                   </div>
                   <div id="contenu">
                   <?php include "../../afficherOffres.php";
                   chdir(__DIR__) ?>
                   </div>
+
+
+                   <div id="modelsupprimer_bg" class="modelsupprimer_bg" style="background-color: rgba(0,0,0,0.7);height: 100%;width: 100%;position: absolute;top: 0; z-index: 1000;justify-content: center;align-items: center;display: none;">
+        <div class="modelsupprimer-content" style="width: 400px;height: 200px;background-color: white;position: relative; border-radius: 5px;text-align: center;">
+          <?php
+          echo $_POST['id'];
+          ?>
+        </div>
+  </div>
                 </div>
   </div>
 
  
- 				
+        
   </div>
 <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -280,7 +303,39 @@ function rechercherParID(str)
         xmlhttp.send();
       }
     }
-
+function rechercherParRemise(str)
+    {
+      //var x=document.getElementById("sortable-table-2");
+      
+      document.getElementById("rechercherNom").value="";
+      document.getElementById("rechercherID").value="";
+      if(str=="")
+      {
+          //x.style.display="block";
+          var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("contenu").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST","../../afficherOffres.php",true);
+        xmlhttp.send();
+      }
+      else
+      {
+        //x.style.display="none";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("contenu").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","../../chercherremise.php?recherche="+str,true);
+        xmlhttp.send();
+      }
+    }
 
 
   </script>

@@ -169,6 +169,7 @@ if ($total!=0)
 	
 	if(empty($_FILES['image4']['name'])==false)
 	{
+
 		$file4=$_FILES['image4'];
 		$filename4=$file4['name'];
 		$filetmp4=$file4['tmp_name'];
@@ -178,7 +179,7 @@ if ($total!=0)
 		$extension4=strtolower(end($ext4));
 		if(in_array($extension4,$disponible))
 		{
-			$destination4="uploads/".$filename3;
+			$destination4="uploads/".$filename4;
 			move_uploaded_file($filetmp4, $destination4);
 			$produitC->modifierDetails("small","jaune",$_POST['Tailles4'],$destination4,$_POST['reference']);
 			$produitC->modifierDetails("Meduim","jaune",$_POST['Taillem4'],$destination4,$_POST['reference']);

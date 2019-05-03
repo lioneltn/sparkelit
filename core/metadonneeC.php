@@ -1,5 +1,5 @@
 <?PHP
-include "../config.php";
+include "config.php";
 class MetadonneeC 
 {
 	
@@ -111,7 +111,24 @@ function afficherMetadonnee()
         }
 	}
 
-
+function afficherMetaParRef($reff)
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From metadonnee where reference=:reff";
+		$db = config::getConnexion();
+		try
+		{
+			$req=$db->prepare($sql);
+			$req->bindValue(':reff',$reff);
+			$req->execute();
+			$liste=$req->fetch();
+			return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 
 
 

@@ -8,7 +8,7 @@ foreach ($listeP as $row)
 ?>
 
 								<div class="product">
-                                    <figure style="max-height: 246px;max-width: 222px;" class="product-image-container">
+                                    <figure style="max-height: 246px;max-width: 222px;"class="product-image-container">
                                             <img style="width:222px;height: 246px" src="../<?php echo $row['thumbnail'];?>" alt="product">
                                         <span class="product-label label-new">New</span>
                                     </figure>

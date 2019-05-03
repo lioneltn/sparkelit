@@ -7,6 +7,7 @@ include "../core/postecore.php";
 if (isset($_POST['titre']) and isset($_POST['description']))
 {  
 	$file=$_FILES['image'];
+
 	$filename=$file['name'];
 	$filetmp=$file['tmp_name'];
 	$filesize=$file['size'];
@@ -17,8 +18,7 @@ if (isset($_POST['titre']) and isset($_POST['description']))
 	{
 		chdir(__DIR__);
 		$destination="upload/".$filename;
-		echo $destination;
-		echo $filetmp;
+	
 		move_uploaded_file($filetmp,$destination);
 		$poste1=new poste($_POST['titre'],$_POST['description'],$destination,$_SESSION["email_admin"]);
 		$poste1C=new posteC();

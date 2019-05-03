@@ -58,11 +58,9 @@ include "../core/offreC.php";
 							</form>
 						</td>						
 						<td>
-							<form method="POST" action="../../supprimerOffre.php">
+							<form method="POST" action="popupsupp.php">
 								<input type="hidden" class="hiddenreference" name="id" value="<?PHP echo $row['id']; ?>" readonly >
-								<input type="submit" value="supprimer" onclick="validerSuppOffre()" class="btn btn-danger mr-2">
-								
-								
+								<input type="submit" value="Supprimer" class="btn btn-danger mr-2">
 							</form>
 						</td>
 					</tr>

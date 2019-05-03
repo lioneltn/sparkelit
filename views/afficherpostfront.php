@@ -1,10 +1,10 @@
 
 
 <?php 
-if(isset($_SESSION['email'])==false)
+/*if(isset($_SESSION['email'])==false)
 {
     session_start();
-}
+}*/
 chdir(__DIR__);
 include "../entities/poste.php";
 include "../core/postecore.php";
@@ -36,9 +36,9 @@ include "../core/notecore.php";
                 ?>
                     <div class="form-group" style="width:600px; height: 950px;">
                             <div class="entry-media">
-                                <a href="single.php">
+                        
                                     <img style="width: 100%;height: 400px;" src="<?php echo '../'.$row['image'];?>" alt="Post">
-                                </a>
+                           
                             </div><!-- End .entry-media -->
 
                             <div class="entry-body" style="border:none">
@@ -95,7 +95,7 @@ include "../core/notecore.php";
                                 </div><!-- End .entry-date -->
 
                                 <h2 class="entry-title">
-                                    <p style="text-decoration: underline;"><?PHP echo $row['titre']; ?></strang>
+                                    <p style="font-size: 20px ; text-transform: uppercase;"><strong><?PHP echo $row['titre']; ?></strong></p>
                                 </h2>
 
                                 <div class="entry-content">
@@ -105,7 +105,7 @@ include "../core/notecore.php";
                                 </div>
                                     <form style="position: absolute;  padding-top: 20px; padding-bottom: 20px;" action="affichercommantairesporto.php" method="POST" >
                                      <input type="hidden" name="id" value="<?php echo $row['id_poste'] ;?>">
-                                    <input type="submit" name="" value="Afficher les commantaires">
+                                    <input type="submit"  class="btn btn-primary" style="width: 40px;height: 20px;font-size: 7px;" value="Afficher les commantaires">
                                 </form>
                                 <br>
                                 <form action="../ajouterNote.php" method="POST">

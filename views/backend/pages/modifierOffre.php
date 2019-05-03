@@ -1,6 +1,14 @@
 <?PHP
 session_start();
 ?>
+
+<?php
+include "../../../core/offreC.php";
+$offreC=new OffreC();
+$liste=$offreC->afficherOffrerParId($_POST['id']);
+//print_r($listeFournisseur);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,6 +146,16 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -180,17 +198,18 @@ session_start();
                     <div class="form-group">
                       
                       <label for="exampleInputID">Identifiant</label>
-                      <input type="test" class="form-control" id="exampleInputID" name ="id" placeholder="Identifiant" value="<?PHP echo $_POST["id"]; ?>"/>
+                      <input type="test" class="form-control" id="exampleInputID" name ="id" placeholder="Identifiant" value="<?PHP echo $liste["id"]; ?>"/>
                       <span class="helper-text" > </span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputNom">Nom</label>
-                      <input type="text" class="form-control" id="exampleInputNom" name ="nom" placeholder="Nom" onfocusout="validerNom()" maxlength="20" required/>
+                      <input type="text" class="form-control" id="exampleInputNom" name ="nom" placeholder="Nom" 
+                      value="<?PHP echo $liste["nom"]; ?>" onfocusout="validerNom()" maxlength="20" required/>
                       <span class="helper-text" > </span>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputDescripition">Descripition</label>
-                      <input type="text" class="form-control" id="exampleInputDescripition" name ="desc"  maxlength="100" required/>
+                      <input type="text" class="form-control" id="exampleInputDescripition" name ="desc" value="<?PHP echo $liste["descripition"]; ?>"  maxlength="100" required/>
                       <span class="helper-text" > </span>
                     </div>
 
@@ -203,13 +222,13 @@ session_start();
                    
                    <div class="form-group">
                       <label for="exampleInputPrix_anc">Remise</label>
-                      <input type="text" class="form-control" id="exampleInputRemise" name ="remise"  maxlength="2" onfocusout="validerPrix_anc()" required/>
+                      <input type="text" class="form-control" id="exampleInputRemise" name ="remise" value="<?PHP echo $liste["remise"]; ?>" maxlength="2" onfocusout="validerPrix_anc()" required/>
                       <span class="helper-text" > </span>
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputPrix_anc">Prix ancien</label>
-                      <input type="text" class="form-control" id="exampleInputPrix_anc" name ="prix_anc"  maxlength="100" onfocusout="validerPrix_anc()" required/>
+                      <input type="text" class="form-control" id="exampleInputPrix_anc" name ="prix_anc" value="<?PHP echo $liste["prix_anc"]; ?>" maxlength="100" onfocusout="validerPrix_anc()" required/>
                       <span class="helper-text" > </span>
                     </div>
 
@@ -217,20 +236,22 @@ session_start();
 
                      <div class="form-group">
                       <label for="exampleInputPrix">Date debut</label>
-                         <input type="date" class="form-control" name ="dateD"  required/>
+                         <input type="date" class="form-control" name ="dateD" value="<?PHP echo $liste["dateD"]; ?>" required/>
                       <span class="helper-text" > </span>
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputPrix">Date fin</label>
-                         <input type="date" class="form-control" name ="dateF"  required/>
+                         <input type="date" class="form-control" name ="dateF" value="<?PHP echo $liste["dateF"]; ?>"  required/>
                       <span class="helper-text" > </span>
                     </div>
  
                      <div class="form-group">
                       <div class="card">
+
                       <div class="card-body">
                           <h4 class="card-title">Image du offre</h4>
+                           <img  style="max-width: 40%;max-height: 40%;position: relative;left:50%;transform: translate(-50%,0px);padding-bottom: 50px;"  src="../../<?php echo $liste['image'];?>">
                           <input type="file" class="dropify" name="image" />
                            
                       </div>

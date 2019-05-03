@@ -8,7 +8,7 @@ session_start();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+  <title>Profile</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -20,7 +20,7 @@ session_start();
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/logoreduit.png" />
 </head>
 
 <body>
@@ -28,7 +28,7 @@ session_start();
   include "../../../../entities/comptes/admin.php";
   include "../../../../core/comptes/adminC.php";
 
-  echo $_SESSION['email_admin'];
+ 
   if (isset($_SESSION['email_admin'])) {
     $adminC = new AdminC();
     $result = $adminC->recupererAdmin($_SESSION['email_admin']);
@@ -153,6 +153,16 @@ session_start();
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
 <li class="nav-item">
               <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -197,9 +207,9 @@ session_start();
                       <li class="nav-item">
                         <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
                       </li>
-                      <li class="nav-item">
+                     <!-- <li class="nav-item">
                         <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
-                      </li>
+                      </li>-->
                     </ul>
                     <div class="row">
                       <div class="col-md-9">

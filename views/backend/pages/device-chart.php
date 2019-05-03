@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+  <title>Visits By Devise</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
   <link rel="stylesheet" href="../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -17,7 +17,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="../images/logoreduit.png" />
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             <div id="chart-containter" class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Device By Device</h4>
+                  <h4 class="card-title">Visits By Device</h4>
                   <div class="google-chart-container">
                     <div id="device-chart" class="google-charts"></div>
                   </div>
@@ -86,12 +86,7 @@
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.php -->
 
-        <footer class="footer">
-          <div class="w-100 clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-          </div>
-        </footer>
+
 
         <!-- partial -->
       </div>
