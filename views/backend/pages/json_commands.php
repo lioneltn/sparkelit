@@ -65,7 +65,9 @@ $increase_percentage3 = $result6 * 100;
 }
 
 
-$data = array ($increase_percentage,$result2,$increase_percentage2,$result4,$increase_percentage3,$result6);
+$posts = $statsC->get_posts_number();
+
+$data = array ($increase_percentage,$result2,$increase_percentage2,$result4,$increase_percentage3,$result6,$posts);
 
 //now print the data
 print json_encode($data);

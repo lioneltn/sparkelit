@@ -17,6 +17,11 @@ $(document).ready(function(){
     document.getElementById('nVisiteS').innerHTML ='<h3 class="text-danger">' + data[5] +' </h3>';
    document.getElementById('VisiteS').innerHTML ='<p class="text-muted mb-0">' + data[4] +' % change cette semaine </p>';
 
+   document.getElementById('posts').innerHTML ='<h3 class="text-danger">' + data[6] +' </h3>';
+
+
+   
+
    
 
    

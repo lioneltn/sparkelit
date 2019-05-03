@@ -34,6 +34,20 @@ class statsC
         }   
     }
 
+    function get_posts_number(){
+        $sql="SELECT COUNT(*) FROM poste";
+        $db = config3::getConnexion();
+        try
+        {
+            $liste=$db->query($sql)->fetchColumn();
+            return $liste;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+
 
     function get_total_commands(){
         $sql="SELECT COUNT(*) FROM commande";

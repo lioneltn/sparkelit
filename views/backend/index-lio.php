@@ -182,6 +182,18 @@ include "../../core/statsC.php";
                                 </ul>
                             </div>
                         </li>
+
+                           <li class="nav-item">
+                            <a href="samples/orders.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../backend/pages/region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../backend/pages/device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../backend/pages/browser-chart.php">Statistiques visites par navigateurs</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
 <li class="nav-item">
               <a href="pages/ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
               <div class="submenu">
@@ -329,12 +341,15 @@ include "../../core/statsC.php";
                           </tr>
                           <tr>
                             <td>
-                              <h6>Pending</h6>
-                              <p class="text-muted mb-0">Pending Tasks</p>
+                              <h6>Postes</h6>
+                              
+                              <p class="text-muted mb-0">En Total</p>
+                              
                             </td>
                             <td>
+                              <div id="posts"></div>
                               <h3 class="text-warning">
-                                  +5152
+                                 
                               </h3>
                             </td>
                           </tr>
