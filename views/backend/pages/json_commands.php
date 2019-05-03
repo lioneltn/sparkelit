@@ -57,7 +57,7 @@ $increase_percentage2 = $result4 * 100;
 
 $increase3 = $result4 - $result3; 
 
-if ($result3>0){
+if ($result3>0 && $result5>0){
 $increase_percentage3 = ($increase3/$result5)*100;
 }
 else{
