@@ -13,14 +13,15 @@ class Adresse
     
 	function __construct($adresse,$ville,$pays,$codePostal,$tel,$region,$login,$companie)
 	{
-		$this->adresse=$adresse;
-		$this->ville=$ville;
-		$this->pays=pays;
-		$this->region=$region;
-		$this->codePostal=$codePostal;
-		$this->tel=$tel;
-		$this->login=$login;
-		$this->companie=$companie;
+		$this->setAdresse($adresse);
+		$this->setVille($ville);
+		$this->setPays($pays);
+		$this->setRegion($region);
+		$this->setCodePostal($codePostal);
+		$this->setTel($tel);
+		$this->setLogin($login);
+		$this->setCompanie($companie);
+       
 
 	}
 

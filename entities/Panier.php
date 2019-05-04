@@ -1,21 +1,30 @@
 
 <?php
-class Panier
+class ProduitPanier
 {
-	private $idDetail;
+	private $image;
 	private $quantite;
+	private $couleur;
+	private $prix;
+	private $reference;
+	private $nom;
+	
 
-	function __construct($idDetail,$quantite)
+	function __construct($image,$quantite,$couleur,$prix,$reference,$nom)
 	{
-		$this->setIdDetail($idDetail);
+		$this->setImage($image);
 		$this->setQuantite($quantite);
+		$this->setCouleur($couleur);
+		$this->setPrix($prix);
+		$this->setReference($reference);
+		$this->setNom($nom);
 
 	}
 
 
-	function getIdDetail()
+	function getImage()
 	{
-		return $this->idDetail;
+		return $this->image;
 	}
     
     function getQuantite()
@@ -23,15 +32,46 @@ class Panier
 		return $this->quantite;
 	}
     
-	function setIdDetail($idDetail)
+	function getCouleur()
 	{
-		 $this->idDetail=$idDetail;
+		 return $this->couleur;
+	}
+    function getPrix()
+	{
+		  return $this->prix;
+	}
+      function getReference(){
+        		  return $this->reference;
+    }
+  function getNom(){
+      return $this->nom;
+  }
+    
+    	function setImage($image)
+	{
+		 $this->image=$image;
 	}
     
     function setQuantite($quantite)
 	{
 		 $this->quantite=$quantite;
 	}
+    
+	function setCouleur($couleur)
+	{
+		  $this->couleur=$couleur;
+	}
+    
+  	function setPrix($prix)
+	{
+		  $this->prix=$prix;
+	}
+    function setReference($reference){
+        		  $this->reference=$reference;
+    }
+    function setNom($nom){
+        $this->nom=$nom;
+    }
 	
 
 }

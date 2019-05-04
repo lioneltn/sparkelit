@@ -2,6 +2,21 @@
 <?php 
     session_start();
     include "../../core/CommandeC.php";
+include "Nexmo/src/NexmoMessage.php";
+/**
+   * To send a text message.
+   *
+   */
+
+  // Step 1: Declare new NexmoMessage.
+  $nexmo_sms = new NexmoMessage('8d6dbf99','nf88fwRKw1M2CJoM');
+
+  // Step 2: Use sendText( $to, $from, $message ) method to send a message. 
+  $text = "commande validée";
+  $telephone = "+216 56 058 127";
+  $info = $nexmo_sms->sendText( $telephone, '5icha', $text );
+
+  // Step 3: Display an overview of the message
     ?>
 
 <!DOCTYPE html>

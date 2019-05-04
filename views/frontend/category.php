@@ -91,10 +91,10 @@ session_start();
         <main class="main">
             <div class="banner banner-cat" style="background-image: url('assets/images/banners/banner-top.jpg');">
                 <div class="banner-content container">
-                    <h3 class="banner-subtitle">check out over <strong>200+</strong></h3>
+                    <h3 class="banner-subtitle">check out our collection</h3>
                     <h1 class="banner-title">INCREDIBLE deals</h1>
 
-                    <a href="#" class="btn btn-primary" role="button">Shop Now</a>
+                    
                 </div><!-- End .banner-content -->
             </div><!-- End .banner -->
             

@@ -1,9 +1,12 @@
-
 <?php 
 //session_start();
 include "../../core/PanierC.php";
-print_r($_SESSION);
- echo $_SESSION['idCommande'];
+//print_r($_SESSION);
+// echo $_SESSION['idCommande'];
+if(!empty($_SESSION["email"])){
+    $temp=1;
+}
+else $temp=0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -353,7 +356,7 @@ print_r($_SESSION);
                 <div class="container-fluid">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                        <li class="breadcrumb-item active" aria-current="page">Panier</li>
                     </ol>
                 </div><!-- End .container-fluid -->
             </nav>
@@ -365,10 +368,10 @@ print_r($_SESSION);
                             <table class="table table-cart">
                                 <thead>
                                     <tr>
-                                        <th class="product-col">Product</th>
-                                        <th class="price-col">Price</th>
-                                        <th class="qty-col">Qty</th>
-                                        <th>Subtotal</th>
+                                        <th class="product-col">Produit</th>
+                                        <th class="price-col">Prix</th>
+                                        <th class="qty-col">Quantite</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -377,7 +380,6 @@ print_r($_SESSION);
                                     <tr class="product-action-row">
                                         <td colspan="4" class="clearfix">
                                             <div class="float-left">
-                                                <a href="#" class="btn-move">Move to Wishlist</a>
                                             </div><!-- End .float-left 
                                             
                                             <div class="float-right">
@@ -392,7 +394,7 @@ print_r($_SESSION);
                                     <tr>
                                         <td colspan="4" class="clearfix">
                                             <div class="float-left">
-                                                <a href="category2.php" class="btn btn-outline-secondary">Continue Shopping</a>
+                                                <a href="category2.php" class="btn btn-outline-secondary">continuer le Shopping</a>
                                             </div><!-- End .float-left -->
 
                                            <!-- End .float-right -->
@@ -403,15 +405,7 @@ print_r($_SESSION);
                         </div><!-- End .cart-table-container -->
 
                         <div class="cart-discount">
-                            <h4>Apply Discount Code</h4>
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Enter discount code"  required>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-sm btn-primary" type="submit">Apply Discount</button>
-                                    </div>
-                                </div><!-- End .input-group -->
-                            </form>
+                         
                         </div><!-- End .cart-discount -->
                     </div><!-- End .col-lg-8 -->
 
@@ -781,6 +775,8 @@ print_r($_SESSION);
     <script >
         
         $(function(){
+            var temp="<?php echo $temp?>";
+//            alert(temp);
             var index=0;
             var image;
             $(".btn-remove").click(function() {

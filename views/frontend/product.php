@@ -63,7 +63,7 @@ $avaiblable_sizes= array();
     <meta name="author" content="SW-THEMES">
         
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../meta/Logoreduit.png">
+    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -93,7 +93,7 @@ $avaiblable_sizes= array();
     ?>
      <?php 
                             chdir(__DIR__);
-                            include "header2.php";
+                            include "header.php";
                             chdir(__DIR__);
 
                             ?>
@@ -126,7 +126,7 @@ $avaiblable_sizes= array();
                                         </div>
                                         <!-- End .product-single-carousel -->
                                         <span class="prod-full-screen">
-                                            <i style="color:white;font-size:20px;">+</i>
+                                            <i class="icon-plus"></i>
                                         </span>
                                     </div>
                                       <div class="prod-thumbnail row owl-dots" id='carousel-custom-dots'>
@@ -264,7 +264,7 @@ $avaiblable_sizes= array();
                                             </div><!-- End .product-single-qty -->
 
                                             <form class="test" action="cart.php" method="POST">
-                                            <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>">
+                                            <input type="hidden" id="ref1" name="reference" value="<?php echo $liste['reference']?>" nom="<?php echo $liste['nom']?>">
                                             <button  id="ajouter" class="paction add-cart" value="Add to Cart"><span>Ajouter au panier</span></button>
                                             </form>
                                            
@@ -285,12 +285,12 @@ $avaiblable_sizes= array();
                             
         </main><!-- End .main -->
 
-        <?php include "footer2.php"; ?>
+        
     </div><!-- End .page-wrapper -->
 
     
 
-    <a id="scroll-top" href="#top" title="Top" role="button"><i>UP</i></a>
+    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
 
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>
@@ -311,6 +311,10 @@ $avaiblable_sizes= array();
             var quantite = 0;
             var couleur = "non entree";
             var taille = "non entree";
+            var reference= $('[name="reference"]').val();
+      var nom=$('[name="reference"]').attr("nom");
+//      alert(nom);
+      console.log(reference);
      
      
       
@@ -345,7 +349,7 @@ $avaiblable_sizes= array();
 //                    alert($(this).css("color"));
                     taille = $(this).text();
                     console.log($(this));
-                    alert(couleur);
+//                    alert(couleur);
                 })
 
             })
@@ -363,11 +367,14 @@ $avaiblable_sizes= array();
                         image:image,
                         prix:prix,
                         quantite:quantite,
-                        couleur:couleur
+                        couleur:couleur,
+                    reference:reference,
+                    nom:nom
                     },
                     function(data, status) {
 
                    window.location.href="cart.php";
+                    //alert(data);
 
 
                     });
@@ -400,6 +407,8 @@ $avaiblable_sizes= array();
                 
                
             })
+//      alert("manger");
+
 
         })                    
 </script>
