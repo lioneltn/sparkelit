@@ -35,7 +35,7 @@ $db = config4::getConnexion();
            $req6->execute();
         $rows=$req6->fetchAll();
         $juin=$rows[0]["nombre"];
-        echo $janvier,$fevrier,$mars,$avril,$mai,$juin;
+        
         
         
         
@@ -56,7 +56,7 @@ $db = config4::getConnexion();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+    <title>Statistiques Commandes</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -203,11 +203,21 @@ $db = config4::getConnexion();
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="../samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../samples/orders.php"> commandes</a></li>
                                     <li class="nav-item"><a class="nav-link" href="../samples/statistiques.php">statistiques des ventes</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../region-chart.php" class="nav-link"><i class="link-icon icon-pie-chart"></i><span class="menu-title">Stats</span></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../region-chart.php"> Statistiques visites par région</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../device-chart.php">Statistiques visites par appareils</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../browser-chart.php">Statistiques visites par navigateurs</a></li>
                                 </ul>
                             </div>
                         </li>

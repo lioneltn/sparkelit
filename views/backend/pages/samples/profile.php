@@ -147,7 +147,7 @@ session_start();
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="../ajouterfournisseur.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
+                            <a href="../samples/orders.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Commandes</span><i class="menu-arrow"></i></a>
                             <div class="submenu">
                                 <ul class="submenu-item">
                                     <li class="nav-item"><a class="nav-link" href="../samples/orders.php"> commandes</a></li>

@@ -406,7 +406,7 @@ include "../../core/statsC.php";
                               </h3>
                             </td>
                           </tr>
-                          <tr>
+                          <!--<tr>
                             <td>
                               <h6>Revenue</h6>
                               <p class="text-muted mb-0">5% increase</p>
@@ -416,7 +416,7 @@ include "../../core/statsC.php";
                                   +89997
                               </h3>
                             </td>
-                          </tr>
+                          </tr>-->
                         </tbody>
                       </table>
                     </div>
