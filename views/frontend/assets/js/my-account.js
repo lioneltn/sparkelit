@@ -8,7 +8,7 @@ const pays = document.getElementById("pays");
 const codePostal = document.getElementById("codePostal");
 const addLivraison = document.getElementById("addLivraison");
 const addLivraison_2 = document.getElementById("addLivraison_2");
-const firstName = document.getElementById("fisrtName");
+const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
 const firstName_2 = document.getElementById("firstName_2");
 // Form
@@ -226,7 +226,7 @@ function verificationlogin() {
 }
 
 function verification_myaccount() {
-	if (1) {
+	if (validateFirstName(firstName) && validateFirstName(lastName) && validateDateNaissance(dateNaissance) && validateNumTel(numTel)) {
 		//swal("données vérifiées!", ", connexion réussite", "succès");
 		alert("connexion réussite ");
 		return true;
