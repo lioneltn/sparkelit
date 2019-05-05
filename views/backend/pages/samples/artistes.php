@@ -1,6 +1,7 @@
 <?PHP
 session_start();
-if (isset($_SESSION['email_admin'])) {
+echo "azeze" . $_SESSION['email_admin'];
+if ($_SESSION['email_admin'] == "") {
     header('Location: login.php');
 }
 ?>
@@ -212,7 +213,7 @@ if (isset($_SESSION['email_admin'])) {
         <div class="container">
             <br />
             <div class="table-responsive">
-            <h3 align="center">Liste des artistes du site</h3><br />
+                <h3 align="center">Liste des artistes de la boutique</h3><br />
                 <div id="grid_table"></div>
             </div>
         </div>
@@ -272,25 +273,19 @@ if (isset($_SESSION['email_admin'])) {
                     {
                         name: "nom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "prenom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "datenaissance",
                         type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "dateAjout",
-                        type: "text",
-                        width: 80,
+                        width: 50,
                         validate: "required"
                     },
                     {

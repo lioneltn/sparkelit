@@ -1,7 +1,8 @@
 <?PHP
 include "../../../../config.php";
 session_start();
-if (isset($_SESSION['email_admin'])) {
+echo "azeze" . $_SESSION['email_admin'];
+if ($_SESSION['email_admin'] == "") {
     header('Location: login.php');
 }
 ?>
@@ -203,7 +204,7 @@ if (isset($_SESSION['email_admin'])) {
         <div class="container">
             <br />
             <div class="table-responsive">
-            <h3 align="center">Liste des clients du site</h3><br />
+                <h3 align="center">Liste des clients de la boutique</h3><br />
                 <div id="grid_table"></div>
             </div>
         </div>
@@ -257,35 +258,29 @@ if (isset($_SESSION['email_admin'])) {
                 fields: [{
                         name: "email",
                         type: "text",
-                        width: 200,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "nom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "prenom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "datenaissance",
                         type: "text",
-                        width: 80,
+                        width: 150,
                         validate: "required"
                     },
                     {
-                        name: "dateAjout",
-                        type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "tel",
+                        name: "telephone",
                         type: "text",
                         validate: function(value) {
                             if (value > 0) {
@@ -303,15 +298,15 @@ if (isset($_SESSION['email_admin'])) {
                         }
                     },
                     {
-                        name: "sexe",
+                        name: "gender",
                         type: "select",
                         items: [{
-                                Name: "homme",
-                                Id: 'homme'
+                                Name: "Male",
+                                Id: 'male'
                             },
                             {
-                                Name: "femme",
-                                Id: 'femme'
+                                Name: "Female",
+                                Id: 'female'
                             }
                         ],
                         valueField: "Id",
@@ -326,6 +321,12 @@ if (isset($_SESSION['email_admin'])) {
                     },
                     {
                         name: "adresselivraison",
+                        type: "text",
+                        width: 150,
+                        validate: "required"
+                    },
+                    {
+                        name: "adresselivraison_2",
                         type: "text",
                         width: 150,
                         validate: "required"

@@ -35,7 +35,7 @@ session_start();
     include "../../../../entities/comptes/admin.php";
     include "../../../../core/comptes/adminC.php";
 
-    echo $_SESSION['email_admin'];
+    
     if (isset($_SESSION['email_admin'])) {
         $adminC = new AdminC();
         $result = $adminC->recupererAdmin($_SESSION['email_admin']);

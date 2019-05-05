@@ -38,7 +38,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <ul class="links">
-                                                    <li><a href="#">Historique des commandes</a></li>
+                                                    <li><a href="historique.php">Historique des commandes</a></li>
                                                     <li><a href="login.php"><?PHP if(isset($_SESSION['email'])){ echo "se déconnecter";} else {echo  "se connecter";} ?></a></li>
                                                 </ul>
                                             </div>

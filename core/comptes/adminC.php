@@ -6,8 +6,7 @@ class AdminC
 {
      function ajouterAdmin($admin)
      {
-          $today = date("Y-m-d");
-          $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code, :dateAjout)";
+          $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
           $db = config4::getConnexion();
           try {
                $req = $db->prepare($sql);
@@ -19,7 +18,7 @@ class AdminC
                $req->bindValue(':motdepasse', $admin->getMotdepasse());
                $req->bindValue(':sexe', $admin->getSexe());
                $req->bindValue(':code', "");
-               $req->bindValue(':dateAjout', $today);
+
 
                $req->execute();
           } catch (Exception $e) {
@@ -81,32 +80,6 @@ class AdminC
           }
      }
 
-     function listeComptes()
-     {
-          $sql = "select * from utilisateur u inner join admin a on u.email=a.login ORDER BY dateAjout DESC LIMIT 5 OFFSET 0";
-          $db = config4::getConnexion();
-          try {
-               $liste = $db->prepare($sql);
-               $liste->execute();
-               return $liste;
-          } catch (Exception $e) {
-               die('Erreur: ' . $e->getMessage());
-          }
-     }
-
-     function listeComptesClient()
-     {
-          $sql = "select * from utilisateur u inner join client a on u.email=a.login ORDER BY dateAjout DESC LIMIT 5 OFFSET 0";
-          $db = config4::getConnexion();
-          try {
-               $liste = $db->prepare($sql);
-               $liste->execute();
-               return $liste;
-          } catch (Exception $e) {
-               die('Erreur: ' . $e->getMessage());
-          }
-     }
-     
      function recupererAdmin($email)
      {
           //$sql = "select * from utilisateur where email = :email";

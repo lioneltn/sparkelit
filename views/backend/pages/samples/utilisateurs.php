@@ -288,12 +288,6 @@ if ($_SESSION['email_admin'] == "") {
                         validate: "required"
                     },
                     {
-                        name: "dateAjout",
-                        type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
                         name: "sexe",
                         type: "select",
                         items: [{

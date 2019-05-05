@@ -5,8 +5,7 @@ class ClientC
 {
     function ajouterClient($client)
     {
-        $today = date("Y-m-d");
-        $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code, :dateAjout)";
+        $sql = "insert into utilisateur values (:nom, :prenom, :email, :datenaissance, :motdepasse, :sexe, :code)";
         $db = config4::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -18,7 +17,6 @@ class ClientC
             $req->bindValue(':motdepasse', $client->getMotdepasse());
             $req->bindValue(':sexe', $client->getSexe());
             $req->bindValue(':code', "");
-            $req->bindValue(':dateAjout', $today);
 
             $req->execute();
         } catch (Exception $e) {

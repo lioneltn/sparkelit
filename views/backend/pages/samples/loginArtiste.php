@@ -21,21 +21,7 @@ if (isset($_POST['email']) and isset($_POST['password'])  and preg_match ( " /^.
             $type = $row['type'];
         }*/
         if($password != $_POST['password']) {
-            echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
-            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
-            <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
-            <!-- plugins:css -->
-            <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css\">
-            <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css\">
-            <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.base.css\">
-            <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.addons.css\">
-            <!-- endinject -->
-            <!-- plugin css for this page -->
-            <!-- End plugin css for this page -->
-            <!-- inject:css -->
-            <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">email ou mot de passe incorrect</div></body></html>";
-            //echo "email ou mot de passe incorrect ";
-            echo "<script>window.location.href='login-2.php'</script>";
+            echo "email ou mot de passe incorrect ";
         } else {
             echo "email et mot de passe correct ";
             if($type == 2) {
@@ -47,21 +33,8 @@ if (isset($_POST['email']) and isset($_POST['password'])  and preg_match ( " /^.
             echo $_SESSION['email_admin'];
             header('Location: ../../index.php');
             }
-            else { echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
-                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
-                <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
-                <!-- plugins:css -->
-                <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css\">
-                <link rel=\"stylesheet\" href=\"../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css\">
-                <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.base.css\">
-                <link rel=\"stylesheet\" href=\"../../vendors/css/vendor.bundle.addons.css\">
-                <!-- endinject -->
-                <!-- plugin css for this page -->
-                <!-- End plugin css for this page -->
-                <!-- inject:css -->
-                <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">email ou mot de passe incorrect</div></body></html>";
-                //echo "email ou mot de passe incorrect ";
-                echo "<script>window.location.href='login-2.php'</script>";
+            else {
+                echo "email ou mot de passe incorrect ";
             }
             
         }

@@ -8,7 +8,7 @@ const pays = document.getElementById("pays");
 const codePostal = document.getElementById("codePostal");
 const addLivraison = document.getElementById("addLivraison");
 const addLivraison_2 = document.getElementById("addLivraison_2");
-const firstName = document.getElementById("firstName");
+const firstName = document.getElementById("fisrtName");
 const lastName = document.getElementById("lastName");
 const firstName_2 = document.getElementById("firstName_2");
 // Form
@@ -18,9 +18,9 @@ const green = '#4CAF50';
 const red = '#F44336';
 
 function validateFirstName(field) {
-	if (!checkIfEmty(field)) return false;
-	if (!checkIfOnlyLetters(field)) return false;
-	if (!beginSpace(field)) return false;
+	if (checkIfEmty(field)) return;
+	if (!checkIfOnlyLetters(field)) return;
+	if (!beginSpace(field)) return;
 	return true;
 }
 
@@ -28,10 +28,11 @@ function checkIfEmty(field) {
 	if (isEmpty(field.value)) {
 		//set field invalid
 		setInvalid(field, " ne doit pas être vide");
-		return;
+		return true;
+	} else {
+		setValid(field);
+		return false;
 	}
-	setValid(field);
-	return true;
 }
 function isEmpty(value) {
 	if (value == '') return true;
@@ -73,7 +74,7 @@ function beginSpace(field) {
 }
 
 function validatePassword(field) {
-	if (!checkIfEmty(field)) return;
+	if (checkIfEmty(field)) return;
 	if (!meetLength(field, 6, 100)) return;
 	if (!containsCharacters(field, 4)) return;
 	return true;
@@ -137,7 +138,7 @@ function validateConfirmPassword(field) {
 	return true;
 }
 function validateEmail(field) {
-	if (!checkIfEmty(field)) return;
+	if (checkIfEmty(field)) return;
 	if (!containsCharacters(field, 5)) return;
 	return true;
 }/*
@@ -158,10 +159,9 @@ function validateDateNaissance(field) {
 	var annee = dateNaissance.getFullYear();
 	if (annee > (ladate.getFullYear() - 5)) {
 		setInvalid(field, 'année de naissance invalide');
-		return false;
+		return;
 	} else {
 		setValid(field);
-		return true;
 	}
 }
 function checkPositiveNumber(field) {
@@ -182,7 +182,6 @@ function validateNumTel(field) {
 		return;
 	} else {
 		setValid(field);
-		return true;
 	}
 }
 function validatePays(field) {
@@ -193,12 +192,12 @@ function validatePays(field) {
 }
 function validateCodePostal(field) {
 	if (!checkPositiveNumber(field)) {
-		return false;
+		return;
 	}
 
 	if (field.value.length != 4) {
 		setInvalid(field, 'nombre de chiffre du code postal invalide');
-		return false;
+		return;
 	} else {
 		setValid(field);
 
@@ -208,31 +207,10 @@ function validateCodePostal(field) {
 
 function verification() {
 	if (validateFirstName(firstName) && validateFirstName(lastName) && validateCodePostal(codePostal) && validateConfirmPassword(confirmPassword) && validateDateNaissance(dateNaissance) && validateEmail(email) && validateNumTel(numTel) && validatePassword(password) && validatePays(pays)) {
-		alert("connexion réussite ");
-	} else {
-		alert("Vérifier tous les champs ");
-	}
-}
-function verificationlogin() {
-	if (validatePassword(motdepasse) && validateEmail(login)) {
-		//swal("données vérifiées!", ", connexion réussite", "succès");
-		alert("connexion réussite ");
 		return true;
 	} else {
-		//sweetAlert("données vérifiées!", ", connexion echouée", "error");
-		alert("Vérifier tous les champs ");
+		$('[bouton="1"]').removeAttr('disabled');
 		return false;
-	}
-}
-
-function verification_myaccount() {
-	if (validateFirstName(firstName) && validateFirstName(lastName) && validateDateNaissance(dateNaissance) && validateNumTel(numTel)) {
-		//swal("données vérifiées!", ", connexion réussite", "succès");
-		alert("connexion réussite ");
-		return true;
-	} else {
-		//sweetAlert("données vérifiées!", ", connexion echouée", "error");
-		alert("Vérifier tous les champs ");
-		return false;
+		//header ( Location : new_account.php);
 	}
 }

@@ -1,8 +1,5 @@
 <?PHP
 session_start();
-if (isset($_SESSION['email_admin'])) {
-    header('Location: login.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -212,7 +209,7 @@ if (isset($_SESSION['email_admin'])) {
         <div class="container">
             <br />
             <div class="table-responsive">
-            <h3 align="center">Liste des administrateurs du site</h3><br />
+                <h3 align="center">Liste des artistes de la boutique</h3><br />
                 <div id="grid_table"></div>
             </div>
         </div>
@@ -236,28 +233,28 @@ if (isset($_SESSION['email_admin'])) {
                     loadData: function(filter) {
                         return $.ajax({
                             type: "GET",
-                            url: "gestionAdmins.php",
+                            url: "gestionArtistes.php",
                             data: filter
                         });
                     },
                     insertItem: function(item) {
                         return $.ajax({
                             type: "POST",
-                            url: "gestionAdmins.php",
+                            url: "gestionArtistes.php",
                             data: item
                         });
                     },
                     updateItem: function(item) {
                         return $.ajax({
                             type: "PUT",
-                            url: "gestionAdmins.php",
+                            url: "gestionArtistes.php",
                             data: item
                         });
                     },
                     deleteItem: function(item) {
                         return $.ajax({
                             type: "DELETE",
-                            url: "gestionAdmins.php",
+                            url: "gestionArtistes.php",
                             data: item
                         });
                     },
@@ -272,25 +269,19 @@ if (isset($_SESSION['email_admin'])) {
                     {
                         name: "nom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "prenom",
                         type: "text",
-                        width: 100,
+                        width: 150,
                         validate: "required"
                     },
                     {
                         name: "datenaissance",
                         type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "dateAjout",
-                        type: "text",
-                        width: 80,
+                        width: 50,
                         validate: "required"
                     },
                     {

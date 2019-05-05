@@ -122,6 +122,9 @@ session_start();
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
                                             </li>
+                                           <!-- <li class="nav-item">
+                                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
+                                            </li>-->
                                         </ul>
                                         <div class="row">
                                             <div class="col-md-9">
@@ -162,6 +165,11 @@ session_start();
                                                                 </div>
                                                             </div><!-- End .card-body -->
                                                         </div><!-- End .card -->
+                                                    </div>
+                                                    <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                                        <div class="horizontal-timeline">
+                                                            ///////////////////////////////////////////////////////////////
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
