@@ -93,21 +93,20 @@ session_start();
 
                             <div class="form-group required-field">
                                 <label for="acc-region">Région</label>
-                                <?PHP $_POST['region'] = $region ?>
                                 <select name="region" id ="region" class="form-control">
-                                    <option value="tunis">Tunis </option>
-                                    <option value="sfax">Sfax </option>
-                                    <option value="sousse">Sousse </option>
-                                    <option value="ariana">Ariana </option>
-                                    <option value="kiarouan"> Kiarouan</option>
-                                    <option value="bizerte"> Bizerte</option>
-                                    <option value="gabès">Gabès </option>
-                                    <option value="ben arous">Ben Arous </option>
-                                    <option value="gafsa"> Gafsa</option>
-                                    <option value="monastir"> Monastir</option>
-                                    <option value="kasserine">Kasserine </option>
-                                    <option value="la manouba"> La Manouba</option>
-                                    <option value="medenine">Médenine </option>
+                                    <option value="tunis" <?PHP if($region =="tunis") echo "selected" ?>>Tunis </option>
+                                    <option value="sfax" <?PHP if($region =="sfax") echo "selected" ?>>Sfax </option>
+                                    <option value="sousse" <?PHP if($region =="sousse") echo "selected" ?>>Sousse </option>
+                                    <option value="ariana" <?PHP if($region =="ariana") echo "selected" ?>>Ariana </option>
+                                    <option value="kiarouan" <?PHP if($region =="kiarouan") echo "selected" ?>> Kiarouan</option>
+                                    <option value="bizerte" <?PHP if($region =="bizerte") echo "selected" ?>> Bizerte</option>
+                                    <option value="gabès" <?PHP if($region =="gabès") echo "selected" ?>>Gabès </option>
+                                    <option value="ben arous" <?PHP if($region =="ben arous") echo "selected" ?>>Ben Arous </option>
+                                    <option value="gafsa" <?PHP if($region =="gafsa") echo "selected" ?>> Gafsa</option>
+                                    <option value="monastir" <?PHP if($region =="monastir") echo "selected" ?>> Monastir</option>
+                                    <option value="kasserine" <?PHP if($region =="kasserine") echo "selected" ?>>Kasserine </option>
+                                    <option value="la manouba" <?PHP if($region =="la manouba") echo "selected" ?>> La Manouba</option>
+                                    <option value="medenine" <?PHP if($region =="medenine") echo "selected" ?>>Médenine </option>
                                 </select>
                             </div><!-- End .form-group -->
 

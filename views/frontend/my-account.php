@@ -62,7 +62,7 @@ session_start();
                     <div class="col-lg-9 order-lg-last dashboard-content">
                         <h2>Modifier les informations de son compte</h2>
 
-                        <form method="POST" name="acc_edit">
+                        <form name="acc_edit" method="POST"  onsubmit="return verification_myaccount()" action = "modifierClient.php">
                             <div class="row">
                                 <div class="col-sm-11">
                                     <div class="row">
@@ -114,21 +114,10 @@ session_start();
                                 <a href="dashboard.php"><i class="icon-angle-double-left"></i>précédent</a>
 
                                 <div class="form-footer-right">
-                                    <input type="submit" class="btn btn-primary" name="modifier" id="modifier" onclick="verification()" value="modifier">
+                                    <input type="submit" class="btn btn-primary" name="modifier" id="modifier" onclick="verification_myaccount()" value="modifier">
                                 </div>
                             </div><!-- End .form-footer -->
                         </form>
-                        <?PHP
-                        if (isset($_POST['modifier'])  and isset($_POST['firstName']) and isset($_POST['lastName']) and isset($_POST['dateNaissance']) and isset($_POST['sexe']) and $_POST['dateNaissance'] < "2014-01-01" and $_POST['numTel'] > 10000000) {
-                            $client1 = new Client($_POST['firstName'], $_POST['lastName'], $_POST['dateNaissance'], "", $_SESSION['email'], $_POST['sexe'], $_POST['numTel'], "", "", "", "");
-                            $client1C = new ClientC();
-                            $client1C->modifierClient_i($client1);
-                            echo "<div class=\"alert alert-success alert-intro\" role=\"alert\">modification reussite</div>";
-                            echo "<script> window.location.href='dashboard.php'</script>";
-                        } else {
-                            //echo "errorr echec";
-                        }
-                        ?>
                     </div><!-- End .col-lg-9 -->
 
                     <aside class="sidebar col-lg-3">

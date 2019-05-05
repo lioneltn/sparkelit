@@ -1,9 +1,5 @@
 <?PHP
 session_start();
-echo "azeze" . $_SESSION['email_admin'];
-if ($_SESSION['email_admin'] == "") {
-    header('Location: login.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

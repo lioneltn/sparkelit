@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-$_SESSION['email_admin'] = NULL;
+unset ($_SESSION['email_admin']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

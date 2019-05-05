@@ -1,9 +1,5 @@
 <?PHP
 session_start();
-echo "azeze" . $_SESSION['email_admin'];
-if ($_SESSION['email_admin'] == "") {
-    header('Location: login.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -283,6 +279,12 @@ if ($_SESSION['email_admin'] == "") {
                     },
                     {
                         name: "datenaissance",
+                        type: "text",
+                        width: 80,
+                        validate: "required"
+                    },
+                    {
+                        name: "dateAjout",
                         type: "text",
                         width: 80,
                         validate: "required"

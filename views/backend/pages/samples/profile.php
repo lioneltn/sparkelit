@@ -42,6 +42,8 @@ session_start();
       if($type != 1) {
         header('Location: login.php');
       }
+      $listecomptes = $adminC->listeComptes();
+      $listecomptesclient = $adminC->listeComptesClient();
     }
   } else {
     header('Location: login.php');
@@ -207,9 +209,9 @@ session_start();
                       <li class="nav-item">
                         <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
                       </li>
-                     <!-- <li class="nav-item">
-                        <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
-                      </li>-->
+                     <li class="nav-item">
+                        <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Historique</a>
+                      </li>
                     </ul>
                     <div class="row">
                       <div class="col-md-9">
@@ -253,7 +255,59 @@ session_start();
                           </div>
                           <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
                             <div class="horizontal-timeline">
-                              ///////////////////////////////////////////////////////////////
+                            <i>Les 5 derniers comptes admin & artiste ajoutés : </i>
+                              <br><br>
+                              <table border = "1">
+                                <tr>
+                                  <td><b>Email</b> </td>
+                                  <td><b>Nom </b></td>
+                                  <td><b>Prénom</b> </td>
+                                  <td><b>Date de naissance </b></td>
+                                  <td><b>Date d'ajout du compte </b></td>
+                                  <td><b>Sexe</b> </td>
+                                  <td><b>Type</b> </td>
+                                </tr>
+                                <?PHP
+                                  foreach($listecomptes as $row){
+                                    ?>
+                                <tr>
+                                  <td><?PHP echo $row['email'] ?></td>
+                                  <td><?PHP echo $row['nom'] ?></td>
+                                  <td><?PHP echo $row['prenom'] ?></td>
+                                  <td><?PHP echo $row['datenaissance'] ?></td>
+                                  <td><?PHP echo $row['dateAjout'] ?></td>
+                                  <td><?PHP echo $row['sexe'] ?></td>
+                                  <td><?PHP if ($row['type'] == 1) echo "admin"; else if ($row['type'] == 2) echo "artiste"; else echo "client"; ?></td>
+                                </tr>
+                                <?PHP } ?>
+                              </table>
+                              <br>
+                              <i>Les 5 derniers comptes client ajoutés : </i>
+                              <br><br>
+                              <table border = "1">
+                                <tr>
+                                  <td><b>Email</b> </td>
+                                  <td><b>Nom </b></td>
+                                  <td><b>Prénom</b> </td>
+                                  <td><b>Date de naissance </b></td>
+                                  <td><b>Date d'ajout du compte </b></td>
+                                  <td><b>Sexe</b> </td>
+                                  <td><b>Type</b> </td>
+                                </tr>
+                                <?PHP
+                                  foreach($listecomptesclient as $row){
+                                    ?>
+                                <tr>
+                                  <td><?PHP echo $row['email'] ?></td>
+                                  <td><?PHP echo $row['nom'] ?></td>
+                                  <td><?PHP echo $row['prenom'] ?></td>
+                                  <td><?PHP echo $row['datenaissance'] ?></td>
+                                  <td><?PHP echo $row['dateAjout'] ?></td>
+                                  <td><?PHP echo $row['sexe'] ?></td>
+                                  <td><?PHP echo "client"; ?></td>
+                                </tr>
+                                <?PHP } ?>
+                              </table>
                             </div>
                           </div>
                         </div>

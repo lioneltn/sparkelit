@@ -13,9 +13,10 @@ if($method == 'GET')
   ':prenom'   => "%" . $_GET['prenom'] . "%",
   ':email'     => "%" . $_GET['email'] . "%",
   ':datenaissance'     => "%" . $_GET['datenaissance'] . "%",
+  ':dateAjout'     => "%" . $_GET['dateAjout'] . "%",
   ':sexe'    => "%" . $_GET['sexe'] . "%"
  );
- $query = "SELECT * FROM utilisateur WHERE nom LIKE :nom AND prenom LIKE :prenom AND email LIKE :email AND datenaissance LIKE :datenaissance AND sexe LIKE :sexe ORDER BY email DESC";
+ $query = "SELECT * FROM utilisateur WHERE nom LIKE :nom AND prenom LIKE :prenom AND email LIKE :email AND datenaissance LIKE :datenaissance AND sexe LIKE :sexe AND dateAjout LIKE :dateAjout ORDER BY email DESC";
 
  $statement = $connect->prepare($query);
  $statement->execute($data);
@@ -27,6 +28,7 @@ if($method == 'GET')
    'nom'  => $row['nom'],
    'prenom'   => $row['prenom'],
    'datenaissance'    => $row['datenaissance'],
+   'dateAjout'    => $row['dateAjout'],
    'sexe'   => $row['sexe']
   );
  }
@@ -68,6 +70,15 @@ if ($method == 'PUT') {
 if ($method == "DELETE") {
         parse_str(file_get_contents("php://input"), $_DELETE);
         $query = "DELETE FROM admin WHERE login = '" . $_DELETE["email"] . "'";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        $query = "DELETE FROM client WHERE login = '" . $_DELETE["email"] . "'";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        $query = "DELETE FROM note WHERE id_client = '" . $_DELETE["email"] . "'";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        $query = "DELETE FROM poste WHERE id_client = '" . $_DELETE["email"] . "'";
         $statement = $connect->prepare($query);
         $statement->execute();
         $query = "DELETE FROM utilisateur WHERE email = '" . $_DELETE["email"] . "'";

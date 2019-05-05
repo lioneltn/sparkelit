@@ -26,6 +26,10 @@ include "../../core/statsC.php";
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/logoreduit.png" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +62,55 @@ include "../../core/statsC.php";
     header('Location: pages/samples/login.php');
   }
   ?>
-
+<?php
+    $connect = mysqli_connect("localhost", "root", "", "5icha");
+    $chart_data = '';
+    $mois = array('janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre');
+    $i = 0;
+    while ($i < 12) {
+        $sql = "select count(login) as nbre from client c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':dateajout', $i + 1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_client = $row['nbre'];
+        }
+        $sql = "select count(login) as nbre from admin c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout and type = :type";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':type', 1);
+            $req->bindValue(':dateajout', $i + 1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_admin = $row['nbre'];
+        }
+        $sql = "select count(login) as nbre from admin c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout and type = :type";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':type', 2);
+            $req->bindValue(':dateajout', $i + 1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_artiste = $row['nbre'];
+        }
+        $chart_data .= "{ mois:'" . $mois[$i] . "', client:" . $nbre_client . ", admin:" . $nbre_admin . ", artiste:" . $nbre_artiste . "}, ";
+        $i++;
+    }
+    $chart_data = substr($chart_data, 0, -2);
+    ?>
 
   <?php 
   $statsC = new statsC();
@@ -371,6 +423,15 @@ include "../../core/statsC.php";
                   </div>
                   <div class="col-md-7">
                     <div class="card-body d-flex flex-column h-100">
+                        <div class="d-flex flex-row">
+                            <h4 class="card-title">Statistiques d'utilisateurs inscrits</h4>
+                        </div>
+                        <p>par mois <a href="pages/samples/statComptes.php"><img src="images/stat.png" alt="stat"></i></a></p>
+                        <div id="chart"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body d-flex flex-column h-100">
                       <div class="d-flex flex-row">
                         <h4 class="card-title">Carte régionale des visiteurs!</h4>
                       </div>
@@ -564,3 +625,14 @@ include "../../core/statsC.php";
 </body>
 
 </html>
+<script>
+    Morris.Bar({
+        element: 'chart',
+        data: [<?php echo $chart_data; ?>],
+        xkey: 'mois',
+        ykeys: ['client', 'admin', 'artiste'],
+        labels: ['client', 'admin', 'artiste'],
+        hideHover: 'auto',
+        stacked: true
+    });
+</script> 

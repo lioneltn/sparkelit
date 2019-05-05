@@ -1,10 +1,6 @@
 <?PHP
 include "../../../../config.php";
 session_start();
-echo "azeze" . $_SESSION['email_admin'];
-if ($_SESSION['email_admin'] == "") {
-    header('Location: login.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -204,7 +200,7 @@ if ($_SESSION['email_admin'] == "") {
         <div class="container">
             <br />
             <div class="table-responsive">
-                <h3 align="center">Liste des clients de la boutique</h3><br />
+            <h3 align="center">Liste des clients du site</h3><br />
                 <div id="grid_table"></div>
             </div>
         </div>
@@ -258,29 +254,35 @@ if ($_SESSION['email_admin'] == "") {
                 fields: [{
                         name: "email",
                         type: "text",
-                        width: 150,
+                        width: 200,
                         validate: "required"
                     },
                     {
                         name: "nom",
                         type: "text",
-                        width: 150,
+                        width: 100,
                         validate: "required"
                     },
                     {
                         name: "prenom",
                         type: "text",
-                        width: 150,
+                        width: 100,
                         validate: "required"
                     },
                     {
                         name: "datenaissance",
                         type: "text",
-                        width: 150,
+                        width: 80,
                         validate: "required"
                     },
                     {
-                        name: "telephone",
+                        name: "dateAjout",
+                        type: "text",
+                        width: 80,
+                        validate: "required"
+                    },
+                    {
+                        name: "tel",
                         type: "text",
                         validate: function(value) {
                             if (value > 0) {
@@ -298,15 +300,15 @@ if ($_SESSION['email_admin'] == "") {
                         }
                     },
                     {
-                        name: "gender",
+                        name: "sexe",
                         type: "select",
                         items: [{
-                                Name: "Male",
-                                Id: 'male'
+                                Name: "homme",
+                                Id: 'homme'
                             },
                             {
-                                Name: "Female",
-                                Id: 'female'
+                                Name: "femme",
+                                Id: 'femme'
                             }
                         ],
                         valueField: "Id",
@@ -326,12 +328,6 @@ if ($_SESSION['email_admin'] == "") {
                         validate: "required"
                     },
                     {
-                        name: "adresselivraison_2",
-                        type: "text",
-                        width: 150,
-                        validate: "required"
-                    },
-                    {
                         type: "control"
                     }
                 ]
@@ -339,7 +335,6 @@ if ($_SESSION['email_admin'] == "") {
             });
         </script>
 
-        //////////////////////////////
         <!-- partial:../../partials/_footer.php -->
         <footer class="footer">
             <div class="w-100 clearfix">
