@@ -1,7 +1,7 @@
 <?PHP
-include "../../../../config.php";
 session_start();
-if (isset($_SESSION['email_admin'])) {
+echo "azeze" . $_SESSION['email_admin'];
+if ($_SESSION['email_admin'] == "") {
     header('Location: login.php');
 }
 ?>
@@ -12,7 +12,7 @@ if (isset($_SESSION['email_admin'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Clients</title>
+    <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
@@ -24,7 +24,7 @@ if (isset($_SESSION['email_admin'])) {
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../../images/logoreduit.png" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
@@ -34,6 +34,10 @@ if (isset($_SESSION['email_admin'])) {
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
 
 <body>
@@ -90,7 +94,7 @@ if (isset($_SESSION['email_admin'])) {
                                         <?PHP echo $nom . "  " . $prenom ?></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href = "profile.php">
+                                    <a class="dropdown-item" href="profile.php">
                                         <i class="icon-settings text-primary mr-2"></i>
                                         Profil
                                     </a>
@@ -145,7 +149,6 @@ if (isset($_SESSION['email_admin'])) {
                                     <li class="nav-item"><a class="nav-link" href="../forms/formulaire_ajouter_poste.php"> Ajouter post</a></li>
 
                                     <li class="nav-item"><a class="nav-link" href="../forms/afficherpostadmin.php">Afficher posts</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../forms/statpost.php">Statistiques posts</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -168,29 +171,29 @@ if (isset($_SESSION['email_admin'])) {
                                 </ul>
                             </div>
                         </li>
-<li class="nav-item">
-              <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="../ajouterOffre.php"> Ajouter offre</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../afficherOffres.php">Afficher offre</a></li>
-                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                        <li class="nav-item">
+                            <a href="../ajouterOffre.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Offre</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../ajouterOffre.php"> Ajouter offre</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../afficherOffres.php">Afficher offre</a></li>
+                                    <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
-                </ul>
-              </div>
-            </li> 
-             
-            <li class="nav-item">
-              <a href="../ajouterMetadonnee.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Metadonnee</span><i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="../ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../afficherMetadonnee.php">Afficher metadonnee</a></li>
-                  <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../ajouterMetadonnee.php" class="nav-link"><i class="link-icon icon-book-open"></i><span class="menu-title">Metadonnee</span><i class="menu-arrow"></i></a>
+                            <div class="submenu">
+                                <ul class="submenu-item">
+                                    <li class="nav-item"><a class="nav-link" href="../ajouterMetadonnee.php"> Ajouter metadonnee</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../afficherMetadonnee.php">Afficher metadonnee</a></li>
+                                    <!--<li class="nav-item"><a class="nav-link" href="pages/forms/text_editor.php">Text Editor</a></li>
                   <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.php">Code Editor</a></li>-->
-                </ul>
-              </div>
-            </li>
+                                </ul>
+                            </div>
+                        </li>
 
 
 
@@ -200,152 +203,64 @@ if (isset($_SESSION['email_admin'])) {
         </nav>
 
         <!-- partial -->
+        <?php
+        $connect = mysqli_connect("localhost", "root", "", "5icha");
+        $chart_data = '';
+        $mois = array('janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre');
+        $i = 0;
+        while ($i < 12) {
+            $sql = "select count(login) as nbre from client c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':dateajout', $i+1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_client = $row['nbre'];
+        }
+        $sql = "select count(login) as nbre from admin c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout and type = :type";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':type', 1);
+            $req->bindValue(':dateajout', $i+1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_admin = $row['nbre'];
+        }
+        $sql = "select count(login) as nbre from admin c inner join utilisateur u on c.login = u.email where MONTH(dateAjout) = :dateajout and type = :type";
+        $db = config4::getConnexion();
+        try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':type', 2);
+            $req->bindValue(':dateajout', $i+1);
+            $req->execute();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+        foreach ($req as $row) {
+            $nbre_artiste = $row['nbre'];
+        }
+            $chart_data .= "{ mois:'" . $mois[$i] . "', client:" . $nbre_client . ", admin:" . $nbre_admin . ", artiste:" . $nbre_artiste . "}, ";
+            $i++;
+        }
+        $chart_data = substr($chart_data, 0, -2);
+        ?>
         <div class="container">
             <br />
-            <div class="table-responsive">
-            <h3 align="center">Liste des clients du site</h3><br />
-                <div id="grid_table"></div>
-            </div>
+            <h4 class="card-title">Statistique de nombre d'utilisateurs par mois</h4>
+            <div id="chart"></div>
         </div>
-        <script>
-            $('#grid_table').jsGrid({
 
-                width: "100%",
-                height: "600px",
 
-                filtering: true,
-                inserting: true,
-                editing: true,
-                sorting: true,
-                paging: true,
-                autoload: true,
-                pageSize: 10,
-                pageButtonCount: 5,
-                deleteConfirm: "Do you really want to delete data?",
-
-                controller: {
-                    loadData: function(filter) {
-                        return $.ajax({
-                            type: "GET",
-                            url: "gererClients.php",
-                            data: filter
-                        });
-                    },
-                    insertItem: function(item) {
-                        return $.ajax({
-                            type: "POST",
-                            url: "gererClients.php",
-                            data: item
-                        });
-                    },
-                    updateItem: function(item) {
-                        return $.ajax({
-                            type: "PUT",
-                            url: "gererClients.php",
-                            data: item
-                        });
-                    },
-                    deleteItem: function(item) {
-                        return $.ajax({
-                            type: "DELETE",
-                            url: "gererClients.php",
-                            data: item
-                        });
-                    },
-                },
-
-                fields: [{
-                        name: "email",
-                        type: "text",
-                        width: 200,
-                        validate: "required"
-                    },
-                    {
-                        name: "nom",
-                        type: "text",
-                        width: 100,
-                        validate: "required"
-                    },
-                    {
-                        name: "prenom",
-                        type: "text",
-                        width: 100,
-                        validate: "required"
-                    },
-                    {
-                        name: "datenaissance",
-                        type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "dateAjout",
-                        type: "text",
-                        width: 80,
-                        validate: "required"
-                    },
-                    {
-                        name: "tel",
-                        type: "text",
-                        validate: function(value) {
-                            if (value > 0) {
-                                return true;
-                            }
-                        }
-                    },
-                    {
-                        name: "codepostal",
-                        type: "text",
-                        validate: function(value) {
-                            if (value > 0) {
-                                return true;
-                            }
-                        }
-                    },
-                    {
-                        name: "sexe",
-                        type: "select",
-                        items: [{
-                                Name: "homme",
-                                Id: 'homme'
-                            },
-                            {
-                                Name: "femme",
-                                Id: 'femme'
-                            }
-                        ],
-                        valueField: "Id",
-                        textField: "Name",
-                        validate: "required"
-                    },
-                    {
-                        name: "region",
-                        type: "text",
-                        width: 150,
-                        validate: "required"
-                    },
-                    {
-                        name: "adresselivraison",
-                        type: "text",
-                        width: 150,
-                        validate: "required"
-                    },
-                    {
-                        type: "control"
-                    }
-                ]
-
-            });
-        </script>
-
-        //////////////////////////////
         <!-- partial:../../partials/_footer.php -->
-        <footer class="footer">
-            <div class="w-100 clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
-            </div>
-        </footer>
+        
         <!-- partial -->
     </div>
     <!-- main-panel ends -->
@@ -368,3 +283,14 @@ if (isset($_SESSION['email_admin'])) {
 </body>
 
 </html>
+<script>
+    Morris.Bar({
+        element: 'chart',
+        data: [<?php echo $chart_data; ?>],
+        xkey: 'mois',
+        ykeys: ['client', 'admin', 'artiste'],
+        labels: ['client', 'admin', 'artiste'],
+        hideHover: 'auto',
+        stacked: true
+    });
+</script>

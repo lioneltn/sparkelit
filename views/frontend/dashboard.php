@@ -414,7 +414,7 @@ session_start();
                         <div class="card">
                             <div class="card-header">
                             Carnet d'adresses
-                                <a href="#" class="card-edit">modifier</a>
+                                <a href="carnet-adresse.php" class="card-edit">modifier</a>
                             </div><!-- End .card-header -->
 
                             <div class="card-body">

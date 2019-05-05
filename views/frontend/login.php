@@ -1,8 +1,6 @@
 <?PHP
 session_start();
-if(isset($_SESSION['email'])) {
-    $_SESSION['email'] = NULL;
-}
+unset ($_SESSION['email']);
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +47,7 @@ if(isset($_SESSION['email'])) {
                     <p></p>
                 </div><!-- End .heading -->
 
-                <form method="POST" action="connexion.php">
+                <form id="form" method="POST" onsubmit="return verificationlogin()" action="connexion.php">
                     <div class="form-group required-field">
                         <label for="login">login</label>
                         <input type="email" class="form-control" id="login" name="login" onfocusout="validateEmail(this)" required>
@@ -61,7 +59,7 @@ if(isset($_SESSION['email'])) {
                     <br><br>
                     <div class="form-footer">
 
-                        <button type="submit" class="btn btn-primary">Connexion</button>
+                    <input type = "submit" class="btn btn-primary" value = "Connexion" onclick="verificationlogin()">
                     </div><!-- End .form-footer -->
                 </form>
             </div><!-- End .container -->

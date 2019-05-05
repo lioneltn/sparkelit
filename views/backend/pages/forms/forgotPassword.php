@@ -29,7 +29,7 @@ include "../../../../core/comptes/adminC.php";
                 
                 Vous avez oublié votre mot de passe?
                 Vous pouvez le réinitialiser en cliquant sur ce lien: 
-                http://localhost/projetWebfinal/sparkelit/views/backend/pages/forms/new_password-3.php?code=$code_aleatoire
+                http://localhost/projetWebv5/sparkelit/views/backend/pages/forms/new_password-3.php?code=$code_aleatoire
                 
                 N'hésitez pas à visiter nos nombreuses boutiques! 5icha s'est associé avec les plus grandes marques internationales pour vous offrir le plus grand choix, au meilleur prix. 
                 Bon shopping!
@@ -45,7 +45,7 @@ include "../../../../core/comptes/adminC.php";
                 
                 
                 Que ce soit pour une question ou une suggestion, contactez nous au: 
-                Service client: +216     -   Email: customer@5icha.com.tn 
+                Service client: +216 55023485     -   Email: benyounesfiras@gmail.com
                 
                 
                 ";
@@ -71,7 +71,7 @@ include "../../../../core/comptes/adminC.php";
                 <link rel=\"stylesheet\" href=\"../../css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Email envoyé</div></body></html>";
 
                 $sql = "update utilisateur set code = :code where email = :email";
-                $db = config::getConnexion();
+                $db = config4::getConnexion();
                 try {
                     $req = $db->prepare($sql);
         

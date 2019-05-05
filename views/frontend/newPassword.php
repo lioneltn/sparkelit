@@ -23,10 +23,24 @@ if (isset($_POST['password']) and isset($_POST['confirmPassword']) and $_POST['p
                 <!-- End plugin css for this page -->
                 <!-- inject:css -->
                 <link rel=\"stylesheet\" href=\"../backend/css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Mot de passe changé avec succès</div></body></html>";
-     } catch (Exception $e) {
+                echo "<script>window.location.href='login.php'</script>";
+               } catch (Exception $e) {
           echo 'Erreur: ' . $e->getMessage();
      }
 } else {
+     echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
+                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+                <title>CloudUi Premium Bootstrap Admin Dashboard Template</title>
+                <!-- plugins:css -->
+                <link rel=\"stylesheet\" href=\"../backend/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css\">
+                <link rel=\"stylesheet\" href=\"../backend/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css\">
+                <link rel=\"stylesheet\" href=\"../backend/vendors/css/vendor.bundle.base.css\">
+                <link rel=\"stylesheet\" href=\"../backend/vendors/css/vendor.bundle.addons.css\">
+                <!-- endinject -->
+                <!-- plugin css for this page -->
+                <!-- End plugin css for this page -->
+                <!-- inject:css -->
+                <link rel=\"stylesheet\" href=\"../backend/css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">verifier que les mots de passe sont identiques</div></body></html>";
      echo "verifier que les mots de passe sont identiques";
 }
  

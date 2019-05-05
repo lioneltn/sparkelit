@@ -27,7 +27,7 @@ $txt = "
                 
                 Vous avez oublié votre mot de passe?
                 Vous pouvez le réinitialiser en cliquant sur ce lien: 
-                http://localhost/projetWebfinal/sparkelit/views/frontend/new_password-2.php?code=$code_aleatoire
+                http://localhost/projetWebv5/sparkelit/views/frontend/new_password-2.php?code=$code_aleatoire
                 
                 N'hésitez pas à visiter nos nombreuses boutiques! 5icha s'est associé avec les plus grandes marques internationales pour vous offrir le plus grand choix, au meilleur prix. 
                 Bon shopping!
@@ -43,7 +43,7 @@ $txt = "
                 
                 
                 Que ce soit pour une question ou une suggestion, contactez nous au: 
-                Service client: +216     -   Email: customer@5icha.com.tn 
+                Service client: +216 55023485     -   Email: benyounesfiras@gmail.com 
                 
                 
                 ";
@@ -67,7 +67,7 @@ echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
                 <link rel=\"stylesheet\" href=\"../backend/css/style.css\"></header><body><div class=\"alert alert-success alert-intro\" role=\"alert\">Email envoyé</div></body></html>";
 
                 $verif = "select motdepasse from utilisateur where email = :email";
-                $db = config::getConnexion();
+                $db = config4::getConnexion();
                 try {
                     $req = $db->prepare($verif);
         
@@ -79,7 +79,7 @@ echo "<html><header><title>Confirmation</title><meta charset=\"utf-8\">
                 }
         
                 $sql = "update utilisateur set code = :code where email = :email";
-                $db = config::getConnexion();
+                $db = config4::getConnexion();
                 try {
                     $req = $db->prepare($sql);
         

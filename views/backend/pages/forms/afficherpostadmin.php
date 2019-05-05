@@ -51,8 +51,8 @@ chdir(__DIR__);
             <div class="nav-top flex-grow-1">
                 <div class="container d-flex flex-row h-100 align-items-center">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                        <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
-                        <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
+                    <a class="navbar-brand brand-logo" href="../samples/dashboard-artiste.php"><img src="../../images/Logoreduit.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="../samples/dashboard-artiste.php"><img src="../../images/logo-mini.svg" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1">
                  

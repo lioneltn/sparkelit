@@ -1,6 +1,5 @@
 <?PHP
 session_start();
-//$_SESSION['email'] = "dqsdqsd";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,9 +43,13 @@ session_start();
             $datenaissance = $row['datenaissance'];
             $sexe = $row['sexe'];
             $password = $row['motdepasse'];
+            $type = $row['type'];
+            if($type != 1) {
+                header('Location: ../samples/login.php');
+            }
         }
     } else {
-        header('Location: login_admin.php');
+        header('Location: ../samples/login.php');
     }
     ?>
     <div class="container-scroller">

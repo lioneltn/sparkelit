@@ -1,8 +1,8 @@
 <?PHP 
 session_start();
-echo $_GET['code'];
+//echo $_GET['code'];
 $_SESSION['forgot'] = $_GET['code'];
-echo $_SESSION['forgot'];
+//echo $_SESSION['forgot'];
 ?>
 <!DOCTYPE html>
 <html>
